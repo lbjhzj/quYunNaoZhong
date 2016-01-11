@@ -7,25 +7,71 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D1C16F11C3F45D200193447 /* MyClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1C16F01C3F45D200193447 /* MyClockViewController.m */; };
+		7D1C16F51C3F5ECE00193447 /* MyAlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1C16F31C3F5ECE00193447 /* MyAlertCell.m */; };
+		7D1C16F61C3F5ECE00193447 /* MyAlertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1C16F41C3F5ECE00193447 /* MyAlertCell.xib */; };
+		7D4D48B31C41F23700C18F6D /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4D48A91C41F23700C18F6D /* GoogleMobileAds.framework */; };
+		7D4D48B41C41F23700C18F6D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D48B11C41F23700C18F6D /* README.txt */; };
+		7D4D48B51C41F23700C18F6D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D48B21C41F23700C18F6D /* README.txt */; };
+		7D5554441C4343BE001D67A8 /* SetClockTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5554421C4343BE001D67A8 /* SetClockTimeController.m */; };
+		7D5554451C4343BE001D67A8 /* SetClockTimeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D5554431C4343BE001D67A8 /* SetClockTimeController.xib */; };
 		7D730B191C3CD94800C095C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B181C3CD94800C095C5 /* main.m */; };
-		7D730B1C1C3CD94800C095C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B1B1C3CD94800C095C5 /* AppDelegate.m */; };
-		7D730B1F1C3CD94800C095C5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B1E1C3CD94800C095C5 /* ViewController.m */; };
 		7D730B221C3CD94800C095C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D730B201C3CD94800C095C5 /* Main.storyboard */; };
 		7D730B241C3CD94800C095C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D730B231C3CD94800C095C5 /* Assets.xcassets */; };
 		7D730B271C3CD94800C095C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D730B251C3CD94800C095C5 /* LaunchScreen.storyboard */; };
+		7D730B3D1C3CD9DB00C095C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B311C3CD9DB00C095C5 /* AppDelegate.m */; };
+		7D730B411C3CDA3D00C095C5 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B401C3CDA3D00C095C5 /* MainViewController.m */; };
+		7D730B441C3CDA8F00C095C5 /* HYLocalNotication.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B431C3CDA8F00C095C5 /* HYLocalNotication.m */; };
+		7D730B491C3CF3B300C095C5 /* UIColor+hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B481C3CF3B300C095C5 /* UIColor+hex.m */; };
+		7D730B4C1C3CFA1300C095C5 /* NSString+dateTransformToNSString.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B4B1C3CFA1300C095C5 /* NSString+dateTransformToNSString.m */; };
+		7DAC940F1C3F99D800F787DA /* SetClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAC940E1C3F99D800F787DA /* SetClockViewController.m */; };
+		7DEDA3DC1C3E4E8900D7C4DE /* alertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */; };
+		7DEDA3DD1C3E4E8900D7C4DE /* alertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */; };
+		7DEDA3E31C3E6C6100D7C4DE /* alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3E21C3E6C6100D7C4DE /* alert.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D1C16EF1C3F45D200193447 /* MyClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClockViewController.h; sourceTree = "<group>"; };
+		7D1C16F01C3F45D200193447 /* MyClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClockViewController.m; sourceTree = "<group>"; };
+		7D1C16F21C3F5ECE00193447 /* MyAlertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertCell.h; sourceTree = "<group>"; };
+		7D1C16F31C3F5ECE00193447 /* MyAlertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertCell.m; sourceTree = "<group>"; };
+		7D1C16F41C3F5ECE00193447 /* MyAlertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAlertCell.xib; sourceTree = "<group>"; };
+		7D4D48A91C41F23700C18F6D /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		7D4D48AB1C41F23700C18F6D /* GADMAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
+		7D4D48AC1C41F23700C18F6D /* GADMAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
+		7D4D48AD1C41F23700C18F6D /* GADMediationAdRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMediationAdRequest.h; sourceTree = "<group>"; };
+		7D4D48AE1C41F23700C18F6D /* GADMEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMEnums.h; sourceTree = "<group>"; };
+		7D4D48AF1C41F23700C18F6D /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
+		7D4D48B01C41F23700C18F6D /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
+		7D4D48B11C41F23700C18F6D /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		7D4D48B21C41F23700C18F6D /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		7D5554411C4343BE001D67A8 /* SetClockTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetClockTimeController.h; sourceTree = "<group>"; };
+		7D5554421C4343BE001D67A8 /* SetClockTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockTimeController.m; sourceTree = "<group>"; };
+		7D5554431C4343BE001D67A8 /* SetClockTimeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetClockTimeController.xib; sourceTree = "<group>"; };
 		7D730B141C3CD94800C095C5 /* quYunNaoZhong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quYunNaoZhong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D730B181C3CD94800C095C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7D730B1A1C3CD94800C095C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7D730B1B1C3CD94800C095C5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7D730B1D1C3CD94800C095C5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7D730B1E1C3CD94800C095C5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7D730B211C3CD94800C095C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7D730B231C3CD94800C095C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D730B261C3CD94800C095C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D730B281C3CD94800C095C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D730B301C3CD9DB00C095C5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7D730B311C3CD9DB00C095C5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7D730B3F1C3CDA3D00C095C5 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		7D730B401C3CDA3D00C095C5 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		7D730B421C3CDA8F00C095C5 /* HYLocalNotication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLocalNotication.h; sourceTree = "<group>"; };
+		7D730B431C3CDA8F00C095C5 /* HYLocalNotication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLocalNotication.m; sourceTree = "<group>"; };
+		7D730B461C3CDB8D00C095C5 /* HYHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYHeader.pch; sourceTree = "<group>"; };
+		7D730B471C3CF3B300C095C5 /* UIColor+hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hex.h"; sourceTree = "<group>"; };
+		7D730B481C3CF3B300C095C5 /* UIColor+hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hex.m"; sourceTree = "<group>"; };
+		7D730B4A1C3CFA1300C095C5 /* NSString+dateTransformToNSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+dateTransformToNSString.h"; sourceTree = "<group>"; };
+		7D730B4B1C3CFA1300C095C5 /* NSString+dateTransformToNSString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+dateTransformToNSString.m"; sourceTree = "<group>"; };
+		7DAC940D1C3F99D800F787DA /* SetClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetClockViewController.h; sourceTree = "<group>"; };
+		7DAC940E1C3F99D800F787DA /* SetClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockViewController.m; sourceTree = "<group>"; };
+		7DEDA3D91C3E4E8900D7C4DE /* alertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alertCell.h; sourceTree = "<group>"; };
+		7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alertCell.m; sourceTree = "<group>"; };
+		7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = alertCell.xib; sourceTree = "<group>"; };
+		7DEDA3E11C3E6C6100D7C4DE /* alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alert.h; sourceTree = "<group>"; };
+		7DEDA3E21C3E6C6100D7C4DE /* alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alert.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,15 +79,51 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D4D48B31C41F23700C18F6D /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D4D48A81C41F23700C18F6D /* GoogleMobileAdsSdkiOS-7.6.0 */ = {
+			isa = PBXGroup;
+			children = (
+				7D4D48A91C41F23700C18F6D /* GoogleMobileAds.framework */,
+				7D4D48AA1C41F23700C18F6D /* Mediation Adapters */,
+				7D4D48B21C41F23700C18F6D /* README.txt */,
+			);
+			path = "GoogleMobileAdsSdkiOS-7.6.0";
+			sourceTree = "<group>";
+		};
+		7D4D48AA1C41F23700C18F6D /* Mediation Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				7D4D48AB1C41F23700C18F6D /* GADMAdNetworkAdapterProtocol.h */,
+				7D4D48AC1C41F23700C18F6D /* GADMAdNetworkConnectorProtocol.h */,
+				7D4D48AD1C41F23700C18F6D /* GADMediationAdRequest.h */,
+				7D4D48AE1C41F23700C18F6D /* GADMEnums.h */,
+				7D4D48AF1C41F23700C18F6D /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */,
+				7D4D48B01C41F23700C18F6D /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */,
+				7D4D48B11C41F23700C18F6D /* README.txt */,
+			);
+			path = "Mediation Adapters";
+			sourceTree = "<group>";
+		};
+		7D5554401C434290001D67A8 /* SetClockTime */ = {
+			isa = PBXGroup;
+			children = (
+				7D5554411C4343BE001D67A8 /* SetClockTimeController.h */,
+				7D5554421C4343BE001D67A8 /* SetClockTimeController.m */,
+				7D5554431C4343BE001D67A8 /* SetClockTimeController.xib */,
+			);
+			name = SetClockTime;
+			sourceTree = "<group>";
+		};
 		7D730B0B1C3CD94800C095C5 = {
 			isa = PBXGroup;
 			children = (
+				7D4D48A81C41F23700C18F6D /* GoogleMobileAdsSdkiOS-7.6.0 */,
 				7D730B161C3CD94800C095C5 /* quYunNaoZhong */,
 				7D730B151C3CD94800C095C5 /* Products */,
 			);
@@ -58,10 +140,7 @@
 		7D730B161C3CD94800C095C5 /* quYunNaoZhong */ = {
 			isa = PBXGroup;
 			children = (
-				7D730B1A1C3CD94800C095C5 /* AppDelegate.h */,
-				7D730B1B1C3CD94800C095C5 /* AppDelegate.m */,
-				7D730B1D1C3CD94800C095C5 /* ViewController.h */,
-				7D730B1E1C3CD94800C095C5 /* ViewController.m */,
+				7D730B2E1C3CD9DB00C095C5 /* Classes */,
 				7D730B201C3CD94800C095C5 /* Main.storyboard */,
 				7D730B231C3CD94800C095C5 /* Assets.xcassets */,
 				7D730B251C3CD94800C095C5 /* LaunchScreen.storyboard */,
@@ -77,6 +156,117 @@
 				7D730B181C3CD94800C095C5 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7D730B2E1C3CD9DB00C095C5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7D730B2F1C3CD9DB00C095C5 /* AppDelegate */,
+				7D730B321C3CD9DB00C095C5 /* General */,
+				7D730B351C3CD9DB00C095C5 /* Helpers */,
+				7D730B361C3CD9DB00C095C5 /* Marcro */,
+				7D730B371C3CD9DB00C095C5 /* Models */,
+				7D730B381C3CD9DB00C095C5 /* Scences */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		7D730B2F1C3CD9DB00C095C5 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				7D730B301C3CD9DB00C095C5 /* AppDelegate.h */,
+				7D730B311C3CD9DB00C095C5 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		7D730B321C3CD9DB00C095C5 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				7D730B341C3CD9DB00C095C5 /* Views */,
+				7D730B331C3CD9DB00C095C5 /* ViewControllers */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		7D730B331C3CD9DB00C095C5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7D730B341C3CD9DB00C095C5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7DEDA3D91C3E4E8900D7C4DE /* alertCell.h */,
+				7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */,
+				7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */,
+				7D1C16F21C3F5ECE00193447 /* MyAlertCell.h */,
+				7D1C16F31C3F5ECE00193447 /* MyAlertCell.m */,
+				7D1C16F41C3F5ECE00193447 /* MyAlertCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7D730B351C3CD9DB00C095C5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7D730B421C3CDA8F00C095C5 /* HYLocalNotication.h */,
+				7D730B431C3CDA8F00C095C5 /* HYLocalNotication.m */,
+				7D730B471C3CF3B300C095C5 /* UIColor+hex.h */,
+				7D730B481C3CF3B300C095C5 /* UIColor+hex.m */,
+				7D730B4A1C3CFA1300C095C5 /* NSString+dateTransformToNSString.h */,
+				7D730B4B1C3CFA1300C095C5 /* NSString+dateTransformToNSString.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7D730B361C3CD9DB00C095C5 /* Marcro */ = {
+			isa = PBXGroup;
+			children = (
+				7D730B461C3CDB8D00C095C5 /* HYHeader.pch */,
+			);
+			path = Marcro;
+			sourceTree = "<group>";
+		};
+		7D730B371C3CD9DB00C095C5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7DEDA3E11C3E6C6100D7C4DE /* alert.h */,
+				7DEDA3E21C3E6C6100D7C4DE /* alert.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7D730B381C3CD9DB00C095C5 /* Scences */ = {
+			isa = PBXGroup;
+			children = (
+				7D730B391C3CD9DB00C095C5 /* Views */,
+				7D730B3A1C3CD9DB00C095C5 /* ViewsController */,
+			);
+			path = Scences;
+			sourceTree = "<group>";
+		};
+		7D730B391C3CD9DB00C095C5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7D730B3A1C3CD9DB00C095C5 /* ViewsController */ = {
+			isa = PBXGroup;
+			children = (
+				7D5554401C434290001D67A8 /* SetClockTime */,
+				7D730B3F1C3CDA3D00C095C5 /* MainViewController.h */,
+				7D730B401C3CDA3D00C095C5 /* MainViewController.m */,
+				7D1C16EF1C3F45D200193447 /* MyClockViewController.h */,
+				7D1C16F01C3F45D200193447 /* MyClockViewController.m */,
+				7DAC940D1C3F99D800F787DA /* SetClockViewController.h */,
+				7DAC940E1C3F99D800F787DA /* SetClockViewController.m */,
+			);
+			path = ViewsController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +329,12 @@
 			files = (
 				7D730B271C3CD94800C095C5 /* LaunchScreen.storyboard in Resources */,
 				7D730B241C3CD94800C095C5 /* Assets.xcassets in Resources */,
+				7DEDA3DD1C3E4E8900D7C4DE /* alertCell.xib in Resources */,
 				7D730B221C3CD94800C095C5 /* Main.storyboard in Resources */,
+				7D4D48B41C41F23700C18F6D /* README.txt in Resources */,
+				7D4D48B51C41F23700C18F6D /* README.txt in Resources */,
+				7D5554451C4343BE001D67A8 /* SetClockTimeController.xib in Resources */,
+				7D1C16F61C3F5ECE00193447 /* MyAlertCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,8 +345,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D730B1F1C3CD94800C095C5 /* ViewController.m in Sources */,
-				7D730B1C1C3CD94800C095C5 /* AppDelegate.m in Sources */,
+				7D730B3D1C3CD9DB00C095C5 /* AppDelegate.m in Sources */,
+				7D730B4C1C3CFA1300C095C5 /* NSString+dateTransformToNSString.m in Sources */,
+				7DEDA3E31C3E6C6100D7C4DE /* alert.m in Sources */,
+				7D730B411C3CDA3D00C095C5 /* MainViewController.m in Sources */,
+				7D1C16F51C3F5ECE00193447 /* MyAlertCell.m in Sources */,
+				7D730B491C3CF3B300C095C5 /* UIColor+hex.m in Sources */,
+				7D730B441C3CDA8F00C095C5 /* HYLocalNotication.m in Sources */,
+				7DEDA3DC1C3E4E8900D7C4DE /* alertCell.m in Sources */,
+				7D1C16F11C3F45D200193447 /* MyClockViewController.m in Sources */,
+				7DAC940F1C3F99D800F787DA /* SetClockViewController.m in Sources */,
+				7D5554441C4343BE001D67A8 /* SetClockTimeController.m in Sources */,
 				7D730B191C3CD94800C095C5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,7 +468,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GoogleMobileAdsSdkiOS-7.6.0",
+				);
+				GCC_PREFIX_HEADER = /Users/quyunkeji/Desktop/quYunNaoZhong/quYunNaoZhong/Classes/Marcro/HYHeader.pch;
 				INFOPLIST_FILE = quYunNaoZhong/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quyun.quYunNaoZhong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -275,7 +486,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GoogleMobileAdsSdkiOS-7.6.0",
+				);
+				GCC_PREFIX_HEADER = /Users/quyunkeji/Desktop/quYunNaoZhong/quYunNaoZhong/Classes/Marcro/HYHeader.pch;
 				INFOPLIST_FILE = quYunNaoZhong/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quyun.quYunNaoZhong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -301,6 +519,7 @@
 				7D730B2D1C3CD94800C095C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,30 @@
+//
+//  HYHeader.pch
+//  quYunNaoZhong
+//
+//  Created by 趣云科技 on 16/1/6.
+//  Copyright © 2016年 趣云科技. All rights reserved.
+//
+
+#ifndef HYHeader_pch
+#define HYHeader_pch
+
+#import <UIKit/UIKit.h>
+@class GADBannerView;
+#import "sys/utsname.h"
+
+#import "UIColor+hex.h"
+#import "NSString+dateTransformToNSString.h"
+
+#import "alertCell.h"
+#import "MyAlertCell.h"
+#import "alert.h"
+
+#import "MyClockViewController.h"
+#import "MainViewController.h"
+#import "SetClockViewController.h"
+#import "HYLocalNotication.h"
+
+#import "SetClockTimeController.h"
+
+#endif /* HYHeader_pch */

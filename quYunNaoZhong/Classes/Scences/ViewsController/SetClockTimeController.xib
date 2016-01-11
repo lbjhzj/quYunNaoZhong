@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetClockTimeController">
+            <connections>
+                <outlet property="datePicker" destination="KjZ-gL-1wa" id="ird-I8-L3R"/>
+                <outlet property="timeLabel" destination="LK6-0s-Mmr" id="MGV-JR-pJt"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK6-0s-Mmr">
+                    <rect key="frame" x="206" y="129" width="188" height="43"/>
+                    <color key="backgroundColor" red="0.6920878775" green="0.34925545299999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="188" id="GbX-Zi-8Mg"/>
+                        <constraint firstAttribute="height" constant="43" id="ZaG-JK-YgL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="KjZ-gL-1wa">
+                    <rect key="frame" x="140" y="192" width="320" height="216"/>
+                    <date key="date" timeIntervalSinceReferenceDate="474170454.40467501">
+                        <!--2016-01-11 02:00:54 +0000-->
+                    </date>
+                    <connections>
+                        <action selector="datePick:" destination="-1" eventType="valueChanged" id="oD8-T3-HCS"/>
+                    </connections>
+                </datePicker>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zf3-CF-UiF">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ms7-e5-r09">
+                            <rect key="frame" x="16" y="35" width="30" height="31"/>
+                            <state key="normal" backgroundImage="返回"/>
+                            <connections>
+                                <action selector="backToTheController:" destination="-1" eventType="touchUpInside" id="l2X-6E-I7i"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOl-WR-VoY">
+                            <rect key="frame" x="554" y="36" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="oOl-WR-VoY" secondAttribute="height" id="auy-xv-Pt3"/>
+                                <constraint firstAttribute="height" constant="30" id="rOg-3f-WzM"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="确认"/>
+                            <connections>
+                                <action selector="AddAClockAction:" destination="-1" eventType="touchUpInside" id="3nt-3a-9Nu"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.62998098134994507" green="0.61110055446624756" blue="0.092377476394176483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="ms7-e5-r09" firstAttribute="top" secondItem="zf3-CF-UiF" secondAttribute="top" constant="35" id="1sj-jA-Y3C"/>
+                        <constraint firstAttribute="height" constant="79" id="7Kr-JA-JXn"/>
+                        <constraint firstAttribute="bottom" secondItem="ms7-e5-r09" secondAttribute="bottom" constant="13" id="HWr-Zl-Oul"/>
+                        <constraint firstItem="oOl-WR-VoY" firstAttribute="baseline" secondItem="ms7-e5-r09" secondAttribute="baseline" id="hFL-em-EvY"/>
+                        <constraint firstAttribute="trailing" secondItem="oOl-WR-VoY" secondAttribute="trailing" constant="16" id="hi1-ar-V8F"/>
+                        <constraint firstItem="oOl-WR-VoY" firstAttribute="bottom" secondItem="ms7-e5-r09" secondAttribute="bottom" id="ih1-hm-U36"/>
+                        <constraint firstItem="ms7-e5-r09" firstAttribute="leading" secondItem="zf3-CF-UiF" secondAttribute="leading" constant="16" id="x4q-vu-Q5m"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="hFL-em-EvY"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="KjZ-gL-1wa" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="94d-KQ-hd7"/>
+                <constraint firstItem="KjZ-gL-1wa" firstAttribute="top" secondItem="LK6-0s-Mmr" secondAttribute="bottom" constant="20" id="Ao7-P9-3kg"/>
+                <constraint firstAttribute="trailing" secondItem="zf3-CF-UiF" secondAttribute="trailing" id="OeS-y5-1mV"/>
+                <constraint firstItem="LK6-0s-Mmr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ufd-YI-aJp"/>
+                <constraint firstItem="KjZ-gL-1wa" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cdr-YO-Kh8"/>
+                <constraint firstItem="zf3-CF-UiF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hw3-fe-xhq"/>
+                <constraint firstItem="zf3-CF-UiF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kcF-xD-JNp"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="确认" width="29" height="29"/>
+        <image name="返回" width="30" height="30"/>
+    </resources>
+</document>

@@ -46,23 +46,26 @@ static NSString *cellID = @"cellID";
     self.admodBannerView.rootViewController = self;
 
 
-        GADRequest *request = [GADRequest request];
-        // Requests test ads on devices you specify. Your test device ID is printed to the console when
-        // an ad request is made. GADBannerView automatically returns test ads when running on a
-        // simulator.
-        request.testDevices = @[
-                                @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
-                                ];
-        [self.admodBannerView loadRequest:request];
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made. GADBannerView automatically returns test ads when running on a
+    // simulator.
+    request.testDevices = @[
+                            @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
+                        ];
+    [self.admodBannerView loadRequest:request];
 
-
-
-    
         
     [self.tabelView registerNib:[UINib nibWithNibName:@"MyAlertCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellID];
     
+    [self addAllViews];
+   
+}
+
+#pragma mark 添加视图
+- (void)addAllViews{
     self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-109, self.view.frame.size.width, 59)];
-        
+    
     UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [addButton setImage:[UIImage imageNamed:@"添加"] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(addAlertAtion:) forControlEvents:UIControlEventTouchUpInside];
@@ -79,12 +82,13 @@ static NSString *cellID = @"cellID";
 
 }
 
+#pragma mark 去往添加闹钟页面
 - (void)addAlertAtion:(UIButton *)sender{
     [self.navigationController pushViewController:[SetClockViewController sharedSetClockViewController] animated:YES];
 }
 
 
-//返回按键的方法
+#pragma mark 返回按键的方法
 - (IBAction)backToMainVCAction:(UIButton *)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }

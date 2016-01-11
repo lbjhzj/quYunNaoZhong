@@ -23,6 +23,6 @@
 
 @property(nonatomic,assign)id <PassingTheClockTimeDelegate> delegate;
 
-- (void)restoreGUI;
+
 
 @end

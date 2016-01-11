@@ -87,9 +87,63 @@ static NSString *cellID = @"cellID";
     
 }
 
+#pragma mark 添加视图
+- (void)addViews{
+    
+    self.bottomView =[[UIView alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-109, self.view.frame.size.width, 59)];
+    
+    //    切换到闹钟界面的按键
+    UIButton *switchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [switchButton setImage:[UIImage imageNamed:@"闹钟"] forState:UIControlStateNormal];
+    switchButton.frame = CGRectMake(self.bottomView.frame.size.width * 0.5 - 30, 0, 59, 59);
+    
+    [switchButton addTarget:self action:@selector(switchToMyAlertControllerAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [self.bottomView addSubview:switchButton];
+    
+    [self.view addSubview:self.bottomView];
+    
+    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _bottomView.frame.size.width, 1)];
+    lineLabel.backgroundColor = [UIColor blackColor];
+    lineLabel.alpha = .1f;
+    
+    [_bottomView addSubview:lineLabel];
+    
+    //    设置自定义的navigationBar的高度
+    float newHeight = 79;
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(
+                                                            self.navigationController.navigationBar.frame.origin.x,
+                                                            0,
+                                                            self.navigationController.navigationBar.frame.size.width,
+                                                            newHeight
+                                                            )];
+    
+    view.backgroundColor = [UIColor colorWithHexString:@"f7f7f7"];
+    [self.view addSubview:view];
+    
+    //    日期label
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(45, newHeight-32, 160, 16)];
+    label.font = [UIFont systemFontOfSize:18];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy/MM/dd (ccc)"];
+    label.text = [NSString stringFromDate:[NSDate date] ByFormatter:formatter] ;
+    label.textColor = [UIColor colorWithHexString:@"#333333"];
+    [view addSubview:label];
+    
+    //    设置按钮
+    UIButton *setButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [setButton setImage:[UIImage imageNamed:@"设置"] forState:UIControlStateNormal];
+    setButton.frame = CGRectMake(self.view.frame.size.width-15-40, 35, 40, 40);
+    [view addSubview:setButton];
+    
+    
+}
 
 
-//数秒的方法
+
+#pragma mark 数秒的方法
 - (void)countDownAction:(NSArray *)tempTimeArray{
         NSTimeInterval Timeinterval = [tempTimeArray[0] intValue]*3600+[tempTimeArray[1] intValue]*60+[tempTimeArray[2] intValue];
         __block int timeout=Timeinterval; //当前的时间
@@ -147,58 +201,6 @@ static NSString *cellID = @"cellID";
 
 
 
-- (void)addViews{
-    
-    self.bottomView =[[UIView alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-109, self.view.frame.size.width, 59)];
-    
-    //    切换到闹钟界面的按键
-    UIButton *switchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [switchButton setImage:[UIImage imageNamed:@"闹钟"] forState:UIControlStateNormal];
-    switchButton.frame = CGRectMake(self.bottomView.frame.size.width * 0.5 - 30, 0, 59, 59);
-    
-    [switchButton addTarget:self action:@selector(switchToMyAlertControllerAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    [self.bottomView addSubview:switchButton];
-    
-    [self.view addSubview:self.bottomView];
-    
-    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _bottomView.frame.size.width, 1)];
-    lineLabel.backgroundColor = [UIColor blackColor];
-    lineLabel.alpha = .1f;
-    
-    [_bottomView addSubview:lineLabel];
-
-//    设置自定义的navigationBar的高度
-    float newHeight = 79;
-
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(
-                                                            self.navigationController.navigationBar.frame.origin.x,
-                                                            0,
-                                                            self.navigationController.navigationBar.frame.size.width,
-                                                            newHeight
-                                                            )];
-    
-    view.backgroundColor = [UIColor colorWithHexString:@"f7f7f7"];
-    [self.view addSubview:view];
-    
-//    日期label
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(45, newHeight-32, 160, 16)];
-    label.font = [UIFont systemFontOfSize:18];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"yyyy/MM/dd (ccc)"];
-    label.text = [NSString stringFromDate:[NSDate date] ByFormatter:formatter] ;
-    label.textColor = [UIColor colorWithHexString:@"#333333"];
-    [view addSubview:label];
-    
-//    设置按钮
-    UIButton *setButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [setButton setImage:[UIImage imageNamed:@"设置"] forState:UIControlStateNormal];
-    setButton.frame = CGRectMake(self.view.frame.size.width-15-40, 35, 40, 40);
-    [view addSubview:setButton];
-    
-
-}
 
 #pragma mark 切换到我的闹钟界面
 - (void)switchToMyAlertControllerAction:(UIButton *)sender{
@@ -232,7 +234,7 @@ static NSString *cellID = @"cellID";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

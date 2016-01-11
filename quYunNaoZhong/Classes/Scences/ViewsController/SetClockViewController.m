@@ -41,10 +41,6 @@ static NSString *cellID_2 = @"sliderID";
 }
 
 
-- (void)passingClockTimeToHere:(NSString *)clockTime{
-    self.clockTimeLabel.text = clockTime;
-     [self.tableView reloadData];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,6 +67,19 @@ static NSString *cellID_2 = @"sliderID";
                         ];
     [self.admodBannerView loadRequest:request];
 
+    
+}
+
+#pragma mark SetClockTimeVC的协议方法
+//闹钟设定时间的传值
+- (void)passingClockTimeToHere:(NSString *)clockTime{
+    self.clockTimeLabel.text = clockTime;
+    [self.tableView reloadData];
+}
+
+#pragma mark 闹钟的音量设置
+- (void)soundValueChangeAction:(UISlider *)sender{
+    _valueLabel.text = [NSString stringWithFormat:@"%.0f",self.clockSoundValueLabel.value];
     
 }
 
@@ -182,12 +191,6 @@ static NSString *cellID_2 = @"sliderID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 49;
-}
-
-
-- (void)soundValueChangeAction:(UISlider *)sender{
-    _valueLabel.text = [NSString stringWithFormat:@"%.0f",self.clockSoundValueLabel.value];
-
 }
 
 

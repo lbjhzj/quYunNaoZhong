@@ -52,11 +52,6 @@
 }
 
 
-
-- (void)restoreGUI{
-    
-}
-
 - (IBAction)backToTheController:(UIButton *)sender {
     
     [self.navigationController popViewControllerAnimated:YES];

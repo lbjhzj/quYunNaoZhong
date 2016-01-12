@@ -23,14 +23,14 @@
                                 <rect key="frame" x="0.0" y="59" width="600" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csJ-OP-Jo0">
-                                        <rect key="frame" x="277.5" y="68" width="42" height="20.5"/>
+                                        <rect key="frame" x="282" y="68" width="42" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EN7-ER-R3R">
-                                        <rect key="frame" x="45" y="20" width="207.5" height="69"/>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="90"/>
+                                        <rect key="frame" x="45" y="20" width="212" height="69"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="90"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>

@@ -9,7 +9,7 @@
 @import GoogleMobileAds;
 #import "SetClockViewController.h"
 
-@interface SetClockViewController ()<UITableViewDataSource,UITableViewDelegate,PassingTheClockTimeDelegate>
+@interface SetClockViewController ()<UITableViewDataSource,UITableViewDelegate,PassingTheClockTimeDelegate,UITextFieldDelegate,PassingTheClockModeDelegate>
 
 @property (weak, nonatomic) IBOutlet GADBannerView *admodBannerView;
 
@@ -60,9 +60,10 @@ static NSString *cellID_2 = @"sliderID";
     }
     
     setClockTimeController = [[SetClockTimeController alloc]initWithNibName:@"SetClockTimeController" bundle:nil];
-
-    setClockTimeController.delegate = self;
+    setClockModeController = [[SetClockModeController alloc]initWithNibName:@"SetClockModeController" bundle:nil];
     
+    setClockTimeController.delegate = self;
+    setClockModeController.delegate = self;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID_2];
     
@@ -86,7 +87,7 @@ static NSString *cellID_2 = @"sliderID";
 - (IBAction)makeSureAddOrChangeClockInformation:(UIButton *)sender {
 
     if (self.Alert.clockState) {
-        [[HYLocalNotication shareHYLocalNotication] startLocalNoticationClockID:[self.Alert.clockID intValue]];
+        [[HYLocalNotication shareHYLocalNotication] cancelLocalNotication:[self.Alert.clockID intValue]];
     }else{
         
     }
@@ -94,13 +95,25 @@ static NSString *cellID_2 = @"sliderID";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark SetClockTimeVC的协议方法
+#pragma mark SetClockTimeVC的代理传值的协议方法
 //闹钟设定时间的传值
 - (void)passingClockTimeToHere:(NSString *)clockTime{
     
 
     self.clockTimeLabel.text = clockTime;
-//    [self.tableView reloadData];
+}
+
+#pragma mark SetClockModeVC的代理传值的协议方法
+//闹钟循环模式
+- (void)passingClockMode:(NSArray *)modeArray{
+   
+    modeArray = [modeArray sortedArrayUsingSelector:@selector(compare:)];
+    
+    
+    NSString *modeStr = [modeArray componentsJoinedByString:@","];
+    
+    self.clockModeLabel.text = modeStr;
+    
 }
 
 #pragma mark 闹钟的音量设置
@@ -109,11 +122,20 @@ static NSString *cellID_2 = @"sliderID";
     
 }
 
+#pragma mark textField的协议内容
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
+
 #pragma mark tableView的协议
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-     NSString *cellID = [NSString stringWithFormat:@"Cell%ld%ld", [indexPath section], [indexPath row]];//以indexPath来唯一确定cell;
+     NSString *cellID = [NSString stringWithFormat:@"Cell%ld%ld", [indexPath section], (long)[indexPath row]];//以indexPath来唯一确定cell;
 
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
 
@@ -122,7 +144,8 @@ static NSString *cellID_2 = @"sliderID";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     
-    self.clockSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(cell.frame.size.width-22-16, cell.frame.size.height * 0.5 - 8, 16, 16)];
+    self.clockSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-30, cell.frame.size.height * 0.5 - 8, 16, 16)];
+//    判断开关状态
     if (self.Alert.clockState) {
         _clockSwitchBtn.image = [UIImage imageNamed:@"开关（开）"];
     }else{
@@ -130,11 +153,11 @@ static NSString *cellID_2 = @"sliderID";
     }
     _clockSwitchBtn.tag = 1000;
     
-    self.forceSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(cell.frame.size.width-22-16, cell.frame.size.height * 0.5 - 8, 16, 16)];
+    self.forceSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-30, cell.frame.size.height * 0.5 - 8, 16, 16)];
     _forceSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
     _forceSwitchBtn.tag = 2000;
     
-    self.shockSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(cell.frame.size.width-22-16, cell.frame.size.height * 0.5 - 8, 16, 16)];
+    self.shockSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-30, cell.frame.size.height * 0.5 - 8, 16, 16)];
     _shockSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
     _shockSwitchBtn.tag = 3000;
     
@@ -167,7 +190,7 @@ static NSString *cellID_2 = @"sliderID";
             }
             
         }else{
-            cell.userInteractionEnabled = NO;
+//            cell.userInteractionEnabled = NO;
         }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -180,19 +203,22 @@ static NSString *cellID_2 = @"sliderID";
         if (indexPath.row == 0) {
             
             cell.textLabel.text = @"名称";
-            self.clockNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
+            self.clockNameLabel = [[UITextField alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
+            _clockNameLabel.borderStyle = UITextBorderStyleNone;
+            
+            _clockNameLabel.delegate = self;
             if (cell.contentView.subviews.count<3){
               [cell.contentView addSubview:self.clockNameLabel];
             }
             
-            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+//            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
             
         }else if (indexPath.row == 1){
  
-            if (cell.contentView.subviews.count == 3) {
+//            if (cell.contentView.subviews.count == 3) {
 //                [cell.contentView.subviews[1] removeFromSuperview];
-            }
+//            }
             cell.textLabel.text = @"时间";
             self.clockTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
@@ -238,12 +264,9 @@ static NSString *cellID_2 = @"sliderID";
             cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         }else{
             
-//            UITableViewCell * cell2 = [tableView dequeueReusableCellWithIdentifier:cellID_2 forIndexPath:indexPath];
 
-//            cell = [tableView dequeueReusableCellWithIdentifier:cellID_2 forIndexPath:indexPath];
-//           UITableViewCell * cell2 = [tableView dequeueReusableCellWithIdentifier:cellID_2];
             cell.textLabel.text = @"音量";
-            self.clockSoundValueLabel = [[UISlider alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-220, cell.contentView.frame.size.height)];
+            self.clockSoundValueLabel = [[UISlider alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-220, cell.contentView.frame.size.height)];
             
             _clockSoundValueLabel.maximumValue = 100.f;
             
@@ -251,16 +274,14 @@ static NSString *cellID_2 = @"sliderID";
             
             [_clockSoundValueLabel setMinimumTrackImage:[UIImage imageNamed:@"下划线"] forState:UIControlStateNormal];
             
-            _valueLabel = [[UILabel alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width-50 , 0, 50, cell.contentView.frame.size.height)];
+            _valueLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50 , 0, 50, cell.contentView.frame.size.height)];
             _valueLabel.textAlignment = NSTextAlignmentCenter;
             _valueLabel.text = [NSString stringWithFormat:@"%.0f",self.clockSoundValueLabel.value];
-            NSLog(@"%ld",(unsigned long)cell.contentView.subviews.count);
+            
             if (cell.contentView.subviews.count<3) {
             [cell.contentView addSubview:_valueLabel];
             [cell.contentView addSubview:self.clockSoundValueLabel];
             }
-            
-          
             
             
         }
@@ -269,10 +290,12 @@ static NSString *cellID_2 = @"sliderID";
     return cell;
 }
 
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
 //    NSLog(@"section == %ld  row == %ld",indexPath.section,indexPath.row);
-    
+    [self.clockNameLabel resignFirstResponder];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
     if (indexPath.section == 0) {
@@ -302,10 +325,28 @@ static NSString *cellID_2 = @"sliderID";
         
     }
     if (indexPath.section == 1) {
-        if (indexPath.row == 1) {
-            [self.navigationController pushViewController:setClockTimeController animated:YES];
+        switch (indexPath.row) {
+            case 0:
+                
+                break;
+            case 1:
+                [self.navigationController pushViewController:setClockTimeController animated:YES];
+                break;
+            case 2:
+                [self.navigationController pushViewController:setClockModeController animated:YES];
+                break;
+            case 3:
+                
+                break;
+            case 4:
+                
+                break;
+                
+            default:
+                break;
         }
     }
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

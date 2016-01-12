@@ -25,6 +25,7 @@
 
 @property(nonatomic,strong)SetClockViewController * setClockVC;
 
+@property(nonatomic,strong)NSMutableArray *alertArray;
 
 
 @end
@@ -64,7 +65,20 @@ static NSString *cellID = @"cellID";
     [self.tabelView registerNib:[UINib nibWithNibName:@"MyAlertCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellID];
     
     [self addAllViews];
+    
+    [self initClockCount];
    
+}
+#pragma mark     从NSUserDefault中读取数据,填充表格
+- (void)initClockCount{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    if (![userDefault objectForKey:@"ClockCount"]){
+        self.clockCount = 0;
+    }
+    else{
+        self.clockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
+    }
+
 }
 
 #pragma mark 添加视图
@@ -107,6 +121,10 @@ static NSString *cellID = @"cellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     MyAlertCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *clockDictionary = [userDefault objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]];
+    
     cell.backgroundColor = [UIColor colorWithHexString:@"#55aa55"alpha:.5f];
     return cell;
     
@@ -120,7 +138,7 @@ static NSString *cellID = @"cellID";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.alertArray.count;
 }
 
 
@@ -128,6 +146,13 @@ static NSString *cellID = @"cellID";
     return 100;
 }
 
+
+- (NSMutableArray *)alertArray{
+    if (_alertArray == nil) {
+        _alertArray = [NSMutableArray arrayWithCapacity:6];
+    }
+    return _alertArray;
+}
 
 /*
 #pragma mark - Navigation

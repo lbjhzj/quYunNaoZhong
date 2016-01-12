@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class SetClockTimeController;
-
+@class SetClockModeController;
 
 
 @interface SetClockViewController : UIViewController
 {
     SetClockTimeController *setClockTimeController;
-    
+    SetClockModeController *setClockModeController;
     
     
     
@@ -27,14 +27,14 @@
 @property(nonatomic,strong)alert * Alert;
 
 
-@property(nonatomic,strong)UILabel * clockNameLabel;
+@property(nonatomic,strong)UITextField * clockNameLabel;
 
 @property(nonatomic,strong)UILabel * clockTimeLabel;
 
 @property(nonatomic,strong)UILabel * clockModeLabel;
 
 @property(nonatomic,strong)UILabel * clockMusicLabel;
-
+//小睡
 @property(nonatomic,strong)UILabel * clockExtendLabel;
 
 @property(nonatomic,strong)UISlider * clockSoundValueLabel;

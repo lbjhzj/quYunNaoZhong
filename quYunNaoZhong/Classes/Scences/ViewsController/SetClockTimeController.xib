@@ -59,16 +59,24 @@
                                 <action selector="AddAClockAction:" destination="-1" eventType="touchUpInside" id="3nt-3a-9Nu"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闹钟时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogb-GJ-wrJ">
+                            <rect key="frame" x="264" y="44.5" width="72" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.62998098134994507" green="0.61110055446624756" blue="0.092377476394176483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="ms7-e5-r09" firstAttribute="top" secondItem="zf3-CF-UiF" secondAttribute="top" constant="35" id="1sj-jA-Y3C"/>
                         <constraint firstAttribute="height" constant="79" id="7Kr-JA-JXn"/>
                         <constraint firstAttribute="bottom" secondItem="ms7-e5-r09" secondAttribute="bottom" constant="13" id="HWr-Zl-Oul"/>
+                        <constraint firstItem="Ogb-GJ-wrJ" firstAttribute="bottom" secondItem="ms7-e5-r09" secondAttribute="bottom" id="dgh-qp-ZMG"/>
                         <constraint firstItem="oOl-WR-VoY" firstAttribute="baseline" secondItem="ms7-e5-r09" secondAttribute="baseline" id="hFL-em-EvY"/>
                         <constraint firstAttribute="trailing" secondItem="oOl-WR-VoY" secondAttribute="trailing" constant="16" id="hi1-ar-V8F"/>
                         <constraint firstItem="oOl-WR-VoY" firstAttribute="bottom" secondItem="ms7-e5-r09" secondAttribute="bottom" id="ih1-hm-U36"/>
                         <constraint firstItem="ms7-e5-r09" firstAttribute="leading" secondItem="zf3-CF-UiF" secondAttribute="leading" constant="16" id="x4q-vu-Q5m"/>
+                        <constraint firstItem="Ogb-GJ-wrJ" firstAttribute="centerX" secondItem="zf3-CF-UiF" secondAttribute="centerX" id="zUh-nK-ieH"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">

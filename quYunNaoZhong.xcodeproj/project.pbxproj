@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D1B5ABA1C44E94A0053E6B8 /* SetClockModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1B5AB81C44E94A0053E6B8 /* SetClockModeController.m */; };
+		7D1B5ABB1C44E94A0053E6B8 /* SetClockModeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1B5AB91C44E94A0053E6B8 /* SetClockModeController.xib */; };
 		7D1C16F11C3F45D200193447 /* MyClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1C16F01C3F45D200193447 /* MyClockViewController.m */; };
 		7D1C16F51C3F5ECE00193447 /* MyAlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1C16F31C3F5ECE00193447 /* MyAlertCell.m */; };
 		7D1C16F61C3F5ECE00193447 /* MyAlertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1C16F41C3F5ECE00193447 /* MyAlertCell.xib */; };
@@ -31,6 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D1B5AB71C44E94A0053E6B8 /* SetClockModeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetClockModeController.h; sourceTree = "<group>"; };
+		7D1B5AB81C44E94A0053E6B8 /* SetClockModeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockModeController.m; sourceTree = "<group>"; };
+		7D1B5AB91C44E94A0053E6B8 /* SetClockModeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetClockModeController.xib; sourceTree = "<group>"; };
 		7D1C16EF1C3F45D200193447 /* MyClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClockViewController.h; sourceTree = "<group>"; };
 		7D1C16F01C3F45D200193447 /* MyClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClockViewController.m; sourceTree = "<group>"; };
 		7D1C16F21C3F5ECE00193447 /* MyAlertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertCell.h; sourceTree = "<group>"; };
@@ -86,6 +91,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D1B5AAA1C44E11C0053E6B8 /* SetClockMode */ = {
+			isa = PBXGroup;
+			children = (
+				7D1B5AB71C44E94A0053E6B8 /* SetClockModeController.h */,
+				7D1B5AB81C44E94A0053E6B8 /* SetClockModeController.m */,
+				7D1B5AB91C44E94A0053E6B8 /* SetClockModeController.xib */,
+			);
+			name = SetClockMode;
+			sourceTree = "<group>";
+		};
 		7D4D48A81C41F23700C18F6D /* GoogleMobileAdsSdkiOS-7.6.0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +273,7 @@
 		7D730B3A1C3CD9DB00C095C5 /* ViewsController */ = {
 			isa = PBXGroup;
 			children = (
+				7D1B5AAA1C44E11C0053E6B8 /* SetClockMode */,
 				7D5554401C434290001D67A8 /* SetClockTime */,
 				7D730B3F1C3CDA3D00C095C5 /* MainViewController.h */,
 				7D730B401C3CDA3D00C095C5 /* MainViewController.m */,
@@ -331,6 +347,7 @@
 				7D730B241C3CD94800C095C5 /* Assets.xcassets in Resources */,
 				7DEDA3DD1C3E4E8900D7C4DE /* alertCell.xib in Resources */,
 				7D730B221C3CD94800C095C5 /* Main.storyboard in Resources */,
+				7D1B5ABB1C44E94A0053E6B8 /* SetClockModeController.xib in Resources */,
 				7D4D48B41C41F23700C18F6D /* README.txt in Resources */,
 				7D4D48B51C41F23700C18F6D /* README.txt in Resources */,
 				7D5554451C4343BE001D67A8 /* SetClockTimeController.xib in Resources */,
@@ -354,6 +371,7 @@
 				7D730B441C3CDA8F00C095C5 /* HYLocalNotication.m in Sources */,
 				7DEDA3DC1C3E4E8900D7C4DE /* alertCell.m in Sources */,
 				7D1C16F11C3F45D200193447 /* MyClockViewController.m in Sources */,
+				7D1B5ABA1C44E94A0053E6B8 /* SetClockModeController.m in Sources */,
 				7DAC940F1C3F99D800F787DA /* SetClockViewController.m in Sources */,
 				7D5554441C4343BE001D67A8 /* SetClockTimeController.m in Sources */,
 				7D730B191C3CD94800C095C5 /* main.m in Sources */,

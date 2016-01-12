@@ -17,14 +17,23 @@
 #import "NSString+dateTransformToNSString.h"
 
 #import "alertCell.h"
+
 #import "MyAlertCell.h"
+
 #import "alert.h"
 
 #import "MyClockViewController.h"
+
 #import "MainViewController.h"
+
 #import "SetClockViewController.h"
-#import "HYLocalNotication.h"
 
 #import "SetClockTimeController.h"
+
+#import "SetClockModeController.h"
+
+#import "HYLocalNotication.h"
+
+
 
 #endif /* HYHeader_pch */

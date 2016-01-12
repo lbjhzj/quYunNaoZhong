@@ -13,6 +13,8 @@
 //广告框
 @property (weak, nonatomic) IBOutlet GADBannerView *admodBannerView;
 
+@property (nonatomic) int clockCount;
+
 
 + (instancetype)sharedMyClockViewController;
 

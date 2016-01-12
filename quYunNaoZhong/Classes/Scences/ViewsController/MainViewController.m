@@ -31,6 +31,9 @@
 //tableView的约束条件
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintsOfTableView;
 
+@property(nonatomic,strong)MyClockViewController * myClockVC;
+
+
 @end
 
 @implementation MainViewController
@@ -59,6 +62,8 @@ static NSString *cellID = @"cellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.myClockVC = [MyClockViewController sharedMyClockViewController];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"alertCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellID];
     
@@ -205,8 +210,8 @@ static NSString *cellID = @"cellID";
 #pragma mark 切换到我的闹钟界面
 - (void)switchToMyAlertControllerAction:(UIButton *)sender{
     
-    MyClockViewController *myClockVC =[MyClockViewController sharedMyClockViewController];
-    [self.navigationController pushViewController:myClockVC animated:YES];
+    ;
+    [self.navigationController pushViewController:_myClockVC animated:YES];
 
 }
 

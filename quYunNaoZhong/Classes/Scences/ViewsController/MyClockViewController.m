@@ -23,6 +23,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *backToMainVCButton;
 
+@property(nonatomic,strong)SetClockViewController * setClockVC;
+
+
 
 @end
 
@@ -40,6 +43,8 @@ static NSString *cellID = @"cellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.setClockVC = [SetClockViewController sharedSetClockViewController];
     
     // Replace this ad unit ID with your own ad unit ID.
     self.admodBannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
@@ -84,7 +89,11 @@ static NSString *cellID = @"cellID";
 
 #pragma mark 去往添加闹钟页面
 - (void)addAlertAtion:(UIButton *)sender{
-    [self.navigationController pushViewController:[SetClockViewController sharedSetClockViewController] animated:YES];
+    
+   
+    [self.navigationController pushViewController:self.setClockVC animated:YES];
+        
+    
 }
 
 
@@ -104,12 +113,9 @@ static NSString *cellID = @"cellID";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    dispatch_async(dispatch_get_main_queue(), ^{
+    
         
-    [self.navigationController pushViewController:[SetClockViewController sharedSetClockViewController] animated:YES];
-
-    });
-
+    [self.navigationController pushViewController:self.setClockVC animated:YES];
 
 }
 

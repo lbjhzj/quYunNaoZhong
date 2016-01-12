@@ -27,7 +27,8 @@ static NSString *cellID = @"cellID";
 
 static NSString *cellID_2 = @"sliderID";
 + (instancetype)sharedSetClockViewController{
-    SetClockViewController *setClockViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SetClockID"];
+   SetClockViewController *setClockViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"SetClockID"];
+ 
     return setClockViewController;
 }
 
@@ -73,8 +74,10 @@ static NSString *cellID_2 = @"sliderID";
 #pragma mark SetClockTimeVC的协议方法
 //闹钟设定时间的传值
 - (void)passingClockTimeToHere:(NSString *)clockTime{
+    
+
     self.clockTimeLabel.text = clockTime;
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 }
 
 #pragma mark 闹钟的音量设置
@@ -86,18 +89,22 @@ static NSString *cellID_2 = @"sliderID";
 #pragma mark tableView的协议
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    
+ 
     
     self.switchButton = [[UIImageView alloc]initWithFrame:CGRectMake(cell.frame.size.width-22-16, cell.frame.size.height * 0.5 - 8, 16, 16)];
     _switchButton.image = [UIImage imageNamed:@"开关（关）"];
+    
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             
             cell.textLabel.text = @"闹钟开关";
 //            闹钟开关按键
+            
             [cell.contentView addSubview:_switchButton];
+
             
         }else if (indexPath.row == 1){
             
@@ -114,6 +121,9 @@ static NSString *cellID_2 = @"sliderID";
             cell.userInteractionEnabled = NO;
         }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (cell.contentView.subviews.count == 3) {
+//            [cell.contentView.subviews[1] removeFromSuperview];
+        }
 
     }else{
         if (indexPath.row == 0) {
@@ -124,11 +134,16 @@ static NSString *cellID_2 = @"sliderID";
             cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
             
         }else if (indexPath.row == 1){
-            
+ 
+            if (cell.contentView.subviews.count == 3) {
+//                [cell.contentView.subviews[1] removeFromSuperview];
+            }
             cell.textLabel.text = @"时间";
             self.clockTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             [cell.contentView addSubview:self.clockTimeLabel];
             cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+            
+//             NSLog(@"========%@=======",cell.contentView.subviews);
             
         }else if (indexPath.row == 2){
             
@@ -153,8 +168,9 @@ static NSString *cellID_2 = @"sliderID";
             cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         }else{
             
-           UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID_2 forIndexPath:indexPath];
-            cell.textLabel.text = @"音量";
+            UITableViewCell * cell2 = [tableView dequeueReusableCellWithIdentifier:cellID_2 forIndexPath:indexPath];
+
+            cell2.textLabel.text = @"音量";
             self.clockSoundValueLabel = [[UISlider alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-220, cell.contentView.frame.size.height)];
             
             _clockSoundValueLabel.maximumValue = 100.f;
@@ -170,14 +186,17 @@ static NSString *cellID_2 = @"sliderID";
             [cell.contentView addSubview:_valueLabel];
             [cell.contentView addSubview:self.clockSoundValueLabel];
             
+           
+            
         }
     }
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSLog(@"section == %ld  row == %ld",indexPath.section,indexPath.row);
+//    NSLog(@"section == %ld  row == %ld",indexPath.section,indexPath.row);
     if (indexPath.section == 1) {
         if (indexPath.row == 1) {
             [self.navigationController pushViewController:setClockTimeController animated:YES];

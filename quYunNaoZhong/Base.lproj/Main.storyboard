@@ -258,6 +258,9 @@
                                             <constraint firstAttribute="height" constant="30" id="nPe-pl-bsG"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="确认"/>
+                                        <connections>
+                                            <action selector="makeSureAddOrChangeClockInformation:" destination="AlF-eG-ikv" eventType="touchUpInside" id="7md-pO-blp"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闹钟设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duU-pC-7bu">
                                         <rect key="frame" x="264" y="48" width="72" height="21.5"/>

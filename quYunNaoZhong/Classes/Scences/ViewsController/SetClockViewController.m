@@ -17,7 +17,13 @@
 
 @property (strong, nonatomic)UILabel *valueLabel;
 
-@property (strong, nonatomic)UIImageView *switchButton;
+@property (strong, nonatomic)UIImageView *clockSwitchBtn;
+
+@property(nonatomic,strong)UIImageView * forceSwitchBtn;
+
+@property(nonatomic,strong)UIImageView * shockSwitchBtn;
+
+
 
 @end
 
@@ -34,7 +40,7 @@ static NSString *cellID_2 = @"sliderID";
 
 
 
-//返回按键方法
+#pragma mark 返回按键方法
 - (IBAction)backToMyClockVCAction:(UIButton *)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -45,6 +51,12 @@ static NSString *cellID_2 = @"sliderID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+#warning  测试用,过后删除
+    if (!self.Alert) {
+        self.Alert = [alert new];
+        self.Alert.clockState = YES;
+    }
     
     setClockTimeController = [[SetClockTimeController alloc]initWithNibName:@"SetClockTimeController" bundle:nil];
 
@@ -71,6 +83,18 @@ static NSString *cellID_2 = @"sliderID";
     
 }
 
+#pragma mark 确认添加或修改闹钟
+- (IBAction)makeSureAddOrChangeClockInformation:(UIButton *)sender {
+
+    if (self.Alert.clockState) {
+        [[HYLocalNotication shareHYLocalNotication] startLocalNoticationClockID:[self.Alert.clockID intValue]];
+    }else{
+        
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark SetClockTimeVC的协议方法
 //闹钟设定时间的传值
 - (void)passingClockTimeToHere:(NSString *)clockTime{
@@ -93,9 +117,21 @@ static NSString *cellID_2 = @"sliderID";
     
  
     
-    self.switchButton = [[UIImageView alloc]initWithFrame:CGRectMake(cell.frame.size.width-22-16, cell.frame.size.height * 0.5 - 8, 16, 16)];
-    _switchButton.image = [UIImage imageNamed:@"开关（关）"];
+    self.clockSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(cell.frame.size.width-22-16, cell.frame.size.height * 0.5 - 8, 16, 16)];
+    if (self.Alert.clockState) {
+        _clockSwitchBtn.image = [UIImage imageNamed:@"开关（开）"];
+    }else{
+        _clockSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
+    }
+    _clockSwitchBtn.tag = 1000;
     
+    self.forceSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(cell.frame.size.width-22-16, cell.frame.size.height * 0.5 - 8, 16, 16)];
+    _forceSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
+    _forceSwitchBtn.tag = 2000;
+    
+    self.shockSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(cell.frame.size.width-22-16, cell.frame.size.height * 0.5 - 8, 16, 16)];
+    _shockSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
+    _shockSwitchBtn.tag = 3000;
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
@@ -103,27 +139,29 @@ static NSString *cellID_2 = @"sliderID";
             cell.textLabel.text = @"闹钟开关";
 //            闹钟开关按键
             
-            [cell.contentView addSubview:_switchButton];
+            [cell.contentView addSubview:_clockSwitchBtn];
 
             
         }else if (indexPath.row == 1){
             
             cell.textLabel.text = @"强制叫醒";
 //            强制叫醒开关按键
-            [cell.contentView addSubview:_switchButton];
+            [cell.contentView addSubview:_forceSwitchBtn];
             
         }else if (indexPath.row == 2){
 
             cell.textLabel.text = @"震动";
 //            震动开关按键
-            [cell.contentView addSubview:_switchButton];
+            [cell.contentView addSubview:_shockSwitchBtn];
         }else{
             cell.userInteractionEnabled = NO;
         }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        if (cell.contentView.subviews.count == 3) {
+        
+//        当用了reload方法的时候，发生视图重叠
+//        if (cell.contentView.subviews.count == 3) {
 //            [cell.contentView.subviews[1] removeFromSuperview];
-        }
+//        }
 
     }else{
         if (indexPath.row == 0) {
@@ -197,6 +235,35 @@ static NSString *cellID_2 = @"sliderID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
 //    NSLog(@"section == %ld  row == %ld",indexPath.section,indexPath.row);
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
+    if (indexPath.section == 0) {
+        
+        if (indexPath.row == 0) {
+            
+            for (UIImageView *view in cell.contentView.subviews) {
+                if (view.tag == 1000) {
+                    [view removeFromSuperview];
+                }
+            }
+            
+                if (self.Alert.clockState) {
+                
+                self.clockSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
+                
+            }else{
+
+                [self.clockSwitchBtn setImage:[UIImage imageNamed:@"开关（开）"]] ;
+                
+            }
+            
+            [cell.contentView addSubview:_clockSwitchBtn];
+
+            self.Alert.clockState = !self.Alert.clockState;
+        }
+        
+    }
     if (indexPath.section == 1) {
         if (indexPath.row == 1) {
             [self.navigationController pushViewController:setClockTimeController animated:YES];

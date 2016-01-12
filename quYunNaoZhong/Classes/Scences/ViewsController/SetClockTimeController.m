@@ -58,7 +58,7 @@
 }
 
 
-#pragma mark 确认增加闹钟
+#pragma mark 确认增加闹钟时间
 - (IBAction)AddAClockAction:(UIButton *)sender {
     if (_delegate && [_delegate respondsToSelector:@selector(passingClockTimeToHere:)]) {
         [_delegate passingClockTimeToHere:self.timeLabel.text];

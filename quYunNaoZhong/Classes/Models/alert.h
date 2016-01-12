@@ -40,6 +40,10 @@
 //是否强制叫醒
 @property(nonatomic,assign)BOOL * clockForce;
 
+//闹钟震动开关
+@property(nonatomic,assign)BOOL * clockShock;
+
+
 //闹钟音量
 @property(nonatomic,assign)NSInteger * clockSoundValue;
 

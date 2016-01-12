@@ -21,7 +21,7 @@
 
 
 
-- (void)startLocalNoticationInTheDate:(NSDate *)date soundName:(NSString *)sound alertBody:(NSString *)alertName clockID:(int)clockID
+- (void)startLocalNoticationClockID:(int)clockID
 {
     [self cancelLocalNotication:clockID];
         

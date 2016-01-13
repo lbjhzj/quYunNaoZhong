@@ -229,6 +229,7 @@
                         <outlet property="admodBannerView" destination="DWl-zj-i1L" id="HLL-8F-Im5"/>
                         <outlet property="backToMainVCButton" destination="ed1-aY-jZY" id="68c-jw-vlE"/>
                         <outlet property="tabelView" destination="IpB-9Q-hkC" id="UgQ-DB-dJ4"/>
+                        <outlet property="topView" destination="aSb-7y-8v3" id="Mag-Yw-9lr"/>
                         <segue destination="AlF-eG-ikv" kind="push" id="7y1-RJ-vRE"/>
                     </connections>
                 </viewController>

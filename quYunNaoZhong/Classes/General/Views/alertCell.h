@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class alert;
 @interface alertCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *moreInButton;
 
 
+@property(nonatomic,strong)alert * Alert;
 
 
 @end

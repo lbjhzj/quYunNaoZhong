@@ -27,6 +27,9 @@
 
 @property(nonatomic,strong)NSMutableArray *alertArray;
 
+@property (weak, nonatomic) IBOutlet UIView *topView;
+
+
 
 @end
 
@@ -65,13 +68,21 @@ static NSString *cellID = @"cellID";
     [self.tabelView registerNib:[UINib nibWithNibName:@"MyAlertCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellID];
     
     [self addAllViews];
+
+}
+
+//    从NSUserDefault中读取数据,填充表格
+- (void)viewWillAppear:(BOOL)animated{
     
-    [self initClockCount];
-   
+//    删除存储的所有闹钟数据
+//    [[HYLocalNotication shareHYLocalNotication] removeAllDataInUserDefault];
+     [self initClockCount];
+    [self.tabelView reloadData];
 }
 #pragma mark     从NSUserDefault中读取数据,填充表格
 - (void)initClockCount{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    NSLog(@"%@",[userDefault objectForKey:@"ClockCount"]);
     if (![userDefault objectForKey:@"ClockCount"]){
         self.clockCount = 0;
     }
@@ -95,16 +106,20 @@ static NSString *cellID = @"cellID";
     lineLabel.backgroundColor = [UIColor blackColor];
     lineLabel.alpha = .1f;
     
-    [_bottomView addSubview:lineLabel];
+    [self.bottomView addSubview:lineLabel];
     
     [self.view addSubview:self.bottomView];
+    
+    UILabel *lineLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(0, self.topView.frame.size.height-1, self.view.frame.size.width, 1)];
+    lineLabel2.backgroundColor = [UIColor blackColor];
+    lineLabel2.alpha = .1f;
+    [self.topView addSubview:lineLabel2];
 
 }
 
 #pragma mark 去往添加闹钟页面
 - (void)addAlertAtion:(UIButton *)sender{
     
-   
     [self.navigationController pushViewController:self.setClockVC animated:YES];
         
     
@@ -122,8 +137,16 @@ static NSString *cellID = @"cellID";
     
     MyAlertCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *clockDictionary = [userDefault objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]];
+    alert * Alert = [[HYLocalNotication shareHYLocalNotication] findClockOfAllAlertsByIndexPath:indexPath];
+    cell.clockTimeLabel.text = Alert.clockTime;
+    cell.clockNameLabel.text = Alert.clockName;
+    cell.clockModeLabel.text = Alert.clockMode;
+    
+    if (Alert.clockState) {
+        [cell.clockStateBtn setImage:[UIImage imageNamed:@"开关（开）"] forState:UIControlStateNormal];
+    }else{
+        [cell.clockStateBtn setImage:[UIImage imageNamed:@"开关（关）"] forState:UIControlStateNormal];
+    }
     
     cell.backgroundColor = [UIColor colorWithHexString:@"#55aa55"alpha:.5f];
     return cell;
@@ -132,13 +155,14 @@ static NSString *cellID = @"cellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-        
+    self.setClockVC.Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:indexPath];
+    self.setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];
     [self.navigationController pushViewController:self.setClockVC animated:YES];
 
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.alertArray.count;
+    return self.clockCount;
 }
 
 

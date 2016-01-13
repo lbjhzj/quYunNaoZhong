@@ -10,4 +10,14 @@
 
 @interface MyAlertCell : UITableViewCell
 
+
+
+@property (weak, nonatomic) IBOutlet UILabel *clockTimeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *clockNameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *clockModeLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *clockStateBtn;
+
 @end

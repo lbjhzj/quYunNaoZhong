@@ -66,6 +66,12 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="clockModeLabel" destination="VSx-WF-GNn" id="k6V-p8-4pc"/>
+                <outlet property="clockNameLabel" destination="vQm-NM-otd" id="x1W-yG-Jud"/>
+                <outlet property="clockStateBtn" destination="pdU-YZ-kAC" id="uVz-Ec-huB"/>
+                <outlet property="clockTimeLabel" destination="ali-53-ch4" id="ylR-EJ-J2l"/>
+            </connections>
             <point key="canvasLocation" x="461" y="325.5"/>
         </tableViewCell>
     </objects>

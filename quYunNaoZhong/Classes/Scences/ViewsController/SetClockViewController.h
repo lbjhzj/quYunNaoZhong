@@ -21,6 +21,9 @@
     
 }
 
+@property(nonatomic,assign)int  clockCount;
+
+@property(nonatomic,assign)int  clockID;
 
 
 //传入闹钟模型接口

@@ -17,6 +17,8 @@
 
 - (void)cancelLocalNotication:(int)clockID;
 
+- (alert *)findClockOfAllAlertsByIndexPath:(NSIndexPath *)indexPath;
 
+- (void)removeAllDataInUserDefault;
 
 @end

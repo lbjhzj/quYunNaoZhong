@@ -138,4 +138,39 @@
         }
     }
 }
+
+- (alert *)findClockOfAllAlertsByIndexPath:(NSIndexPath *)indexPath{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *clockDictionary = [userDefault objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]];
+    
+    alert *Alert = [alert new];
+    
+    Alert.clockState = [[clockDictionary objectForKey:@"ClockState"] boolValue];
+    Alert.clockMode = [clockDictionary objectForKey:@"ClockMode"];
+    Alert.clockRemember = [clockDictionary objectForKey:@"ClockRemember"];
+    Alert.clockName = [clockDictionary objectForKey:@"ClockName"];
+    Alert.clockTime = [clockDictionary objectForKey:@"ClockTime"];
+    Alert.clockMusic = [clockDictionary objectForKey:@"ClockMusic"];
+    Alert.clockType = [clockDictionary objectForKey:@"ClockType"];
+    Alert.clockFitPeople = [clockDictionary objectForKey:@"ClockFitPeople"];
+    Alert.clockID = [clockDictionary objectForKey:@"ClockID"];
+    Alert.clockForce = [[clockDictionary objectForKey:@"ClockForce"] boolValue];
+    Alert.clockShock = [[clockDictionary objectForKey:@"CLockShock"] boolValue];
+    Alert.clockSoundValue = [[clockDictionary objectForKey:@"ClockSound"] integerValue];
+    
+    
+    return Alert;
+}
+
+- (void)removeAllDataInUserDefault{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    
+    for (int i=0; i<100; i++) {
+        NSString *key = [NSString stringWithFormat:@"%d",i];
+          [userDefault removeObjectForKey:key];
+        [userDefault removeObjectForKey:@"ClockCount"];
+    }
+    
+}
+
 @end

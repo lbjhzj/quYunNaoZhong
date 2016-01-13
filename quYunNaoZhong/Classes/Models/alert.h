@@ -38,14 +38,14 @@
 @property(nonatomic,weak)NSString * clockID;
 
 //是否强制叫醒
-@property(nonatomic,assign)BOOL * clockForce;
+@property(nonatomic,assign)BOOL  clockForce;
 
 //闹钟震动开关
-@property(nonatomic,assign)BOOL * clockShock;
+@property(nonatomic,assign)BOOL  clockShock;
 
 
 //闹钟音量
-@property(nonatomic,assign)NSInteger * clockSoundValue;
+@property(nonatomic,assign)NSInteger  clockSoundValue;
 
 
 

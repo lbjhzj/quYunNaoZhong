@@ -84,13 +84,10 @@ static NSString *cellID = @"cellID";
     
     
     [self.admodBannerView loadRequest:request];
-        
-  
-
-
-    
     
 }
+
+
 
 #pragma mark 添加视图
 - (void)addViews{

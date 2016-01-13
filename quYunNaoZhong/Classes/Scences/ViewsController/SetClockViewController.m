@@ -115,9 +115,20 @@ static NSString *cellID_2 = @"sliderID";
                                 @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
                         ];
     [self.admodBannerView loadRequest:request];
+    
+    [self addViews];
 
 }
 
+- (void)addViews{
+    self.clockNameLabel = [[UITextField alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-150, 44)];
+    self.clockTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-150, 44)];
+    self.clockModeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-150, 44)];
+    self.clockMusicLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-150, 44)];
+    self.clockExtendLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-150, 44)];
+    self.clockSoundValueLabel = [[UISlider alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-220, 44)];
+    
+}
 
 
 #pragma mark 确认添加或修改闹钟
@@ -316,12 +327,11 @@ static NSString *cellID_2 = @"sliderID";
 //                [cell.contentView.subviews[1] removeFromSuperview];
 //            }
             cell.textLabel.text = @"时间";
-            self.clockTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
+//            self.clockTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
             if (cell.contentView.subviews.count<3){
                [cell.contentView addSubview:self.clockTimeLabel];
             }
-            
             cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
             
 //             NSLog(@"========%@=======",cell.contentView.subviews);
@@ -329,7 +339,7 @@ static NSString *cellID_2 = @"sliderID";
         }else if (indexPath.row == 2){
             
             cell.textLabel.text = @"周期";
-            self.clockModeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
+//            self.clockModeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
             if (cell.contentView.subviews.count<3){
                [cell.contentView addSubview:self.clockModeLabel];
@@ -340,7 +350,7 @@ static NSString *cellID_2 = @"sliderID";
         }else if (indexPath.row == 3){
             
             cell.textLabel.text = @"铃声";
-            self.clockMusicLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
+//            self.clockMusicLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
             
             if (cell.contentView.subviews.count<3){
@@ -351,7 +361,7 @@ static NSString *cellID_2 = @"sliderID";
         }else if (indexPath.row == 4){
             
             cell.textLabel.text = @"小睡";
-            self.clockExtendLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
+//            self.clockExtendLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
             if (cell.contentView.subviews.count<3){
                [cell.contentView addSubview:self.clockExtendLabel];
@@ -362,7 +372,7 @@ static NSString *cellID_2 = @"sliderID";
             
 
             cell.textLabel.text = @"音量";
-            self.clockSoundValueLabel = [[UISlider alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-220, cell.contentView.frame.size.height)];
+//            self.clockSoundValueLabel = [[UISlider alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-220, cell.contentView.frame.size.height)];
             
             _clockSoundValueLabel.maximumValue = 100.f;
             

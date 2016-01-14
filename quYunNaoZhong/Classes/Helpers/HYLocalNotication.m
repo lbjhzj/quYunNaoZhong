@@ -40,10 +40,26 @@
     
     //------------------------------------------------------------------------
     NSArray *clockTimeArray = [clockTime componentsSeparatedByString:@":"];
+    
     NSDate *dateNow = [NSDate date];
+    
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    //    identifier的范围可以是：
+    /**
+     NSGregorianCalendar   阳历
+     NSBuddhisCalendar     佛历
+     NSChineseCalendar     中国日历
+     NSHebrewCalendar      希伯来日历
+     NSIslamicCalendar     伊斯兰日历
+     NSIslamicCivilCalendar伊斯兰民事日历
+     NSJapaneseCalendar    日本日历
+     
+     这里选择的是中国阳历
+     */
+    
+    
     NSDateComponents *comps = [[NSDateComponents alloc] init];
-    //[calendar setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+//    [calendar setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
     //[comps setTimeZone:[NSTimeZone timeZoneWithName:@"CMT"]];
     NSInteger unitFlags = NSEraCalendarUnit |
     NSYearCalendarUnit |
@@ -57,14 +73,19 @@
     NSWeekdayOrdinalCalendarUnit |
     NSQuarterCalendarUnit;
     
+//    从NSDate提取年，月，日，时，分，秒各个字段的信息
     comps = [calendar components:unitFlags fromDate:dateNow];
     [comps setHour:[[clockTimeArray objectAtIndex:0] intValue]];
     [comps setMinute:[[clockTimeArray objectAtIndex:1] intValue]];
     [comps setSecond:0];
+
     
     //------------------------------------------------------------------------
     Byte weekday = [comps weekday];
-    NSArray *array = [[clockMode substringFromIndex:1] componentsSeparatedByString:@"、"];
+    NSArray *array = [clockMode  componentsSeparatedByString:@","];
+    
+    
+//    NSLog(@"ClockModeArray==%@",array);
     Byte i = 0;
     Byte j = 0;
     int days = 0;
@@ -82,50 +103,31 @@
             }
         }
     }
-    
+
     for (i = 0; i < count; i++) {
         temp = clockDays[i] - weekday;
         days = (temp >= 0 ? temp : temp + 7);
-        NSDate *newFireDate = [[calendar dateFromComponents:comps] dateByAddingTimeInterval:3600 * 24 * days];
         
+        NSDate *newFireDate = [[calendar dateFromComponents:comps] dateByAddingTimeInterval:3600 * 24 * days];
+
         UILocalNotification *newNotification = [[UILocalNotification alloc] init];
         if (newNotification) {
             newNotification.fireDate = newFireDate;
-            newNotification.alertBody = clockRemember;
-            newNotification.soundName = [NSString stringWithFormat:@"%@.caf", clockMusic];
+#warning 测试
+            newNotification.alertBody = @"测试闹钟";
+//            newNotification.soundName = [NSString stringWithFormat:@"%@.caf", clockMusic];
+            newNotification.soundName = @"布谷鸟.caf";
             newNotification.alertAction = @"查看闹钟";
             newNotification.repeatInterval = NSWeekCalendarUnit;
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:clockIDString forKey:@"ActivityClock"];
             newNotification.userInfo = userInfo;
+            
             [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
         }
+        NSLog(@"设定的闹钟日期为%@",[newFireDate dateByAddingTimeInterval:8 * 3600]);
         NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
         
     }
-
-//    if (notication) {
-//
-////        设置本地推送时间
-//        notication.fireDate = date;
-//    
-////        设置时区
-//        notication.timeZone = [NSTimeZone defaultTimeZone];
-//        
-////        设置重复间隔
-//        notication.repeatInterval = NSCalendarUnitWeekOfMonth;
-//        
-////        设置闹钟声音
-//        notication.soundName = sound;
-//        
-////        设置闹钟提示信息
-//        notication.alertBody = [NSString stringWithFormat:@"%@的时间到了!",alertName];
-//        
-//        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:clockIDString forKey:@"ActivityClock"];
-//        
-//        notication.userInfo = userInfo;//添加额外的信息
-//
-//        [[UIApplication sharedApplication] scheduleLocalNotification:notication];
-//    }
 
 }
 

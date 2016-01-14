@@ -10,6 +10,11 @@
 #define HYHeader_pch
 
 #import <UIKit/UIKit.h>
+
+#import <AVFoundation/AVFoundation.h>
+
+#import <AVFoundation/AVAudioSession.h>
+
 @class GADBannerView;
 #import "sys/utsname.h"
 
@@ -34,6 +39,6 @@
 
 #import "HYLocalNotication.h"
 
-
+#define ClickTheFirstClockFlag @"jdjoijfioej"
 
 #endif /* HYHeader_pch */

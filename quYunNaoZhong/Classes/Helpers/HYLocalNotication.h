@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HYLocalNotication : NSObject
-
+@interface HYLocalNotication : NSObject <AVAudioPlayerDelegate>
+{
+    AVAudioPlayer *musicPlayer;
+    NSString *musicFileName;
+    NSString *musicFileType;
+}
 
 + (instancetype)shareHYLocalNotication;
 

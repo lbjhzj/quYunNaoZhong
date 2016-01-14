@@ -12,5 +12,6 @@
 
 + (NSString *)stringFromDate:(NSDate *)date ByFormatter:(NSDateFormatter *)formatter;
 
++(NSString *)translation:(NSString *)arebic;
 
 @end

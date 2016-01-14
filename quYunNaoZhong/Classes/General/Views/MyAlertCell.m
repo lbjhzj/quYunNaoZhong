@@ -20,12 +20,14 @@
 
 - (IBAction)clockSwitchAction:(UIButton *)sender {
     
-#warning 通过判断闹钟开启状态，修改开关状态
-    [sender setImage:[UIImage imageNamed:@"开关（开）"] forState:UIControlStateNormal];
+
+    
 }
 
+
 - (void)awakeFromNib {
-    // Initialization code
+
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

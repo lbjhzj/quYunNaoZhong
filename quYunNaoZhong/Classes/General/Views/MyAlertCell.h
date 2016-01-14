@@ -10,8 +10,6 @@
 
 @interface MyAlertCell : UITableViewCell
 
-
-
 @property (weak, nonatomic) IBOutlet UILabel *clockTimeLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *clockNameLabel;

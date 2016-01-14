@@ -50,7 +50,7 @@ static NSString *cellID = @"cellID";
     //    时间框的约束条件
     self.constrainsOfTimeView.constant = 15.0f;
     
-#warning 检查时间显示是否有bug
+//#warning 检查时间显示是否有bug
     NSArray * tempTimeArray = [[NSString stringFromDate:[NSDate date] ByFormatter:formatter] componentsSeparatedByString:@":"];
     
     [self countDownAction:tempTimeArray];
@@ -62,7 +62,9 @@ static NSString *cellID = @"cellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+#warning 删除存储的所有闹钟数据===========测试
+//    [[HYLocalNotication shareHYLocalNotication] removeAllDataInUserDefault];
+      
     self.myClockVC = [MyClockViewController sharedMyClockViewController];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"alertCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellID];

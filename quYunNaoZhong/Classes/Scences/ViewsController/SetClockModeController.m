@@ -44,6 +44,7 @@ static NSString *cellID = @"cellID";
     if (self.delegate && [self.delegate respondsToSelector:@selector(passingClockMode:)]) {
         [self.delegate passingClockMode:self.tempArray];
     }
+    
     [self.navigationController popViewControllerAnimated:YES];
 
 }

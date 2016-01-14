@@ -120,12 +120,12 @@
                         <outlet property="secondsLabel" destination="csJ-OP-Jo0" id="YzC-TI-ktP"/>
                         <outlet property="tableView" destination="jYJ-5I-IxP" id="Xft-Sq-zsW"/>
                         <outlet property="timeView" destination="tQq-Sf-ihi" id="E3M-A5-1N1"/>
-                        <segue destination="uyV-CI-BZf" kind="push" id="Kyc-X3-Nxb"/>
+                        <segue destination="uyV-CI-BZf" kind="push" identifier="pushMyClockVC" id="Kyc-X3-Nxb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ko7-df-zZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="808" y="534"/>
+            <point key="canvasLocation" x="782" y="540"/>
         </scene>
         <!--My Clock View Controller-->
         <scene sceneID="jhf-ef-2EY">
@@ -230,7 +230,7 @@
                         <outlet property="backToMainVCButton" destination="ed1-aY-jZY" id="68c-jw-vlE"/>
                         <outlet property="tabelView" destination="IpB-9Q-hkC" id="UgQ-DB-dJ4"/>
                         <outlet property="topView" destination="aSb-7y-8v3" id="Mag-Yw-9lr"/>
-                        <segue destination="AlF-eG-ikv" kind="push" id="7y1-RJ-vRE"/>
+                        <segue destination="AlF-eG-ikv" kind="push" identifier="pushSetClockVC" id="7y1-RJ-vRE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xer-S9-rTm" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -74,9 +74,6 @@ static NSString *cellID = @"cellID";
 //    从NSUserDefault中读取数据,填充表格
 - (void)viewWillAppear:(BOOL)animated{
     
-#pragma mark    删除存储的所有闹钟数据===========测试
-    [[HYLocalNotication shareHYLocalNotication] removeAllDataInUserDefault];
-    
      [self initClockCount];
     [self.tabelView reloadData];
 }
@@ -120,6 +117,7 @@ static NSString *cellID = @"cellID";
 
 #pragma mark 去往添加闹钟页面
 - (void)addAlertAtion:(UIButton *)sender{
+    self.setClockVC.Alert = nil;
     
     [self.navigationController pushViewController:self.setClockVC animated:YES];
         
@@ -155,6 +153,8 @@ static NSString *cellID = @"cellID";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    self.setClockVC.clickTheFirstOrAddBtnFlag = ClickTheFirstClockFlag;
     
     self.setClockVC.Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:indexPath];
     self.setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];

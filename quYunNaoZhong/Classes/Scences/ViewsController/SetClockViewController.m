@@ -49,7 +49,7 @@ static NSString *cellID_2 = @"sliderID";
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    
+
     UITableViewCell *cell1 = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     UITableViewCell *cell2 = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     UITableViewCell *cell3 = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
@@ -76,24 +76,38 @@ static NSString *cellID_2 = @"sliderID";
     }else{
         _shockSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
     }
+//    每次进入设置页都要刷新页面内容
     [self.tableView reloadData];
-//    [cell1.contentView addSubview:_clockSwitchBtn];
-//    [cell2.contentView addSubview:_forceSwitchBtn];
-//    [cell3.contentView addSubview:_shockSwitchBtn];
 
-}
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
 #pragma mark如果是新建闹钟，那么alert属性一定为空
     if (!self.Alert) {
         self.Alert = [alert new];
         self.Alert.clockState = NO;
         self.Alert.clockForce = NO;
         self.Alert.clockShock = NO;
+        self.clockNameLabel.text = @"未命名";
+        self.clockTimeLabel.text = @"07:30";
+        self.clockModeLabel.text = @"未设置";
+        self.clockID = NULL;
+        
     }
+    if (self.Alert && !self.clockTimeLabel.text) {
+        self.clockNameLabel.text = self.Alert.clockName;
+        self.clockTimeLabel.text = self.Alert.clockTime;
+        self.clockModeLabel.text = self.Alert.clockMode;
+        self.clockSoundValueLabel.value = 30;
+        
+    }
+    
+    
+
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+
     
     setClockTimeController = [[SetClockTimeController alloc]initWithNibName:@"SetClockTimeController" bundle:nil];
     setClockModeController = [[SetClockModeController alloc]initWithNibName:@"SetClockModeController" bundle:nil];
@@ -135,15 +149,16 @@ static NSString *cellID_2 = @"sliderID";
 #pragma mark 确认添加或修改闹钟
 - (IBAction)makeSureAddOrChangeClockInformation:(UIButton *)sender {
 
-    if (self.Alert.clockState) {
-        
-//        [[HYLocalNotication shareHYLocalNotication] cancelLocalNotication:[self.Alert.clockID intValue]];
-    }else{
-        
-    }
-    
+//    数据永久化
     [self saveClockData];
     
+    if (self.Alert.clockState) {
+        
+        [[HYLocalNotication shareHYLocalNotication]startLocalNoticationClockID:self.clockID];
+    }else{
+        [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:self.clockID];
+    }
+ 
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -169,7 +184,7 @@ static NSString *cellID_2 = @"sliderID";
     [clockDictionary setObject:self.clockTimeLabel.text forKey:@"ClockTime"];
     [clockDictionary setObject:self.clockModeLabel.text forKey:@"ClockMode"];
     [clockDictionary setObject:self.clockNameLabel.text forKey:@"ClockName"];
-#warning music暂时，小睡关闭
+#warning music&&小睡,暂时关闭
 //    [clockDictionary setObject:self.clockMusicLabel.text forKey:@"ClockMusic"];
 //    [clockDictionary setObject:self.clockExtendLabel.text forKey:@"ClockExtend"];
     [clockDictionary setObject:[NSString stringWithFormat:@"%.0f",self.clockSoundValueLabel.value] forKey:@"ClockSoundValue"];
@@ -177,9 +192,12 @@ static NSString *cellID_2 = @"sliderID";
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     self.clockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
     if (!self.clockID) {
-        _clockID = _clockCount++;
+        if (![self.clickTheFirstOrAddBtnFlag isEqualToString:ClickTheFirstClockFlag]) {
+            _clockID = _clockCount++;
+        }
+        
     }
-    NSLog(@"clockID======%d",_clockID);
+//    NSLog(@"clockID======%d",_clockID);
     
     [userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.clockID]];
     
@@ -208,9 +226,18 @@ static NSString *cellID_2 = @"sliderID";
    
     modeArray = [modeArray sortedArrayUsingSelector:@selector(compare:)];
     
-    
-    NSString *modeStr = [modeArray componentsJoinedByString:@","];
-    
+    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:7];
+    for (NSString *__strong mode in modeArray) {
+        if ([mode isEqualToString:@"0"]) {
+            mode = @"日";
+        }else{
+            mode = [NSString translation:mode];
+        }
+        
+        [tempArray addObject:mode];
+    }
+    NSString *modeStr = [tempArray componentsJoinedByString:@","];
+//    NSLog(@"modeStr===%@",modeStr);
     self.clockModeLabel.text = modeStr;
     
 }

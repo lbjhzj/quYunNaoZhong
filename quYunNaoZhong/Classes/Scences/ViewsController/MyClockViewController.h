@@ -15,10 +15,6 @@
 
 @property (nonatomic,assign) int clockCount;
 
-
-@property(nonatomic,assign)int  activityClockCount;
-
-
 + (instancetype)sharedMyClockViewController;
 
 @end

@@ -87,7 +87,7 @@ static NSString *cellID_2 = @"sliderID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-#pragma mark 如果是新建闹钟，那么alert属性一定为空
+#pragma mark如果是新建闹钟，那么alert属性一定为空
     if (!self.Alert) {
         self.Alert = [alert new];
         self.Alert.clockState = NO;
@@ -121,6 +121,7 @@ static NSString *cellID_2 = @"sliderID";
 }
 
 - (void)addViews{
+
     self.clockNameLabel = [[UITextField alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-150, 44)];
     self.clockTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-150, 44)];
     self.clockModeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-150, 44)];
@@ -171,7 +172,7 @@ static NSString *cellID_2 = @"sliderID";
 #warning music暂时，小睡关闭
 //    [clockDictionary setObject:self.clockMusicLabel.text forKey:@"ClockMusic"];
 //    [clockDictionary setObject:self.clockExtendLabel.text forKey:@"ClockExtend"];
-    [clockDictionary setObject:[NSString stringWithFormat:@"%.0f",self.clockSoundValueLabel.value] forKey:@"ClockMusic"];
+    [clockDictionary setObject:[NSString stringWithFormat:@"%.0f",self.clockSoundValueLabel.value] forKey:@"ClockSoundValue"];
 
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     self.clockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
@@ -310,7 +311,7 @@ static NSString *cellID_2 = @"sliderID";
         if (indexPath.row == 0) {
             
             cell.textLabel.text = @"名称";
-            self.clockNameLabel = [[UITextField alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
+//            self.clockNameLabel = [[UITextField alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
             _clockNameLabel.borderStyle = UITextBorderStyleNone;
             

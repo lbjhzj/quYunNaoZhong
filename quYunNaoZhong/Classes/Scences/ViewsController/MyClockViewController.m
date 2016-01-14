@@ -74,8 +74,9 @@ static NSString *cellID = @"cellID";
 //    从NSUserDefault中读取数据,填充表格
 - (void)viewWillAppear:(BOOL)animated{
     
-//    删除存储的所有闹钟数据
-//    [[HYLocalNotication shareHYLocalNotication] removeAllDataInUserDefault];
+#pragma mark    删除存储的所有闹钟数据===========测试
+    [[HYLocalNotication shareHYLocalNotication] removeAllDataInUserDefault];
+    
      [self initClockCount];
     [self.tabelView reloadData];
 }

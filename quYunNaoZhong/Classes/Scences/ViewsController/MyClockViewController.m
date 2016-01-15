@@ -88,7 +88,16 @@ static NSString *cellID = @"cellID";
         self.clockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
     }
 
+ 
 }
+
+#pragma mark 推出总设置页面
+- (IBAction)moveToMainSetVCAction:(UIButton *)sender {
+    [self.navigationController pushViewController:[mainSetViewController sharedMainSetViewController] animated:YES];
+
+}
+
+
 
 #pragma mark 添加视图
 - (void)addAllViews{
@@ -118,7 +127,7 @@ static NSString *cellID = @"cellID";
 #pragma mark 去往添加闹钟页面
 - (void)addAlertAtion:(UIButton *)sender{
     self.setClockVC.Alert = nil;
-    
+    self.setClockVC.clickTheFirstOrAddBtnFlag = nil;
     [self.navigationController pushViewController:self.setClockVC animated:YES];
         
     
@@ -140,7 +149,7 @@ static NSString *cellID = @"cellID";
     cell.clockTimeLabel.text = Alert.clockTime;
     cell.clockNameLabel.text = Alert.clockName;
     cell.clockModeLabel.text = Alert.clockMode;
-    
+    cell.clockID = (short)indexPath.row;
     if (Alert.clockState) {
         [cell.clockStateBtn setImage:[UIImage imageNamed:@"开关（开）"] forState:UIControlStateNormal];
     }else{

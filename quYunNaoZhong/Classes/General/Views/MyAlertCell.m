@@ -18,11 +18,22 @@
 
 
 
-- (IBAction)clockSwitchAction:(UIButton *)sender {
+- (IBAction)clockSwitchButton:(UIButton *)sender {
+    alert *Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:self.clockID inSection:0]];
+    if (Alert.clockState) {
+        [sender setImage:[UIImage imageNamed:@"开关（关）"] forState:UIControlStateNormal ];
+        [[HYLocalNotication shareHYLocalNotication] cancelLocalNotication:self.clockID];
+    }else{
+        [sender setImage:[UIImage imageNamed:@"开关（开）"] forState:UIControlStateNormal ];
+        [[HYLocalNotication shareHYLocalNotication] startLocalNoticationClockID:self.clockID];
+    }
+        Alert.clockState = ! Alert.clockState;
+    NSLog(@"%@",Alert.clockID);
+    [[HYLocalNotication shareHYLocalNotication] saveClockData:Alert];
     
-
     
 }
+
 
 
 - (void)awakeFromNib {

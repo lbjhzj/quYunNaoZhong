@@ -9,11 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface HYLocalNotication : NSObject <AVAudioPlayerDelegate>
-{
-    AVAudioPlayer *musicPlayer;
-    NSString *musicFileName;
-    NSString *musicFileType;
-}
 
 + (instancetype)shareHYLocalNotication;
 
@@ -25,4 +20,5 @@
 
 - (void)removeAllDataInUserDefault;
 
+- (void)saveClockData:(alert *)Alert;
 @end

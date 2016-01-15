@@ -45,7 +45,7 @@
                         </constraints>
                         <state key="normal" backgroundImage="开关（关）"/>
                         <connections>
-                            <action selector="clockSwitchAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7bT-an-qPI"/>
+                            <action selector="clockSwitchButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ged-fB-Wdi"/>
                         </connections>
                     </button>
                 </subviews>
@@ -69,7 +69,7 @@
             <connections>
                 <outlet property="clockModeLabel" destination="VSx-WF-GNn" id="k6V-p8-4pc"/>
                 <outlet property="clockNameLabel" destination="vQm-NM-otd" id="x1W-yG-Jud"/>
-                <outlet property="clockStateBtn" destination="pdU-YZ-kAC" id="uVz-Ec-huB"/>
+                <outlet property="clockStateBtn" destination="pdU-YZ-kAC" id="U1W-eY-hs6"/>
                 <outlet property="clockTimeLabel" destination="ali-53-ch4" id="ylR-EJ-J2l"/>
             </connections>
             <point key="canvasLocation" x="461" y="325.5"/>

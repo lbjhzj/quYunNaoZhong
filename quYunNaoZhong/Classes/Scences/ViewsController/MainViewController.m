@@ -44,16 +44,6 @@ static NSString *cellID = @"cellID";
 
 - (void)viewWillAppear:(BOOL)animated{
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm:ss"];
-    
-    //    时间框的约束条件
-    self.constrainsOfTimeView.constant = 15.0f;
-    
-//#warning 检查时间显示是否有bug
-    NSArray * tempTimeArray = [[NSString stringFromDate:[NSDate date] ByFormatter:formatter] componentsSeparatedByString:@":"];
-    
-    [self countDownAction:tempTimeArray];
     
     [super viewWillAppear:animated];
 
@@ -94,6 +84,17 @@ static NSString *cellID = @"cellID";
 #pragma mark 添加视图
 - (void)addViews{
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    
+    //    时间框的约束条件
+    self.constrainsOfTimeView.constant = 15.0f;
+    
+    //#warning 检查时间显示是否有bug
+    NSArray * tempTimeArray = [[NSString stringFromDate:[NSDate date] ByFormatter:formatter] componentsSeparatedByString:@":"];
+    
+    [self countDownAction:tempTimeArray];
+    
     self.bottomView =[[UIView alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-109, self.view.frame.size.width, 59)];
     
     //    切换到闹钟界面的按键
@@ -130,7 +131,7 @@ static NSString *cellID = @"cellID";
     //    日期label
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(45, newHeight-32, 160, 16)];
     label.font = [UIFont systemFontOfSize:18];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"yyyy/MM/dd (ccc)"];
     label.text = [NSString stringFromDate:[NSDate date] ByFormatter:formatter] ;
     label.textColor = [UIColor colorWithHexString:@"#333333"];
@@ -139,13 +140,17 @@ static NSString *cellID = @"cellID";
     //    设置按钮
     UIButton *setButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [setButton setImage:[UIImage imageNamed:@"设置"] forState:UIControlStateNormal];
+    [setButton addTarget:self action:@selector(moveToMainSetVC:) forControlEvents:UIControlEventTouchUpInside];
     setButton.frame = CGRectMake(self.view.frame.size.width-15-40, 35, 40, 40);
     [view addSubview:setButton];
     
     
 }
 
-
+#pragma mark 推出总设置页面
+- (void)moveToMainSetVC:(UIButton *)sender{
+    [self.navigationController pushViewController:[mainSetViewController sharedMainSetViewController] animated:YES];
+}
 
 #pragma mark 数秒的方法
 - (void)countDownAction:(NSArray *)tempTimeArray{
@@ -190,10 +195,8 @@ static NSString *cellID = @"cellID";
                     }else{
                         hoursStr = [NSString stringWithFormat:@"%d:",hours];
                     }
-                    
                     self.hourAndMinuteLabel.text = [hoursStr stringByAppendingString:minutesStr];
-                    
-
+                 
                 });
                 timeout++;
                 

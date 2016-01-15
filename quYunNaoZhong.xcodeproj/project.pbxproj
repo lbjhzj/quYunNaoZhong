@@ -34,6 +34,55 @@
 		7DEDA3DC1C3E4E8900D7C4DE /* alertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */; };
 		7DEDA3DD1C3E4E8900D7C4DE /* alertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */; };
 		7DEDA3E31C3E6C6100D7C4DE /* alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3E21C3E6C6100D7C4DE /* alert.m */; };
+		7DF1B3A51C4887A90090BD64 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF1B3A41C4887A90090BD64 /* AudioToolbox.framework */; };
+		7DF1B3D71C4888590090BD64 /* dida.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3A81C4888590090BD64 /* dida.mp3 */; };
+		7DF1B3D81C4888590090BD64 /* 三全音.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3A91C4888590090BD64 /* 三全音.mp3 */; };
+		7DF1B3D91C4888590090BD64 /* 乡音.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3AA1C4888590090BD64 /* 乡音.mp3 */; };
+		7DF1B3DA1C4888590090BD64 /* 优雅谢幕.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3AB1C4888590090BD64 /* 优雅谢幕.mp3 */; };
+		7DF1B3DB1C4888590090BD64 /* 大内密探.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3AC1C4888590090BD64 /* 大内密探.mp3 */; };
+		7DF1B3DC1C4888590090BD64 /* 水滴声.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3AD1C4888590090BD64 /* 水滴声.mp3 */; };
+		7DF1B3DD1C4888590090BD64 /* 温馨提醒.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3AE1C4888590090BD64 /* 温馨提醒.mp3 */; };
+		7DF1B3DE1C4888590090BD64 /* 电子音.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3AF1C4888590090BD64 /* 电子音.mp3 */; };
+		7DF1B3DF1C4888590090BD64 /* 立体音.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3B01C4888590090BD64 /* 立体音.mp3 */; };
+		7DF1B3E01C4888590090BD64 /* clock_boy_1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3B21C4888590090BD64 /* clock_boy_1.m4a */; };
+		7DF1B3E11C4888590090BD64 /* clock_boy_2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3B31C4888590090BD64 /* clock_boy_2.m4a */; };
+		7DF1B3E21C4888590090BD64 /* clock_boy_3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3B41C4888590090BD64 /* clock_boy_3.m4a */; };
+		7DF1B3E31C4888590090BD64 /* clock_boy_4.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3B51C4888590090BD64 /* clock_boy_4.m4a */; };
+		7DF1B3E41C4888590090BD64 /* clock_boy_5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3B61C4888590090BD64 /* clock_boy_5.m4a */; };
+		7DF1B3E51C4888590090BD64 /* clock_boy_6.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3B71C4888590090BD64 /* clock_boy_6.m4a */; };
+		7DF1B3E61C4888590090BD64 /* clock_boy_7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3B81C4888590090BD64 /* clock_boy_7.m4a */; };
+		7DF1B3E71C4888590090BD64 /* clock_boy_8.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3B91C4888590090BD64 /* clock_boy_8.m4a */; };
+		7DF1B3E81C4888590090BD64 /* clock_girl_1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3BA1C4888590090BD64 /* clock_girl_1.m4a */; };
+		7DF1B3E91C4888590090BD64 /* clock_girl_10.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3BB1C4888590090BD64 /* clock_girl_10.m4a */; };
+		7DF1B3EA1C4888590090BD64 /* clock_girl_2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3BC1C4888590090BD64 /* clock_girl_2.m4a */; };
+		7DF1B3EB1C4888590090BD64 /* clock_girl_3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3BD1C4888590090BD64 /* clock_girl_3.m4a */; };
+		7DF1B3EC1C4888590090BD64 /* clock_girl_4.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3BE1C4888590090BD64 /* clock_girl_4.m4a */; };
+		7DF1B3ED1C4888590090BD64 /* clock_girl_5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3BF1C4888590090BD64 /* clock_girl_5.m4a */; };
+		7DF1B3EE1C4888590090BD64 /* clock_girl_6.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3C01C4888590090BD64 /* clock_girl_6.m4a */; };
+		7DF1B3EF1C4888590090BD64 /* clock_girl_7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3C11C4888590090BD64 /* clock_girl_7.m4a */; };
+		7DF1B3F01C4888590090BD64 /* clock_girl_8.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3C21C4888590090BD64 /* clock_girl_8.m4a */; };
+		7DF1B3F11C4888590090BD64 /* clock_girl_9.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3C31C4888590090BD64 /* clock_girl_9.m4a */; };
+		7DF1B3F21C4888590090BD64 /* 优美口哨.cff in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3C51C4888590090BD64 /* 优美口哨.cff */; };
+		7DF1B3F31C4888590090BD64 /* 八音盒.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3C61C4888590090BD64 /* 八音盒.mp3 */; };
+		7DF1B3F41C4888590090BD64 /* 吉他扫弦.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3C71C4888590090BD64 /* 吉他扫弦.mp3 */; };
+		7DF1B3F51C4888590090BD64 /* 声声入耳.cff in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3C81C4888590090BD64 /* 声声入耳.cff */; };
+		7DF1B3F61C4888590090BD64 /* 她的手机.cff in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3C91C4888590090BD64 /* 她的手机.cff */; };
+		7DF1B3F71C4888590090BD64 /* 木琴.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3CA1C4888590090BD64 /* 木琴.mp3 */; };
+		7DF1B3F81C4888590090BD64 /* 村庄的早晨.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3CB1C4888590090BD64 /* 村庄的早晨.mp3 */; };
+		7DF1B3F91C4888590090BD64 /* 柔美舒服.cff in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3CC1C4888590090BD64 /* 柔美舒服.cff */; };
+		7DF1B3FA1C4888590090BD64 /* 海边小屋.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3CD1C4888590090BD64 /* 海边小屋.mp3 */; };
+		7DF1B3FB1C4888590090BD64 /* 滴答滴答.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3CE1C4888590090BD64 /* 滴答滴答.mp3 */; };
+		7DF1B3FC1C4888590090BD64 /* 甜美舞曲.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3CF1C4888590090BD64 /* 甜美舞曲.mp3 */; };
+		7DF1B3FD1C4888590090BD64 /* 空谷回响.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3D01C4888590090BD64 /* 空谷回响.mp3 */; };
+		7DF1B3FE1C4888590090BD64 /* 经典滴滴声.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3D11C4888590090BD64 /* 经典滴滴声.mp3 */; };
+		7DF1B3FF1C4888590090BD64 /* 美妙清晨.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3D21C4888590090BD64 /* 美妙清晨.mp3 */; };
+		7DF1B4001C4888590090BD64 /* 自然晨曦.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3D31C4888590090BD64 /* 自然晨曦.mp3 */; };
+		7DF1B4011C4888590090BD64 /* 萨克斯金曲.cff in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3D41C4888590090BD64 /* 萨克斯金曲.cff */; };
+		7DF1B4021C4888590090BD64 /* 马林巴琴.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3D51C4888590090BD64 /* 马林巴琴.mp3 */; };
+		7DF1B4031C4888590090BD64 /* 黑白琴键.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B3D61C4888590090BD64 /* 黑白琴键.mp3 */; };
+		7DF1B4051C4898C80090BD64 /* 大王叫我来巡山-原声带.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B4041C4898C80090BD64 /* 大王叫我来巡山-原声带.mp3 */; };
+		7DF1B40C1C48C0A00090BD64 /* mainSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF1B40A1C48C0A00090BD64 /* mainSetViewController.m */; };
+		7DF1B40D1C48C0A00090BD64 /* mainSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B40B1C48C0A00090BD64 /* mainSetViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +135,56 @@
 		7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = alertCell.xib; sourceTree = "<group>"; };
 		7DEDA3E11C3E6C6100D7C4DE /* alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alert.h; sourceTree = "<group>"; };
 		7DEDA3E21C3E6C6100D7C4DE /* alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alert.m; sourceTree = "<group>"; };
+		7DF1B3A41C4887A90090BD64 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7DF1B3A81C4888590090BD64 /* dida.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dida.mp3; sourceTree = "<group>"; };
+		7DF1B3A91C4888590090BD64 /* 三全音.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "三全音.mp3"; sourceTree = "<group>"; };
+		7DF1B3AA1C4888590090BD64 /* 乡音.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "乡音.mp3"; sourceTree = "<group>"; };
+		7DF1B3AB1C4888590090BD64 /* 优雅谢幕.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "优雅谢幕.mp3"; sourceTree = "<group>"; };
+		7DF1B3AC1C4888590090BD64 /* 大内密探.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "大内密探.mp3"; sourceTree = "<group>"; };
+		7DF1B3AD1C4888590090BD64 /* 水滴声.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "水滴声.mp3"; sourceTree = "<group>"; };
+		7DF1B3AE1C4888590090BD64 /* 温馨提醒.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "温馨提醒.mp3"; sourceTree = "<group>"; };
+		7DF1B3AF1C4888590090BD64 /* 电子音.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "电子音.mp3"; sourceTree = "<group>"; };
+		7DF1B3B01C4888590090BD64 /* 立体音.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "立体音.mp3"; sourceTree = "<group>"; };
+		7DF1B3B21C4888590090BD64 /* clock_boy_1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_boy_1.m4a; sourceTree = "<group>"; };
+		7DF1B3B31C4888590090BD64 /* clock_boy_2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_boy_2.m4a; sourceTree = "<group>"; };
+		7DF1B3B41C4888590090BD64 /* clock_boy_3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_boy_3.m4a; sourceTree = "<group>"; };
+		7DF1B3B51C4888590090BD64 /* clock_boy_4.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_boy_4.m4a; sourceTree = "<group>"; };
+		7DF1B3B61C4888590090BD64 /* clock_boy_5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_boy_5.m4a; sourceTree = "<group>"; };
+		7DF1B3B71C4888590090BD64 /* clock_boy_6.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_boy_6.m4a; sourceTree = "<group>"; };
+		7DF1B3B81C4888590090BD64 /* clock_boy_7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_boy_7.m4a; sourceTree = "<group>"; };
+		7DF1B3B91C4888590090BD64 /* clock_boy_8.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_boy_8.m4a; sourceTree = "<group>"; };
+		7DF1B3BA1C4888590090BD64 /* clock_girl_1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_girl_1.m4a; sourceTree = "<group>"; };
+		7DF1B3BB1C4888590090BD64 /* clock_girl_10.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_girl_10.m4a; sourceTree = "<group>"; };
+		7DF1B3BC1C4888590090BD64 /* clock_girl_2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_girl_2.m4a; sourceTree = "<group>"; };
+		7DF1B3BD1C4888590090BD64 /* clock_girl_3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_girl_3.m4a; sourceTree = "<group>"; };
+		7DF1B3BE1C4888590090BD64 /* clock_girl_4.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_girl_4.m4a; sourceTree = "<group>"; };
+		7DF1B3BF1C4888590090BD64 /* clock_girl_5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_girl_5.m4a; sourceTree = "<group>"; };
+		7DF1B3C01C4888590090BD64 /* clock_girl_6.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_girl_6.m4a; sourceTree = "<group>"; };
+		7DF1B3C11C4888590090BD64 /* clock_girl_7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_girl_7.m4a; sourceTree = "<group>"; };
+		7DF1B3C21C4888590090BD64 /* clock_girl_8.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_girl_8.m4a; sourceTree = "<group>"; };
+		7DF1B3C31C4888590090BD64 /* clock_girl_9.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = clock_girl_9.m4a; sourceTree = "<group>"; };
+		7DF1B3C51C4888590090BD64 /* 优美口哨.cff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "优美口哨.cff"; sourceTree = "<group>"; };
+		7DF1B3C61C4888590090BD64 /* 八音盒.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "八音盒.mp3"; sourceTree = "<group>"; };
+		7DF1B3C71C4888590090BD64 /* 吉他扫弦.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "吉他扫弦.mp3"; sourceTree = "<group>"; };
+		7DF1B3C81C4888590090BD64 /* 声声入耳.cff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "声声入耳.cff"; sourceTree = "<group>"; };
+		7DF1B3C91C4888590090BD64 /* 她的手机.cff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "她的手机.cff"; sourceTree = "<group>"; };
+		7DF1B3CA1C4888590090BD64 /* 木琴.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "木琴.mp3"; sourceTree = "<group>"; };
+		7DF1B3CB1C4888590090BD64 /* 村庄的早晨.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "村庄的早晨.mp3"; sourceTree = "<group>"; };
+		7DF1B3CC1C4888590090BD64 /* 柔美舒服.cff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "柔美舒服.cff"; sourceTree = "<group>"; };
+		7DF1B3CD1C4888590090BD64 /* 海边小屋.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "海边小屋.mp3"; sourceTree = "<group>"; };
+		7DF1B3CE1C4888590090BD64 /* 滴答滴答.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "滴答滴答.mp3"; sourceTree = "<group>"; };
+		7DF1B3CF1C4888590090BD64 /* 甜美舞曲.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "甜美舞曲.mp3"; sourceTree = "<group>"; };
+		7DF1B3D01C4888590090BD64 /* 空谷回响.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "空谷回响.mp3"; sourceTree = "<group>"; };
+		7DF1B3D11C4888590090BD64 /* 经典滴滴声.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "经典滴滴声.mp3"; sourceTree = "<group>"; };
+		7DF1B3D21C4888590090BD64 /* 美妙清晨.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "美妙清晨.mp3"; sourceTree = "<group>"; };
+		7DF1B3D31C4888590090BD64 /* 自然晨曦.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "自然晨曦.mp3"; sourceTree = "<group>"; };
+		7DF1B3D41C4888590090BD64 /* 萨克斯金曲.cff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "萨克斯金曲.cff"; sourceTree = "<group>"; };
+		7DF1B3D51C4888590090BD64 /* 马林巴琴.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "马林巴琴.mp3"; sourceTree = "<group>"; };
+		7DF1B3D61C4888590090BD64 /* 黑白琴键.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "黑白琴键.mp3"; sourceTree = "<group>"; };
+		7DF1B4041C4898C80090BD64 /* 大王叫我来巡山-原声带.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "大王叫我来巡山-原声带.mp3"; sourceTree = "<group>"; };
+		7DF1B4091C48C0A00090BD64 /* mainSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainSetViewController.h; sourceTree = "<group>"; };
+		7DF1B40A1C48C0A00090BD64 /* mainSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainSetViewController.m; sourceTree = "<group>"; };
+		7DF1B40B1C48C0A00090BD64 /* mainSetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mainSetViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DF1B3A51C4887A90090BD64 /* AudioToolbox.framework in Frameworks */,
 				7DCD71F81C4793600072DDC5 /* AVFoundation.framework in Frameworks */,
 				7D4D48B31C41F23700C18F6D /* GoogleMobileAds.framework in Frameworks */,
 			);
@@ -148,6 +248,7 @@
 		7D730B0B1C3CD94800C095C5 = {
 			isa = PBXGroup;
 			children = (
+				7DF1B3A41C4887A90090BD64 /* AudioToolbox.framework */,
 				7DCD71F71C4793600072DDC5 /* AVFoundation.framework */,
 				7D4D48A81C41F23700C18F6D /* GoogleMobileAdsSdkiOS-7.6.0 */,
 				7D730B161C3CD94800C095C5 /* quYunNaoZhong */,
@@ -169,6 +270,8 @@
 				7D730B2E1C3CD9DB00C095C5 /* Classes */,
 				7D730B201C3CD94800C095C5 /* Main.storyboard */,
 				7DCD72021C47A06C0072DDC5 /* 布谷鸟.caf */,
+				7DF1B4041C4898C80090BD64 /* 大王叫我来巡山-原声带.mp3 */,
+				7DF1B3A61C4888590090BD64 /* 健康闹钟铃声 */,
 				7D730B231C3CD94800C095C5 /* Assets.xcassets */,
 				7D730B251C3CD94800C095C5 /* LaunchScreen.storyboard */,
 				7D730B281C3CD94800C095C5 /* Info.plist */,
@@ -290,6 +393,9 @@
 				7D5554401C434290001D67A8 /* SetClockTime */,
 				7D730B3F1C3CDA3D00C095C5 /* MainViewController.h */,
 				7D730B401C3CDA3D00C095C5 /* MainViewController.m */,
+				7DF1B4091C48C0A00090BD64 /* mainSetViewController.h */,
+				7DF1B40A1C48C0A00090BD64 /* mainSetViewController.m */,
+				7DF1B40B1C48C0A00090BD64 /* mainSetViewController.xib */,
 				7D1C16EF1C3F45D200193447 /* MyClockViewController.h */,
 				7D1C16F01C3F45D200193447 /* MyClockViewController.m */,
 				7DAC940D1C3F99D800F787DA /* SetClockViewController.h */,
@@ -306,6 +412,82 @@
 				7DCD71FE1C4795390072DDC5 /* SetClockMusicViewController.xib */,
 			);
 			name = SetClockMusic;
+			sourceTree = "<group>";
+		};
+		7DF1B3A61C4888590090BD64 /* 健康闹钟铃声 */ = {
+			isa = PBXGroup;
+			children = (
+				7DF1B3A71C4888590090BD64 /* 短铃声 */,
+				7DF1B3B11C4888590090BD64 /* 萌萌铃声 */,
+				7DF1B3C41C4888590090BD64 /* 音乐铃声 */,
+			);
+			path = "健康闹钟铃声";
+			sourceTree = "<group>";
+		};
+		7DF1B3A71C4888590090BD64 /* 短铃声 */ = {
+			isa = PBXGroup;
+			children = (
+				7DF1B3A81C4888590090BD64 /* dida.mp3 */,
+				7DF1B3A91C4888590090BD64 /* 三全音.mp3 */,
+				7DF1B3AA1C4888590090BD64 /* 乡音.mp3 */,
+				7DF1B3AB1C4888590090BD64 /* 优雅谢幕.mp3 */,
+				7DF1B3AC1C4888590090BD64 /* 大内密探.mp3 */,
+				7DF1B3AD1C4888590090BD64 /* 水滴声.mp3 */,
+				7DF1B3AE1C4888590090BD64 /* 温馨提醒.mp3 */,
+				7DF1B3AF1C4888590090BD64 /* 电子音.mp3 */,
+				7DF1B3B01C4888590090BD64 /* 立体音.mp3 */,
+			);
+			path = "短铃声";
+			sourceTree = "<group>";
+		};
+		7DF1B3B11C4888590090BD64 /* 萌萌铃声 */ = {
+			isa = PBXGroup;
+			children = (
+				7DF1B3B21C4888590090BD64 /* clock_boy_1.m4a */,
+				7DF1B3B31C4888590090BD64 /* clock_boy_2.m4a */,
+				7DF1B3B41C4888590090BD64 /* clock_boy_3.m4a */,
+				7DF1B3B51C4888590090BD64 /* clock_boy_4.m4a */,
+				7DF1B3B61C4888590090BD64 /* clock_boy_5.m4a */,
+				7DF1B3B71C4888590090BD64 /* clock_boy_6.m4a */,
+				7DF1B3B81C4888590090BD64 /* clock_boy_7.m4a */,
+				7DF1B3B91C4888590090BD64 /* clock_boy_8.m4a */,
+				7DF1B3BA1C4888590090BD64 /* clock_girl_1.m4a */,
+				7DF1B3BB1C4888590090BD64 /* clock_girl_10.m4a */,
+				7DF1B3BC1C4888590090BD64 /* clock_girl_2.m4a */,
+				7DF1B3BD1C4888590090BD64 /* clock_girl_3.m4a */,
+				7DF1B3BE1C4888590090BD64 /* clock_girl_4.m4a */,
+				7DF1B3BF1C4888590090BD64 /* clock_girl_5.m4a */,
+				7DF1B3C01C4888590090BD64 /* clock_girl_6.m4a */,
+				7DF1B3C11C4888590090BD64 /* clock_girl_7.m4a */,
+				7DF1B3C21C4888590090BD64 /* clock_girl_8.m4a */,
+				7DF1B3C31C4888590090BD64 /* clock_girl_9.m4a */,
+			);
+			path = "萌萌铃声";
+			sourceTree = "<group>";
+		};
+		7DF1B3C41C4888590090BD64 /* 音乐铃声 */ = {
+			isa = PBXGroup;
+			children = (
+				7DF1B3C51C4888590090BD64 /* 优美口哨.cff */,
+				7DF1B3C61C4888590090BD64 /* 八音盒.mp3 */,
+				7DF1B3C71C4888590090BD64 /* 吉他扫弦.mp3 */,
+				7DF1B3C81C4888590090BD64 /* 声声入耳.cff */,
+				7DF1B3C91C4888590090BD64 /* 她的手机.cff */,
+				7DF1B3CA1C4888590090BD64 /* 木琴.mp3 */,
+				7DF1B3CB1C4888590090BD64 /* 村庄的早晨.mp3 */,
+				7DF1B3CC1C4888590090BD64 /* 柔美舒服.cff */,
+				7DF1B3CD1C4888590090BD64 /* 海边小屋.mp3 */,
+				7DF1B3CE1C4888590090BD64 /* 滴答滴答.mp3 */,
+				7DF1B3CF1C4888590090BD64 /* 甜美舞曲.mp3 */,
+				7DF1B3D01C4888590090BD64 /* 空谷回响.mp3 */,
+				7DF1B3D11C4888590090BD64 /* 经典滴滴声.mp3 */,
+				7DF1B3D21C4888590090BD64 /* 美妙清晨.mp3 */,
+				7DF1B3D31C4888590090BD64 /* 自然晨曦.mp3 */,
+				7DF1B3D41C4888590090BD64 /* 萨克斯金曲.cff */,
+				7DF1B3D51C4888590090BD64 /* 马林巴琴.mp3 */,
+				7DF1B3D61C4888590090BD64 /* 黑白琴键.mp3 */,
+			);
+			path = "音乐铃声";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,16 +548,63 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DF1B3DC1C4888590090BD64 /* 水滴声.mp3 in Resources */,
+				7DF1B3FC1C4888590090BD64 /* 甜美舞曲.mp3 in Resources */,
 				7DCD72031C47A0820072DDC5 /* 布谷鸟.caf in Resources */,
+				7DF1B3F81C4888590090BD64 /* 村庄的早晨.mp3 in Resources */,
+				7DF1B3F41C4888590090BD64 /* 吉他扫弦.mp3 in Resources */,
+				7DF1B3D81C4888590090BD64 /* 三全音.mp3 in Resources */,
+				7DF1B4031C4888590090BD64 /* 黑白琴键.mp3 in Resources */,
+				7DF1B3E11C4888590090BD64 /* clock_boy_2.m4a in Resources */,
+				7DF1B3FE1C4888590090BD64 /* 经典滴滴声.mp3 in Resources */,
+				7DF1B3EC1C4888590090BD64 /* clock_girl_4.m4a in Resources */,
 				7D730B271C3CD94800C095C5 /* LaunchScreen.storyboard in Resources */,
+				7DF1B3E51C4888590090BD64 /* clock_boy_6.m4a in Resources */,
 				7D730B241C3CD94800C095C5 /* Assets.xcassets in Resources */,
 				7DEDA3DD1C3E4E8900D7C4DE /* alertCell.xib in Resources */,
 				7D730B221C3CD94800C095C5 /* Main.storyboard in Resources */,
 				7D1B5ABB1C44E94A0053E6B8 /* SetClockModeController.xib in Resources */,
+				7DF1B3F11C4888590090BD64 /* clock_girl_9.m4a in Resources */,
 				7D4D48B41C41F23700C18F6D /* README.txt in Resources */,
+				7DF1B3EB1C4888590090BD64 /* clock_girl_3.m4a in Resources */,
 				7D4D48B51C41F23700C18F6D /* README.txt in Resources */,
+				7DF1B3F71C4888590090BD64 /* 木琴.mp3 in Resources */,
+				7DF1B3DF1C4888590090BD64 /* 立体音.mp3 in Resources */,
+				7DF1B3ED1C4888590090BD64 /* clock_girl_5.m4a in Resources */,
+				7DF1B3FA1C4888590090BD64 /* 海边小屋.mp3 in Resources */,
+				7DF1B3FD1C4888590090BD64 /* 空谷回响.mp3 in Resources */,
+				7DF1B3DE1C4888590090BD64 /* 电子音.mp3 in Resources */,
+				7DF1B3FB1C4888590090BD64 /* 滴答滴答.mp3 in Resources */,
+				7DF1B3D71C4888590090BD64 /* dida.mp3 in Resources */,
+				7DF1B3E71C4888590090BD64 /* clock_boy_8.m4a in Resources */,
+				7DF1B3DB1C4888590090BD64 /* 大内密探.mp3 in Resources */,
+				7DF1B3E31C4888590090BD64 /* clock_boy_4.m4a in Resources */,
+				7DF1B3E91C4888590090BD64 /* clock_girl_10.m4a in Resources */,
+				7DF1B4011C4888590090BD64 /* 萨克斯金曲.cff in Resources */,
+				7DF1B3F21C4888590090BD64 /* 优美口哨.cff in Resources */,
+				7DF1B3DA1C4888590090BD64 /* 优雅谢幕.mp3 in Resources */,
+				7DF1B3E01C4888590090BD64 /* clock_boy_1.m4a in Resources */,
+				7DF1B3FF1C4888590090BD64 /* 美妙清晨.mp3 in Resources */,
+				7DF1B4001C4888590090BD64 /* 自然晨曦.mp3 in Resources */,
+				7DF1B3EE1C4888590090BD64 /* clock_girl_6.m4a in Resources */,
 				7D5554451C4343BE001D67A8 /* SetClockTimeController.xib in Resources */,
+				7DF1B3E81C4888590090BD64 /* clock_girl_1.m4a in Resources */,
+				7DF1B4021C4888590090BD64 /* 马林巴琴.mp3 in Resources */,
+				7DF1B3F31C4888590090BD64 /* 八音盒.mp3 in Resources */,
+				7DF1B3EA1C4888590090BD64 /* clock_girl_2.m4a in Resources */,
+				7DF1B40D1C48C0A00090BD64 /* mainSetViewController.xib in Resources */,
 				7DCD72001C4795390072DDC5 /* SetClockMusicViewController.xib in Resources */,
+				7DF1B3DD1C4888590090BD64 /* 温馨提醒.mp3 in Resources */,
+				7DF1B3E41C4888590090BD64 /* clock_boy_5.m4a in Resources */,
+				7DF1B3F51C4888590090BD64 /* 声声入耳.cff in Resources */,
+				7DF1B3F01C4888590090BD64 /* clock_girl_8.m4a in Resources */,
+				7DF1B3EF1C4888590090BD64 /* clock_girl_7.m4a in Resources */,
+				7DF1B3F91C4888590090BD64 /* 柔美舒服.cff in Resources */,
+				7DF1B3E21C4888590090BD64 /* clock_boy_3.m4a in Resources */,
+				7DF1B4051C4898C80090BD64 /* 大王叫我来巡山-原声带.mp3 in Resources */,
+				7DF1B3E61C4888590090BD64 /* clock_boy_7.m4a in Resources */,
+				7DF1B3D91C4888590090BD64 /* 乡音.mp3 in Resources */,
+				7DF1B3F61C4888590090BD64 /* 她的手机.cff in Resources */,
 				7D1C16F61C3F5ECE00193447 /* MyAlertCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +627,7 @@
 				7D1C16F11C3F45D200193447 /* MyClockViewController.m in Sources */,
 				7D1B5ABA1C44E94A0053E6B8 /* SetClockModeController.m in Sources */,
 				7DAC940F1C3F99D800F787DA /* SetClockViewController.m in Sources */,
+				7DF1B40C1C48C0A00090BD64 /* mainSetViewController.m in Sources */,
 				7D5554441C4343BE001D67A8 /* SetClockTimeController.m in Sources */,
 				7DCD71FF1C4795390072DDC5 /* SetClockMusicViewController.m in Sources */,
 				7D730B191C3CD94800C095C5 /* main.m in Sources */,

@@ -176,6 +176,9 @@
                                             <constraint firstAttribute="height" constant="30" id="spb-uJ-oeS"/>
                                         </constraints>
                                         <state key="normal" image="设置"/>
+                                        <connections>
+                                            <action selector="moveToMainSetVCAction:" destination="uyV-CI-BZf" eventType="touchUpInside" id="UbU-Xe-EWn"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的闹钟" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KH-yh-Svo">
                                         <rect key="frame" x="264" y="43" width="72" height="21.5"/>

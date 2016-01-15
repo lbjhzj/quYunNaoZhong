@@ -19,6 +19,42 @@
     return hyLocalNotication;
 }
 
+- (void)saveClockData:(alert *)Alert{
+    
+    NSMutableDictionary *clockDictionary = [NSMutableDictionary dictionaryWithCapacity:12];
+
+    if (Alert.clockState) {
+        [clockDictionary setObject:[NSString stringWithFormat:@"YES"] forKey:@"ClockState"];
+    }else{
+        [clockDictionary setObject:[NSString stringWithFormat:@"NO"] forKey:@"ClockState"];
+    }
+    if (Alert.clockForce) {
+        [clockDictionary setObject:@"YES" forKey:@"ClockForce"];
+    }else{
+        [clockDictionary setObject:@"NO" forKey:@"ClockForce"];
+    }
+    if (Alert.clockShock) {
+        [clockDictionary setObject:@"YES" forKey:@"ClockShock"];
+    }else{
+        [clockDictionary setObject:@"NO" forKey:@"ClockShock"];
+    }
+    [clockDictionary setObject:Alert.clockTime forKey:@"ClockTime"];
+    [clockDictionary setObject:Alert.clockMode forKey:@"ClockMode"];
+    [clockDictionary setObject:Alert.clockName forKey:@"ClockName"];
+    [clockDictionary setObject:Alert.clockID forKey:@"ClockID"];
+#warning music&&小睡,暂时关闭
+    //    [clockDictionary setObject:self.clockMusicLabel.text forKey:@"ClockMusic"];
+    //    [clockDictionary setObject:self.clockExtendLabel.text forKey:@"ClockExtend"];
+    [clockDictionary setObject:[NSString stringWithFormat:@"%ld",Alert.clockSoundValue] forKey:@"ClockSoundValue"];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:clockDictionary forKey:Alert.clockID];
+        NSLog(@"clockID======%@",Alert.clockID);
+    
+    NSLog(@"%@",clockDictionary);
+    
+
+}
 
 
 - (void)startLocalNoticationClockID:(int)clockID
@@ -119,6 +155,7 @@
             newNotification.soundName = @"布谷鸟.caf";
             newNotification.alertAction = @"查看闹钟";
             newNotification.repeatInterval = NSWeekCalendarUnit;
+//            newNotification.repeatInterval = NSCalendarUnitCalendar;
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:clockIDString forKey:@"ActivityClock"];
             newNotification.userInfo = userInfo;
             
@@ -157,7 +194,7 @@
     Alert.clockFitPeople = [clockDictionary objectForKey:@"ClockFitPeople"];
     Alert.clockID = [clockDictionary objectForKey:@"ClockID"];
     Alert.clockForce = [[clockDictionary objectForKey:@"ClockForce"] boolValue];
-    Alert.clockShock = [[clockDictionary objectForKey:@"CLockShock"] boolValue];
+    Alert.clockShock = [[clockDictionary objectForKey:@"ClockShock"] boolValue];
     Alert.clockSoundValue = [[clockDictionary objectForKey:@"ClockSound"] integerValue];
     
     

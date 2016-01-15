@@ -18,4 +18,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *clockStateBtn;
 
+@property(nonatomic,assign)int  clockID;
+
+
+
+
 @end

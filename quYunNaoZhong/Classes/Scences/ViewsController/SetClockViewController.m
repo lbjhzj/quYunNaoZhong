@@ -57,10 +57,13 @@ static NSString *cellID_2 = @"sliderID";
     //    判断开关状态
     self.clockSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-30, cell1.frame.size.height * 0.5 - 8, 16, 16)];
     _clockSwitchBtn.tag = 1000;
+    
     self.forceSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-30, cell2.frame.size.height * 0.5 - 8, 16, 16)];
     _forceSwitchBtn.tag = 2000;
+    
     self.shockSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-30, cell3.frame.size.height * 0.5 - 8, 16, 16)];
     _shockSwitchBtn.tag = 3000;
+    
     if (self.Alert.clockState) {
         _clockSwitchBtn.image = [UIImage imageNamed:@"开关（开）"];
     }else{
@@ -71,7 +74,7 @@ static NSString *cellID_2 = @"sliderID";
     }else{
         _forceSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
     }
-    if (self.Alert.clockForce) {
+    if (self.Alert.clockShock) {
         _shockSwitchBtn.image = [UIImage imageNamed:@"开关（开）"];
     }else{
         _shockSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
@@ -88,7 +91,7 @@ static NSString *cellID_2 = @"sliderID";
         self.clockNameLabel.text = @"未命名";
         self.clockTimeLabel.text = @"07:30";
         self.clockModeLabel.text = @"未设置";
-        self.clockID = NULL;
+        self.clockSoundValueLabel.value = 50;
         
     }
     if (self.Alert && !self.clockTimeLabel.text) {
@@ -150,7 +153,7 @@ static NSString *cellID_2 = @"sliderID";
 - (IBAction)makeSureAddOrChangeClockInformation:(UIButton *)sender {
 
 //    数据永久化
-    [self saveClockData];
+    [self saveClockData:self.Alert];
     
     if (self.Alert.clockState) {
         
@@ -163,20 +166,20 @@ static NSString *cellID_2 = @"sliderID";
 }
 
 #pragma mark 闹钟数据永久化
-- (void)saveClockData{
+- (void)saveClockData:(alert *)Alert{
     NSMutableDictionary *clockDictionary = [NSMutableDictionary dictionaryWithCapacity:12];
     
-    if (self.Alert.clockState) {
+    if (Alert.clockState) {
       [clockDictionary setObject:[NSString stringWithFormat:@"YES"] forKey:@"ClockState"];
     }else{
       [clockDictionary setObject:[NSString stringWithFormat:@"NO"] forKey:@"ClockState"];
     }
-    if (self.Alert.clockForce) {
+    if (Alert.clockForce) {
         [clockDictionary setObject:@"YES" forKey:@"ClockForce"];
     }else{
         [clockDictionary setObject:@"NO" forKey:@"ClockForce"];
     }
-    if (self.Alert.clockShock) {
+    if (Alert.clockShock) {
         [clockDictionary setObject:@"YES" forKey:@"ClockShock"];
     }else{
         [clockDictionary setObject:@"NO" forKey:@"ClockShock"];
@@ -187,7 +190,7 @@ static NSString *cellID_2 = @"sliderID";
 #warning music&&小睡,暂时关闭
 //    [clockDictionary setObject:self.clockMusicLabel.text forKey:@"ClockMusic"];
 //    [clockDictionary setObject:self.clockExtendLabel.text forKey:@"ClockExtend"];
-    [clockDictionary setObject:[NSString stringWithFormat:@"%.0f",self.clockSoundValueLabel.value] forKey:@"ClockSoundValue"];
+    [clockDictionary setObject:[NSString stringWithFormat:@"%f",self.clockSoundValueLabel.value] forKey:@"ClockSoundValue"];
 
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     self.clockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
@@ -195,15 +198,14 @@ static NSString *cellID_2 = @"sliderID";
         if (![self.clickTheFirstOrAddBtnFlag isEqualToString:ClickTheFirstClockFlag]) {
             _clockID = _clockCount++;
         }
-        
     }
 //    NSLog(@"clockID======%d",_clockID);
-    
+    [clockDictionary setObject:[NSString stringWithFormat:@"%d",self.clockID]forKey:@"ClockID"];
     [userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.clockID]];
     
 
     [userDefault setObject:[NSNumber numberWithInt:self.clockCount] forKey:@"ClockCount"];
-    
+
 
     
     NSLog(@"%@",clockDictionary);
@@ -270,31 +272,6 @@ static NSString *cellID_2 = @"sliderID";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     
-//    self.clockSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-30, cell.frame.size.height * 0.5 - 8, 16, 16)];
-//    判断开关状态
-//    if (self.Alert.clockState) {
-//        _clockSwitchBtn.image = [UIImage imageNamed:@"开关（开）"];
-//    }else{
-//        _clockSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
-//    }
-//    _clockSwitchBtn.tag = 1000;
-//    
-//    self.forceSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-30, cell.frame.size.height * 0.5 - 8, 16, 16)];
-//    if (self.Alert.clockForce) {
-//        _forceSwitchBtn.image = [UIImage imageNamed:@"开关（开）"];
-//    }else{
-//        _forceSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
-//    }
-//    _forceSwitchBtn.tag = 2000;
-    
-    
-//    self.shockSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-30, cell.frame.size.height * 0.5 - 8, 16, 16)];
-//    if (self.Alert.clockForce) {
-//        _shockSwitchBtn.image = [UIImage imageNamed:@"开关（开）"];
-//    }else{
-//        _shockSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
-//    }
-//    _shockSwitchBtn.tag = 3000;
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
@@ -428,7 +405,7 @@ static NSString *cellID_2 = @"sliderID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    NSLog(@"section == %ld  row == %ld",indexPath.section,indexPath.row);
+
     [self.clockNameLabel resignFirstResponder];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
@@ -456,10 +433,47 @@ static NSString *cellID_2 = @"sliderID";
                 self.Alert.clockState = !self.Alert.clockState;
                 break;
             case 1:
+                for (UIImageView *view in cell.contentView.subviews) {
+                    if (view.tag == 2000) {
+                        [view removeFromSuperview];
+                    }
+                }
                 
+                if (self.Alert.clockForce) {
+                    
+                    self.forceSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
+                    
+                }else{
+                    
+                    [self.forceSwitchBtn setImage:[UIImage imageNamed:@"开关（开）"]] ;
+                    
+                }
+                
+                [cell.contentView addSubview:_forceSwitchBtn];
+                
+                self.Alert.clockForce = !self.Alert.clockForce;
                 break;
             case 2:
+                for (UIImageView *view in cell.contentView.subviews) {
+                    if (view.tag == 3000) {
+                        [view removeFromSuperview];
+                    }
+                }
                 
+                if (self.Alert.clockShock) {
+                    
+                    self.shockSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
+                    
+                }else{
+                    
+                    [self.shockSwitchBtn setImage:[UIImage imageNamed:@"开关（开）"]] ;
+                    
+                }
+                
+                [cell.contentView addSubview:_shockSwitchBtn];
+                
+                self.Alert.clockShock = !self.Alert.clockShock;
+
                 break;
             default:
                 break;

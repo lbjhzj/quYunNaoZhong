@@ -9,7 +9,7 @@
 @import GoogleMobileAds;
 #import "SetClockViewController.h"
 
-@interface SetClockViewController ()<UITableViewDataSource,UITableViewDelegate,PassingTheClockTimeDelegate,UITextFieldDelegate,PassingTheClockModeDelegate>
+@interface SetClockViewController ()<UITableViewDataSource,UITableViewDelegate,PassingTheClockTimeDelegate,UITextFieldDelegate,PassingTheClockModeDelegate,PassingTheClockMusicDelegate>
 
 @property (weak, nonatomic) IBOutlet GADBannerView *admodBannerView;
 
@@ -91,18 +91,21 @@ static NSString *cellID_2 = @"sliderID";
         self.clockNameLabel.text = @"未命名";
         self.clockTimeLabel.text = @"07:30";
         self.clockModeLabel.text = @"未设置";
-        self.clockSoundValueLabel.value = 50;
-        
+        self.clockSoundValueLabel.value = 50.f;
+        self.clockMusicLabel.text = @"未设置";
+        self.clockExtendLabel.text = @"未设置";
     }
-    if (self.Alert && !self.clockTimeLabel.text) {
+    if (self.Alert || [self.clockNameLabel.text isEqualToString:@"未命名"]||[self.clockMusicLabel.text isEqualToString:@"未命名"]) {
+    
         self.clockNameLabel.text = self.Alert.clockName;
         self.clockTimeLabel.text = self.Alert.clockTime;
         self.clockModeLabel.text = self.Alert.clockMode;
-        self.clockSoundValueLabel.value = 30;
+        self.clockSoundValueLabel.value = 50.f;
+        self.clockMusicLabel.text = self.Alert.clockMusic;
         
     }
     
-    
+    [super viewWillAppear:animated];
 
 }
 
@@ -114,10 +117,11 @@ static NSString *cellID_2 = @"sliderID";
     
     setClockTimeController = [[SetClockTimeController alloc]initWithNibName:@"SetClockTimeController" bundle:nil];
     setClockModeController = [[SetClockModeController alloc]initWithNibName:@"SetClockModeController" bundle:nil];
+    setClockMusicController = [[SetClockMusicViewController alloc]initWithNibName:@"SetClockMusicViewController" bundle:nil];
     
     setClockTimeController.delegate = self;
     setClockModeController.delegate = self;
-    
+    setClockMusicController.delegate = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID_2];
     
     // Replace this ad unit ID with your own ad unit ID.
@@ -188,7 +192,7 @@ static NSString *cellID_2 = @"sliderID";
     [clockDictionary setObject:self.clockModeLabel.text forKey:@"ClockMode"];
     [clockDictionary setObject:self.clockNameLabel.text forKey:@"ClockName"];
 #warning music&&小睡,暂时关闭
-//    [clockDictionary setObject:self.clockMusicLabel.text forKey:@"ClockMusic"];
+    [clockDictionary setObject:self.clockMusicLabel.text forKey:@"ClockMusic"];
 //    [clockDictionary setObject:self.clockExtendLabel.text forKey:@"ClockExtend"];
     [clockDictionary setObject:[NSString stringWithFormat:@"%f",self.clockSoundValueLabel.value] forKey:@"ClockSoundValue"];
 
@@ -212,6 +216,11 @@ static NSString *cellID_2 = @"sliderID";
     
     
 
+}
+
+#pragma mark SetClockMusicVC的传值协议方法
+- (void)passingTheClockMusicToFront:(NSString *)musicName{
+    self.clockMusicLabel.text = musicName;
 }
 
 #pragma mark SetClockTimeVC的代理传值的协议方法
@@ -405,7 +414,6 @@ static NSString *cellID_2 = @"sliderID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-
     [self.clockNameLabel resignFirstResponder];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
@@ -493,7 +501,7 @@ static NSString *cellID_2 = @"sliderID";
                 [self.navigationController pushViewController:setClockModeController animated:YES];
                 break;
             case 3:
-                
+                [self.navigationController pushViewController:setClockMusicController animated:YES];
                 break;
             case 4:
                 

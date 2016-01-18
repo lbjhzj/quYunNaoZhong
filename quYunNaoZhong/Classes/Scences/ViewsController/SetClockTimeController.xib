@@ -20,7 +20,6 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK6-0s-Mmr">
                     <rect key="frame" x="206" y="129" width="188" height="43"/>
-                    <color key="backgroundColor" red="0.6920878775" green="0.34925545299999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="188" id="GbX-Zi-8Mg"/>
                         <constraint firstAttribute="height" constant="43" id="ZaG-JK-YgL"/>
@@ -60,18 +59,31 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闹钟时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogb-GJ-wrJ">
-                            <rect key="frame" x="264" y="44.5" width="72" height="21.5"/>
+                            <rect key="frame" x="264" y="44" width="72" height="21.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1j5-RG-0le">
+                            <rect key="frame" x="0.0" y="77" width="600" height="2"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="hmC-oS-mjZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.62998098134994507" green="0.61110055446624756" blue="0.092377476394176483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="ms7-e5-r09" firstAttribute="top" secondItem="zf3-CF-UiF" secondAttribute="top" constant="35" id="1sj-jA-Y3C"/>
                         <constraint firstAttribute="height" constant="79" id="7Kr-JA-JXn"/>
+                        <constraint firstAttribute="bottom" secondItem="1j5-RG-0le" secondAttribute="bottom" id="AtZ-di-9BL"/>
                         <constraint firstAttribute="bottom" secondItem="ms7-e5-r09" secondAttribute="bottom" constant="13" id="HWr-Zl-Oul"/>
+                        <constraint firstItem="1j5-RG-0le" firstAttribute="leading" secondItem="zf3-CF-UiF" secondAttribute="leading" id="Rta-ku-LW1"/>
                         <constraint firstItem="Ogb-GJ-wrJ" firstAttribute="bottom" secondItem="ms7-e5-r09" secondAttribute="bottom" id="dgh-qp-ZMG"/>
+                        <constraint firstAttribute="trailing" secondItem="1j5-RG-0le" secondAttribute="trailing" id="h3z-Q6-jU7"/>
                         <constraint firstItem="oOl-WR-VoY" firstAttribute="baseline" secondItem="ms7-e5-r09" secondAttribute="baseline" id="hFL-em-EvY"/>
                         <constraint firstAttribute="trailing" secondItem="oOl-WR-VoY" secondAttribute="trailing" constant="16" id="hi1-ar-V8F"/>
                         <constraint firstItem="oOl-WR-VoY" firstAttribute="bottom" secondItem="ms7-e5-r09" secondAttribute="bottom" id="ih1-hm-U36"/>

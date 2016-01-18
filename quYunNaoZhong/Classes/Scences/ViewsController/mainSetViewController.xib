@@ -17,6 +17,35 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Nc-fz-9Zv">
+                    <rect key="frame" x="0.0" y="343" width="600" height="257"/>
+                    <color key="backgroundColor" red="0.62998098134994507" green="0.61110055446624756" blue="0.092377476394176483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="iV0-BK-0kV"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="iV0-BK-0kV"/>
+                        </mask>
+                    </variation>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xI4-Sh-kkF">
+                    <rect key="frame" x="0.0" y="79" width="600" height="264"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="fVS-te-kOS"/>
+                        <constraint firstAttribute="height" constant="264" id="pDW-4I-a4d"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="fVS-te-kOS"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Gie-sL-GNf"/>
+                        <outlet property="delegate" destination="-1" id="ltO-cJ-DuO"/>
+                    </connections>
+                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="199-oW-hga">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                     <subviews>
@@ -48,9 +77,22 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qua-O8-Jsc">
+                            <rect key="frame" x="0.0" y="77" width="600" height="2"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="Hz9-jp-jCi"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.6920878775" green="0.34925545299999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="Qua-O8-Jsc" firstAttribute="leading" secondItem="199-oW-hga" secondAttribute="leading" id="186-wK-m3T"/>
+                        <constraint firstAttribute="bottom" secondItem="Qua-O8-Jsc" secondAttribute="bottom" id="4EN-qw-y6h"/>
+                        <constraint firstAttribute="trailing" secondItem="Qua-O8-Jsc" secondAttribute="trailing" id="7hH-rd-j9U"/>
                         <constraint firstAttribute="height" constant="79" id="AoP-Yr-uTr"/>
                         <constraint firstItem="wDI-oz-SbE" firstAttribute="centerX" secondItem="199-oW-hga" secondAttribute="centerX" id="Pxe-Pk-fVN"/>
                         <constraint firstItem="TeJ-Mf-gK0" firstAttribute="leading" secondItem="xpx-ky-QzX" secondAttribute="trailing" id="TtF-9Z-H8i"/>
@@ -66,35 +108,6 @@
                         </mask>
                     </variation>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Nc-fz-9Zv">
-                    <rect key="frame" x="0.0" y="343" width="600" height="257"/>
-                    <color key="backgroundColor" red="0.62998098134994507" green="0.61110055446624756" blue="0.092377476394176483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="iV0-BK-0kV"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="iV0-BK-0kV"/>
-                        </mask>
-                    </variation>
-                </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xI4-Sh-kkF">
-                    <rect key="frame" x="0.0" y="79" width="600" height="264"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="fVS-te-kOS"/>
-                        <constraint firstAttribute="height" constant="264" id="pDW-4I-a4d"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="fVS-te-kOS"/>
-                        </mask>
-                    </variation>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="Gie-sL-GNf"/>
-                        <outlet property="delegate" destination="-1" id="ltO-cJ-DuO"/>
-                    </connections>
-                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

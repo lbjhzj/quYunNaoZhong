@@ -10,6 +10,8 @@
 
 @implementation HYLocalNotication
 
+ int number = 0;
+
 + (instancetype)shareHYLocalNotication{
     static HYLocalNotication *hyLocalNotication = nil;
     static dispatch_once_t onceToken;
@@ -17,6 +19,46 @@
         hyLocalNotication = [[HYLocalNotication alloc] init];
     });
     return hyLocalNotication;
+}
+
+/**
+ * 震动
+ **/
+-(void)vibratePlay{
+    [self vibratePlay:1];
+}
+
+/**
+ * 震动
+ * @param num 震动次数
+ **/
+-(void)vibratePlay:(NSInteger*)num{
+    
+    AudioServicesAddSystemSoundCompletion(kSystemSoundID_Vibrate, NULL, NULL, audioPlayFinish,num);
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    number++;
+}
+
+/**
+ * 播放完成之后的回调方法
+ * @param soundID 播放的声音ID
+ * @param num 播放次数
+ **/
+void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
+    if (num&&num>0) {
+        if (number>=num) {
+            if (soundID!=kSystemSoundID_Vibrate) {
+                AudioServicesDisposeSystemSoundID(soundID);
+            }
+        }else{
+            AudioServicesPlaySystemSound(soundID);
+            number++;
+        }
+    }else{
+        if (soundID!=kSystemSoundID_Vibrate) {
+            AudioServicesDisposeSystemSoundID(soundID);
+        }
+    }
 }
 
 - (void)saveClockData:(alert *)Alert{
@@ -151,11 +193,9 @@
             newNotification.fireDate = newFireDate;
 #warning 测试
             newNotification.alertBody = @"测试闹钟";
-//            newNotification.soundName = [NSString stringWithFormat:@"%@.caf", clockMusic];
-            newNotification.soundName = @"布谷鸟.caf";
+            newNotification.soundName = [NSString stringWithFormat:@"%@.mp3", clockMusic];
             newNotification.alertAction = @"查看闹钟";
             newNotification.repeatInterval = NSWeekCalendarUnit;
-//            newNotification.repeatInterval = NSCalendarUnitCalendar;
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:clockIDString forKey:@"ActivityClock"];
             newNotification.userInfo = userInfo;
             
@@ -200,6 +240,30 @@
     
     return Alert;
 }
+
++(NSArray *)getFilenamelistOfType:(NSString *)type fromDirPath:(NSString *)dirPath
+{
+    NSMutableArray *filenamelist = [NSMutableArray arrayWithCapacity:10];
+    NSArray *tmplist = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:dirPath error:nil];
+    
+    for (NSString *filename in tmplist) {
+        NSString *fullpath = [dirPath stringByAppendingPathComponent:filename];
+        if ([self isFileExistAtPath:fullpath]) {
+            if ([[filename pathExtension] isEqualToString:type]) {
+                [filenamelist  addObject:filename];
+            }
+        }
+    }
+    
+    return filenamelist;
+}
+
++(BOOL)isFileExistAtPath:(NSString*)fileFullPath {
+    BOOL isExist = NO;
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileFullPath];
+    return isExist;
+}
+
 
 - (void)removeAllDataInUserDefault{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];

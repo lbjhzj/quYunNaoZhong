@@ -25,6 +25,10 @@
 
 #import "MyAlertCell.h"
 
+#import "ringCell.h"
+
+#import "sectionCell.h"
+
 #import "alert.h"
 
 #import "MyClockViewController.h"

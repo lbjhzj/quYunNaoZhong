@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PassingTheClockMusicDelegate <NSObject>
+
+- (void)passingTheClockMusicToFront:(NSString *)musicName;
+
+@end
+
 @interface SetClockMusicViewController : UIViewController <AVAudioPlayerDelegate>
 
+@property(nonatomic,assign)id <PassingTheClockMusicDelegate> delegate;
 
 
 

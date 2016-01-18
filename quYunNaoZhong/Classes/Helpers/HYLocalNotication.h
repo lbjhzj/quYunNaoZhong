@@ -21,4 +21,9 @@
 - (void)removeAllDataInUserDefault;
 
 - (void)saveClockData:(alert *)Alert;
+
+-(void)vibratePlay:(NSInteger*)num;
+
++(NSArray *) getFilenamelistOfType:(NSString *)type fromDirPath:(NSString *)dirPath;
+
 @end

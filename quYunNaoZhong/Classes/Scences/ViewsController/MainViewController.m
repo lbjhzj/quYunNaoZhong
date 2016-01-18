@@ -33,6 +33,11 @@
 
 @property(nonatomic,strong)MyClockViewController * myClockVC;
 
+@property(nonatomic,assign)int clockCount;
+
+@property(nonatomic,assign)int  ActivityCount;
+
+@property(nonatomic,strong)NSMutableArray * clockArray;
 
 @end
 
@@ -44,17 +49,37 @@ static NSString *cellID = @"cellID";
 
 - (void)viewWillAppear:(BOOL)animated{
     
-    
+    [self initClockCount];
+    [self.clockArray removeAllObjects];
+    for (int i=0; i<self.clockCount; i++) {
+       alert *Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy/MM/dd (ccc)"];
+        NSString *dateMode=[NSString stringFromDate:[NSDate date] ByFormatter:formatter];
+        if ([Alert.clockMode containsString:[(NSString *)([dateMode componentsSeparatedByString:@"周"][1]) componentsSeparatedByString:@")"][0]]) {
+            [self.clockArray addObject:Alert];
+        }
+    }
+    [self.tableView reloadData];
     [super viewWillAppear:animated];
-
 }
 
+- (void)initClockCount{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//        NSLog(@"%@",[userDefault objectForKey:@"ClockCount"]);
+    if (![userDefault objectForKey:@"ClockCount"]){
+        self.clockCount = 0;
+    }
+    else{
+        self.clockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 #warning 删除存储的所有闹钟数据===========测试
 //    [[HYLocalNotication shareHYLocalNotication] removeAllDataInUserDefault];
-      
+    
     self.myClockVC = [MyClockViewController sharedMyClockViewController];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"alertCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellID];
@@ -76,6 +101,8 @@ static NSString *cellID = @"cellID";
     
     
     [self.admodBannerView loadRequest:request];
+    
+    
     
 }
 
@@ -133,7 +160,8 @@ static NSString *cellID = @"cellID";
     label.font = [UIFont systemFontOfSize:18];
 //    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"yyyy/MM/dd (ccc)"];
-    label.text = [NSString stringFromDate:[NSDate date] ByFormatter:formatter] ;
+    label.text = [NSString stringFromDate:[NSDate date] ByFormatter:formatter];
+   
     label.textColor = [UIColor colorWithHexString:@"#333333"];
     [view addSubview:label];
     
@@ -151,6 +179,7 @@ static NSString *cellID = @"cellID";
 - (void)moveToMainSetVC:(UIButton *)sender{
     [self.navigationController pushViewController:[mainSetViewController sharedMainSetViewController] animated:YES];
 }
+
 
 #pragma mark 数秒的方法
 - (void)countDownAction:(NSArray *)tempTimeArray{
@@ -223,25 +252,20 @@ static NSString *cellID = @"cellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //-----获取闹钟数据---------------------------------------------------------
-//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    NSMutableDictionary *clockDictionary = [userDefault objectForKey:[NSString stringWithFormat:@"%ld",indexPath.row]];
-    
-//    NSString *clockName = [clockDictionary objectForKey:@"ClockName"];
-//    NSString *clockTime = [clockDictionary objectForKey:@"ClockTime"];
-//    NSString *clockMode = [clockDictionary objectForKey:@"ClockMode"];
-//    NSString *clockMusic = [clockDictionary objectForKey:@"ClockMusic"];
-//    NSString *clockRemember = [clockDictionary objectForKey:@"ClockRemember"];
-    
     alertCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
-//    cell.timeLabel.text = clockTime;
+
+    alert *Alert = self.clockArray[indexPath.row];
+    cell.timeLabel.text =Alert.clockTime;
+    cell.alertNameLabel.text = Alert.clockName;
+    cell.alertWeekLabel.text = Alert.clockMode;
+    cell.remarkLabel.text = Alert.clockRemember;
     
-    cell.backgroundColor = [UIColor darkTextColor];
+    
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 0;
+    return self.clockArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -250,11 +274,21 @@ static NSString *cellID = @"cellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        [self.navigationController pushViewController:[SetClockViewController sharedSetClockViewController] animated:YES];
+    SetClockViewController *setClockVC = [SetClockViewController sharedSetClockViewController];
+    setClockVC.Alert = self.clockArray[indexPath.row];
+    setClockVC.clickTheFirstOrAddBtnFlag = ClickTheFirstClockFlag;
 
-    });
+    
+    [self.navigationController pushViewController:setClockVC animated:YES];
+    
+    
+}
+
+- (NSMutableArray *)clockArray{
+    if (_clockArray == nil) {
+        _clockArray = [NSMutableArray arrayWithCapacity:6];
+    }
+    return _clockArray;
 }
 
 /*

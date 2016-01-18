@@ -10,13 +10,13 @@
 
 @class SetClockTimeController;
 @class SetClockModeController;
-
+@class SetClockMusicViewController;
 
 @interface SetClockViewController : UIViewController
 {
     SetClockTimeController *setClockTimeController;
     SetClockModeController *setClockModeController;
-    
+    SetClockMusicViewController *setClockMusicController;
     
     
 }

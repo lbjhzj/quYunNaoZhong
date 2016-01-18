@@ -76,6 +76,8 @@ static NSString *cellID = @"cellID";
     
      [self initClockCount];
     [self.tabelView reloadData];
+    
+    [super viewWillAppear:animated];
 }
 #pragma mark     从NSUserDefault中读取数据,填充表格
 - (void)initClockCount{

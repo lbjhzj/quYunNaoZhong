@@ -23,6 +23,7 @@
 
 @property(nonatomic,strong)UIImageView * shockSwitchBtn;
 
+@property(nonatomic,assign)BOOL  passingFlag;
 
 
 @end
@@ -83,6 +84,7 @@ static NSString *cellID_2 = @"sliderID";
     [self.tableView reloadData];
 
 #pragma mark如果是新建闹钟，那么alert属性一定为空
+
     if (!self.Alert) {
         self.Alert = [alert new];
         self.Alert.clockState = NO;
@@ -94,16 +96,18 @@ static NSString *cellID_2 = @"sliderID";
         self.clockSoundValueLabel.value = 50.f;
         self.clockMusicLabel.text = @"未设置";
         self.clockExtendLabel.text = @"未设置";
-    }
-    if (self.Alert || [self.clockNameLabel.text isEqualToString:@"未命名"]||[self.clockMusicLabel.text isEqualToString:@"未命名"]) {
-    
-        self.clockNameLabel.text = self.Alert.clockName;
-        self.clockTimeLabel.text = self.Alert.clockTime;
-        self.clockModeLabel.text = self.Alert.clockMode;
-        self.clockSoundValueLabel.value = 50.f;
-        self.clockMusicLabel.text = self.Alert.clockMusic;
+    }else{
+        if (!self.passingFlag) {
+            self.clockNameLabel.text = self.Alert.clockName;
+            self.clockTimeLabel.text = self.Alert.clockTime;
+            self.clockModeLabel.text = self.Alert.clockMode;
+            self.clockSoundValueLabel.value = 50.f;
+            self.clockMusicLabel.text = self.Alert.clockMusic;
+        }
         
     }
+
+
     
     [super viewWillAppear:animated];
 
@@ -113,6 +117,7 @@ static NSString *cellID_2 = @"sliderID";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self addViews];
 
     
     setClockTimeController = [[SetClockTimeController alloc]initWithNibName:@"SetClockTimeController" bundle:nil];
@@ -137,7 +142,7 @@ static NSString *cellID_2 = @"sliderID";
                         ];
     [self.admodBannerView loadRequest:request];
     
-    [self addViews];
+    
 
 }
 
@@ -221,6 +226,7 @@ static NSString *cellID_2 = @"sliderID";
 #pragma mark SetClockMusicVC的传值协议方法
 - (void)passingTheClockMusicToFront:(NSString *)musicName{
     self.clockMusicLabel.text = musicName;
+    self.passingFlag = YES;
 }
 
 #pragma mark SetClockTimeVC的代理传值的协议方法

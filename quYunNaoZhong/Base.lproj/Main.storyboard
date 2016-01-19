@@ -71,12 +71,13 @@
                                     <outlet property="delegate" destination="pd7-lr-iqO" id="eXj-DU-Cxn"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6I-H7-Uo7" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="486" width="600" height="50"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6I-H7-Uo7">
+                                <rect key="frame" x="140" y="486" width="320" height="50"/>
                                 <color key="backgroundColor" red="0.6920878775" green="0.34925545299999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Ba4-d1-zP3"/>
                                     <constraint firstAttribute="width" constant="320" id="cq6-TN-J5Z"/>
+                                    <constraint firstAttribute="width" constant="320" id="yWZ-XS-8cV"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -106,7 +107,9 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="ceV-Vf-x45"/>
+                                <exclude reference="06c-3Y-HkH"/>
                                 <exclude reference="7sG-s1-pkN"/>
+                                <exclude reference="U7t-pF-Aa4"/>
                                 <exclude reference="ek4-LS-hUb"/>
                                 <exclude reference="Yke-AN-bED"/>
                             </mask>
@@ -114,7 +117,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="3id-pW-SdC"/>
                     <connections>
-                        <outlet property="admodBannerView" destination="N6I-H7-Uo7" id="WDi-if-0N7"/>
                         <outlet property="constrainsOfTimeView" destination="ceV-Vf-x45" id="IRH-eT-wPR"/>
                         <outlet property="hourAndMinuteLabel" destination="EN7-ER-R3R" id="pFD-Ep-EYq"/>
                         <outlet property="secondsLabel" destination="csJ-OP-Jo0" id="YzC-TI-ktP"/>
@@ -147,7 +149,7 @@
                                     <outlet property="delegate" destination="uyV-CI-BZf" id="NEg-7Y-1bD"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWl-zj-i1L" customClass="GADBannerView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWl-zj-i1L">
                                 <rect key="frame" x="140" y="486" width="320" height="50"/>
                                 <color key="backgroundColor" red="0.6920878775" green="0.34925545299999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -229,7 +231,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="I9W-1V-tDr"/>
                     <connections>
-                        <outlet property="admodBannerView" destination="DWl-zj-i1L" id="HLL-8F-Im5"/>
                         <outlet property="backToMainVCButton" destination="ed1-aY-jZY" id="68c-jw-vlE"/>
                         <outlet property="tabelView" destination="IpB-9Q-hkC" id="UgQ-DB-dJ4"/>
                         <outlet property="topView" destination="aSb-7y-8v3" id="Mag-Yw-9lr"/>
@@ -300,7 +301,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emb-Fo-drZ" customClass="GADBannerView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emb-Fo-drZ">
                                 <rect key="frame" x="140" y="486" width="320" height="50"/>
                                 <color key="backgroundColor" red="0.6920878775" green="0.34925545299999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -360,7 +361,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="ug7-1s-Kj6"/>
                     <connections>
-                        <outlet property="admodBannerView" destination="emb-Fo-drZ" id="0my-Ws-vxo"/>
                         <outlet property="tableView" destination="Sq5-m0-0pI" id="tlb-PX-S03"/>
                     </connections>
                 </viewController>

@@ -5,15 +5,15 @@
 //  Created by 趣云科技 on 16/1/6.
 //  Copyright © 2016年 趣云科技. All rights reserved.
 //
-@import GoogleMobileAds;
+
 
 #import "MainViewController.h"
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     SetClockViewController *setClockVC;
+    GADMasterViewController *shared;
 }
-//广告框
-@property (weak, nonatomic) IBOutlet GADBannerView *admodBannerView;
+
 
 //切换到闹钟页的视图
 @property (strong,nonatomic)UIView *bottomView;
@@ -54,6 +54,7 @@ static NSString *cellID = @"cellID";
     [self initClockCount];
     [self.clockArray removeAllObjects];
     for (int i=0; i<self.clockCount; i++) {
+       
        alert *Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy/MM/dd (ccc)"];
@@ -63,6 +64,10 @@ static NSString *cellID = @"cellID";
         }
     }
     [self.tableView reloadData];
+    
+    shared = [GADMasterViewController singleton];
+    [shared resetAdView:self];
+    
     [super viewWillAppear:animated];
 }
 
@@ -90,21 +95,21 @@ static NSString *cellID = @"cellID";
     
     setClockVC = [SetClockViewController sharedSetClockViewController];
     
-    // Replace this ad unit ID with your own ad unit ID.
-    self.admodBannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
-    self.admodBannerView.rootViewController = self;
-
-
-    GADRequest *request = [GADRequest request];
-    // Requests test ads on devices you specify. Your test device ID is printed to the console when
-    // an ad request is made. GADBannerView automatically returns test ads when running on a
-    // simulator.
-    request.testDevices = @[
-                            @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
-                            ];
-    
-    
-    [self.admodBannerView loadRequest:request];
+//    // Replace this ad unit ID with your own ad unit ID.
+//    self.admodBannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+//    self.admodBannerView.rootViewController = self;
+//    
+//    
+//    GADRequest *request = [GADRequest request];
+//    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+//    // an ad request is made. GADBannerView automatically returns test ads when running on a
+//    // simulator.
+//    request.testDevices = @[
+//                            @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
+//                            ];
+//    
+//    
+//    [self.admodBannerView loadRequest:request];
     
     
     

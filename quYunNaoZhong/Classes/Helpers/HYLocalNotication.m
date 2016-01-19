@@ -21,6 +21,8 @@
     return hyLocalNotication;
 }
 
+
+
 /**
  * 震动
  **/
@@ -84,16 +86,16 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     [clockDictionary setObject:Alert.clockMode forKey:@"ClockMode"];
     [clockDictionary setObject:Alert.clockName forKey:@"ClockName"];
     [clockDictionary setObject:Alert.clockID forKey:@"ClockID"];
-#warning music&&小睡,暂时关闭
-    //    [clockDictionary setObject:self.clockMusicLabel.text forKey:@"ClockMusic"];
+#warning 小睡,暂时关闭
+    [clockDictionary setObject:Alert.clockMusic forKey:@"ClockMusic"];
     //    [clockDictionary setObject:self.clockExtendLabel.text forKey:@"ClockExtend"];
     [clockDictionary setObject:[NSString stringWithFormat:@"%ld",Alert.clockSoundValue] forKey:@"ClockSoundValue"];
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setObject:clockDictionary forKey:Alert.clockID];
-        NSLog(@"clockID======%@",Alert.clockID);
+//        NSLog(@"clockID======%@",Alert.clockID);
     
-    NSLog(@"%@",clockDictionary);
+//    NSLog(@"%@",clockDictionary);
     
 
 }
@@ -112,7 +114,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     NSString *clockTime = [clockDictionary objectForKey:@"ClockTime"];
     NSString *clockMode = [clockDictionary objectForKey:@"ClockMode"];
     NSString *clockMusic = [clockDictionary objectForKey:@"ClockMusic"];
-    NSString *clockRemember = [clockDictionary objectForKey:@"ClockRemember"];
+//    NSString *clockRemember = [clockDictionary objectForKey:@"ClockRemember"];
 
     //-----组建本地通知的fireDate-----------------------------------------------
     

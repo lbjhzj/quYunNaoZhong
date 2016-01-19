@@ -9,7 +9,9 @@
 #import "mainSetViewController.h"
 
 @interface mainSetViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    GADMasterViewController *shared;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
@@ -31,6 +33,12 @@ static NSString *cellID = @"cellID";
     [super viewDidLoad];
 
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    shared = [GADMasterViewController singleton];
+    [shared resetAdView:self];
 }
 
 - (IBAction)makeSureBtnAction:(UIButton *)sender {

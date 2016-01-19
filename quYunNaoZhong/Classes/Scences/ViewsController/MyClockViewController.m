@@ -9,8 +9,10 @@
 
 #import "MyClockViewController.h"
 
-@interface MyClockViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+@interface MyClockViewController ()<UITableViewDataSource,UITableViewDelegate,GADBannerViewDelegate>
+{
+    GADMasterViewController *shared;
+}
 
 
 //切换到闹钟页的视图
@@ -50,31 +52,38 @@ static NSString *cellID = @"cellID";
     
     self.setClockVC = [SetClockViewController sharedSetClockViewController];
     
-    // Replace this ad unit ID with your own ad unit ID.
-    self.admodBannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
-    self.admodBannerView.rootViewController = self;
-
-
-    GADRequest *request = [GADRequest request];
-    // Requests test ads on devices you specify. Your test device ID is printed to the console when
-    // an ad request is made. GADBannerView automatically returns test ads when running on a
-    // simulator.
-    request.testDevices = @[
-                            @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
-                        ];
-    [self.admodBannerView loadRequest:request];
-
-        
+//    // Replace this ad unit ID with your own ad unit ID.
+//    self.admodBannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+//    self.admodBannerView.rootViewController = self;
+//
+//
+//    GADRequest *request = [GADRequest request];
+//    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+//    // an ad request is made. GADBannerView automatically returns test ads when running on a
+//    // simulator.
+//    request.testDevices = @[
+//                            @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
+//                        ];
+//    [self.admodBannerView loadRequest:request];
+//
+//        
     [self.tabelView registerNib:[UINib nibWithNibName:@"MyAlertCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellID];
+
     
     [self addAllViews];
 
 }
 
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
+    
+}
 //    从NSUserDefault中读取数据,填充表格
 - (void)viewWillAppear:(BOOL)animated{
     
-     [self initClockCount];
+    shared = [GADMasterViewController singleton];
+    [shared resetAdView:self];
+    
+    [self initClockCount];
     [self.tabelView reloadData];
     
     [super viewWillAppear:animated];
@@ -98,8 +107,6 @@ static NSString *cellID = @"cellID";
     [self.navigationController pushViewController:[mainSetViewController sharedMainSetViewController] animated:YES];
 
 }
-
-
 
 #pragma mark 添加视图
 - (void)addAllViews{

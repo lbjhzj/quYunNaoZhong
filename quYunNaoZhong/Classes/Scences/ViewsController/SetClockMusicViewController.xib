@@ -12,6 +12,7 @@
                 <outlet property="recordBtnUnderLine" destination="JZG-cm-XFq" id="4ZZ-8X-c3N"/>
                 <outlet property="ringBtnUnderLine" destination="teo-Pd-t2o" id="Tc3-KI-a2B"/>
                 <outlet property="tableView" destination="xT0-me-gZv" id="jlv-WQ-y4e"/>
+                <outlet property="topView" destination="c3V-Rd-jle" id="m0m-sr-ras"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

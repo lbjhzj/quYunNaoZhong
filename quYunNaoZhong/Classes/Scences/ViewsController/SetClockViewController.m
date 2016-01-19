@@ -10,7 +10,9 @@
 #import "SetClockViewController.h"
 
 @interface SetClockViewController ()<UITableViewDataSource,UITableViewDelegate,PassingTheClockTimeDelegate,UITextFieldDelegate,PassingTheClockModeDelegate,PassingTheClockMusicDelegate>
-
+{
+    GADMasterViewController *shared;
+}
 @property (weak, nonatomic) IBOutlet GADBannerView *admodBannerView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -51,6 +53,9 @@ static NSString *cellID_2 = @"sliderID";
 
 - (void)viewWillAppear:(BOOL)animated{
 
+    shared = [GADMasterViewController singleton];
+    [shared resetAdView:self];
+    
     UITableViewCell *cell1 = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     UITableViewCell *cell2 = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     UITableViewCell *cell3 = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
@@ -135,18 +140,18 @@ static NSString *cellID_2 = @"sliderID";
     setClockMusicController.delegate = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID_2];
     
-    // Replace this ad unit ID with your own ad unit ID.
-    self.admodBannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
-    self.admodBannerView.rootViewController = self;
-   
-    GADRequest *request = [GADRequest request];
-    // Requests test ads on devices you specify. Your test device ID is printed to the console when
-    // an ad request is made. GADBannerView automatically returns test ads when running on a
-    // simulator.
-    request.testDevices = @[
-                                @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
-                        ];
-    [self.admodBannerView loadRequest:request];
+//    // Replace this ad unit ID with your own ad unit ID.
+//    self.admodBannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+//    self.admodBannerView.rootViewController = self;
+//   
+//    GADRequest *request = [GADRequest request];
+//    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+//    // an ad request is made. GADBannerView automatically returns test ads when running on a
+//    // simulator.
+//    request.testDevices = @[
+//                                @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
+//                        ];
+//    [self.admodBannerView loadRequest:request];
     
     
 
@@ -168,7 +173,30 @@ static NSString *cellID_2 = @"sliderID";
 - (IBAction)makeSureAddOrChangeClockInformation:(UIButton *)sender {
 
 //    数据永久化
-    [self saveClockData:self.Alert];
+    
+        NSString *nameStr = self.clockNameLabel.text;
+        self.Alert.clockName = nameStr;
+
+        NSLog(@"111111textField=======%@",self.Alert.clockName);
+    
+    self.Alert.clockTime = self.clockTimeLabel.text;
+    self.Alert.clockMode = self.clockModeLabel.text;
+    self.Alert.clockMusic = self.clockMusicLabel.text;
+    self.Alert.clockSoundValue = self.clockSoundValueLabel.value;
+
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        self.clockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
+        if (!self.clockID) {
+            if (![self.clickTheFirstOrAddBtnFlag isEqualToString:ClickTheFirstClockFlag]) {
+                _clockID = _clockCount++;
+                  self.Alert.clockID = [NSString stringWithFormat:@"%d",_clockID];
+                [userDefault setObject:[NSNumber numberWithInt:self.clockCount] forKey:@"ClockCount"];
+            }
+        }
+    
+  
+    //    NSLog(@"clockID======%d",_clockID);
+    [[HYLocalNotication shareHYLocalNotication] saveClockData:self.Alert];
     
     if (self.Alert.clockState) {
         
@@ -181,53 +209,53 @@ static NSString *cellID_2 = @"sliderID";
 }
 
 #pragma mark 闹钟数据永久化
-- (void)saveClockData:(alert *)Alert{
-    NSMutableDictionary *clockDictionary = [NSMutableDictionary dictionaryWithCapacity:12];
-    
-    if (Alert.clockState) {
-      [clockDictionary setObject:[NSString stringWithFormat:@"YES"] forKey:@"ClockState"];
-    }else{
-      [clockDictionary setObject:[NSString stringWithFormat:@"NO"] forKey:@"ClockState"];
-    }
-    if (Alert.clockForce) {
-        [clockDictionary setObject:@"YES" forKey:@"ClockForce"];
-    }else{
-        [clockDictionary setObject:@"NO" forKey:@"ClockForce"];
-    }
-    if (Alert.clockShock) {
-        [clockDictionary setObject:@"YES" forKey:@"ClockShock"];
-    }else{
-        [clockDictionary setObject:@"NO" forKey:@"ClockShock"];
-    }
-    [clockDictionary setObject:self.clockTimeLabel.text forKey:@"ClockTime"];
-    [clockDictionary setObject:self.clockModeLabel.text forKey:@"ClockMode"];
-    [clockDictionary setObject:self.clockNameLabel.text forKey:@"ClockName"];
-#warning music&&小睡,暂时关闭
-    [clockDictionary setObject:self.clockMusicLabel.text forKey:@"ClockMusic"];
-//    [clockDictionary setObject:self.clockExtendLabel.text forKey:@"ClockExtend"];
-    [clockDictionary setObject:[NSString stringWithFormat:@"%f",self.clockSoundValueLabel.value] forKey:@"ClockSoundValue"];
-
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    self.clockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
-    if (!self.clockID) {
-        if (![self.clickTheFirstOrAddBtnFlag isEqualToString:ClickTheFirstClockFlag]) {
-            _clockID = _clockCount++;
-        }
-    }
-//    NSLog(@"clockID======%d",_clockID);
-    [clockDictionary setObject:[NSString stringWithFormat:@"%d",self.clockID]forKey:@"ClockID"];
-    [userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.clockID]];
-    
-
-    [userDefault setObject:[NSNumber numberWithInt:self.clockCount] forKey:@"ClockCount"];
-
-
-    
-    NSLog(@"%@",clockDictionary);
-    
-    
-
-}
+//- (void)saveClockData:(alert *)Alert{
+//    NSMutableDictionary *clockDictionary = [NSMutableDictionary dictionaryWithCapacity:12];
+//    
+//    if (Alert.clockState) {
+//      [clockDictionary setObject:[NSString stringWithFormat:@"YES"] forKey:@"ClockState"];
+//    }else{
+//      [clockDictionary setObject:[NSString stringWithFormat:@"NO"] forKey:@"ClockState"];
+//    }
+//    if (Alert.clockForce) {
+//        [clockDictionary setObject:@"YES" forKey:@"ClockForce"];
+//    }else{
+//        [clockDictionary setObject:@"NO" forKey:@"ClockForce"];
+//    }
+//    if (Alert.clockShock) {
+//        [clockDictionary setObject:@"YES" forKey:@"ClockShock"];
+//    }else{
+//        [clockDictionary setObject:@"NO" forKey:@"ClockShock"];
+//    }
+//    [clockDictionary setObject:self.clockTimeLabel.text forKey:@"ClockTime"];
+//    [clockDictionary setObject:self.clockModeLabel.text forKey:@"ClockMode"];
+//    [clockDictionary setObject:self.clockNameLabel.text forKey:@"ClockName"];
+//#warning music&&小睡,暂时关闭
+//    [clockDictionary setObject:self.clockMusicLabel.text forKey:@"ClockMusic"];
+////    [clockDictionary setObject:self.clockExtendLabel.text forKey:@"ClockExtend"];
+//    [clockDictionary setObject:[NSString stringWithFormat:@"%f",self.clockSoundValueLabel.value] forKey:@"ClockSoundValue"];
+//
+//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    self.clockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
+//    if (!self.clockID) {
+//        if (![self.clickTheFirstOrAddBtnFlag isEqualToString:ClickTheFirstClockFlag]) {
+//            _clockID = _clockCount++;
+//        }
+//    }
+////    NSLog(@"clockID======%d",_clockID);
+//    [clockDictionary setObject:[NSString stringWithFormat:@"%d",self.clockID]forKey:@"ClockID"];
+//    [userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.clockID]];
+//    
+//
+//    [userDefault setObject:[NSNumber numberWithInt:self.clockCount] forKey:@"ClockCount"];
+//
+//
+//    
+////    NSLog(@"%@",clockDictionary);
+//    
+//    
+//
+//}
 
 #pragma mark SetClockMusicVC的传值协议方法
 - (void)passingTheClockMusicToFront:(NSString *)musicName{

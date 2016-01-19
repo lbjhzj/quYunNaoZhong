@@ -21,6 +21,8 @@
 #import "UIColor+hex.h"
 #import "NSString+dateTransformToNSString.h"
 
+#import "GADMasterViewController.h"
+
 #import "alertCell.h"
 
 #import "MyAlertCell.h"

@@ -19,6 +19,10 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *musicLibraryBtnUnderLine;
 
+@property (weak, nonatomic) IBOutlet UIView *topView;
+
+@property(nonatomic,strong)UIView * recordView;
+
 //@property(nonatomic,assign)BOOL  isOpen;
 //
 //@property(nonatomic,retain)NSIndexPath * selectIndex;
@@ -83,21 +87,40 @@
 }
 
 - (IBAction)ringBtnAction:(UIButton *)sender {
-    self.ringBtnUnderLine.hidden = !self.ringBtnUnderLine.hidden;
+    
+    if (self.ringBtnUnderLine.hidden) {
+       self.ringBtnUnderLine.hidden = !self.ringBtnUnderLine.hidden;
+    }
+    
     self.musicLibraryBtnUnderLine.hidden = YES;
     self.recordBtnUnderLine.hidden = YES;
+    [self.recordView removeFromSuperview];
 }
 
 - (IBAction)musicLibraryBtnAction:(UIButton *)sender {
-    self.musicLibraryBtnUnderLine.hidden = !self.musicLibraryBtnUnderLine.hidden;
+    
+    if (self.musicLibraryBtnUnderLine.hidden) {
+        self.musicLibraryBtnUnderLine.hidden = !self.musicLibraryBtnUnderLine.hidden;
+    }
+    
     self.ringBtnUnderLine.hidden = YES;
     self.recordBtnUnderLine.hidden = YES;
 }
 
 - (IBAction)recordBtnAction:(UIButton *)sender {
-    self.recordBtnUnderLine.hidden = !self.recordBtnUnderLine.hidden;
+    
+
+    if (self.recordBtnUnderLine.hidden) {
+        self.recordBtnUnderLine.hidden = !self.recordBtnUnderLine.hidden;
+        NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"recordView" owner:self options:nil];
+        self.recordView = [nib objectAtIndex:0];
+        _recordView.frame = self.tableView.frame;
+        [self.view addSubview:_recordView];
+    }
     self.musicLibraryBtnUnderLine.hidden = YES;
     self.ringBtnUnderLine.hidden = YES;
+    
+
 }
 
 #pragma mark tableView的协议方法

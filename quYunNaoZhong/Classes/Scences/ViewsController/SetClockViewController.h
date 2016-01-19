@@ -33,6 +33,7 @@
 //传入闹钟模型接口
 @property(nonatomic,strong)alert * Alert;
 
+@property(nonatomic,assign)BOOL  passingFlag;
 
 @property(nonatomic,strong)UITextField * clockNameLabel;
 

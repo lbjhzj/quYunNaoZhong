@@ -23,7 +23,7 @@
 
 @property(nonatomic,strong)UIImageView * shockSwitchBtn;
 
-@property(nonatomic,assign)BOOL  passingFlag;
+
 
 
 @end
@@ -111,6 +111,12 @@ static NSString *cellID_2 = @"sliderID";
     
     [super viewWillAppear:animated];
 
+}
+
+- (void)dealloc{
+    setClockTimeController.delegate = nil;
+    setClockModeController.delegate = nil;
+    setClockMusicController.delegate = nil;
 }
 
 
@@ -233,7 +239,7 @@ static NSString *cellID_2 = @"sliderID";
 //闹钟设定时间的传值
 - (void)passingClockTimeToHere:(NSString *)clockTime{
     
-
+    self.passingFlag = YES;
     self.clockTimeLabel.text = clockTime;
 }
 
@@ -256,7 +262,7 @@ static NSString *cellID_2 = @"sliderID";
     NSString *modeStr = [tempArray componentsJoinedByString:@","];
 //    NSLog(@"modeStr===%@",modeStr);
     self.clockModeLabel.text = modeStr;
-    
+    self.passingFlag = YES;
 }
 
 #pragma mark 闹钟的音量设置

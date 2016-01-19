@@ -9,7 +9,9 @@
 
 #import "MainViewController.h"
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    SetClockViewController *setClockVC;
+}
 //广告框
 @property (weak, nonatomic) IBOutlet GADBannerView *admodBannerView;
 
@@ -85,6 +87,8 @@ static NSString *cellID = @"cellID";
     [self.tableView registerNib:[UINib nibWithNibName:@"alertCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellID];
     
     [self addViews];
+    
+    setClockVC = [SetClockViewController sharedSetClockViewController];
     
     // Replace this ad unit ID with your own ad unit ID.
     self.admodBannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
@@ -274,10 +278,10 @@ static NSString *cellID = @"cellID";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    SetClockViewController *setClockVC = [SetClockViewController sharedSetClockViewController];
+
     setClockVC.Alert = self.clockArray[indexPath.row];
     setClockVC.clickTheFirstOrAddBtnFlag = ClickTheFirstClockFlag;
-
+    setClockVC.passingFlag = NO;
     
     [self.navigationController pushViewController:setClockVC animated:YES];
     

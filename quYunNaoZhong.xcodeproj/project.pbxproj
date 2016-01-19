@@ -74,6 +74,8 @@
 		7DF1B4051C4898C80090BD64 /* 大王叫我来巡山-原声带.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B4041C4898C80090BD64 /* 大王叫我来巡山-原声带.mp3 */; };
 		7DF1B40C1C48C0A00090BD64 /* mainSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF1B40A1C48C0A00090BD64 /* mainSetViewController.m */; };
 		7DF1B40D1C48C0A00090BD64 /* mainSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B40B1C48C0A00090BD64 /* mainSetViewController.xib */; };
+		7DF6948C1C4DCBC2002175CD /* ForceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6948A1C4DCBC2002175CD /* ForceViewController.m */; };
+		7DF6948D1C4DCBC2002175CD /* ForceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF6948B1C4DCBC2002175CD /* ForceViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +172,9 @@
 		7DF1B4091C48C0A00090BD64 /* mainSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainSetViewController.h; sourceTree = "<group>"; };
 		7DF1B40A1C48C0A00090BD64 /* mainSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainSetViewController.m; sourceTree = "<group>"; };
 		7DF1B40B1C48C0A00090BD64 /* mainSetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mainSetViewController.xib; sourceTree = "<group>"; };
+		7DF694891C4DCBC2002175CD /* ForceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForceViewController.h; sourceTree = "<group>"; };
+		7DF6948A1C4DCBC2002175CD /* ForceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForceViewController.m; sourceTree = "<group>"; };
+		7DF6948B1C4DCBC2002175CD /* ForceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForceViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +386,7 @@
 		7D730B3A1C3CD9DB00C095C5 /* ViewsController */ = {
 			isa = PBXGroup;
 			children = (
+				7DF6948E1C4DCBC8002175CD /* ForceClock */,
 				7DCD71FB1C4795120072DDC5 /* SetClockMusic */,
 				7D1B5AAA1C44E11C0053E6B8 /* SetClockMode */,
 				7D5554401C434290001D67A8 /* SetClockTime */,
@@ -461,6 +467,16 @@
 			path = "音乐铃声";
 			sourceTree = "<group>";
 		};
+		7DF6948E1C4DCBC8002175CD /* ForceClock */ = {
+			isa = PBXGroup;
+			children = (
+				7DF694891C4DCBC2002175CD /* ForceViewController.h */,
+				7DF6948A1C4DCBC2002175CD /* ForceViewController.m */,
+				7DF6948B1C4DCBC2002175CD /* ForceViewController.xib */,
+			);
+			name = ForceClock;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -520,6 +536,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D1FC44F1C4C9BAC00044051 /* 木琴.mp3 in Resources */,
+				7DF6948D1C4DCBC2002175CD /* ForceViewController.xib in Resources */,
 				7D1FC44A1C4C9BAC00044051 /* 吉他扫弦.mp3 in Resources */,
 				7D1FC44D1C4C9BAC00044051 /* 马林巴琴.mp3 in Resources */,
 				7DCD72031C47A0820072DDC5 /* 布谷鸟.caf in Resources */,
@@ -592,6 +609,7 @@
 				7DF1B40C1C48C0A00090BD64 /* mainSetViewController.m in Sources */,
 				7D5554441C4343BE001D67A8 /* SetClockTimeController.m in Sources */,
 				7DCD71FF1C4795390072DDC5 /* SetClockMusicViewController.m in Sources */,
+				7DF6948C1C4DCBC2002175CD /* ForceViewController.m in Sources */,
 				7D730B191C3CD94800C095C5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

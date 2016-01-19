@@ -166,7 +166,7 @@ static NSString *cellID = @"cellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     self.setClockVC.clickTheFirstOrAddBtnFlag = ClickTheFirstClockFlag;
-    
+    self.setClockVC.passingFlag = NO;
     self.setClockVC.Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:indexPath];
     self.setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];
     [self.navigationController pushViewController:self.setClockVC animated:YES];

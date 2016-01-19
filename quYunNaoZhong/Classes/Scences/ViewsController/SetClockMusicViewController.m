@@ -10,7 +10,9 @@
 
 
 @interface SetClockMusicViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    GADMasterViewController *shared;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *ringBtnUnderLine;
@@ -23,9 +25,8 @@
 
 @property(nonatomic,strong)UIView * recordView;
 
-//@property(nonatomic,assign)BOOL  isOpen;
-//
-//@property(nonatomic,retain)NSIndexPath * selectIndex;
+
+@property (weak, nonatomic) IBOutlet UILabel *recordTimeDurationLabel;
 
 @property(nonatomic,strong)NSMutableArray * musicList;
 
@@ -33,12 +34,21 @@
 
 @property(nonatomic,strong)AVAudioPlayer * player;
 
+
+
+
 @property(nonatomic,weak)NSString * selectedMusicName;
 
 
 @end
 
 @implementation SetClockMusicViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    shared = [GADMasterViewController singleton];
+    [shared resetAdView:self];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,6 +70,31 @@
         }
     }
     
+//    关于录音模块的设置
+    if ([[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending)
+    {
+        //7.0第一次运行会提示，是否允许使用麦克风
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        NSError *sessionError;
+        //AVAudioSessionCategoryPlayAndRecord用于录音和播放
+        [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&sessionError];
+        if(session == nil)
+            NSLog(@"Error creating session: %@", [sessionError description]);
+        else
+            [session setActive:YES error:nil];
+    }
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    playName = [NSString stringWithFormat:@"%@/play.aac",docDir];
+    //录音设置
+    recorderSettingsDict =[[NSDictionary alloc] initWithObjectsAndKeys:
+                           [NSNumber numberWithInt:kAudioFormatMPEG4AAC],AVFormatIDKey,
+                           [NSNumber numberWithInt:1000.0],AVSampleRateKey,
+                           [NSNumber numberWithInt:2],AVNumberOfChannelsKey,
+                           [NSNumber numberWithInt:8],AVLinearPCMBitDepthKey,
+                           [NSNumber numberWithBool:NO],AVLinearPCMIsBigEndianKey,
+                           [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,
+                           nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,8 +106,10 @@
 #pragma mark 返回上级设置
 - (IBAction)backToSetViewControllerAction:(UIButton *)sender {
     
-    [self.navigationController popViewControllerAnimated:YES];
-    [self.player stop];
+    [self dismissViewControllerAnimated:YES completion:^{
+       [self.player stop];
+    }];
+    
 }
 
 #pragma mark 确认更改音乐铃声
@@ -82,8 +119,9 @@
         [self.delegate passingTheClockMusicToFront:self.selectedMusicName];
     }
     
-    [self.player stop];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.player stop];
+    }];
 }
 
 - (IBAction)ringBtnAction:(UIButton *)sender {
@@ -108,45 +146,81 @@
 }
 
 - (IBAction)recordBtnAction:(UIButton *)sender {
+    [self.player stop];
     
+
 
     if (self.recordBtnUnderLine.hidden) {
         self.recordBtnUnderLine.hidden = !self.recordBtnUnderLine.hidden;
         NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"recordView" owner:self options:nil];
         self.recordView = [nib objectAtIndex:0];
-        _recordView.frame = self.tableView.frame;
+        _recordView.frame=CGRectMake(0, 79, self.view.frame.size.width, self.view.frame.size.height-50-79);
+
         [self.view addSubview:_recordView];
+        
     }
     self.musicLibraryBtnUnderLine.hidden = YES;
     self.ringBtnUnderLine.hidden = YES;
     
 
 }
+#pragma mark 开始或停止录音
+- (IBAction)stopRecordAction:(UIButton *)sender {
+    //松开 结束录音
+    NSLog(@"松开");
+    //录音停止
+    [recorder stop];
+    recorder = nil;
+    //结束定时器
+    [timer invalidate];
+    timer = nil;
+    
+    NSArray *array = [HYLocalNotication getFilenamelistOfType:@"aac" fromDirPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]];
+    NSLog(@"%@",array);
+    
+}
+
+- (IBAction)startRecordAction:(UIButton *)sender {
+    NSLog(@"开始");
+    //按下录音
+    if ([self canRecord]) {
+        
+        NSError *error = nil;
+        //必须真机上测试,模拟器上可能会崩溃
+        recorder = [[AVAudioRecorder alloc] initWithURL:[NSURL URLWithString:playName] settings:recorderSettingsDict error:&error];
+
+        if (recorder) {
+            recorder.meteringEnabled = YES;
+            [recorder prepareToRecord];
+            [recorder record];
+            
+            //启动定时器
+            timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(levelTimer:) userInfo:nil repeats:YES];
+            
+        } else
+        {
+            int errorCode = CFSwapInt32HostToBig ([error code]);
+            NSLog(@"Error: %@ [%4.4s])" , [error localizedDescription], (char*)&errorCode);
+            
+        }
+    }
+
+}
+- (IBAction)stopRecordActionTooAction:(UIButton *)sender {
+    NSLog(@"照样算松开");
+    //松开 结束录音
+    
+    //录音停止
+    [recorder stop];
+    recorder = nil;
+    //结束定时器
+    [timer invalidate];
+    timer = nil;
+}
 
 #pragma mark tableView的协议方法
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (self.isOpen&&self.selectIndex.section == indexPath.section&&indexPath.row!=0) {
-//        static NSString *cellID2 = @"cell2";
-//        ringCell *cell = (ringCell *)[tableView dequeueReusableCellWithIdentifier:cellID2];
-//        if (!cell) {
-//            cell = [[[NSBundle mainBundle] loadNibNamed:@"ringCell" owner:self options:nil]objectAtIndex:0];
-//        }
-//        cell.textLabel.text = [self.musicList objectAtIndex:indexPath.row-1];
-//        return cell;
-//    }else{
-//    static NSString *cellID1 = @"cell1";
-//        sectionCell *cell = (sectionCell *)[tableView dequeueReusableCellWithIdentifier:cellID1];
-//        if (!cell) {
-//        cell = [[[NSBundle mainBundle] loadNibNamed:@"sectionCell" owner:self options:nil] objectAtIndex:0];
-//        }
-//        if (indexPath.section == 0) {
-//            cell.textLabel.text = @"段铃音";
-//        }else{
-//            cell.textLabel.text = @"铃音";
-//        }
-//        
-//    return cell;  
-//    }
+
     if (indexPath.row == 0) {
         static NSString *cell1 = @"cell1";
         sectionCell *cell = [tableView dequeueReusableCellWithIdentifier:cell1];
@@ -281,6 +355,46 @@
 //    }
 //    return 1;
 //}
+#pragma mark 判断是否允许使用麦克风7.0新增的方法requestRecordPermission
+-(BOOL)canRecord
+{
+    __block BOOL bCanRecord = YES;
+    if ([[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending)
+    {
+        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+        if ([audioSession respondsToSelector:@selector(requestRecordPermission:)]) {
+            [audioSession performSelector:@selector(requestRecordPermission:) withObject:^(BOOL granted) {
+                if (granted) {
+                    bCanRecord = YES;
+                }
+                else {
+                    bCanRecord = NO;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[[UIAlertView alloc] initWithTitle:nil
+                                                    message:@"app需要访问您的麦克风。\n请启用麦克风-设置/隐私/麦克风"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"关闭"
+                                          otherButtonTitles:nil] show];
+                    });
+                }
+            }];
+        }
+    }
+    
+    return bCanRecord;
+}
+-(void)levelTimer:(NSTimer*)timer_
+{
+    //call to refresh meter values刷新平均和峰值功率,此计数是以对数刻度计量的,-160表示完全安静，0表示最大输入值
+    [recorder updateMeters];
+    const double ALPHA = 0.05;
+    double peakPowerForChannel = pow(10, (0.05 * [recorder peakPowerForChannel:0]));
+    lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * lowPassResults;
+    
+    NSLog(@"Average input: %f Peak input: %f Low pass results: %f", [recorder averagePowerForChannel:0], [recorder peakPowerForChannel:0], lowPassResults);
+    
+    
+}
 
 
 - (NSMutableArray *)musicList{

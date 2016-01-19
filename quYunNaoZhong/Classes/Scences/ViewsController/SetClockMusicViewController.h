@@ -15,7 +15,15 @@
 @end
 
 @interface SetClockMusicViewController : UIViewController <AVAudioPlayerDelegate>
-
+{
+    AVAudioRecorder * recorder;
+    NSDictionary *recorderSettingsDict;
+    //定时器
+    NSTimer *timer;
+    double lowPassResults;
+    //录音名字
+    NSString *playName;
+}
 @property(nonatomic,assign)id <PassingTheClockMusicDelegate> delegate;
 
 

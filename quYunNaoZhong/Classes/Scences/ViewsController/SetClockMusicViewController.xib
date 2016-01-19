@@ -136,7 +136,7 @@
                     </variation>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xT0-me-gZv">
-                    <rect key="frame" x="0.0" y="79" width="600" height="521"/>
+                    <rect key="frame" x="0.0" y="79" width="600" height="471"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="y4G-5k-RYU"/>
@@ -150,7 +150,7 @@
                 <constraint firstItem="c3V-Rd-jle" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AGM-Hy-iGx"/>
                 <constraint firstItem="xT0-me-gZv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="InE-nF-Fq7"/>
                 <constraint firstItem="xT0-me-gZv" firstAttribute="top" secondItem="c3V-Rd-jle" secondAttribute="bottom" id="KAg-Qc-8vI"/>
-                <constraint firstAttribute="bottom" secondItem="xT0-me-gZv" secondAttribute="bottom" id="NV0-3l-ZBD"/>
+                <constraint firstAttribute="bottom" secondItem="xT0-me-gZv" secondAttribute="bottom" constant="50" id="NV0-3l-ZBD"/>
                 <constraint firstAttribute="trailing" secondItem="xT0-me-gZv" secondAttribute="trailing" id="nvZ-N8-Bha"/>
                 <constraint firstAttribute="trailing" secondItem="c3V-Rd-jle" secondAttribute="trailing" id="xOq-lR-Fgo"/>
             </constraints>

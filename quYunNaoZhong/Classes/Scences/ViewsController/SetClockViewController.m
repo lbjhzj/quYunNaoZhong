@@ -139,21 +139,6 @@ static NSString *cellID_2 = @"sliderID";
     setClockModeController.delegate = self;
     setClockMusicController.delegate = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID_2];
-    
-//    // Replace this ad unit ID with your own ad unit ID.
-//    self.admodBannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
-//    self.admodBannerView.rootViewController = self;
-//   
-//    GADRequest *request = [GADRequest request];
-//    // Requests test ads on devices you specify. Your test device ID is printed to the console when
-//    // an ad request is made. GADBannerView automatically returns test ads when running on a
-//    // simulator.
-//    request.testDevices = @[
-//                                @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
-//                        ];
-//    [self.admodBannerView loadRequest:request];
-    
-    
 
 }
 
@@ -541,7 +526,10 @@ static NSString *cellID_2 = @"sliderID";
                 [self.navigationController pushViewController:setClockModeController animated:YES];
                 break;
             case 3:
-                [self.navigationController pushViewController:setClockMusicController animated:YES];
+                [self presentViewController:setClockMusicController animated:YES completion:^{
+                    
+                }];
+//                [self.navigationController pushViewController:setClockMusicController animated:YES];
                 break;
             case 4:
                 

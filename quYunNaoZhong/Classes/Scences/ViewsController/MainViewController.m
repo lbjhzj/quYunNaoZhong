@@ -7,8 +7,10 @@
 //
 
 
+@import GoogleMobileAds;
+
 #import "MainViewController.h"
-@interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MainViewController ()<UITableViewDataSource,UITableViewDelegate,GADBannerViewDelegate>
 {
     SetClockViewController *setClockVC;
     GADMasterViewController *shared;
@@ -51,6 +53,7 @@ static NSString *cellID = @"cellID";
 
 - (void)viewWillAppear:(BOOL)animated{
     
+//    初始化当天的闹钟数组
     [self initClockCount];
     [self.clockArray removeAllObjects];
     for (int i=0; i<self.clockCount; i++) {
@@ -59,18 +62,38 @@ static NSString *cellID = @"cellID";
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy/MM/dd (ccc)"];
         NSString *dateMode=[NSString stringFromDate:[NSDate date] ByFormatter:formatter];
-        if ([Alert.clockMode containsString:[(NSString *)([dateMode componentsSeparatedByString:@"周"][1]) componentsSeparatedByString:@")"][0]]) {
-            [self.clockArray addObject:Alert];
+        
+//        检测本机语言
+        NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+        NSArray* languages = [defs objectForKey:@"AppleLanguages"];
+        NSString* preferredLang = [languages objectAtIndex:0];
+  
+        
+        if ([preferredLang containsString:@"en"]) {
+            
+        }else{
+            if ([Alert.clockMode containsString:[(NSString *)([dateMode componentsSeparatedByString:@"周"][1]) componentsSeparatedByString:@")"][0]]) {
+                [self.clockArray addObject:Alert];
+            }
         }
+
     }
     [self.tableView reloadData];
     
+//    设置谷歌广告
     shared = [GADMasterViewController singleton];
     [shared resetAdView:self];
+    
     
     [super viewWillAppear:animated];
 }
 
+#pragma mark 谷歌广告协议方法
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
+    
+}
+
+#pragma mark 初始化闹钟总个数
 - (void)initClockCount{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
 //        NSLog(@"%@",[userDefault objectForKey:@"ClockCount"]);
@@ -84,7 +107,7 @@ static NSString *cellID = @"cellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-#warning 删除存储的所有闹钟数据===========测试
+#pragma mark 删除存储的所有闹钟数据===========测试
 //    [[HYLocalNotication shareHYLocalNotication] removeAllDataInUserDefault];
     
     self.myClockVC = [MyClockViewController sharedMyClockViewController];
@@ -94,24 +117,6 @@ static NSString *cellID = @"cellID";
     [self addViews];
     
     setClockVC = [SetClockViewController sharedSetClockViewController];
-    
-//    // Replace this ad unit ID with your own ad unit ID.
-//    self.admodBannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
-//    self.admodBannerView.rootViewController = self;
-//    
-//    
-//    GADRequest *request = [GADRequest request];
-//    // Requests test ads on devices you specify. Your test device ID is printed to the console when
-//    // an ad request is made. GADBannerView automatically returns test ads when running on a
-//    // simulator.
-//    request.testDevices = @[
-//                            @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
-//                            ];
-//    
-//    
-//    [self.admodBannerView loadRequest:request];
-    
-    
     
 }
 
@@ -124,7 +129,7 @@ static NSString *cellID = @"cellID";
     [formatter setDateFormat:@"HH:mm:ss"];
     
     //    时间框的约束条件
-    self.constrainsOfTimeView.constant = 15.0f;
+//    self.constrainsOfTimeView.constant = 15.0f;
     
     //#warning 检查时间显示是否有bug
     NSArray * tempTimeArray = [[NSString stringFromDate:[NSDate date] ByFormatter:formatter] componentsSeparatedByString:@":"];
@@ -150,7 +155,7 @@ static NSString *cellID = @"cellID";
     lineLabel.alpha = .1f;
     
     [_bottomView addSubview:lineLabel];
-    
+
     //    设置自定义的navigationBar的高度
     float newHeight = 79;
     
@@ -181,7 +186,11 @@ static NSString *cellID = @"cellID";
     setButton.frame = CGRectMake(self.view.frame.size.width-15-40, 35, 40, 40);
     [view addSubview:setButton];
     
+    UILabel *lineLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.size.height-1, self.view.frame.size.width, 1)];
+    lineLabel2.backgroundColor = [UIColor blackColor];
+    lineLabel2.alpha = .1f;
     
+        [view addSubview:lineLabel2];
 }
 
 #pragma mark 推出总设置页面
@@ -293,6 +302,7 @@ static NSString *cellID = @"cellID";
     
 }
 
+//懒加载闹钟数组
 - (NSMutableArray *)clockArray{
     if (_clockArray == nil) {
         _clockArray = [NSMutableArray arrayWithCapacity:6];

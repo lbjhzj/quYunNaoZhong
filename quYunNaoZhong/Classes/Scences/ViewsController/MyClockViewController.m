@@ -19,7 +19,6 @@
 @property (strong,nonatomic)UIView *bottomView;
 
 //tableView的约束
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainsOfTabelView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;
 
@@ -51,25 +50,11 @@ static NSString *cellID = @"cellID";
     [super viewDidLoad];
     
     self.setClockVC = [SetClockViewController sharedSetClockViewController];
-    
-//    // Replace this ad unit ID with your own ad unit ID.
-//    self.admodBannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
-//    self.admodBannerView.rootViewController = self;
-//
-//
-//    GADRequest *request = [GADRequest request];
-//    // Requests test ads on devices you specify. Your test device ID is printed to the console when
-//    // an ad request is made. GADBannerView automatically returns test ads when running on a
-//    // simulator.
-//    request.testDevices = @[
-//                            @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
-//                        ];
-//    [self.admodBannerView loadRequest:request];
-//
-//        
+           
     [self.tabelView registerNib:[UINib nibWithNibName:@"MyAlertCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellID];
 
-    
+    //     定义tableView上方有一条多余白框 (原因,系统默认给的可滑动距离,用如下方法解决去除)
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self addAllViews];
 
 }
@@ -126,10 +111,7 @@ static NSString *cellID = @"cellID";
     
     [self.view addSubview:self.bottomView];
     
-    UILabel *lineLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(0, self.topView.frame.size.height-1, self.view.frame.size.width, 1)];
-    lineLabel2.backgroundColor = [UIColor blackColor];
-    lineLabel2.alpha = .1f;
-    [self.topView addSubview:lineLabel2];
+
 
 }
 
@@ -165,7 +147,6 @@ static NSString *cellID = @"cellID";
         [cell.clockStateBtn setImage:[UIImage imageNamed:@"开关（关）"] forState:UIControlStateNormal];
     }
     
-    cell.backgroundColor = [UIColor colorWithHexString:@"#55aa55"alpha:.5f];
     return cell;
     
 }

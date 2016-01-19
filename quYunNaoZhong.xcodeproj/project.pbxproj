@@ -47,7 +47,6 @@
 		7D1FC4971C4CB13E00044051 /* 小懒猪起床了(男声).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4851C4CB13E00044051 /* 小懒猪起床了(男声).mp3 */; };
 		7D1FC4981C4CB13E00044051 /* 主人起床了(男声).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4861C4CB13E00044051 /* 主人起床了(男声).mp3 */; };
 		7D1FC4991C4CB13E00044051 /* 主人起床了(女声).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4871C4CB13E00044051 /* 主人起床了(女声).mp3 */; };
-		7D1FC49F1C4CC61C00044051 /* recordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FC49E1C4CC61C00044051 /* recordView.m */; };
 		7D4D48B31C41F23700C18F6D /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4D48A91C41F23700C18F6D /* GoogleMobileAds.framework */; };
 		7D4D48B41C41F23700C18F6D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D48B11C41F23700C18F6D /* README.txt */; };
 		7D4D48B51C41F23700C18F6D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D48B21C41F23700C18F6D /* README.txt */; };
@@ -126,8 +125,6 @@
 		7D1FC4851C4CB13E00044051 /* 小懒猪起床了(男声).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "小懒猪起床了(男声).mp3"; sourceTree = "<group>"; };
 		7D1FC4861C4CB13E00044051 /* 主人起床了(男声).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "主人起床了(男声).mp3"; sourceTree = "<group>"; };
 		7D1FC4871C4CB13E00044051 /* 主人起床了(女声).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "主人起床了(女声).mp3"; sourceTree = "<group>"; };
-		7D1FC49D1C4CC61C00044051 /* recordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recordView.h; sourceTree = "<group>"; };
-		7D1FC49E1C4CC61C00044051 /* recordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = recordView.m; sourceTree = "<group>"; };
 		7D4D48A91C41F23700C18F6D /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		7D4D48AB1C41F23700C18F6D /* GADMAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
 		7D4D48AC1C41F23700C18F6D /* GADMAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
@@ -384,8 +381,6 @@
 		7D730B391C3CD9DB00C095C5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7D1FC49D1C4CC61C00044051 /* recordView.h */,
-				7D1FC49E1C4CC61C00044051 /* recordView.m */,
 				7DF6948F1C4DCCB9002175CD /* recordView.xib */,
 			);
 			path = Views;
@@ -604,7 +599,6 @@
 				7D730B3D1C3CD9DB00C095C5 /* AppDelegate.m in Sources */,
 				7D730B4C1C3CFA1300C095C5 /* NSString+dateTransformToNSString.m in Sources */,
 				7DEDA3E31C3E6C6100D7C4DE /* alert.m in Sources */,
-				7D1FC49F1C4CC61C00044051 /* recordView.m in Sources */,
 				7D730B411C3CDA3D00C095C5 /* MainViewController.m in Sources */,
 				7D1FC4361C4C992200044051 /* sectionCell.m in Sources */,
 				7D1C16F51C3F5ECE00193447 /* MyAlertCell.m in Sources */,

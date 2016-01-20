@@ -66,7 +66,6 @@
 		7DCD71F81C4793600072DDC5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCD71F71C4793600072DDC5 /* AVFoundation.framework */; };
 		7DCD71FF1C4795390072DDC5 /* SetClockMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCD71FD1C4795390072DDC5 /* SetClockMusicViewController.m */; };
 		7DCD72001C4795390072DDC5 /* SetClockMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCD71FE1C4795390072DDC5 /* SetClockMusicViewController.xib */; };
-		7DCD72031C47A0820072DDC5 /* 布谷鸟.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7DCD72021C47A06C0072DDC5 /* 布谷鸟.caf */; };
 		7DEDA3DC1C3E4E8900D7C4DE /* alertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */; };
 		7DEDA3DD1C3E4E8900D7C4DE /* alertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */; };
 		7DEDA3E31C3E6C6100D7C4DE /* alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3E21C3E6C6100D7C4DE /* alert.m */; };
@@ -162,7 +161,6 @@
 		7DCD71FC1C4795390072DDC5 /* SetClockMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetClockMusicViewController.h; sourceTree = "<group>"; };
 		7DCD71FD1C4795390072DDC5 /* SetClockMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockMusicViewController.m; sourceTree = "<group>"; };
 		7DCD71FE1C4795390072DDC5 /* SetClockMusicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetClockMusicViewController.xib; sourceTree = "<group>"; };
-		7DCD72021C47A06C0072DDC5 /* 布谷鸟.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "布谷鸟.caf"; sourceTree = "<group>"; };
 		7DEDA3D91C3E4E8900D7C4DE /* alertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alertCell.h; sourceTree = "<group>"; };
 		7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alertCell.m; sourceTree = "<group>"; };
 		7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = alertCell.xib; sourceTree = "<group>"; };
@@ -261,7 +259,6 @@
 			children = (
 				7D730B2E1C3CD9DB00C095C5 /* Classes */,
 				7D730B201C3CD94800C095C5 /* Main.storyboard */,
-				7DCD72021C47A06C0072DDC5 /* 布谷鸟.caf */,
 				7DF1B4041C4898C80090BD64 /* 大王叫我来巡山-原声带.mp3 */,
 				7DF1B3A61C4888590090BD64 /* 健康闹钟铃声 */,
 				7D730B231C3CD94800C095C5 /* Assets.xcassets */,
@@ -542,7 +539,6 @@
 				7DF6948D1C4DCBC2002175CD /* ForceViewController.xib in Resources */,
 				7D1FC44A1C4C9BAC00044051 /* 吉他扫弦.mp3 in Resources */,
 				7D1FC44D1C4C9BAC00044051 /* 马林巴琴.mp3 in Resources */,
-				7DCD72031C47A0820072DDC5 /* 布谷鸟.caf in Resources */,
 				7D1FC44B1C4C9BAC00044051 /* 经典滴滴声.mp3 in Resources */,
 				7D730B271C3CD94800C095C5 /* LaunchScreen.storyboard in Resources */,
 				7D730B241C3CD94800C095C5 /* Assets.xcassets in Resources */,

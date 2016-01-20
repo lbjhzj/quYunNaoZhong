@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetClockMusicViewController">
             <connections>
+                <outlet property="recordListTableView" destination="k8H-5g-e82" id="deZ-5R-eao"/>
                 <outlet property="recordTimeDurationLabel" destination="mWN-Ak-Rj8" id="sgo-RB-H1v"/>
             </connections>
         </placeholder>
@@ -17,10 +18,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZV-Js-gvN">
-                    <rect key="frame" x="0.0" y="226" width="600" height="315"/>
+                    <rect key="frame" x="0.0" y="391" width="600" height="150"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWN-Ak-Rj8">
-                            <rect key="frame" x="256" y="136" width="87" height="43"/>
+                            <rect key="frame" x="256" y="53" width="87" height="43"/>
                             <fontDescription key="fontDescription" type="system" pointSize="36"/>
                             <color key="textColor" red="0.33333333333333331" green="0.66666666666666663" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -29,7 +30,7 @@
                     <color key="backgroundColor" red="0.9018816351890564" green="0.9020114541053772" blue="0.90185326337814331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="mWN-Ak-Rj8" firstAttribute="centerX" secondItem="bZV-Js-gvN" secondAttribute="centerX" id="5Ey-i7-APg"/>
-                        <constraint firstAttribute="height" constant="315" id="BlX-XJ-y1a"/>
+                        <constraint firstAttribute="height" constant="150" id="BlX-XJ-y1a"/>
                         <constraint firstItem="mWN-Ak-Rj8" firstAttribute="centerY" secondItem="bZV-Js-gvN" secondAttribute="centerY" id="EGa-Gg-2nt"/>
                     </constraints>
                 </view>
@@ -47,9 +48,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrC-iJ-7cq">
-                            <rect key="frame" x="288" y="12.5" width="24" height="35"/>
+                            <rect key="frame" x="288" y="12" width="24" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="vrC-iJ-7cq" secondAttribute="height" multiplier="24:35" id="Dy3-gZ-V2u"/>
+                                <constraint firstAttribute="height" constant="35" id="lTO-Xq-k87"/>
                             </constraints>
                             <state key="normal" backgroundImage="录音"/>
                             <connections>
@@ -70,8 +72,12 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k8H-5g-e82">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="226"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="391"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="4rT-hD-206"/>
+                        <outlet property="delegate" destination="-1" id="JtF-Nw-Pzz"/>
+                    </connections>
                 </tableView>
             </subviews>
             <constraints>

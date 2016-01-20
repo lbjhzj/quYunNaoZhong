@@ -53,6 +53,8 @@ static NSString *cellID = @"cellID";
 
 - (void)viewWillAppear:(BOOL)animated{
     
+    NSArray *localNotications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+
 //    初始化当天的闹钟数组
     [self initClockCount];
     [self.clockArray removeAllObjects];
@@ -109,6 +111,7 @@ static NSString *cellID = @"cellID";
     [super viewDidLoad];
 #pragma mark 删除存储的所有闹钟数据===========测试
 //    [[HYLocalNotication shareHYLocalNotication] removeAllDataInUserDefault];
+
     
     self.myClockVC = [MyClockViewController sharedMyClockViewController];
     
@@ -150,7 +153,7 @@ static NSString *cellID = @"cellID";
     
     [self.view addSubview:self.bottomView];
     
-    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _bottomView.frame.size.width, 1)];
+    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _bottomView.frame.size.width, 0.5)];
     lineLabel.backgroundColor = [UIColor blackColor];
     lineLabel.alpha = .1f;
     
@@ -186,7 +189,7 @@ static NSString *cellID = @"cellID";
     setButton.frame = CGRectMake(self.view.frame.size.width-15-40, 35, 40, 40);
     [view addSubview:setButton];
     
-    UILabel *lineLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.size.height-1, self.view.frame.size.width, 1)];
+    UILabel *lineLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.size.height-0.5, self.view.frame.size.width, 0.5)];
     lineLabel2.backgroundColor = [UIColor blackColor];
     lineLabel2.alpha = .1f;
     

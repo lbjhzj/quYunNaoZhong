@@ -153,6 +153,11 @@ static NSString *cellID_2 = @"sliderID";
     
 }
 
+#pragma mark 删除闹钟信息
+- (IBAction)deleteclockData:(UIButton *)sender {
+    [[HYLocalNotication shareHYLocalNotication] removeClockDataWithClockID:self.clockID];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark 确认添加或修改闹钟
 - (IBAction)makeSureAddOrChangeClockInformation:(UIButton *)sender {

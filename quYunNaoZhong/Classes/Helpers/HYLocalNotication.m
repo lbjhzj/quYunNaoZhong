@@ -195,16 +195,28 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
             newNotification.fireDate = newFireDate;
 #warning 测试
             newNotification.alertBody = @"测试闹钟";
-            newNotification.soundName = [NSString stringWithFormat:@"%@.mp3", clockMusic];
+            
+            
+                newNotification.soundName = [NSString stringWithFormat:@"%@.mp3", clockMusic];
+           
+                NSLog(@"clockMusic======%@",clockMusic);
+//                newNotification.soundName = [NSString stringWithFormat:@"%@.aac", clockMusic];
+        
+
             newNotification.alertAction = @"查看闹钟";
             newNotification.repeatInterval = NSWeekCalendarUnit;
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:clockIDString forKey:@"ActivityClock"];
             newNotification.userInfo = userInfo;
             
-            [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
+            for (int i=0; i<3; i++) {
+                newNotification.fireDate = [[calendar dateFromComponents:comps] dateByAddingTimeInterval:60*i];
+                [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
+                NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
+            }
+            
         }
-        NSLog(@"设定的闹钟日期为%@",[newFireDate dateByAddingTimeInterval:8 * 3600]);
-        NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
+//        NSLog(@"设定的闹钟日期为%@",[newFireDate dateByAddingTimeInterval:8 * 3600]);
+//        NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
         
     }
 
@@ -212,6 +224,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
 
 - (void)cancelLocalNotication:(int)clockID{
     NSArray *localNotications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    
     for (UILocalNotification *notication in localNotications) {
         if ([[[notication userInfo] objectForKey:@"ActivityClock"] intValue] == clockID) {
             NSLog(@"Cancel localNotication:%@",[notication fireDate]);
@@ -277,5 +290,20 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     }
     
 }
+
+- (void)removeClockDataWithClockID:(int)clockID{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSInteger clockCount = [[userDefault objectForKey:@"ClockCount"] integerValue];
+    if (clockCount>2) {
+      --clockCount;
+        [userDefault setObject:[NSString stringWithFormat:@"%ld",clockCount] forKey:@"ClockCount"];
+    }else{
+        [userDefault removeObjectForKey:@"ClockCount"];
+    }
+    
+    
+    [userDefault removeObjectForKey:[NSString stringWithFormat:@"%d",clockID]];
+}
+
 
 @end

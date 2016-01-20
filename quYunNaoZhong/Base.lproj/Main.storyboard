@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="59" width="600" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csJ-OP-Jo0">
-                                        <rect key="frame" x="282" y="68" width="42" height="20.5"/>
+                                        <rect key="frame" x="533" y="68" width="42" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -50,6 +50,7 @@
                                     <constraint firstItem="EN7-ER-R3R" firstAttribute="leading" secondItem="tQq-Sf-ihi" secondAttribute="leading" constant="45" id="BuC-dh-MYn"/>
                                     <constraint firstItem="EN7-ER-R3R" firstAttribute="top" secondItem="tQq-Sf-ihi" secondAttribute="top" constant="20" id="FWr-Uv-4j4"/>
                                     <constraint firstAttribute="trailing" secondItem="YiJ-xY-6K1" secondAttribute="trailing" id="H5E-ZK-yFY"/>
+                                    <constraint firstAttribute="trailing" secondItem="csJ-OP-Jo0" secondAttribute="trailing" constant="25" id="OFX-ka-8tH"/>
                                     <constraint firstAttribute="trailing" secondItem="csJ-OP-Jo0" secondAttribute="trailing" constant="45" id="OK7-G6-bfM"/>
                                     <constraint firstAttribute="bottom" secondItem="EN7-ER-R3R" secondAttribute="bottom" constant="21" id="aHj-az-zUf"/>
                                     <constraint firstAttribute="bottom" secondItem="csJ-OP-Jo0" secondAttribute="bottom" constant="21" id="cTh-kj-UrV"/>
@@ -59,6 +60,7 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="6se-Yb-lET"/>
                                         <exclude reference="OK7-G6-bfM"/>
                                     </mask>
                                 </variation>
@@ -332,6 +334,9 @@
                                             <constraint firstAttribute="width" secondItem="Zad-SF-s1K" secondAttribute="height" multiplier="26:35" id="R4i-IR-ehl"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="删除"/>
+                                        <connections>
+                                            <action selector="deleteclockData:" destination="AlF-eG-ikv" eventType="touchUpInside" id="mRB-kD-WLk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

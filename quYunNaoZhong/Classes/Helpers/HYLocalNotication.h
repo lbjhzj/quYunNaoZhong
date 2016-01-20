@@ -26,4 +26,5 @@
 
 +(NSArray *) getFilenamelistOfType:(NSString *)type fromDirPath:(NSString *)dirPath;
 
+- (void)removeClockDataWithClockID:(int)clockID;
 @end

@@ -6,10 +6,11 @@
 //  Copyright © 2016年 趣云科技. All rights reserved.
 //
 
+@import GoogleMobileAds;
 #import "SetClockMusicViewController.h"
 
 
-@interface SetClockMusicViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface SetClockMusicViewController ()<UITableViewDataSource,UITableViewDelegate,GADBannerViewDelegate>
 {
     GADMasterViewController *shared;
 }
@@ -25,18 +26,35 @@
 
 @property(nonatomic,strong)UIView * recordView;
 
-
+/**
+ *  录音的时长
+ */
 @property (weak, nonatomic) IBOutlet UILabel *recordTimeDurationLabel;
+/**
+ *  录音文件tableView
+ */
+@property (weak, nonatomic) IBOutlet UITableView *recordListTableView;
+/**
+ *  录音文件数组
+ */
+@property(nonatomic,strong)NSMutableArray * recordListArray;
 
+/**
+ *  自带铃声文件数组
+ */
 @property(nonatomic,strong)NSMutableArray * musicList;
 
 @property(nonatomic,strong)NSMutableArray * mengMengRingArray;
-
+/**
+ *  播放器
+ */
 @property(nonatomic,strong)AVAudioPlayer * player;
 
 
 
-
+/**
+ *  选中的音乐文件名
+ */
 @property(nonatomic,weak)NSString * selectedMusicName;
 
 
@@ -53,8 +71,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.tableView.tag = 999;
+    self.recordListTableView.tag = 888;
+    
+
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"ringCell" bundle:nil] forCellReuseIdentifier:@"cell2"];
     [self.tableView registerNib:[UINib nibWithNibName:@"sectionCell" bundle:nil] forCellReuseIdentifier:@"cell1"];
+    [self.recordListTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CELL"];
 //    self.isOpen = NO;
     
     NSArray *fileName = [HYLocalNotication getFilenamelistOfType:@"mp3" fromDirPath:[NSBundle mainBundle].resourcePath ];
@@ -70,7 +94,9 @@
         }
     }
     
-//    关于录音模块的设置
+    /**
+     * 关于录音模块的设置
+     */
     if ([[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending)
     {
         //7.0第一次运行会提示，是否允许使用麦克风
@@ -83,8 +109,7 @@
         else
             [session setActive:YES error:nil];
     }
-    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    playName = [NSString stringWithFormat:@"%@/play.aac",docDir];
+    
     //录音设置
     recorderSettingsDict =[[NSDictionary alloc] initWithObjectsAndKeys:
                            [NSNumber numberWithInt:kAudioFormatMPEG4AAC],AVFormatIDKey,
@@ -112,6 +137,11 @@
     
 }
 
+#pragma mark 谷歌广告协议
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
+    
+}
+
 #pragma mark 确认更改音乐铃声
 - (IBAction)makeSureChangeAction:(UIButton *)sender {
     
@@ -124,6 +154,7 @@
     }];
 }
 
+#pragma mark 切换铃声列表
 - (IBAction)ringBtnAction:(UIButton *)sender {
     
     if (self.ringBtnUnderLine.hidden) {
@@ -148,8 +179,10 @@
 - (IBAction)recordBtnAction:(UIButton *)sender {
     [self.player stop];
     
-
-
+    [self.recordListArray removeAllObjects];
+    [self.recordListArray addObjectsFromArray:[HYLocalNotication getFilenamelistOfType:@"aac" fromDirPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]]];
+    [self.recordListTableView reloadData];
+    
     if (self.recordBtnUnderLine.hidden) {
         self.recordBtnUnderLine.hidden = !self.recordBtnUnderLine.hidden;
         NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"recordView" owner:self options:nil];
@@ -168,6 +201,7 @@
 - (IBAction)stopRecordAction:(UIButton *)sender {
     //松开 结束录音
     NSLog(@"松开");
+  
     //录音停止
     [recorder stop];
     recorder = nil;
@@ -175,18 +209,23 @@
     [timer invalidate];
     timer = nil;
     
-    NSArray *array = [HYLocalNotication getFilenamelistOfType:@"aac" fromDirPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]];
-    NSLog(@"%@",array);
+    [self.recordListArray removeAllObjects];
+    [self.recordListArray addObjectsFromArray:[HYLocalNotication getFilenamelistOfType:@"aac" fromDirPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]]];
+    
+    [self.recordListTableView reloadData];
     
 }
 
 - (IBAction)startRecordAction:(UIButton *)sender {
     NSLog(@"开始");
+      self.recordTimeDurationLabel.text = @"00:00";
     //按下录音
     if ([self canRecord]) {
         
         NSError *error = nil;
         //必须真机上测试,模拟器上可能会崩溃
+        NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        playName = [NSString stringWithFormat:@"%@/play%ld.aac",docDir,self.recordListArray.count];
         recorder = [[AVAudioRecorder alloc] initWithURL:[NSURL URLWithString:playName] settings:recorderSettingsDict error:&error];
 
         if (recorder) {
@@ -221,27 +260,43 @@
 #pragma mark tableView的协议方法
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    if (indexPath.row == 0) {
-        static NSString *cell1 = @"cell1";
-        sectionCell *cell = [tableView dequeueReusableCellWithIdentifier:cell1];
-        cell.backgroundColor = [UIColor lightTextColor];
-        if (indexPath.section == 0) {
-          cell.textLabel.text = @"萌萌的铃声";
+    if (tableView.tag == 999) {
+        
+        if (indexPath.row == 0) {
+            static NSString *cell1 = @"cell1";
+            sectionCell *cell = [tableView dequeueReusableCellWithIdentifier:cell1];
+            cell.backgroundColor = [UIColor lightTextColor];
+            if (indexPath.section == 0) {
+                cell.textLabel.text = @"萌萌的铃声";
+            }else{
+                cell.textLabel.text = @"纯音乐";
+            }
+            /**
+             *  设为不可点击
+             */
+            cell.userInteractionEnabled = NO;
+            return cell;
         }else{
-            cell.textLabel.text = @"纯音乐";
+            static NSString *cell2 = @"cell2";
+            ringCell *cell = [tableView dequeueReusableCellWithIdentifier:cell2];
+            if (indexPath.section == 0) {
+                cell.textLabel.text = self.mengMengRingArray[indexPath.row-1];
+            }else{
+                cell.textLabel.text = self.musicList[indexPath.row - 1];
+            }
+            
+            return cell;
         }
-        return cell;
+        
     }else{
         static NSString *cell2 = @"cell2";
-        ringCell *cell = [tableView dequeueReusableCellWithIdentifier:cell2];
-        if (indexPath.section == 0) {
-          cell.textLabel.text = self.mengMengRingArray[indexPath.row-1];
-        }else{
-            cell.textLabel.text = self.musicList[indexPath.row - 1];
-        }
-       
+        ringCell *cell = [[ringCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
+//        UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
+        cell.textLabel.text = [NSString stringWithFormat:@"我的录音%ld",indexPath.row+1];
+     
         return cell;
     }
+
     
 
 }
@@ -251,7 +306,8 @@
     
     NSURL *fileURL ;
     
-    if (indexPath.section == 0) {
+    if (tableView.tag == 999) {
+     if (indexPath.section == 0) {
      
         soundFilePath = [[NSBundle mainBundle] pathForResource:self.mengMengRingArray[indexPath.row-1] ofType:@"mp3"];
         
@@ -267,10 +323,19 @@
         self.selectedMusicName = self.musicList[indexPath.row-1];
 
     }
-
+    }else{
+        soundFilePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingString:[NSString stringWithFormat:@"/%@",self.recordListArray[indexPath.row]]];
+        fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+        
+        self.selectedMusicName = [self.recordListArray[indexPath.row] componentsSeparatedByString:@"."][0];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(passingTheClockMusicToFront:)]) {
+            [self.delegate passingTheClockMusicToFront:self.selectedMusicName];
+        }
+    }
+    
     self.player=[[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
     [_player prepareToPlay];
-    _player.volume = 0.8;
+    _player.volume = 1000.f;
     [_player play];
 }
 
@@ -336,15 +401,26 @@
 //}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    if (tableView.tag == 999) {
+       return 2;
+    }else{
+        return 1;
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
-      return self.mengMengRingArray.count;
+    if (tableView.tag == 999) {
+        if (section == 0) {
+            return self.mengMengRingArray.count;
+        }else{
+            return self.musicList.count;
+        }
     }else{
-        return self.musicList.count;
+        return self.recordListArray.count;
+      
     }
+
 }
 
 //- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -385,6 +461,9 @@
 }
 -(void)levelTimer:(NSTimer*)timer_
 {
+    static CGFloat count = 0;
+    self.recordTimeDurationLabel.text = [NSString stringWithFormat:@"00:%.0f",count * 10];
+    count = count + 0.1;
     //call to refresh meter values刷新平均和峰值功率,此计数是以对数刻度计量的,-160表示完全安静，0表示最大输入值
     [recorder updateMeters];
     const double ALPHA = 0.05;
@@ -396,6 +475,14 @@
     
 }
 
+
+#pragma mark 懒加载专区
+- (NSMutableArray *)recordListArray{
+    if (_recordListArray == nil) {
+        _recordListArray = [NSMutableArray arrayWithCapacity:5];
+    }
+    return _recordListArray;
+}
 
 - (NSMutableArray *)musicList{
     if (_musicList == nil) {

@@ -9,11 +9,10 @@
 @import GoogleMobileAds;
 #import "SetClockViewController.h"
 
-@interface SetClockViewController ()<UITableViewDataSource,UITableViewDelegate,PassingTheClockTimeDelegate,UITextFieldDelegate,PassingTheClockModeDelegate,PassingTheClockMusicDelegate>
+@interface SetClockViewController ()<GADBannerViewDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,PassingTheClockTimeDelegate,PassingTheClockModeDelegate,PassingTheClockMusicDelegate>
 {
     GADMasterViewController *shared;
 }
-@property (weak, nonatomic) IBOutlet GADBannerView *admodBannerView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -43,6 +42,15 @@ static NSString *cellID_2 = @"sliderID";
 }
 
 
+#pragma mark 谷歌广告协议
+- (void)adView:(GADBannerView *)bannerView didReceiveAppEvent:(NSString *)name withInfo:(NSString *)info{
+    if (shared.view.tag == 1999) {
+        [shared removeFromParentViewController];
+        shared = [GADMasterViewController singleton];
+        [shared resetAdView:self];
+    }
+    shared.view.tag = 1999;
+}
 
 #pragma mark 返回按键方法
 - (IBAction)backToMyClockVCAction:(UIButton *)sender {
@@ -98,7 +106,8 @@ static NSString *cellID_2 = @"sliderID";
         self.clockNameLabel.text = @"未命名";
         self.clockTimeLabel.text = @"07:30";
         self.clockModeLabel.text = @"未设置";
-        self.clockSoundValueLabel.value = 50.f;
+        self.valueLabel.text = [NSString stringWithFormat:@"50"];
+        self.clockSoundValueLabel.value = 50.0f;
         self.clockMusicLabel.text = @"未设置";
         self.clockExtendLabel.text = @"未设置";
     }else{
@@ -106,7 +115,8 @@ static NSString *cellID_2 = @"sliderID";
             self.clockNameLabel.text = self.Alert.clockName;
             self.clockTimeLabel.text = self.Alert.clockTime;
             self.clockModeLabel.text = self.Alert.clockMode;
-            self.clockSoundValueLabel.value = 50.f;
+            self.valueLabel.text = [NSString stringWithFormat:@"%ld",self.Alert.clockSoundValue];
+            self.clockSoundValueLabel.value = self.Alert.clockSoundValue;
             self.clockMusicLabel.text = self.Alert.clockMusic;
         }
         
@@ -150,7 +160,13 @@ static NSString *cellID_2 = @"sliderID";
     self.clockMusicLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-150, 44)];
     self.clockExtendLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-150, 44)];
     self.clockSoundValueLabel = [[UISlider alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-220, 44)];
+    _clockSoundValueLabel.maximumValue = 100.f;
     
+    [_clockSoundValueLabel addTarget:self action:@selector(soundValueChangeAction:) forControlEvents:UIControlEventValueChanged];
+    
+    [_clockSoundValueLabel setMinimumTrackImage:[UIImage imageNamed:@"下划线"] forState:UIControlStateNormal];
+    _valueLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50 , 0, 50, 44)];
+    _valueLabel.textAlignment = NSTextAlignmentCenter;
 }
 
 #pragma mark 删除闹钟信息
@@ -418,15 +434,9 @@ static NSString *cellID_2 = @"sliderID";
             cell.textLabel.text = @"音量";
 //            self.clockSoundValueLabel = [[UISlider alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-220, cell.contentView.frame.size.height)];
             
-            _clockSoundValueLabel.maximumValue = 100.f;
+
             
-            [_clockSoundValueLabel addTarget:self action:@selector(soundValueChangeAction:) forControlEvents:UIControlEventValueChanged];
-            
-            [_clockSoundValueLabel setMinimumTrackImage:[UIImage imageNamed:@"下划线"] forState:UIControlStateNormal];
-            
-            _valueLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50 , 0, 50, cell.contentView.frame.size.height)];
-            _valueLabel.textAlignment = NSTextAlignmentCenter;
-            _valueLabel.text = [NSString stringWithFormat:@"%.0f",self.clockSoundValueLabel.value];
+
             
             if (cell.contentView.subviews.count<3) {
             [cell.contentView addSubview:_valueLabel];

@@ -59,8 +59,14 @@ static NSString *cellID = @"cellID";
 
 }
 
+#pragma mark 谷歌广告协议
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
-    
+    if (shared.view.tag == 1999) {
+        [shared removeFromParentViewController];
+        shared = [GADMasterViewController singleton];
+        [shared resetAdView:self];
+    }
+    shared.view.tag = 1999;
 }
 //    从NSUserDefault中读取数据,填充表格
 - (void)viewWillAppear:(BOOL)animated{

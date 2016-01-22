@@ -64,6 +64,7 @@
 
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
     [currentDelegate_ adViewDidReceiveAd:bannerView];
+ 
 }
 
 - (void)viewDidLoad {

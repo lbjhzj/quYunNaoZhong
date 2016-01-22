@@ -335,7 +335,7 @@
     
     self.player=[[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
     [_player prepareToPlay];
-    _player.volume = 1000.f;
+    _player.volume = 0.8f;
     [_player play];
 }
 

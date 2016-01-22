@@ -52,9 +52,18 @@ static NSString *cellID = @"cellID";
 
 
 - (void)viewWillAppear:(BOOL)animated{
-    
-    NSArray *localNotications = [[UIApplication sharedApplication] scheduledLocalNotifications];
 
+//    NSArray *localNotications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    
+    //    时间框的约束条件
+    //    self.constrainsOfTimeView.constant = 15.0f;
+    
+    //#warning 检查时间显示是否有bug
+    NSArray * tempTimeArray = [[NSString stringFromDate:[NSDate date] ByFormatter:formatter] componentsSeparatedByString:@":"];
+    
+//    [self countDownAction:tempTimeArray];
 //    初始化当天的闹钟数组
     [self initClockCount];
     [self.clockArray removeAllObjects];
@@ -86,12 +95,21 @@ static NSString *cellID = @"cellID";
     shared = [GADMasterViewController singleton];
     [shared resetAdView:self];
     
-    
+//    [[UIApplication sharedApplication]cancelAllLocalNotifications];
+    for (UILocalNotification *localNotication in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
+        NSLog(@"%@",localNotication);
+    }
     [super viewWillAppear:animated];
 }
 
 #pragma mark 谷歌广告协议方法
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
+    if (shared.view.tag == 1999) {
+        [shared removeFromParentViewController];
+        shared = [GADMasterViewController singleton];
+        [shared resetAdView:self];
+    }
+    shared.view.tag = 1999;
     
 }
 
@@ -111,8 +129,8 @@ static NSString *cellID = @"cellID";
     [super viewDidLoad];
 #pragma mark 删除存储的所有闹钟数据===========测试
 //    [[HYLocalNotication shareHYLocalNotication] removeAllDataInUserDefault];
-
     
+
     self.myClockVC = [MyClockViewController sharedMyClockViewController];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"alertCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellID];
@@ -280,8 +298,18 @@ static NSString *cellID = @"cellID";
     cell.alertNameLabel.text = Alert.clockName;
     cell.alertWeekLabel.text = Alert.clockMode;
     cell.remarkLabel.text = Alert.clockRemember;
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
     
-    
+
+    int hour = [((NSString *)[Alert.clockTime componentsSeparatedByString:@":"][0]) intValue]-[((NSString *)[[NSString stringFromDate:date ByFormatter:formatter] componentsSeparatedByString:@":"][0]) intValue];
+    int minute = [((NSString *)[Alert.clockTime componentsSeparatedByString:@":"][1]) intValue]-[((NSString *)[[NSString stringFromDate:date ByFormatter:formatter] componentsSeparatedByString:@":"][1]) intValue];
+    if (hour<=0 || minute<=0) {
+        cell.countLabel.text = @"时间已过";
+    }else{
+        cell.countLabel.text = [NSString stringWithFormat:@"%d:%d",hour,minute];
+    }
     return cell;
 }
 

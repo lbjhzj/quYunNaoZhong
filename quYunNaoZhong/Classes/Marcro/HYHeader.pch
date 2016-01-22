@@ -45,6 +45,8 @@
 
 #import "SetClockModeController.h"
 
+#import "ForceViewController.h"
+
 #import "SetClockMusicViewController.h"
 
 #import "HYLocalNotication.h"

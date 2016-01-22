@@ -114,6 +114,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     NSString *clockTime = [clockDictionary objectForKey:@"ClockTime"];
     NSString *clockMode = [clockDictionary objectForKey:@"ClockMode"];
     NSString *clockMusic = [clockDictionary objectForKey:@"ClockMusic"];
+    NSString *clockForceSwitch = [clockDictionary objectForKey:@"ClockForce"];
 //    NSString *clockRemember = [clockDictionary objectForKey:@"ClockRemember"];
 
     //-----组建本地通知的fireDate-----------------------------------------------
@@ -192,14 +193,17 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
 
         UILocalNotification *newNotification = [[UILocalNotification alloc] init];
         if (newNotification) {
-            newNotification.fireDate = newFireDate;
+//            newNotification.fireDate = newFireDate;
 #warning 测试
             newNotification.alertBody = @"测试闹钟";
             
-            
+            if ([clockMusic containsString:@"未设置"]) {
+                
+            }else{
                 newNotification.soundName = [NSString stringWithFormat:@"%@.mp3", clockMusic];
+            }
            
-                NSLog(@"clockMusic======%@",clockMusic);
+//                NSLog(@"clockMusic======%@",clockMusic);
 //                newNotification.soundName = [NSString stringWithFormat:@"%@.aac", clockMusic];
         
 
@@ -208,11 +212,18 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:clockIDString forKey:@"ActivityClock"];
             newNotification.userInfo = userInfo;
             
-            for (int i=0; i<3; i++) {
-                newNotification.fireDate = [[calendar dateFromComponents:comps] dateByAddingTimeInterval:60*i];
+            if ([clockForceSwitch isEqualToString:@"YES"]) {
+                for (int i=0; i<3; i++) {
+                    newNotification.fireDate = [newFireDate dateByAddingTimeInterval:30*i];
+                    [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
+                    NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
+                }
+            }else{
+                newNotification.fireDate = newFireDate;
                 [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
                 NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
             }
+
             
         }
 //        NSLog(@"设定的闹钟日期为%@",[newFireDate dateByAddingTimeInterval:8 * 3600]);
@@ -250,7 +261,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     Alert.clockID = [clockDictionary objectForKey:@"ClockID"];
     Alert.clockForce = [[clockDictionary objectForKey:@"ClockForce"] boolValue];
     Alert.clockShock = [[clockDictionary objectForKey:@"ClockShock"] boolValue];
-    Alert.clockSoundValue = [[clockDictionary objectForKey:@"ClockSound"] integerValue];
+    Alert.clockSoundValue = [[clockDictionary objectForKey:@"ClockSoundValue"] integerValue];
     
     
     return Alert;

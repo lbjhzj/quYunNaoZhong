@@ -86,9 +86,9 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     [clockDictionary setObject:Alert.clockMode forKey:@"ClockMode"];
     [clockDictionary setObject:Alert.clockName forKey:@"ClockName"];
     [clockDictionary setObject:Alert.clockID forKey:@"ClockID"];
-#warning 小睡,暂时关闭
+
     [clockDictionary setObject:Alert.clockMusic forKey:@"ClockMusic"];
-    //    [clockDictionary setObject:self.clockExtendLabel.text forKey:@"ClockExtend"];
+    [clockDictionary setObject:Alert.clockExtend forKey:@"ClockExtend"];
     [clockDictionary setObject:[NSString stringWithFormat:@"%ld",Alert.clockSoundValue] forKey:@"ClockSoundValue"];
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
@@ -197,8 +197,8 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
 #warning 测试
             newNotification.alertBody = @"测试闹钟";
             
-            if ([clockMusic containsString:@"未设置"]) {
-                
+            if ([clockMusic containsString:@"未设置"] || clockMusic.length == 0) {
+                newNotification.soundName = UILocalNotificationDefaultSoundName;
             }else{
                 newNotification.soundName = [NSString stringWithFormat:@"%@.mp3", clockMusic];
             }
@@ -244,6 +244,19 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     }
 }
 
+- (NSMutableArray *)findClockOfDefaultPlist:(NSString *)sectionName{
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaultClock" ofType:@"plist"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+   
+    NSArray *array = [data objectForKey:sectionName];
+    NSMutableArray *clockArray = [NSMutableArray arrayWithCapacity:8];
+    for (NSDictionary *dictionary in array) {
+        alert *Alert = [alert new];
+        [Alert setValuesForKeysWithDictionary:dictionary];
+        [clockArray addObject:Alert];
+    }
+    return clockArray;
+}
 - (alert *)findClockOfAllAlertsByIndexPath:(NSIndexPath *)indexPath{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *clockDictionary = [userDefault objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]];
@@ -309,9 +322,14 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
       --clockCount;
         [userDefault setObject:[NSString stringWithFormat:@"%ld",clockCount] forKey:@"ClockCount"];
     }else{
-        [userDefault removeObjectForKey:@"ClockCount"];
+        if (clockCount >=1) {
+            --clockCount;
+            [userDefault setObject:[NSString stringWithFormat:@"%ld",clockCount] forKey:@"ClockCount"];
+        }
+
+//        [userDefault removeObjectForKey:@"ClockCount"];
     }
-    
+    [self cancelLocalNotication:clockID];
     
     [userDefault removeObjectForKey:[NSString stringWithFormat:@"%d",clockID]];
 }

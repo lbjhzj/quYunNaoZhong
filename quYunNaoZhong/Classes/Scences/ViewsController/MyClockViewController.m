@@ -52,7 +52,7 @@ static NSString *cellID = @"cellID";
     self.setClockVC = [SetClockViewController sharedSetClockViewController];
            
     [self.tabelView registerNib:[UINib nibWithNibName:@"MyAlertCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellID];
-
+    
     //     定义tableView上方有一条多余白框 (原因,系统默认给的可滑动距离,用如下方法解决去除)
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self addAllViews];
@@ -83,6 +83,45 @@ static NSString *cellID = @"cellID";
 - (void)initClockCount{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
 //    NSLog(@"%@",[userDefault objectForKey:@"ClockCount"]);
+    NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];
+    [self.alertArray removeAllObjects];
+    if ([fitPeople isEqualToString:@"关闭"] ||fitPeople == nil) {
+        int count = 0;
+        for (NSInteger j=0; j<50; j++) {
+            alert *Alert = [alert new];
+            Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:j inSection:0]];
+            if (Alert.clockName.length != 0 && Alert.clockName) {
+                
+                int tmpClockId = [Alert.clockID intValue];
+                Alert.clockID = [NSString stringWithFormat:@"%d",count++];
+
+                [[HYLocalNotication shareHYLocalNotication]saveClockData:Alert];
+                
+                if (tmpClockId != [Alert.clockID intValue]) {
+                    [[HYLocalNotication shareHYLocalNotication]removeClockDataWithClockID:tmpClockId];
+                    [userDefault setObject:[NSString stringWithFormat:@"%d",[[userDefault objectForKey:@"ClockCount"]intValue]+1] forKey:@"ClockCount"];
+                }
+
+                
+                [self.alertArray addObject:Alert];
+            }
+            
+        }
+
+    }else{
+        
+        for (NSInteger j=0; j<100; j++) {
+            alert *Alert = [alert new];
+            Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:j inSection:0]];
+            if (Alert.clockName.length != 0 && Alert.clockName) {
+              [self.alertArray addObject:Alert];  
+            }
+            
+        }
+       [self.alertArray addObjectsFromArray:[[HYLocalNotication shareHYLocalNotication] findClockOfDefaultPlist:fitPeople]];
+
+    }
+    
     if (![userDefault objectForKey:@"ClockCount"]){
         self.clockCount = 0;
     }
@@ -141,8 +180,10 @@ static NSString *cellID = @"cellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     MyAlertCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    alert * Alert = [alert new];
+
+    Alert = self.alertArray[indexPath.row];
     
-    alert * Alert = [[HYLocalNotication shareHYLocalNotication] findClockOfAllAlertsByIndexPath:indexPath];
     cell.clockTimeLabel.text = Alert.clockTime;
     cell.clockNameLabel.text = Alert.clockName;
     cell.clockModeLabel.text = Alert.clockMode;
@@ -161,7 +202,11 @@ static NSString *cellID = @"cellID";
     
     self.setClockVC.clickTheFirstOrAddBtnFlag = ClickTheFirstClockFlag;
     self.setClockVC.passingFlag = NO;
-    self.setClockVC.Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:indexPath];
+    alert * Alert = [alert new];
+    
+    Alert = self.alertArray[indexPath.row];
+
+    self.setClockVC.Alert = Alert;
     self.setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];
     [self.navigationController pushViewController:self.setClockVC animated:YES];
 
@@ -179,7 +224,7 @@ static NSString *cellID = @"cellID";
 
 - (NSMutableArray *)alertArray{
     if (_alertArray == nil) {
-        _alertArray = [NSMutableArray arrayWithCapacity:6];
+        _alertArray = [NSMutableArray arrayWithCapacity:8];
     }
     return _alertArray;
 }

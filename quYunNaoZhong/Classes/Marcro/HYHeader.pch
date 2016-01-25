@@ -52,6 +52,8 @@
 #import "HYLocalNotication.h"
 
 
+#import "SetClockExtendViewController.h"
+#import "FitPeopleViewController.h"
 #define ClickTheFirstClockFlag @"jdjoijfioej"
 
 #endif /* HYHeader_pch */

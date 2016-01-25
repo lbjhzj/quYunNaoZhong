@@ -8,9 +8,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetClockMusicViewController">
             <connections>
-                <outlet property="musicLibraryBtnUnderLine" destination="h7z-gu-tgz" id="gDv-dr-YcP"/>
-                <outlet property="recordBtnUnderLine" destination="JZG-cm-XFq" id="4ZZ-8X-c3N"/>
-                <outlet property="ringBtnUnderLine" destination="teo-Pd-t2o" id="Tc3-KI-a2B"/>
                 <outlet property="tableView" destination="xT0-me-gZv" id="jlv-WQ-y4e"/>
                 <outlet property="topView" destination="c3V-Rd-jle" id="m0m-sr-ras"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,6 +18,14 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xT0-me-gZv">
+                    <rect key="frame" x="0.0" y="79" width="600" height="471"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="y4G-5k-RYU"/>
+                        <outlet property="delegate" destination="-1" id="brv-cN-6V9"/>
+                    </connections>
+                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3V-Rd-jle">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                     <subviews>
@@ -46,46 +51,14 @@
                                 <action selector="makeSureChangeAction:" destination="-1" eventType="touchUpInside" id="Xm6-cv-yXt"/>
                             </connections>
                         </button>
-                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="下划线" translatesAutoresizingMaskIntoConstraints="NO" id="h7z-gu-tgz">
-                            <rect key="frame" x="274" y="75" width="52" height="3"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="3" id="fgC-BE-whq"/>
-                            </constraints>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="下划线" translatesAutoresizingMaskIntoConstraints="NO" id="teo-Pd-t2o">
-                            <rect key="frame" x="209" y="75" width="52" height="3"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="3" id="eGp-Df-wIb"/>
-                            </constraints>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNx-ZN-KuL">
-                            <rect key="frame" x="217" y="31" width="36" height="34"/>
+                            <rect key="frame" x="282" y="31" width="36" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="铃声">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="ringBtnAction:" destination="-1" eventType="touchUpInside" id="0AX-Fe-78h"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2Y-kn-PAP">
-                            <rect key="frame" x="273" y="31" width="54" height="34"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <state key="normal" title="音乐库">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="musicLibraryBtnAction:" destination="-1" eventType="touchUpInside" id="caN-MS-TFy"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7h-Xv-utT">
-                            <rect key="frame" x="347" y="31" width="36" height="34"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <state key="normal" title="录音">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="recordBtnAction:" destination="-1" eventType="touchUpInside" id="NOn-Gj-kyr"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0Z-0b-iMa">
@@ -98,51 +71,21 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="下划线" translatesAutoresizingMaskIntoConstraints="NO" id="JZG-cm-XFq">
-                            <rect key="frame" x="339" y="75" width="52" height="3"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="3" id="GPX-ee-lF0"/>
-                            </constraints>
-                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="79" id="1xU-Df-P1t"/>
-                        <constraint firstItem="l0Z-0b-iMa" firstAttribute="top" secondItem="h7z-gu-tgz" secondAttribute="bottom" id="24j-I8-YJk"/>
-                        <constraint firstItem="JZG-cm-XFq" firstAttribute="centerX" secondItem="p7h-Xv-utT" secondAttribute="centerX" id="2vt-JF-S2t"/>
-                        <constraint firstItem="l0Z-0b-iMa" firstAttribute="top" secondItem="teo-Pd-t2o" secondAttribute="bottom" id="4pC-s2-N6e"/>
-                        <constraint firstItem="l0Z-0b-iMa" firstAttribute="top" secondItem="JZG-cm-XFq" secondAttribute="bottom" id="5aT-kG-lvy"/>
                         <constraint firstItem="3A9-I6-Qz9" firstAttribute="leading" secondItem="c3V-Rd-jle" secondAttribute="leading" constant="16" id="Bk2-75-wSj"/>
+                        <constraint firstItem="ZNx-ZN-KuL" firstAttribute="centerX" secondItem="c3V-Rd-jle" secondAttribute="centerX" id="CRs-oK-7XE"/>
                         <constraint firstAttribute="bottom" secondItem="l0Z-0b-iMa" secondAttribute="bottom" id="Cep-lZ-1EK"/>
-                        <constraint firstItem="c2Y-kn-PAP" firstAttribute="bottom" secondItem="3A9-I6-Qz9" secondAttribute="bottom" id="DWR-UA-D9s"/>
                         <constraint firstItem="ZNx-ZN-KuL" firstAttribute="bottom" secondItem="3A9-I6-Qz9" secondAttribute="bottom" id="E5O-Xv-bNK"/>
                         <constraint firstItem="PdU-Pl-SUh" firstAttribute="bottom" secondItem="3A9-I6-Qz9" secondAttribute="bottom" id="HuT-KM-nYN"/>
-                        <constraint firstItem="c2Y-kn-PAP" firstAttribute="leading" secondItem="ZNx-ZN-KuL" secondAttribute="trailing" constant="20" id="ZdK-e6-nvr"/>
-                        <constraint firstItem="p7h-Xv-utT" firstAttribute="leading" secondItem="c2Y-kn-PAP" secondAttribute="trailing" constant="20" id="bHW-N0-qFQ"/>
-                        <constraint firstItem="h7z-gu-tgz" firstAttribute="centerX" secondItem="c3V-Rd-jle" secondAttribute="centerX" id="byu-95-TNz"/>
-                        <constraint firstItem="JZG-cm-XFq" firstAttribute="trailing" secondItem="h7z-gu-tgz" secondAttribute="trailing" id="jHs-7g-8aJ"/>
-                        <constraint firstItem="c2Y-kn-PAP" firstAttribute="centerX" secondItem="c3V-Rd-jle" secondAttribute="centerX" id="jhG-Ku-rJa"/>
                         <constraint firstItem="l0Z-0b-iMa" firstAttribute="leading" secondItem="c3V-Rd-jle" secondAttribute="leading" id="ljq-SV-4x1"/>
-                        <constraint firstItem="p7h-Xv-utT" firstAttribute="bottom" secondItem="3A9-I6-Qz9" secondAttribute="bottom" id="prp-YS-STu"/>
                         <constraint firstItem="3A9-I6-Qz9" firstAttribute="top" secondItem="c3V-Rd-jle" secondAttribute="top" constant="35" id="q5Z-SN-v28"/>
                         <constraint firstAttribute="trailing" secondItem="l0Z-0b-iMa" secondAttribute="trailing" id="ufp-CO-2pe"/>
                         <constraint firstAttribute="trailing" secondItem="PdU-Pl-SUh" secondAttribute="trailing" constant="16" id="wyL-QC-aA6"/>
-                        <constraint firstItem="teo-Pd-t2o" firstAttribute="centerX" secondItem="ZNx-ZN-KuL" secondAttribute="centerX" id="zVL-oD-WNh"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="jHs-7g-8aJ"/>
-                        </mask>
-                    </variation>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xT0-me-gZv">
-                    <rect key="frame" x="0.0" y="79" width="600" height="471"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="y4G-5k-RYU"/>
-                        <outlet property="delegate" destination="-1" id="brv-cN-6V9"/>
-                    </connections>
-                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -157,7 +100,6 @@
         </view>
     </objects>
     <resources>
-        <image name="下划线" width="52" height="3"/>
         <image name="确认" width="29" height="29"/>
         <image name="返回" width="30" height="30"/>
     </resources>

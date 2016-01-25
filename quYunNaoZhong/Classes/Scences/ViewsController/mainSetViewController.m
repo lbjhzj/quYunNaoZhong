@@ -8,11 +8,12 @@
 
 #import "mainSetViewController.h"
 
-@interface mainSetViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface mainSetViewController ()<UITableViewDataSource,UITableViewDelegate,passingSelectedModeDelegate>
 {
     GADMasterViewController *shared;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property(nonatomic,strong)UILabel * fitPeopleLabel;
 
 
 @end
@@ -31,7 +32,8 @@ static NSString *cellID = @"cellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    self.fitPeopleLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 0, self.view.frame.size.width-200, 44)];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
 }
 
@@ -42,6 +44,8 @@ static NSString *cellID = @"cellID";
 }
 
 - (IBAction)makeSureBtnAction:(UIButton *)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 - (IBAction)backToVCAction:(UIButton *)sender {
@@ -54,6 +58,7 @@ static NSString *cellID = @"cellID";
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"推荐闹钟设置";
+            [cell.contentView addSubview:self.fitPeopleLabel];
             break;
         case 1:
             cell.textLabel.text = nil;
@@ -86,6 +91,28 @@ static NSString *cellID = @"cellID";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 6;
 }
+
+- (void)passingTheSelectedModeAction:(NSString *)selectedMode{
+
+    self.fitPeopleLabel.text = selectedMode;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    switch (indexPath.row) {
+        case 0:{
+           
+            FitPeopleViewController *fit = [FitPeopleViewController new];
+            fit.delegate = self;
+             [self.navigationController pushViewController:fit animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 
 
 /*

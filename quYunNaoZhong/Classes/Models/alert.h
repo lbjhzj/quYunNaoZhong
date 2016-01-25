@@ -48,5 +48,7 @@
 @property(nonatomic,assign)NSInteger  clockSoundValue;
 
 
+@property(nonatomic,weak)NSString * clockExtend;
+
 
 @end

@@ -47,6 +47,8 @@
 		7D1FC4971C4CB13E00044051 /* 小懒猪起床了(男声).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4851C4CB13E00044051 /* 小懒猪起床了(男声).mp3 */; };
 		7D1FC4981C4CB13E00044051 /* 主人起床了(男声).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4861C4CB13E00044051 /* 主人起床了(男声).mp3 */; };
 		7D1FC4991C4CB13E00044051 /* 主人起床了(女声).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4871C4CB13E00044051 /* 主人起床了(女声).mp3 */; };
+		7D257EDA1C55EC2700DFA805 /* SetClockExtendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D257ED81C55EC2700DFA805 /* SetClockExtendViewController.m */; };
+		7D257EDB1C55EC2700DFA805 /* SetClockExtendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D257ED91C55EC2700DFA805 /* SetClockExtendViewController.xib */; };
 		7D4D48B31C41F23700C18F6D /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4D48A91C41F23700C18F6D /* GoogleMobileAds.framework */; };
 		7D4D48B41C41F23700C18F6D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D48B11C41F23700C18F6D /* README.txt */; };
 		7D4D48B51C41F23700C18F6D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D48B21C41F23700C18F6D /* README.txt */; };
@@ -66,6 +68,9 @@
 		7DCD71F81C4793600072DDC5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCD71F71C4793600072DDC5 /* AVFoundation.framework */; };
 		7DCD71FF1C4795390072DDC5 /* SetClockMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCD71FD1C4795390072DDC5 /* SetClockMusicViewController.m */; };
 		7DCD72001C4795390072DDC5 /* SetClockMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCD71FE1C4795390072DDC5 /* SetClockMusicViewController.xib */; };
+		7DE9A2F21C52010D004AD040 /* defaultClock.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9A2F11C52010D004AD040 /* defaultClock.plist */; };
+		7DE9A2FF1C520866004AD040 /* FitPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE9A2FD1C520866004AD040 /* FitPeopleViewController.m */; };
+		7DE9A3001C520866004AD040 /* FitPeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9A2FE1C520866004AD040 /* FitPeopleViewController.xib */; };
 		7DEDA3DC1C3E4E8900D7C4DE /* alertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */; };
 		7DEDA3DD1C3E4E8900D7C4DE /* alertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */; };
 		7DEDA3E31C3E6C6100D7C4DE /* alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3E21C3E6C6100D7C4DE /* alert.m */; };
@@ -124,6 +129,9 @@
 		7D1FC4851C4CB13E00044051 /* 小懒猪起床了(男声).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "小懒猪起床了(男声).mp3"; sourceTree = "<group>"; };
 		7D1FC4861C4CB13E00044051 /* 主人起床了(男声).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "主人起床了(男声).mp3"; sourceTree = "<group>"; };
 		7D1FC4871C4CB13E00044051 /* 主人起床了(女声).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "主人起床了(女声).mp3"; sourceTree = "<group>"; };
+		7D257ED71C55EC2700DFA805 /* SetClockExtendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetClockExtendViewController.h; sourceTree = "<group>"; };
+		7D257ED81C55EC2700DFA805 /* SetClockExtendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockExtendViewController.m; sourceTree = "<group>"; };
+		7D257ED91C55EC2700DFA805 /* SetClockExtendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetClockExtendViewController.xib; sourceTree = "<group>"; };
 		7D4D48A91C41F23700C18F6D /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		7D4D48AB1C41F23700C18F6D /* GADMAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
 		7D4D48AC1C41F23700C18F6D /* GADMAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
@@ -161,6 +169,10 @@
 		7DCD71FC1C4795390072DDC5 /* SetClockMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetClockMusicViewController.h; sourceTree = "<group>"; };
 		7DCD71FD1C4795390072DDC5 /* SetClockMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockMusicViewController.m; sourceTree = "<group>"; };
 		7DCD71FE1C4795390072DDC5 /* SetClockMusicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetClockMusicViewController.xib; sourceTree = "<group>"; };
+		7DE9A2F11C52010D004AD040 /* defaultClock.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultClock.plist; sourceTree = "<group>"; };
+		7DE9A2FC1C520866004AD040 /* FitPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitPeopleViewController.h; sourceTree = "<group>"; };
+		7DE9A2FD1C520866004AD040 /* FitPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitPeopleViewController.m; sourceTree = "<group>"; };
+		7DE9A2FE1C520866004AD040 /* FitPeopleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FitPeopleViewController.xib; sourceTree = "<group>"; };
 		7DEDA3D91C3E4E8900D7C4DE /* alertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alertCell.h; sourceTree = "<group>"; };
 		7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alertCell.m; sourceTree = "<group>"; };
 		7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = alertCell.xib; sourceTree = "<group>"; };
@@ -199,6 +211,16 @@
 				7D1B5AB91C44E94A0053E6B8 /* SetClockModeController.xib */,
 			);
 			name = SetClockMode;
+			sourceTree = "<group>";
+		};
+		7D257ED61C55EBF400DFA805 /* SetClockExtend */ = {
+			isa = PBXGroup;
+			children = (
+				7D257ED71C55EC2700DFA805 /* SetClockExtendViewController.h */,
+				7D257ED81C55EC2700DFA805 /* SetClockExtendViewController.m */,
+				7D257ED91C55EC2700DFA805 /* SetClockExtendViewController.xib */,
+			);
+			name = SetClockExtend;
 			sourceTree = "<group>";
 		};
 		7D4D48A81C41F23700C18F6D /* GoogleMobileAdsSdkiOS-7.6.0 */ = {
@@ -264,6 +286,7 @@
 				7D730B231C3CD94800C095C5 /* Assets.xcassets */,
 				7D730B251C3CD94800C095C5 /* LaunchScreen.storyboard */,
 				7D730B281C3CD94800C095C5 /* Info.plist */,
+				7DE9A2F11C52010D004AD040 /* defaultClock.plist */,
 				7D730B171C3CD94800C095C5 /* Supporting Files */,
 			);
 			path = quYunNaoZhong;
@@ -386,6 +409,8 @@
 		7D730B3A1C3CD9DB00C095C5 /* ViewsController */ = {
 			isa = PBXGroup;
 			children = (
+				7D257ED61C55EBF400DFA805 /* SetClockExtend */,
+				7DE9A2F31C520609004AD040 /* ClockFitPeople */,
 				7DF6948E1C4DCBC8002175CD /* ForceClock */,
 				7DCD71FB1C4795120072DDC5 /* SetClockMusic */,
 				7D1B5AAA1C44E11C0053E6B8 /* SetClockMode */,
@@ -411,6 +436,16 @@
 				7DCD71FE1C4795390072DDC5 /* SetClockMusicViewController.xib */,
 			);
 			name = SetClockMusic;
+			sourceTree = "<group>";
+		};
+		7DE9A2F31C520609004AD040 /* ClockFitPeople */ = {
+			isa = PBXGroup;
+			children = (
+				7DE9A2FC1C520866004AD040 /* FitPeopleViewController.h */,
+				7DE9A2FD1C520866004AD040 /* FitPeopleViewController.m */,
+				7DE9A2FE1C520866004AD040 /* FitPeopleViewController.xib */,
+			);
+			name = ClockFitPeople;
 			sourceTree = "<group>";
 		};
 		7DF1B3A61C4888590090BD64 /* 健康闹钟铃声 */ = {
@@ -545,6 +580,7 @@
 				7DEDA3DD1C3E4E8900D7C4DE /* alertCell.xib in Resources */,
 				7D1FC4481C4C9BAC00044051 /* 海边小屋.mp3 in Resources */,
 				7D1FC4471C4C9BAC00044051 /* 滴答滴答.mp3 in Resources */,
+				7DE9A3001C520866004AD040 /* FitPeopleViewController.xib in Resources */,
 				7D1FC48A1C4CB13E00044051 /* 宝贝起床了(女声).mp3 in Resources */,
 				7D1FC4891C4CB13E00044051 /* 宝贝起床了(男声).mp3 in Resources */,
 				7D730B221C3CD94800C095C5 /* Main.storyboard in Resources */,
@@ -564,9 +600,11 @@
 				7D1FC44E1C4C9BAC00044051 /* 美妙清晨.mp3 in Resources */,
 				7D1FC4371C4C992200044051 /* sectionCell.xib in Resources */,
 				7D1FC4931C4CB13E00044051 /* 同学起床了(女声).mp3 in Resources */,
+				7DE9A2F21C52010D004AD040 /* defaultClock.plist in Resources */,
 				7D1FC4321C4C984600044051 /* ringCell.xib in Resources */,
 				7D5554451C4343BE001D67A8 /* SetClockTimeController.xib in Resources */,
 				7DF1B40D1C48C0A00090BD64 /* mainSetViewController.xib in Resources */,
+				7D257EDB1C55EC2700DFA805 /* SetClockExtendViewController.xib in Resources */,
 				7D1FC4941C4CB13E00044051 /* 小笨熊起床了(女声).mp3 in Resources */,
 				7D1FC48D1C4CB13E00044051 /* 老板起床了(女声).mp3 in Resources */,
 				7D1FC4911C4CB13E00044051 /* 亲爱的起床了(女声).mp3 in Resources */,
@@ -603,7 +641,9 @@
 				7D730B441C3CDA8F00C095C5 /* HYLocalNotication.m in Sources */,
 				7DEDA3DC1C3E4E8900D7C4DE /* alertCell.m in Sources */,
 				7D1C16F11C3F45D200193447 /* MyClockViewController.m in Sources */,
+				7DE9A2FF1C520866004AD040 /* FitPeopleViewController.m in Sources */,
 				7D1B5ABA1C44E94A0053E6B8 /* SetClockModeController.m in Sources */,
+				7D257EDA1C55EC2700DFA805 /* SetClockExtendViewController.m in Sources */,
 				7DAC940F1C3F99D800F787DA /* SetClockViewController.m in Sources */,
 				7DF1B40C1C48C0A00090BD64 /* mainSetViewController.m in Sources */,
 				7D69DC361C4DFEC9007BB1F8 /* GADMasterViewController.m in Sources */,

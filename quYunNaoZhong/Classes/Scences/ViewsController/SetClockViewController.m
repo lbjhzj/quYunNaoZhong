@@ -9,7 +9,7 @@
 @import GoogleMobileAds;
 #import "SetClockViewController.h"
 
-@interface SetClockViewController ()<GADBannerViewDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,PassingTheClockTimeDelegate,PassingTheClockModeDelegate,PassingTheClockMusicDelegate>
+@interface SetClockViewController ()<GADBannerViewDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,PassingTheClockTimeDelegate,PassingTheClockModeDelegate,PassingTheClockMusicDelegate,passingSelectedClockExtendToHere>
 {
     GADMasterViewController *shared;
 }
@@ -75,8 +75,7 @@ static NSString *cellID_2 = @"sliderID";
     self.forceSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-30, cell2.frame.size.height * 0.5 - 8, 16, 16)];
     _forceSwitchBtn.tag = 2000;
     
-    self.shockSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-30, cell3.frame.size.height * 0.5 - 8, 16, 16)];
-    _shockSwitchBtn.tag = 3000;
+
     
     if (self.Alert.clockState) {
         _clockSwitchBtn.image = [UIImage imageNamed:@"开关（开）"];
@@ -88,11 +87,7 @@ static NSString *cellID_2 = @"sliderID";
     }else{
         _forceSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
     }
-    if (self.Alert.clockShock) {
-        _shockSwitchBtn.image = [UIImage imageNamed:@"开关（开）"];
-    }else{
-        _shockSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
-    }
+
 //    每次进入设置页都要刷新页面内容
     [self.tableView reloadData];
 
@@ -115,8 +110,8 @@ static NSString *cellID_2 = @"sliderID";
             self.clockNameLabel.text = self.Alert.clockName;
             self.clockTimeLabel.text = self.Alert.clockTime;
             self.clockModeLabel.text = self.Alert.clockMode;
-            self.valueLabel.text = [NSString stringWithFormat:@"%ld",self.Alert.clockSoundValue];
-            self.clockSoundValueLabel.value = self.Alert.clockSoundValue;
+            self.clockExtendLabel.text = self.Alert.clockExtend;
+
             self.clockMusicLabel.text = self.Alert.clockMusic;
         }
         
@@ -144,7 +139,9 @@ static NSString *cellID_2 = @"sliderID";
     setClockTimeController = [[SetClockTimeController alloc]initWithNibName:@"SetClockTimeController" bundle:nil];
     setClockModeController = [[SetClockModeController alloc]initWithNibName:@"SetClockModeController" bundle:nil];
     setClockMusicController = [[SetClockMusicViewController alloc]initWithNibName:@"SetClockMusicViewController" bundle:nil];
+    setClockExtendViewController = [[SetClockExtendViewController alloc]initWithNibName:@"SetClockExtendViewController" bundle:nil];
     
+    setClockExtendViewController.delegate = self;
     setClockTimeController.delegate = self;
     setClockModeController.delegate = self;
     setClockMusicController.delegate = self;
@@ -182,14 +179,12 @@ static NSString *cellID_2 = @"sliderID";
     
         NSString *nameStr = self.clockNameLabel.text;
         self.Alert.clockName = nameStr;
-
-        NSLog(@"111111textField=======%@",self.Alert.clockName);
     
     self.Alert.clockTime = self.clockTimeLabel.text;
     self.Alert.clockMode = self.clockModeLabel.text;
     self.Alert.clockMusic = self.clockMusicLabel.text;
     self.Alert.clockSoundValue = self.clockSoundValueLabel.value;
-
+    self.Alert.clockExtend = self.clockExtendLabel.text;
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         self.clockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
         if (!self.clockID) {
@@ -214,54 +209,12 @@ static NSString *cellID_2 = @"sliderID";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark 闹钟数据永久化
-//- (void)saveClockData:(alert *)Alert{
-//    NSMutableDictionary *clockDictionary = [NSMutableDictionary dictionaryWithCapacity:12];
-//    
-//    if (Alert.clockState) {
-//      [clockDictionary setObject:[NSString stringWithFormat:@"YES"] forKey:@"ClockState"];
-//    }else{
-//      [clockDictionary setObject:[NSString stringWithFormat:@"NO"] forKey:@"ClockState"];
-//    }
-//    if (Alert.clockForce) {
-//        [clockDictionary setObject:@"YES" forKey:@"ClockForce"];
-//    }else{
-//        [clockDictionary setObject:@"NO" forKey:@"ClockForce"];
-//    }
-//    if (Alert.clockShock) {
-//        [clockDictionary setObject:@"YES" forKey:@"ClockShock"];
-//    }else{
-//        [clockDictionary setObject:@"NO" forKey:@"ClockShock"];
-//    }
-//    [clockDictionary setObject:self.clockTimeLabel.text forKey:@"ClockTime"];
-//    [clockDictionary setObject:self.clockModeLabel.text forKey:@"ClockMode"];
-//    [clockDictionary setObject:self.clockNameLabel.text forKey:@"ClockName"];
-//#warning music&&小睡,暂时关闭
-//    [clockDictionary setObject:self.clockMusicLabel.text forKey:@"ClockMusic"];
-////    [clockDictionary setObject:self.clockExtendLabel.text forKey:@"ClockExtend"];
-//    [clockDictionary setObject:[NSString stringWithFormat:@"%f",self.clockSoundValueLabel.value] forKey:@"ClockSoundValue"];
-//
-//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    self.clockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
-//    if (!self.clockID) {
-//        if (![self.clickTheFirstOrAddBtnFlag isEqualToString:ClickTheFirstClockFlag]) {
-//            _clockID = _clockCount++;
-//        }
-//    }
-////    NSLog(@"clockID======%d",_clockID);
-//    [clockDictionary setObject:[NSString stringWithFormat:@"%d",self.clockID]forKey:@"ClockID"];
-//    [userDefault setObject:clockDictionary forKey:[NSString stringWithFormat:@"%d", self.clockID]];
-//    
-//
-//    [userDefault setObject:[NSNumber numberWithInt:self.clockCount] forKey:@"ClockCount"];
-//
-//
-//    
-////    NSLog(@"%@",clockDictionary);
-//    
-//    
-//
-//}
+
+#pragma mark SetClockExtendVC的传值协议方法
+- (void)passingTheClockExtendToHere:(NSString *)clockExtend{
+    self.clockExtendLabel.text = clockExtend;
+    self.passingFlag = YES;
+}
 
 #pragma mark SetClockMusicVC的传值协议方法
 - (void)passingTheClockMusicToFront:(NSString *)musicName{
@@ -350,21 +303,11 @@ static NSString *cellID_2 = @"sliderID";
             
         }else if (indexPath.row == 2){
 
-            cell.textLabel.text = @"震动";
-//            震动开关按键
-            if (cell.contentView.subviews.count<3){
-                [cell.contentView addSubview:_shockSwitchBtn];
-            }
+            cell.userInteractionEnabled = NO;
+         cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-        }else{
-//            cell.userInteractionEnabled = NO;
         }
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-//        当用了reload方法的时候，发生视图重叠
-//        if (cell.contentView.subviews.count == 3) {
-//            [cell.contentView.subviews[1] removeFromSuperview];
-//        }
 
     }else{
         if (indexPath.row == 0) {
@@ -433,11 +376,7 @@ static NSString *cellID_2 = @"sliderID";
 
             cell.textLabel.text = @"音量";
 //            self.clockSoundValueLabel = [[UISlider alloc] initWithFrame:CGRectMake(150, 0, self.view.frame.size.width-220, cell.contentView.frame.size.height)];
-            
 
-            
-
-            
             if (cell.contentView.subviews.count<3) {
             [cell.contentView addSubview:_valueLabel];
             [cell.contentView addSubview:self.clockSoundValueLabel];
@@ -501,28 +440,6 @@ static NSString *cellID_2 = @"sliderID";
                 
                 self.Alert.clockForce = !self.Alert.clockForce;
                 break;
-            case 2:
-                for (UIImageView *view in cell.contentView.subviews) {
-                    if (view.tag == 3000) {
-                        [view removeFromSuperview];
-                    }
-                }
-                
-                if (self.Alert.clockShock) {
-                    
-                    self.shockSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
-                    
-                }else{
-                    
-                    [self.shockSwitchBtn setImage:[UIImage imageNamed:@"开关（开）"]] ;
-                    
-                }
-                
-                [cell.contentView addSubview:_shockSwitchBtn];
-                
-                self.Alert.clockShock = !self.Alert.clockShock;
-
-                break;
             default:
                 break;
         }
@@ -544,10 +461,9 @@ static NSString *cellID_2 = @"sliderID";
                 [self presentViewController:setClockMusicController animated:YES completion:^{
                     
                 }];
-//                [self.navigationController pushViewController:setClockMusicController animated:YES];
                 break;
             case 4:
-                
+                [self.navigationController pushViewController:setClockExtendViewController animated:YES];
                 break;
                 
             default:
@@ -567,9 +483,9 @@ static NSString *cellID_2 = @"sliderID";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
-        return 4;
+        return 3;
     }
-    return 6;
+    return 5;
 }
 
 /*

@@ -18,6 +18,8 @@
 
 - (alert *)findClockOfAllAlertsByIndexPath:(NSIndexPath *)indexPath;
 
+- (NSMutableArray *)findClockOfDefaultPlist:(NSString *)sectionName;
+
 - (void)removeAllDataInUserDefault;
 
 - (void)saveClockData:(alert *)Alert;

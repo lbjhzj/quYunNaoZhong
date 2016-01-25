@@ -96,9 +96,9 @@ static NSString *cellID = @"cellID";
     [shared resetAdView:self];
     
 //    [[UIApplication sharedApplication]cancelAllLocalNotifications];
-    for (UILocalNotification *localNotication in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
-        NSLog(@"%@",localNotication);
-    }
+//    for (UILocalNotification *localNotication in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
+//        NSLog(@"%@",localNotication);
+//    }
     [super viewWillAppear:animated];
 }
 
@@ -305,10 +305,20 @@ static NSString *cellID = @"cellID";
 
     int hour = [((NSString *)[Alert.clockTime componentsSeparatedByString:@":"][0]) intValue]-[((NSString *)[[NSString stringFromDate:date ByFormatter:formatter] componentsSeparatedByString:@":"][0]) intValue];
     int minute = [((NSString *)[Alert.clockTime componentsSeparatedByString:@":"][1]) intValue]-[((NSString *)[[NSString stringFromDate:date ByFormatter:formatter] componentsSeparatedByString:@":"][1]) intValue];
-    if (hour<=0 || minute<=0) {
+    if (hour<=0) {
+
         cell.countLabel.text = @"时间已过";
     }else{
-        cell.countLabel.text = [NSString stringWithFormat:@"%d:%d",hour,minute];
+        if (hour<10 && minute>10) {
+            cell.countLabel.text = [NSString stringWithFormat:@"0%d:%d",hour,minute];
+        }else if (minute<10 && hour>10){
+            cell.countLabel.text = [NSString stringWithFormat:@"%d:0%d",hour,minute];
+        }else if (hour <10 && minute <10){
+            cell.countLabel.text = [NSString stringWithFormat:@"0%d:0%d",hour,minute];
+        }else{
+            cell.countLabel.text = [NSString stringWithFormat:@"%d:%d",hour,minute];
+        }
+        
     }
     return cell;
 }

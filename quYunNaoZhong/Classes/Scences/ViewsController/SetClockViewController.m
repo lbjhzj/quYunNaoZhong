@@ -111,7 +111,6 @@ static NSString *cellID_2 = @"sliderID";
             self.clockTimeLabel.text = self.Alert.clockTime;
             self.clockModeLabel.text = self.Alert.clockMode;
             self.clockExtendLabel.text = self.Alert.clockExtend;
-
             self.clockMusicLabel.text = self.Alert.clockMusic;
         }
         

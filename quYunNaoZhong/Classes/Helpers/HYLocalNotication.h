@@ -20,6 +20,8 @@
 
 - (NSMutableArray *)findClockOfDefaultPlist:(NSString *)sectionName;
 
+- (void)changeClockOfDefaultPlist:(NSString *)sectionName AtIndexPath:(NSIndexPath *)indexPath withAlert:(alert *)Alert;
+
 - (void)removeAllDataInUserDefault;
 
 - (void)saveClockData:(alert *)Alert;
@@ -27,6 +29,8 @@
 -(void)vibratePlay:(NSInteger*)num;
 
 +(NSArray *) getFilenamelistOfType:(NSString *)type fromDirPath:(NSString *)dirPath;
+
+- (void)writeDataToDefaultPlist:(NSString *)type toDirPath:(NSString *)dirPath;
 
 - (void)removeClockDataWithClockID:(int)clockID;
 @end

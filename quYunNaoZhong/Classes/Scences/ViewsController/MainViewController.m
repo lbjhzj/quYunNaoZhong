@@ -96,9 +96,9 @@ static NSString *cellID = @"cellID";
     [shared resetAdView:self];
     
 //    [[UIApplication sharedApplication]cancelAllLocalNotifications];
-//    for (UILocalNotification *localNotication in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
-//        NSLog(@"%@",localNotication);
-//    }
+    for (UILocalNotification *localNotication in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
+        NSLog(@"%@",localNotication);
+    }
     [super viewWillAppear:animated];
 }
 

@@ -115,8 +115,8 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     NSString *clockMode = [clockDictionary objectForKey:@"ClockMode"];
     NSString *clockMusic = [clockDictionary objectForKey:@"ClockMusic"];
     NSString *clockForceSwitch = [clockDictionary objectForKey:@"ClockForce"];
-//    NSString *clockRemember = [clockDictionary objectForKey:@"ClockRemember"];
-
+    NSString *clockRemember = [clockDictionary objectForKey:@"ClockRemember"];
+    NSString *clockExtend = [clockDictionary objectForKey:@"ClockExtend"];
     //-----组建本地通知的fireDate-----------------------------------------------
     
     //------------------------------------------------------------------------
@@ -214,14 +214,32 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
             
             if ([clockForceSwitch isEqualToString:@"YES"]) {
                 for (int i=0; i<3; i++) {
-                    newNotification.fireDate = [newFireDate dateByAddingTimeInterval:30*i];
+                    if (![clockExtend containsString:@"未设置"]&&clockExtend){
+                       newNotification.fireDate = [newFireDate dateByAddingTimeInterval:[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]*i*60];
+                        NSLog(@"延迟了%d分",[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]);
+                    }else{
+                       newNotification.fireDate = [newFireDate dateByAddingTimeInterval:30*i];
+                    }
+                    
                     [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
                     NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
                 }
-            }else{
-                newNotification.fireDate = newFireDate;
-                [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
-                NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
+            }
+            else{
+                for (int i=0; i<3; i++) {
+                    if (![clockExtend containsString:@"未设置"]&&clockExtend){
+                        newNotification.fireDate = [newFireDate dateByAddingTimeInterval:[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]*i*60];
+                        [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
+                        NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
+                        NSLog(@"延迟了%d分",[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]);
+                    }else{
+                        newNotification.fireDate = newFireDate;
+                        [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
+                        NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
+                    }
+
+                }
+
             }
 
             
@@ -257,6 +275,16 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     }
     return clockArray;
 }
+
+- (void)changeClockOfDefaultPlist:(NSString *)sectionName AtIndexPath:(NSIndexPath *)indexPath withAlert:(alert *)Alert{
+ 
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaultClock" ofType:@"plist"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    
+    
+    
+}
+
 - (alert *)findClockOfAllAlertsByIndexPath:(NSIndexPath *)indexPath{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *clockDictionary = [userDefault objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]];
@@ -272,6 +300,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     Alert.clockType = [clockDictionary objectForKey:@"ClockType"];
     Alert.clockFitPeople = [clockDictionary objectForKey:@"ClockFitPeople"];
     Alert.clockID = [clockDictionary objectForKey:@"ClockID"];
+    Alert.clockExtend = [clockDictionary objectForKey:@"ClockExtend"];
     Alert.clockForce = [[clockDictionary objectForKey:@"ClockForce"] boolValue];
     Alert.clockShock = [[clockDictionary objectForKey:@"ClockShock"] boolValue];
     Alert.clockSoundValue = [[clockDictionary objectForKey:@"ClockSoundValue"] integerValue];
@@ -333,6 +362,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     
     [userDefault removeObjectForKey:[NSString stringWithFormat:@"%d",clockID]];
 }
+
 
 
 @end

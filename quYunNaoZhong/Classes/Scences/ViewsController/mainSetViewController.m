@@ -8,7 +8,7 @@
 
 #import "mainSetViewController.h"
 
-@interface mainSetViewController ()<UITableViewDataSource,UITableViewDelegate,passingSelectedModeDelegate>
+@interface mainSetViewController ()<UITableViewDataSource,UITableViewDelegate,passingSelectedModeDelegate,MFMailComposeViewControllerDelegate>
 {
     GADMasterViewController *shared;
 }
@@ -107,13 +107,76 @@ static NSString *cellID = @"cellID";
              [self.navigationController pushViewController:fit animated:YES];
         }
             break;
+        case 3:{
+            UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[@"健康生活闹钟,https://itunes.apple.com/us/app/jian-kang-sheng-huo-nao-zhong/id1078158366?l=zh&ls=1&mt=8."] applicationActivities:nil];
+            [self presentViewController:activityVC animated:YES completion:^{
+                
+            }];
+        }
+            break;
+        case 4:{
+            MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+            mc.mailComposeDelegate = self;
+            [mc setSubject:@"意见反馈"];
+            [mc setCcRecipients:[NSArray arrayWithObject:@"bryanthao@sina.com"]];
+            [mc setBccRecipients:[NSArray arrayWithObject:@"brynthao@sina.com"]];
+            [mc setMessageBody:@"请在此写出您的建议" isHTML:NO];
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"blood_orange"
+                                                             ofType:@"png"];
+            NSData *data = [NSData dataWithContentsOfFile:path];
+            [mc addAttachmentData:data mimeType:@"image/png" fileName:@"blood_orange"];
             
+            
+            //    [self dismissViewControllerAnimated:YES completion:^{
+            //        [(UINavigationController *)self.presentingViewController popToRootViewControllerAnimated:YES];
+            //
+            //    }];
+            [self presentViewController:mc animated:YES completion:nil];
+            //    while(theViewController = [theObjectEnumerator nextObject ])
+            //    {
+            //        if([theViewController modalTransitionStyle] == UIModalTransitionStyleCoverVertical)
+            //        {
+            //            [self.mNavigationController popToRootViewControllerAnimated:
+            //             YES];
+            //        }
+            //    }
+            //}else
+            //while(theViewController = [theObjectEnumerator nextObject ])
+            //{
+            //    if([theViewController modalTransitionStyle] == UIModalTransitionStyleCoverVertical)
+            //    {
+            //        [self.mNavigationController dismissModalViewControllerAnimated:YES];
+            //    }
+            //}
+        }
+            break;
         default:
             break;
     }
 }
 
-
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error {
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail send canceled...");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved...");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent...");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail send errored: %@...", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 /*
 #pragma mark - Navigation

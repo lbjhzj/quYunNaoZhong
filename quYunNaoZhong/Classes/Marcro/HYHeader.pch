@@ -50,7 +50,7 @@
 #import "SetClockMusicViewController.h"
 
 #import "HYLocalNotication.h"
-
+#import <MessageUI/MessageUI.h>
 
 #import "SetClockExtendViewController.h"
 #import "FitPeopleViewController.h"

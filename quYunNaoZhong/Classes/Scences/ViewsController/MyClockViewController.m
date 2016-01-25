@@ -203,12 +203,25 @@ static NSString *cellID = @"cellID";
     self.setClockVC.clickTheFirstOrAddBtnFlag = ClickTheFirstClockFlag;
     self.setClockVC.passingFlag = NO;
     alert * Alert = [alert new];
-    
-    Alert = self.alertArray[indexPath.row];
-
     self.setClockVC.Alert = Alert;
-    self.setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];
-    [self.navigationController pushViewController:self.setClockVC animated:YES];
+    Alert = self.alertArray[indexPath.row];
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    //    NSLog(@"%@",[userDefault objectForKey:@"ClockCount"]);
+    NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];
+    if ([fitPeople isEqualToString:@"关闭"] ||fitPeople == nil){
+        self.setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];
+        [self.navigationController pushViewController:self.setClockVC animated:YES];
+    }else{
+        if (indexPath.row<self.alertArray.count-8) {
+            self.setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];
+            [self.navigationController pushViewController:self.setClockVC animated:YES];
+        }else{
+            
+        }
+    }
+    
+
+
 
 }
 

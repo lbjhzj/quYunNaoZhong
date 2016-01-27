@@ -191,12 +191,30 @@ static NSString *cellID_2 = @"sliderID";
                 _clockID = _clockCount++;
                   self.Alert.clockID = [NSString stringWithFormat:@"%d",_clockID];
                 [userDefault setObject:[NSNumber numberWithInt:self.clockCount] forKey:@"ClockCount"];
+                 [[HYLocalNotication shareHYLocalNotication] saveClockData:self.Alert];
+            }else{
+                self.Alert.clockID = [NSString stringWithFormat:@"%d",_clockID];
             }
+        }else{
+            self.Alert.clockID = [NSString stringWithFormat:@"%d",_clockID];
         }
     
   
     //    NSLog(@"clockID======%d",_clockID);
-    [[HYLocalNotication shareHYLocalNotication] saveClockData:self.Alert];
+
+    //    NSLog(@"%@",[userDefault objectForKey:@"ClockCount"]);
+    NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];
+    if ([fitPeople isEqualToString:@"关闭"] ||fitPeople == nil){
+     [[HYLocalNotication shareHYLocalNotication] saveClockData:self.Alert];
+    }else{
+        
+        if (!self.Alert.clockType) {
+            [[HYLocalNotication shareHYLocalNotication] saveClockData:self.Alert];
+        }else{
+            [[HYLocalNotication shareHYLocalNotication]writeDataToDefaultPlist:self.Alert];
+        }
+        
+    }
     
     if (self.Alert.clockState) {
         

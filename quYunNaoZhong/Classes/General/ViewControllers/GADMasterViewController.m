@@ -35,8 +35,15 @@
                                               GAD_SIZE_320x50.height)];
         // Has an ad request already been made
         isLoaded_ = NO;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveOutAdvertisment) name:@"buyAction" object:nil];
+
     }
     return self;
+}
+
+- (void)moveOutAdvertisment{
+
+    adBanner_.frame = CGRectMake(0, 0, 0, 0);
 }
 -(void)resetAdView:(UIViewController *)rootViewController {
     // Always keep track of currentDelegate for notification forwarding

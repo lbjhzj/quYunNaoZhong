@@ -18,7 +18,7 @@
 
 - (alert *)findClockOfAllAlertsByIndexPath:(NSIndexPath *)indexPath;
 
-- (NSMutableArray *)findClockOfDefaultPlist:(NSString *)sectionName;
+- (NSArray *)findClockOfDefaultPlist:(NSString *)sectionName;
 
 - (void)changeClockOfDefaultPlist:(NSString *)sectionName AtIndexPath:(NSIndexPath *)indexPath withAlert:(alert *)Alert;
 
@@ -30,7 +30,7 @@
 
 +(NSArray *) getFilenamelistOfType:(NSString *)type fromDirPath:(NSString *)dirPath;
 
-- (void)writeDataToDefaultPlist:(NSString *)type toDirPath:(NSString *)dirPath;
+- (void)writeDataToDefaultPlist:(alert *)Alert;
 
 - (void)removeClockDataWithClockID:(int)clockID;
 @end

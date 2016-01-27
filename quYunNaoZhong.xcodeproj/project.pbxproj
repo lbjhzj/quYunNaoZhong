@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D026F031C5745B500A76C4C /* sectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D026F051C5745B500A76C4C /* sectionCell.xib */; };
+		7D026F0C1C5745E900A76C4C /* SetClockExtendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D026F0E1C5745E900A76C4C /* SetClockExtendViewController.xib */; };
+		7D026F131C57462600A76C4C /* ForceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D026F151C57462600A76C4C /* ForceViewController.xib */; };
+		7D026F1B1C576A2000A76C4C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D026F1A1C576A2000A76C4C /* StoreKit.framework */; };
 		7D1B5ABA1C44E94A0053E6B8 /* SetClockModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1B5AB81C44E94A0053E6B8 /* SetClockModeController.m */; };
 		7D1B5ABB1C44E94A0053E6B8 /* SetClockModeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1B5AB91C44E94A0053E6B8 /* SetClockModeController.xib */; };
 		7D1C16F11C3F45D200193447 /* MyClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1C16F01C3F45D200193447 /* MyClockViewController.m */; };
@@ -15,7 +19,6 @@
 		7D1FC4311C4C984600044051 /* ringCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FC42F1C4C984600044051 /* ringCell.m */; };
 		7D1FC4321C4C984600044051 /* ringCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4301C4C984600044051 /* ringCell.xib */; };
 		7D1FC4361C4C992200044051 /* sectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FC4341C4C992200044051 /* sectionCell.m */; };
-		7D1FC4371C4C992200044051 /* sectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4351C4C992200044051 /* sectionCell.xib */; };
 		7D1FC4451C4C9BAC00044051 /* 八音盒.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4381C4C9BAC00044051 /* 八音盒.mp3 */; };
 		7D1FC4461C4C9BAC00044051 /* 村庄的早晨.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4391C4C9BAC00044051 /* 村庄的早晨.mp3 */; };
 		7D1FC4471C4C9BAC00044051 /* 滴答滴答.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC43A1C4C9BAC00044051 /* 滴答滴答.mp3 */; };
@@ -48,7 +51,6 @@
 		7D1FC4981C4CB13E00044051 /* 主人起床了(男声).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4861C4CB13E00044051 /* 主人起床了(男声).mp3 */; };
 		7D1FC4991C4CB13E00044051 /* 主人起床了(女声).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4871C4CB13E00044051 /* 主人起床了(女声).mp3 */; };
 		7D257EDA1C55EC2700DFA805 /* SetClockExtendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D257ED81C55EC2700DFA805 /* SetClockExtendViewController.m */; };
-		7D257EDB1C55EC2700DFA805 /* SetClockExtendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D257ED91C55EC2700DFA805 /* SetClockExtendViewController.xib */; };
 		7D4D48B31C41F23700C18F6D /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4D48A91C41F23700C18F6D /* GoogleMobileAds.framework */; };
 		7D4D48B41C41F23700C18F6D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D48B11C41F23700C18F6D /* README.txt */; };
 		7D4D48B51C41F23700C18F6D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D48B21C41F23700C18F6D /* README.txt */; };
@@ -71,6 +73,8 @@
 		7DE9A2F21C52010D004AD040 /* defaultClock.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9A2F11C52010D004AD040 /* defaultClock.plist */; };
 		7DE9A2FF1C520866004AD040 /* FitPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE9A2FD1C520866004AD040 /* FitPeopleViewController.m */; };
 		7DE9A3001C520866004AD040 /* FitPeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9A2FE1C520866004AD040 /* FitPeopleViewController.xib */; };
+		7DE9C4CE1C5702B2003C13A5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9C4D01C5702B2003C13A5 /* InfoPlist.strings */; };
+		7DE9C4D41C5703C0003C13A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9C4D61C5703C0003C13A5 /* Localizable.strings */; };
 		7DEDA3DC1C3E4E8900D7C4DE /* alertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */; };
 		7DEDA3DD1C3E4E8900D7C4DE /* alertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */; };
 		7DEDA3E31C3E6C6100D7C4DE /* alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3E21C3E6C6100D7C4DE /* alert.m */; };
@@ -78,11 +82,20 @@
 		7DF1B40C1C48C0A00090BD64 /* mainSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF1B40A1C48C0A00090BD64 /* mainSetViewController.m */; };
 		7DF1B40D1C48C0A00090BD64 /* mainSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B40B1C48C0A00090BD64 /* mainSetViewController.xib */; };
 		7DF6948C1C4DCBC2002175CD /* ForceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6948A1C4DCBC2002175CD /* ForceViewController.m */; };
-		7DF6948D1C4DCBC2002175CD /* ForceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF6948B1C4DCBC2002175CD /* ForceViewController.xib */; };
 		7DF694901C4DCCB9002175CD /* recordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF6948F1C4DCCB9002175CD /* recordView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D026F041C5745B500A76C4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/sectionCell.xib; sourceTree = "<group>"; };
+		7D026F0A1C5745CE00A76C4C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/sectionCell.xib; sourceTree = "<group>"; };
+		7D026F0B1C5745CE00A76C4C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/sectionCell.xib"; sourceTree = "<group>"; };
+		7D026F0D1C5745E900A76C4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SetClockExtendViewController.xib; sourceTree = "<group>"; };
+		7D026F101C5745ED00A76C4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SetClockExtendViewController.strings; sourceTree = "<group>"; };
+		7D026F121C5745EF00A76C4C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SetClockExtendViewController.strings"; sourceTree = "<group>"; };
+		7D026F141C57462600A76C4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ForceViewController.xib; sourceTree = "<group>"; };
+		7D026F171C57463200A76C4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ForceViewController.strings; sourceTree = "<group>"; };
+		7D026F191C57463300A76C4C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ForceViewController.strings"; sourceTree = "<group>"; };
+		7D026F1A1C576A2000A76C4C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7D1B5AB71C44E94A0053E6B8 /* SetClockModeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetClockModeController.h; sourceTree = "<group>"; };
 		7D1B5AB81C44E94A0053E6B8 /* SetClockModeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockModeController.m; sourceTree = "<group>"; };
 		7D1B5AB91C44E94A0053E6B8 /* SetClockModeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetClockModeController.xib; sourceTree = "<group>"; };
@@ -96,7 +109,6 @@
 		7D1FC4301C4C984600044051 /* ringCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ringCell.xib; sourceTree = "<group>"; };
 		7D1FC4331C4C992200044051 /* sectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sectionCell.h; sourceTree = "<group>"; };
 		7D1FC4341C4C992200044051 /* sectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sectionCell.m; sourceTree = "<group>"; };
-		7D1FC4351C4C992200044051 /* sectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sectionCell.xib; sourceTree = "<group>"; };
 		7D1FC4381C4C9BAC00044051 /* 八音盒.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "八音盒.mp3"; sourceTree = "<group>"; };
 		7D1FC4391C4C9BAC00044051 /* 村庄的早晨.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "村庄的早晨.mp3"; sourceTree = "<group>"; };
 		7D1FC43A1C4C9BAC00044051 /* 滴答滴答.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "滴答滴答.mp3"; sourceTree = "<group>"; };
@@ -130,7 +142,6 @@
 		7D1FC4871C4CB13E00044051 /* 主人起床了(女声).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "主人起床了(女声).mp3"; sourceTree = "<group>"; };
 		7D257ED71C55EC2700DFA805 /* SetClockExtendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetClockExtendViewController.h; sourceTree = "<group>"; };
 		7D257ED81C55EC2700DFA805 /* SetClockExtendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockExtendViewController.m; sourceTree = "<group>"; };
-		7D257ED91C55EC2700DFA805 /* SetClockExtendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetClockExtendViewController.xib; sourceTree = "<group>"; };
 		7D4D48A91C41F23700C18F6D /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		7D4D48AB1C41F23700C18F6D /* GADMAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
 		7D4D48AC1C41F23700C18F6D /* GADMAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
@@ -145,7 +156,7 @@
 		7D5554431C4343BE001D67A8 /* SetClockTimeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetClockTimeController.xib; sourceTree = "<group>"; };
 		7D69DC341C4DFEC9007BB1F8 /* GADMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMasterViewController.h; sourceTree = "<group>"; };
 		7D69DC351C4DFEC9007BB1F8 /* GADMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADMasterViewController.m; sourceTree = "<group>"; };
-		7D730B141C3CD94800C095C5 /* quYunNaoZhong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quYunNaoZhong.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D730B141C3CD94800C095C5 /* 健康生活闹钟.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "健康生活闹钟.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D730B181C3CD94800C095C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7D730B211C3CD94800C095C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7D730B231C3CD94800C095C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -172,6 +183,15 @@
 		7DE9A2FC1C520866004AD040 /* FitPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitPeopleViewController.h; sourceTree = "<group>"; };
 		7DE9A2FD1C520866004AD040 /* FitPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitPeopleViewController.m; sourceTree = "<group>"; };
 		7DE9A2FE1C520866004AD040 /* FitPeopleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FitPeopleViewController.xib; sourceTree = "<group>"; };
+		7DE9C4C61C570281003C13A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		7DE9C4C71C570281003C13A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7DE9C4C91C570286003C13A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		7DE9C4CA1C570286003C13A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		7DE9C4CF1C5702B2003C13A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7DE9C4D11C5702B4003C13A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		7DE9C4D51C5703C0003C13A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7DE9C4D71C5703C1003C13A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		7DE9C4D81C570518003C13A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7DEDA3D91C3E4E8900D7C4DE /* alertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alertCell.h; sourceTree = "<group>"; };
 		7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alertCell.m; sourceTree = "<group>"; };
 		7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = alertCell.xib; sourceTree = "<group>"; };
@@ -183,7 +203,6 @@
 		7DF1B40B1C48C0A00090BD64 /* mainSetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mainSetViewController.xib; sourceTree = "<group>"; };
 		7DF694891C4DCBC2002175CD /* ForceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForceViewController.h; sourceTree = "<group>"; };
 		7DF6948A1C4DCBC2002175CD /* ForceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForceViewController.m; sourceTree = "<group>"; };
-		7DF6948B1C4DCBC2002175CD /* ForceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForceViewController.xib; sourceTree = "<group>"; };
 		7DF6948F1C4DCCB9002175CD /* recordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = recordView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D026F1B1C576A2000A76C4C /* StoreKit.framework in Frameworks */,
 				7DF1B3A51C4887A90090BD64 /* AudioToolbox.framework in Frameworks */,
 				7DCD71F81C4793600072DDC5 /* AVFoundation.framework in Frameworks */,
 				7D4D48B31C41F23700C18F6D /* GoogleMobileAds.framework in Frameworks */,
@@ -216,7 +236,7 @@
 			children = (
 				7D257ED71C55EC2700DFA805 /* SetClockExtendViewController.h */,
 				7D257ED81C55EC2700DFA805 /* SetClockExtendViewController.m */,
-				7D257ED91C55EC2700DFA805 /* SetClockExtendViewController.xib */,
+				7D026F0E1C5745E900A76C4C /* SetClockExtendViewController.xib */,
 			);
 			name = SetClockExtend;
 			sourceTree = "<group>";
@@ -258,6 +278,7 @@
 		7D730B0B1C3CD94800C095C5 = {
 			isa = PBXGroup;
 			children = (
+				7D026F1A1C576A2000A76C4C /* StoreKit.framework */,
 				7DF1B3A41C4887A90090BD64 /* AudioToolbox.framework */,
 				7DCD71F71C4793600072DDC5 /* AVFoundation.framework */,
 				7D4D48A81C41F23700C18F6D /* GoogleMobileAdsSdkiOS-7.6.0 */,
@@ -269,7 +290,7 @@
 		7D730B151C3CD94800C095C5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7D730B141C3CD94800C095C5 /* quYunNaoZhong.app */,
+				7D730B141C3CD94800C095C5 /* 健康生活闹钟.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -285,6 +306,8 @@
 				7D730B281C3CD94800C095C5 /* Info.plist */,
 				7DE9A2F11C52010D004AD040 /* defaultClock.plist */,
 				7D730B171C3CD94800C095C5 /* Supporting Files */,
+				7DE9C4D01C5702B2003C13A5 /* InfoPlist.strings */,
+				7DE9C4D61C5703C0003C13A5 /* Localizable.strings */,
 			);
 			path = quYunNaoZhong;
 			sourceTree = "<group>";
@@ -351,7 +374,7 @@
 				7D1FC4301C4C984600044051 /* ringCell.xib */,
 				7D1FC4331C4C992200044051 /* sectionCell.h */,
 				7D1FC4341C4C992200044051 /* sectionCell.m */,
-				7D1FC4351C4C992200044051 /* sectionCell.xib */,
+				7D026F051C5745B500A76C4C /* sectionCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -504,7 +527,7 @@
 			children = (
 				7DF694891C4DCBC2002175CD /* ForceViewController.h */,
 				7DF6948A1C4DCBC2002175CD /* ForceViewController.m */,
-				7DF6948B1C4DCBC2002175CD /* ForceViewController.xib */,
+				7D026F151C57462600A76C4C /* ForceViewController.xib */,
 			);
 			name = ForceClock;
 			sourceTree = "<group>";
@@ -526,7 +549,7 @@
 			);
 			name = quYunNaoZhong;
 			productName = quYunNaoZhong;
-			productReference = 7D730B141C3CD94800C095C5 /* quYunNaoZhong.app */;
+			productReference = 7D730B141C3CD94800C095C5 /* 健康生活闹钟.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -549,8 +572,9 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
+				"zh-Hans",
 			);
 			mainGroup = 7D730B0B1C3CD94800C095C5;
 			productRefGroup = 7D730B151C3CD94800C095C5 /* Products */;
@@ -568,7 +592,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D1FC44F1C4C9BAC00044051 /* 木琴.mp3 in Resources */,
-				7DF6948D1C4DCBC2002175CD /* ForceViewController.xib in Resources */,
+				7D026F131C57462600A76C4C /* ForceViewController.xib in Resources */,
 				7D1FC44A1C4C9BAC00044051 /* 吉他扫弦.mp3 in Resources */,
 				7D1FC44D1C4C9BAC00044051 /* 马林巴琴.mp3 in Resources */,
 				7D1FC44B1C4C9BAC00044051 /* 经典滴滴声.mp3 in Resources */,
@@ -586,6 +610,7 @@
 				7D1FC4901C4CB13E00044051 /* 亲爱的起床了(男声).mp3 in Resources */,
 				7D1FC4511C4C9BAC00044051 /* 自然晨曦.mp3 in Resources */,
 				7D1FC44C1C4C9BAC00044051 /* 空谷回响.mp3 in Resources */,
+				7DE9C4CE1C5702B2003C13A5 /* InfoPlist.strings in Resources */,
 				7D1FC4451C4C9BAC00044051 /* 八音盒.mp3 in Resources */,
 				7D1B5ABB1C44E94A0053E6B8 /* SetClockModeController.xib in Resources */,
 				7D4D48B41C41F23700C18F6D /* README.txt in Resources */,
@@ -595,13 +620,14 @@
 				7DF694901C4DCCB9002175CD /* recordView.xib in Resources */,
 				7D1FC4981C4CB13E00044051 /* 主人起床了(男声).mp3 in Resources */,
 				7D1FC44E1C4C9BAC00044051 /* 美妙清晨.mp3 in Resources */,
-				7D1FC4371C4C992200044051 /* sectionCell.xib in Resources */,
+				7D026F031C5745B500A76C4C /* sectionCell.xib in Resources */,
 				7D1FC4931C4CB13E00044051 /* 同学起床了(女声).mp3 in Resources */,
 				7DE9A2F21C52010D004AD040 /* defaultClock.plist in Resources */,
 				7D1FC4321C4C984600044051 /* ringCell.xib in Resources */,
 				7D5554451C4343BE001D67A8 /* SetClockTimeController.xib in Resources */,
+				7DE9C4D41C5703C0003C13A5 /* Localizable.strings in Resources */,
 				7DF1B40D1C48C0A00090BD64 /* mainSetViewController.xib in Resources */,
-				7D257EDB1C55EC2700DFA805 /* SetClockExtendViewController.xib in Resources */,
+				7D026F0C1C5745E900A76C4C /* SetClockExtendViewController.xib in Resources */,
 				7D1FC4941C4CB13E00044051 /* 小笨熊起床了(女声).mp3 in Resources */,
 				7D1FC48D1C4CB13E00044051 /* 老板起床了(女声).mp3 in Resources */,
 				7D1FC4911C4CB13E00044051 /* 亲爱的起床了(女声).mp3 in Resources */,
@@ -653,10 +679,42 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		7D026F051C5745B500A76C4C /* sectionCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D026F041C5745B500A76C4C /* Base */,
+				7D026F0A1C5745CE00A76C4C /* en */,
+				7D026F0B1C5745CE00A76C4C /* zh-Hans */,
+			);
+			name = sectionCell.xib;
+			sourceTree = "<group>";
+		};
+		7D026F0E1C5745E900A76C4C /* SetClockExtendViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D026F0D1C5745E900A76C4C /* Base */,
+				7D026F101C5745ED00A76C4C /* en */,
+				7D026F121C5745EF00A76C4C /* zh-Hans */,
+			);
+			name = SetClockExtendViewController.xib;
+			sourceTree = "<group>";
+		};
+		7D026F151C57462600A76C4C /* ForceViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D026F141C57462600A76C4C /* Base */,
+				7D026F171C57463200A76C4C /* en */,
+				7D026F191C57463300A76C4C /* zh-Hans */,
+			);
+			name = ForceViewController.xib;
+			sourceTree = "<group>";
+		};
 		7D730B201C3CD94800C095C5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				7D730B211C3CD94800C095C5 /* Base */,
+				7DE9C4C61C570281003C13A5 /* en */,
+				7DE9C4C91C570286003C13A5 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -665,8 +723,29 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D730B261C3CD94800C095C5 /* Base */,
+				7DE9C4C71C570281003C13A5 /* en */,
+				7DE9C4CA1C570286003C13A5 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7DE9C4D01C5702B2003C13A5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DE9C4CF1C5702B2003C13A5 /* en */,
+				7DE9C4D11C5702B4003C13A5 /* zh-Hans */,
+				7DE9C4D81C570518003C13A5 /* Base */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7DE9C4D61C5703C0003C13A5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DE9C4D51C5703C0003C13A5 /* en */,
+				7DE9C4D71C5703C1003C13A5 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -758,7 +837,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quyunkj@163.com (QUR9ZYX4JG)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -769,9 +848,9 @@
 				INFOPLIST_FILE = quYunNaoZhong/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.quyun.quYunNaoZhong;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quYunNaoZhong;
+				PRODUCT_NAME = "健康生活闹钟";
+				PROVISIONING_PROFILE = "3c69bc6a-d149-49b3-b62c-1f8247257dad";
 			};
 			name = Debug;
 		};
@@ -779,7 +858,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: quyunkj@163.com (QUR9ZYX4JG)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -790,9 +869,9 @@
 				INFOPLIST_FILE = quYunNaoZhong/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.quyun.quYunNaoZhong;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quYunNaoZhong;
+				PRODUCT_NAME = "健康生活闹钟";
+				PROVISIONING_PROFILE = "3c69bc6a-d149-49b3-b62c-1f8247257dad";
 			};
 			name = Release;
 		};

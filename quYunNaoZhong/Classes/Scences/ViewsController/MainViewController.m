@@ -43,6 +43,9 @@
 
 @property(nonatomic,strong)NSMutableArray * clockArray;
 
+@property(nonatomic,strong)NSMutableArray *firstArray;
+
+
 @end
 
 @implementation MainViewController
@@ -61,39 +64,90 @@ static NSString *cellID = @"cellID";
     //    self.constrainsOfTimeView.constant = 15.0f;
     
     //#warning 检查时间显示是否有bug
-    NSArray * tempTimeArray = [[NSString stringFromDate:[NSDate date] ByFormatter:formatter] componentsSeparatedByString:@":"];
+//    NSArray * tempTimeArray = [[NSString stringFromDate:[NSDate date] ByFormatter:formatter] componentsSeparatedByString:@":"];
     
 //    [self countDownAction:tempTimeArray];
 //    初始化当天的闹钟数组
     [self initClockCount];
-    [self.clockArray removeAllObjects];
+    [self.firstArray removeAllObjects];
     for (int i=0; i<self.clockCount; i++) {
-       
-       alert *Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy/MM/dd (ccc)"];
         NSString *dateMode=[NSString stringFromDate:[NSDate date] ByFormatter:formatter];
+
+       NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+       NSString *fitPeople = [defs objectForKey:@"ClockFitPeople"];
+        
+        alert *Alert = [alert new];
+        if ([fitPeople isEqualToString:@"关闭"] ||fitPeople == nil){
+            Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        }else{
+            if (self.clockCount >8) {
+                if (i<self.clockCount - 8) {
+            Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+                }else{
+            Alert = [alert new];
+            NSArray *tmpArray = [[HYLocalNotication shareHYLocalNotication]findClockOfDefaultPlist:fitPeople];
+            [Alert setValuesForKeysWithDictionary:((NSDictionary *)tmpArray[i-(self.clockCount-8)])];
+
+                }
+
+            }else{
+             
+                for (NSDictionary *dictionary in [[HYLocalNotication shareHYLocalNotication] findClockOfDefaultPlist:fitPeople]) {
+
+                    alert *Alert1 = [alert new];
+                    NSString *clockName =[dictionary objectForKey:@"ClockName"];
+                    NSString *clockTime = [dictionary objectForKey:@"ClockTime"];
+                    NSString *clockMode = [dictionary objectForKey:@"ClockMode"];
+                    NSString *clockMusic = [dictionary objectForKey:@"ClockMusic"];
+                    NSString *clockForceSwitch = [dictionary objectForKey:@"ClockForce"];
+                    NSString *clockRemember = [dictionary objectForKey:@"ClockRemember"];
+                    NSString *clockExtend = [dictionary objectForKey:@"ClockExtend"];
+                    NSString *clockType = [dictionary objectForKey:@"ClockType"];
+                    
+                    Alert1.clockMode = clockMode;
+                    Alert1.clockName = clockName;
+                    Alert1.clockTime = clockTime;
+                    Alert1.clockMusic = clockMusic;
+                    Alert1.clockForce = [clockForceSwitch boolValue];
+                    Alert1.clockRemember = clockRemember;
+                    Alert1.clockExtend = clockExtend;
+                    Alert1.clockType = clockType;
+                    Alert = Alert1;
+                    if ([Alert.clockMode containsString:[(NSString *)([dateMode componentsSeparatedByString:@"周"][1]) componentsSeparatedByString:@")"][0]]) {
+                        [self.firstArray addObject:Alert];
+                    }
+                }
+                break;
+                
+            }
+            
+
+            
+        }
+
         
 //        检测本机语言
-        NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
         NSArray* languages = [defs objectForKey:@"AppleLanguages"];
         NSString* preferredLang = [languages objectAtIndex:0];
   
         
         if ([preferredLang containsString:@"en"]) {
-            
+//            if ([Alert.clockMode containsString:@"二"]) {
+//                 [self.firstArray addObject:Alert];
+//            }
         }else{
             if ([Alert.clockMode containsString:[(NSString *)([dateMode componentsSeparatedByString:@"周"][1]) componentsSeparatedByString:@")"][0]]) {
-                [self.clockArray addObject:Alert];
+                [self.firstArray addObject:Alert];
             }
         }
 
     }
     [self.tableView reloadData];
+    self.clockArray = [self.firstArray copy];
+
     
-//    设置谷歌广告
-    shared = [GADMasterViewController singleton];
-    [shared resetAdView:self];
     
 //    [[UIApplication sharedApplication]cancelAllLocalNotifications];
     for (UILocalNotification *localNotication in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
@@ -139,9 +193,17 @@ static NSString *cellID = @"cellID";
     
     setClockVC = [SetClockViewController sharedSetClockViewController];
     
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveOutAdvertisment) name:@"buyAction" object:nil];
+    //    设置谷歌广告
+    shared = [GADMasterViewController singleton];
+    [shared resetAdView:self];
+
 }
 
+#pragma mark 去除广告，改约束
+- (void)moveOutAdvertisment{
 
+}
 
 #pragma mark 添加视图
 - (void)addViews{
@@ -291,10 +353,16 @@ static NSString *cellID = @"cellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    alertCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    
+   alertCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (!cell) {
+        cell = [[alertCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
 
-    alert *Alert = self.clockArray[indexPath.row];
+    alert *Alert = [alert new];
+    Alert=self.clockArray[indexPath.row];
     cell.timeLabel.text =Alert.clockTime;
+   
     cell.alertNameLabel.text = Alert.clockName;
     cell.alertWeekLabel.text = Alert.clockMode;
     cell.remarkLabel.text = Alert.clockRemember;
@@ -305,20 +373,17 @@ static NSString *cellID = @"cellID";
 
     int hour = [((NSString *)[Alert.clockTime componentsSeparatedByString:@":"][0]) intValue]-[((NSString *)[[NSString stringFromDate:date ByFormatter:formatter] componentsSeparatedByString:@":"][0]) intValue];
     int minute = [((NSString *)[Alert.clockTime componentsSeparatedByString:@":"][1]) intValue]-[((NSString *)[[NSString stringFromDate:date ByFormatter:formatter] componentsSeparatedByString:@":"][1]) intValue];
-    if (hour<=0) {
+    if (hour<0) {
 
-        cell.countLabel.text = @"时间已过";
+        cell.countLabel.text = NSLocalizedString(@"时间已过", nil);
     }else{
-        if (hour<10 && minute>10) {
-            cell.countLabel.text = [NSString stringWithFormat:@"0%d:%d",hour,minute];
-        }else if (minute<10 && hour>10){
-            cell.countLabel.text = [NSString stringWithFormat:@"%d:0%d",hour,minute];
-        }else if (hour <10 && minute <10){
-            cell.countLabel.text = [NSString stringWithFormat:@"0%d:0%d",hour,minute];
-        }else{
-            cell.countLabel.text = [NSString stringWithFormat:@"%d:%d",hour,minute];
+        if (hour<0) {
+            hour = 0;
         }
-        
+        if (minute<0) {
+            minute = 0;
+        }
+        cell.countLabel.text = [NSString stringWithFormat:@"还有%d时%d分",hour,minute];
     }
     return cell;
 }
@@ -338,6 +403,20 @@ static NSString *cellID = @"cellID";
     setClockVC.clickTheFirstOrAddBtnFlag = ClickTheFirstClockFlag;
     setClockVC.passingFlag = NO;
     
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    //    NSLog(@"%@",[userDefault objectForKey:@"ClockCount"]);
+    NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];
+    if ([fitPeople isEqualToString:@"关闭"] ||fitPeople == nil){
+        setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];
+    }else{
+        if (indexPath.row<self.clockArray.count-8) {
+           setClockVC.clockID = [setClockVC.Alert.clockID intValue];
+        }else{
+            setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];
+            
+        }
+    }
+
     [self.navigationController pushViewController:setClockVC animated:YES];
     
     
@@ -345,12 +424,20 @@ static NSString *cellID = @"cellID";
 
 //懒加载闹钟数组
 - (NSMutableArray *)clockArray{
+
     if (_clockArray == nil) {
-        _clockArray = [NSMutableArray arrayWithCapacity:6];
+        _clockArray = [NSMutableArray array];
     }
     return _clockArray;
+   
 }
 
+- (NSMutableArray *)firstArray{
+    if (_firstArray == nil) {
+        _firstArray = [NSMutableArray array];
+    }
+    return _firstArray;
+}
 /*
 #pragma mark - Navigation
 

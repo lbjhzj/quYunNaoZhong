@@ -5,6 +5,8 @@
 	<key>18-30岁</key>
 	<array>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>醒来后一杯温开水，帮助身体细胞都重新活力四射。</string>
 			<key>ClockTime</key>
@@ -25,9 +27,10 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>早饭一定要吃，因为它可以帮助你维持血糖水平的稳定。所以早饭很重要，迟点吃没关系，但一定要吃哦。
-早饭一定要吃，因为它可以帮助你维持血糖水平的稳定。所以早饭很重要，迟点吃没关系，但一定要吃哦。
 </string>
 			<key>ClockTime</key>
 			<string>08:00</string>
@@ -47,6 +50,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>让眼睛休息一会儿，看看窗外，喝杯水。</string>
 			<key>ClockTime</key>
@@ -67,6 +72,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>多吃豆类，豆类富含氨基酸和蛋白质，可提高免疫力，增强记忆力。</string>
 			<key>ClockTime</key>
@@ -87,6 +94,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>30分钟的午休会让你精力充沛。</string>
 			<key>ClockTime</key>
@@ -105,10 +114,10 @@
 			<string>50</string>
 			<key>ClockMode</key>
 			<string>一,二,三,四,五</string>
-			<key>ClockID</key>
-			<string>4</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>让眼睛休息一会儿，看看窗外，喝杯水。
 </string>
@@ -130,6 +139,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>晚饭吃太多，会引起血糖升高，并增加消化系统的负担，影响睡眠。晚饭应该多吃蔬菜，少吃富含卡路里和蛋白质的食物。吃饭时要细嚼慢咽。
 </string>
@@ -170,11 +181,15 @@
 			<string>50</string>
 			<key>ClockMode</key>
 			<string>一,二,三,四,五</string>
+			<key>ClockType</key>
+			<string>默认</string>
 		</dict>
 	</array>
 	<key>30-40岁</key>
 	<array>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>醒来后一杯温开水，帮助身体细胞都重新活力四射。</string>
 			<key>ClockTime</key>
@@ -195,6 +210,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>早饭一定要吃，因为它可以帮助你维持血糖水平的稳定。所以早饭很重要，迟点吃没关系，但一定要吃哦。
 早饭一定要吃，因为它可以帮助你维持血糖水平的稳定。所以早饭很重要，迟点吃没关系，但一定要吃哦。
@@ -217,6 +234,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>让眼睛休息一会儿，看看窗外，喝杯水。</string>
 			<key>ClockTime</key>
@@ -237,6 +256,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>多吃豆类，豆类富含氨基酸和蛋白质，可提高免疫力，增强记忆力。</string>
 			<key>ClockTime</key>
@@ -257,6 +278,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>30分钟的午休会让你精力充沛。</string>
 			<key>ClockTime</key>
@@ -277,6 +300,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>让眼睛休息一会儿，看看窗外，喝杯水。
 </string>
@@ -298,6 +323,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>晚饭吃太多，会引起血糖升高，并增加消化系统的负担，影响睡眠。晚饭应该多吃蔬菜，少吃富含卡路里和蛋白质的食物。吃饭时要细嚼慢咽。
 </string>
@@ -319,6 +346,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>为了保证充足的睡眠和身体各系统的需要，是时候该睡觉了。
 </string>
@@ -343,6 +372,8 @@
 	<key>40-50岁</key>
 	<array>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>醒来后一杯温开水，帮助身体细胞都重新活力四射。</string>
 			<key>ClockTime</key>
@@ -363,6 +394,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>早饭一定要吃，因为它可以帮助你维持血糖水平的稳定。所以早饭很重要，迟点吃没关系，但一定要吃哦。
 早饭一定要吃，因为它可以帮助你维持血糖水平的稳定。所以早饭很重要，迟点吃没关系，但一定要吃哦。
@@ -385,6 +418,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>让眼睛休息一会儿，看看窗外，喝杯水。</string>
 			<key>ClockTime</key>
@@ -405,6 +440,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>多吃豆类，豆类富含氨基酸和蛋白质，可提高免疫力，增强记忆力。</string>
 			<key>ClockTime</key>
@@ -425,6 +462,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>30分钟的午休会让你精力充沛。</string>
 			<key>ClockTime</key>
@@ -445,6 +484,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>让眼睛休息一会儿，看看窗外，喝杯水。
 </string>
@@ -466,6 +507,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>晚饭吃太多，会引起血糖升高，并增加消化系统的负担，影响睡眠。晚饭应该多吃蔬菜，少吃富含卡路里和蛋白质的食物。吃饭时要细嚼慢咽。
 </string>
@@ -487,6 +530,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>为了保证充足的睡眠和身体各系统的需要，是时候该睡觉了。
 </string>
@@ -511,6 +556,8 @@
 	<key>50岁以上</key>
 	<array>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>醒来后一杯温开水，帮助身体细胞都重新活力四射。</string>
 			<key>ClockTime</key>
@@ -531,6 +578,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>早饭一定要吃，因为它可以帮助你维持血糖水平的稳定。所以早饭很重要，迟点吃没关系，但一定要吃哦。
 早饭一定要吃，因为它可以帮助你维持血糖水平的稳定。所以早饭很重要，迟点吃没关系，但一定要吃哦。
@@ -553,6 +602,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>让眼睛休息一会儿，看看窗外，喝杯水。</string>
 			<key>ClockTime</key>
@@ -573,6 +624,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>多吃豆类，豆类富含氨基酸和蛋白质，可提高免疫力，增强记忆力。</string>
 			<key>ClockTime</key>
@@ -593,6 +646,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>30分钟的午休会让你精力充沛。</string>
 			<key>ClockTime</key>
@@ -613,6 +668,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>让眼睛休息一会儿，看看窗外，喝杯水。
 </string>
@@ -634,6 +691,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>晚饭吃太多，会引起血糖升高，并增加消化系统的负担，影响睡眠。晚饭应该多吃蔬菜，少吃富含卡路里和蛋白质的食物。吃饭时要细嚼慢咽。
 </string>
@@ -655,6 +714,8 @@
 			<string>一,二,三,四,五</string>
 		</dict>
 		<dict>
+			<key>ClockType</key>
+			<string>默认</string>
 			<key>ClockRemember</key>
 			<string>为了保证充足的睡眠和身体各系统的需要，是时候该睡觉了。
 </string>

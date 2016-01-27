@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic,strong)UILabel * fitPeopleLabel;
 
+@property(nonatomic,strong)NSString * productID;
 
 @end
 
@@ -33,14 +34,28 @@ static NSString *cellID = @"cellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    shared = [GADMasterViewController singleton];
+    [shared resetAdView:self];
+    
     self.fitPeopleLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 0, self.view.frame.size.width-200, 44)];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
+    
+    [[SKPaymentQueue defaultQueue]addTransactionObserver:self];
+    self.productID = @"com.quYunNaoZhong.deleteAd";
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveOutAdvertisment) name:@"buyAction" object:nil];
+
 }
+
+#pragma mark 去除广告，改约束
+- (void)moveOutAdvertisment{
+    
+}
+
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    shared = [GADMasterViewController singleton];
-    [shared resetAdView:self];
+
 }
 
 - (IBAction)makeSureBtnAction:(UIButton *)sender {
@@ -97,6 +112,113 @@ static NSString *cellID = @"cellID";
     self.fitPeopleLabel.text = selectedMode;
 }
 
+#pragma mark 请求商品
+- (void)requestProductData:(NSString *)type{
+    NSLog(@"-------------请求对应的产品信息----------------");
+    NSArray *product = [[NSArray alloc] initWithObjects:type, nil];
+    
+    NSSet *nsset = [NSSet setWithArray:product];
+    SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:nsset];
+    request.delegate = self;
+    [request start];
+}
+
+#pragma mark 收到产品返回信息
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
+    NSLog(@"--------------收到产品反馈消息---------------------");
+    NSArray *product = response.products;
+    if([product count] == 0){
+        NSLog(@"--------------没有商品------------------");
+        return;
+    }
+    
+    NSLog(@"productID:%@", response.invalidProductIdentifiers);
+    NSLog(@"产品付费数量:%lu",[product count]);
+    
+    SKProduct *p = nil;
+    for (SKProduct *pro in product) {
+        NSLog(@"%@", [pro description]);
+        NSLog(@"%@", [pro localizedTitle]);
+        NSLog(@"%@", [pro localizedDescription]);
+        NSLog(@"%@", [pro price]);
+        NSLog(@"%@", [pro productIdentifier]);
+        
+        if([pro.productIdentifier isEqualToString:self.productID]){
+            p = pro;
+        }
+    }
+    
+    SKPayment *payment = [SKPayment paymentWithProduct:p];
+    
+    NSLog(@"发送购买请求");
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+}
+
+//请求失败
+- (void)request:(SKRequest *)request didFailWithError:(NSError *)error{
+    NSLog(@"------------------错误-----------------:%@", error);
+}
+
+- (void)requestDidFinish:(SKRequest *)request{
+    NSLog(@"------------反馈信息结束-----------------");
+}
+//恢复购买
+- (void)restorTransaction{
+    
+    [[SKPaymentQueue defaultQueue]restoreCompletedTransactions];
+
+}
+//监听购买结果
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transaction{
+    //添加 字典，将label的值通过key值设置传递
+    NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"buy",@"textOne", nil];
+    //创建通知
+    NSNotification *notification =[NSNotification notificationWithName:@"buyAction" object:nil userInfo:dict];
+    //通过通知中心发送通知
+    for(SKPaymentTransaction *tran in transaction){
+        
+        switch (tran.transactionState) {
+            case SKPaymentTransactionStatePurchased:
+                NSLog(@"交易完成");
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+                
+                break;
+            case SKPaymentTransactionStatePurchasing:
+                NSLog(@"商品添加进列表");
+//                [[NSNotificationCenter defaultCenter] postNotification:notification];
+
+                break;
+            case SKPaymentTransactionStateRestored:
+                NSLog(@"已经购买过商品");
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+                [[SKPaymentQueue defaultQueue] finishTransaction: tran];
+                break;
+            case SKPaymentTransactionStateFailed:
+                NSLog(@"交易失败");
+                
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error{
+    NSLog(@"出错了%@",error);
+}
+//交易结束
+- (void)completeTransaction:(SKPaymentTransaction *)transaction{
+    NSLog(@"交易结束");
+    
+    NSLog(@"transcation====%@",transaction);
+    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+}
+
+
+- (void)dealloc{
+    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     switch (indexPath.row) {
@@ -106,6 +228,30 @@ static NSString *cellID = @"cellID";
             fit.delegate = self;
              [self.navigationController pushViewController:fit animated:YES];
         }
+            break;
+            
+        case 2:{
+            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"购买应用" message:@"购买后，可以去除广告" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *buyAction = [UIAlertAction actionWithTitle:@"确认购买" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                if ([SKPaymentQueue canMakePayments]) {
+                    [self requestProductData:self.productID];
+                }else{
+                    NSLog(@"不允许内购");
+                }
+            }];
+            UIAlertAction *restoreAction = [UIAlertAction actionWithTitle:@"恢复购买" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                if ([SKPaymentQueue canMakePayments]) {
+                    [self restorTransaction];
+                }else{
+                    NSLog(@"不允许内购");
+                }
+            }];
+            [alertVC addAction:buyAction];
+            [alertVC addAction:restoreAction];
+            [self presentViewController:alertVC animated:YES completion:nil];
+        }
+            
             break;
         case 3:{
             UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[@"健康生活闹钟,https://itunes.apple.com/us/app/jian-kang-sheng-huo-nao-zhong/id1078158366?l=zh&ls=1&mt=8."] applicationActivities:nil];
@@ -127,33 +273,19 @@ static NSString *cellID = @"cellID";
             [mc addAttachmentData:data mimeType:@"image/png" fileName:@"blood_orange"];
             
             
-            //    [self dismissViewControllerAnimated:YES completion:^{
-            //        [(UINavigationController *)self.presentingViewController popToRootViewControllerAnimated:YES];
-            //
-            //    }];
+      
             [self presentViewController:mc animated:YES completion:nil];
-            //    while(theViewController = [theObjectEnumerator nextObject ])
-            //    {
-            //        if([theViewController modalTransitionStyle] == UIModalTransitionStyleCoverVertical)
-            //        {
-            //            [self.mNavigationController popToRootViewControllerAnimated:
-            //             YES];
-            //        }
-            //    }
-            //}else
-            //while(theViewController = [theObjectEnumerator nextObject ])
-            //{
-            //    if([theViewController modalTransitionStyle] == UIModalTransitionStyleCoverVertical)
-            //    {
-            //        [self.mNavigationController dismissModalViewControllerAnimated:YES];
-            //    }
-            //}
+
         }
             break;
         default:
             break;
     }
 }
+
+
+
+
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller
           didFinishWithResult:(MFMailComposeResult)result

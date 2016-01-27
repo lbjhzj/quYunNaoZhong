@@ -87,7 +87,13 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     [clockDictionary setObject:Alert.clockName forKey:@"ClockName"];
     [clockDictionary setObject:Alert.clockID forKey:@"ClockID"];
 
+    if (!Alert.clockMusic) {
+        Alert.clockMusic = @"未设置";
+    }
     [clockDictionary setObject:Alert.clockMusic forKey:@"ClockMusic"];
+    if (!Alert.clockExtend) {
+        Alert.clockExtend = @"未设置";
+    }
     [clockDictionary setObject:Alert.clockExtend forKey:@"ClockExtend"];
     [clockDictionary setObject:[NSString stringWithFormat:@"%ld",Alert.clockSoundValue] forKey:@"ClockSoundValue"];
     
@@ -117,6 +123,42 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     NSString *clockForceSwitch = [clockDictionary objectForKey:@"ClockForce"];
     NSString *clockRemember = [clockDictionary objectForKey:@"ClockRemember"];
     NSString *clockExtend = [clockDictionary objectForKey:@"ClockExtend"];
+    NSString *clockType = [clockDictionary objectForKey:@"ClockType"];
+    int ClockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
+    
+    if (!clockDictionary) {
+        NSArray *ttmpArray = [self findClockOfDefaultPlist:(NSString *)[userDefault objectForKey:@"ClockFitPeople"]];
+        int index;
+        if (ClockCount == 8) {
+            index = clockID;
+        }else{
+            int biggerCount=0;
+            int smallerCount = 0;
+            for (int x=0; x<50; x++) {
+                if ([userDefault objectForKey:[NSString stringWithFormat:@"%d",x]]) {
+                    if (x>clockID) {
+                        biggerCount++;
+                    }else{
+                        NSLog(@"%@",[userDefault objectForKey:[NSString stringWithFormat:@"%d",x]]);
+                        smallerCount++;
+                    }
+                }
+            }
+            index = clockID - smallerCount;
+        }
+        
+        NSMutableDictionary *ttmpDictionary = ttmpArray[index];
+        
+        clockTime = [ttmpDictionary objectForKey:@"ClockTime"];
+        clockMode = [ttmpDictionary objectForKey:@"ClockMode"];
+        clockMusic = [ttmpDictionary objectForKey:@"ClockMusic"];
+        clockForceSwitch = [ttmpDictionary objectForKey:@"ClockForce"];
+        clockRemember = [ttmpDictionary objectForKey:@"ClockRemember"];
+        clockExtend = [ttmpDictionary objectForKey:@"ClockExtend"];
+        
+        clockType = [ttmpDictionary objectForKey:@"ClockType"];
+    }
+
     //-----组建本地通知的fireDate-----------------------------------------------
     
     //------------------------------------------------------------------------
@@ -262,18 +304,66 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     }
 }
 
-- (NSMutableArray *)findClockOfDefaultPlist:(NSString *)sectionName{
+- (NSArray *)findClockOfDefaultPlist:(NSString *)sectionName{
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaultClock" ofType:@"plist"];
+
+    //获取本地沙盒路径
+    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //获取完整路径
+    NSString *documentsPath = [path objectAtIndex:0];
+    NSString *plistPath1 = [documentsPath stringByAppendingPathComponent:@"defaltClock.plist"];
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath1];
+    if (data) {
+        
+    }else{
+        data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+        
+    }
+    NSArray *array = [data objectForKey:sectionName];
+    return array;
+    
+//    NSMutableArray *clockArray = [NSMutableArray arrayWithCapacity:8];
+//    for (NSDictionary *dictionary in array) {
+//        alert *Alert = [alert new];
+//        
+//        [Alert setValuesForKeysWithDictionary:dictionary];
+//
+//        [clockArray addObject:Alert];
+//    }
+    return array;
+}
+- (void)writeDataToDefaultPlist:(alert *)Alert{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *sectionName = [userDefault objectForKey:@"ClockFitPeople"];
+    
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"defaultClock" ofType:@"plist"];
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-   
-    NSArray *array = [data objectForKey:sectionName];
-    NSMutableArray *clockArray = [NSMutableArray arrayWithCapacity:8];
-    for (NSDictionary *dictionary in array) {
-        alert *Alert = [alert new];
-        [Alert setValuesForKeysWithDictionary:dictionary];
-        [clockArray addObject:Alert];
+    NSMutableArray *array = [data objectForKey:sectionName];
+    
+    for (int x=0;x<8;x++) {
+        NSDictionary *dictionary =array[x];
+        if ([Alert.clockTime isEqualToString:[dictionary objectForKey:@"ClockTime"]]) {
+            [dictionary setValue:Alert.clockMusic forKey:@"ClockMusic"];
+            [dictionary setValue:Alert.clockMode forKey:@"ClockMode"];
+            [dictionary setValue:Alert.clockName forKey:@"ClockName"];
+            if (Alert.clockState) {
+                [dictionary setValue:[NSString stringWithFormat:@"YES"] forKey:@"ClockState"];
+            }else{
+                [dictionary setValue:[NSString stringWithFormat:@"NO"] forKey:@"ClockState"];
+            }
+            array[x] = dictionary;
+            break;
+        }
+    
     }
-    return clockArray;
+    [data setValue:array forKey:sectionName];
+    //获取本地沙盒路径
+    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //获取完整路径
+    NSString *documentsPath = [path objectAtIndex:0];
+    NSString *plistPath1 = [documentsPath stringByAppendingPathComponent:@"defaltClock.plist"];
+    [data writeToFile:plistPath1 atomically:YES];
 }
 
 - (void)changeClockOfDefaultPlist:(NSString *)sectionName AtIndexPath:(NSIndexPath *)indexPath withAlert:(alert *)Alert{
@@ -325,6 +415,8 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     
     return filenamelist;
 }
+
+
 
 +(BOOL)isFileExistAtPath:(NSString*)fileFullPath {
     BOOL isExist = NO;

@@ -32,7 +32,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soe-IA-Zlq">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-IZ-9K1">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-IZ-9K1">
                             <rect key="frame" x="308" y="512" width="267" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <state key="normal" title="Button" backgroundImage="框">
@@ -42,7 +42,7 @@
                                 <action selector="sixthBtnAction:" destination="-1" eventType="touchUpInside" id="hNd-Mh-aHE"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPg-7h-B6b">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPg-7h-B6b">
                             <rect key="frame" x="25" y="512" width="267" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <state key="normal" title="Button" backgroundImage="框">
@@ -52,7 +52,7 @@
                                 <action selector="fifthBtnAction:" destination="-1" eventType="touchUpInside" id="XWh-rV-e9O"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJe-59-jJn">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJe-59-jJn">
                             <rect key="frame" x="25" y="427" width="267" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <state key="normal" title="Button" backgroundImage="框">
@@ -88,7 +88,7 @@
                             <color key="textColor" red="0.33333333333333331" green="0.66666666666666663" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfC-YA-4qj">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfC-YA-4qj">
                             <rect key="frame" x="25" y="342" width="267" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <state key="normal" title="Button" backgroundImage="框">
@@ -98,7 +98,7 @@
                                 <action selector="firstBtnAction:" destination="-1" eventType="touchUpInside" id="ASh-VR-e3B"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhe-ON-0rk">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhe-ON-0rk">
                             <rect key="frame" x="308" y="342" width="267" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <state key="normal" title="Button" backgroundImage="框">
@@ -108,7 +108,7 @@
                                 <action selector="secondBtnAction:" destination="-1" eventType="touchUpInside" id="ceD-IZ-1Vn"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTN-Lu-n99">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTN-Lu-n99">
                             <rect key="frame" x="308" y="427" width="267" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <state key="normal" title="Button" backgroundImage="框">

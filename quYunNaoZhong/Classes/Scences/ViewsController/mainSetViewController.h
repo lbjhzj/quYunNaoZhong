@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface mainSetViewController : UIViewController
+@interface mainSetViewController : UIViewController<SKPaymentTransactionObserver,SKProductsRequestDelegate>
+
 
 
 + (instancetype)sharedMainSetViewController;

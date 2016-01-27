@@ -36,7 +36,7 @@
 
 @implementation MyClockViewController
 
-static NSString *cellID = @"cellID";
+static NSString *cellID = @"cell2";
 
 + (instancetype)sharedMyClockViewController{
      MyClockViewController *myClockViewController =[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MyClockID"];
@@ -109,16 +109,40 @@ static NSString *cellID = @"cellID";
         }
 
     }else{
-        
-        for (NSInteger j=0; j<100; j++) {
+        for (NSInteger j=0; j<50; j++) {
             alert *Alert = [alert new];
             Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:j inSection:0]];
             if (Alert.clockName.length != 0 && Alert.clockName) {
-              [self.alertArray addObject:Alert];  
+                [self.alertArray addObject:Alert];
             }
             
         }
-       [self.alertArray addObjectsFromArray:[[HYLocalNotication shareHYLocalNotication] findClockOfDefaultPlist:fitPeople]];
+        
+        for (NSDictionary *dictionary in [[HYLocalNotication shareHYLocalNotication] findClockOfDefaultPlist:fitPeople]) {
+            alert *Alert1 = [alert new];
+            NSString *clockName =[dictionary objectForKey:@"ClockName"];
+            NSString *clockTime = [dictionary objectForKey:@"ClockTime"];
+            NSString *clockMode = [dictionary objectForKey:@"ClockMode"];
+            NSString *clockMusic = [dictionary objectForKey:@"ClockMusic"];
+            NSString *clockForceSwitch = [dictionary objectForKey:@"ClockForce"];
+            NSString *clockRemember = [dictionary objectForKey:@"ClockRemember"];
+            NSString *clockExtend = [dictionary objectForKey:@"ClockExtend"];
+            NSString *clockType = [dictionary objectForKey:@"ClockType"];
+            NSString *clockState = [dictionary objectForKey:@"ClockState"];
+            Alert1.clockMode = clockMode;
+            Alert1.clockName = clockName;
+            Alert1.clockTime = clockTime;
+            Alert1.clockMusic = clockMusic;
+            Alert1.clockForce = [clockForceSwitch boolValue];
+            Alert1.clockRemember = clockRemember;
+            Alert1.clockExtend = clockExtend;
+            Alert1.clockType = clockType;
+            Alert1.clockState = [clockState boolValue];
+            [self.alertArray addObject:Alert1];
+        }
+        
+
+        //       [self.alertArray addObjectsFromArray:[[HYLocalNotication shareHYLocalNotication] findClockOfDefaultPlist:fitPeople]];
 
     }
     
@@ -178,17 +202,34 @@ static NSString *cellID = @"cellID";
 #pragma mark tableView的协议内容
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    MyAlertCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
-    alert * Alert = [alert new];
 
-    Alert = self.alertArray[indexPath.row];
+    MyAlertCell* cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+
+    alert * Alert1 = [alert new];
+
+    Alert1 = self.alertArray[indexPath.row];
     
-    cell.clockTimeLabel.text = Alert.clockTime;
-    cell.clockNameLabel.text = Alert.clockName;
-    cell.clockModeLabel.text = Alert.clockMode;
-    cell.clockID = (short)indexPath.row;
-    if (Alert.clockState) {
+    cell.clockTimeLabel.text = Alert1.clockTime;
+    cell.clockNameLabel.text = Alert1.clockName;
+    cell.clockModeLabel.text = Alert1.clockMode;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *fitPeople = [userDefaults objectForKey:@"ClockFitPeople"];
+    if ([fitPeople isEqualToString:@"关闭"] ||fitPeople == nil){
+        cell.clockID = (short)indexPath.row;
+    }else{
+        
+        if (indexPath.row<[[userDefaults objectForKey:@"ClockCount"]intValue]-8) {
+          cell.clockID = [Alert1.clockID intValue];
+        }else{
+          cell.clockID = (short)indexPath.row;
+        }
+        
+    }
+    
+    
+    if (Alert1.clockState) {
         [cell.clockStateBtn setImage:[UIImage imageNamed:@"开关（开）"] forState:UIControlStateNormal];
     }else{
         [cell.clockStateBtn setImage:[UIImage imageNamed:@"开关（关）"] forState:UIControlStateNormal];
@@ -203,25 +244,25 @@ static NSString *cellID = @"cellID";
     self.setClockVC.clickTheFirstOrAddBtnFlag = ClickTheFirstClockFlag;
     self.setClockVC.passingFlag = NO;
     alert * Alert = [alert new];
-    self.setClockVC.Alert = Alert;
+   
     Alert = self.alertArray[indexPath.row];
+    self.setClockVC.Alert = Alert;
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     //    NSLog(@"%@",[userDefault objectForKey:@"ClockCount"]);
     NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];
     if ([fitPeople isEqualToString:@"关闭"] ||fitPeople == nil){
         self.setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];
-        [self.navigationController pushViewController:self.setClockVC animated:YES];
     }else{
         if (indexPath.row<self.alertArray.count-8) {
-            self.setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];
-            [self.navigationController pushViewController:self.setClockVC animated:YES];
+            self.setClockVC.clockID = [Alert.clockID intValue];
         }else{
+            self.setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];
             
         }
     }
     
 
-
+[self.navigationController pushViewController:self.setClockVC animated:YES];
 
 }
 
@@ -237,10 +278,11 @@ static NSString *cellID = @"cellID";
 
 - (NSMutableArray *)alertArray{
     if (_alertArray == nil) {
-        _alertArray = [NSMutableArray arrayWithCapacity:8];
+        _alertArray = [NSMutableArray array];
     }
     return _alertArray;
 }
+
 
 /*
 #pragma mark - Navigation

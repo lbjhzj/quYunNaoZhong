@@ -27,7 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *secondsLabel;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 //时间视图的约束条件
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainsOfTimeView;
@@ -45,6 +45,7 @@
 
 @property(nonatomic,strong)NSMutableArray *firstArray;
 
+@property(nonatomic,strong)NSArray * indexPaths;
 
 @end
 
@@ -56,6 +57,11 @@ static NSString *cellID = @"cellID";
 
 - (void)viewWillAppear:(BOOL)animated{
 
+    
+    //    设置谷歌广告
+    shared = [GADMasterViewController singleton];
+    [shared resetAdView:self];
+    
 //    NSArray *localNotications = [[UIApplication sharedApplication] scheduledLocalNotifications];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm:ss"];
@@ -76,7 +82,10 @@ static NSString *cellID = @"cellID";
         NSString *dateMode=[NSString stringFromDate:[NSDate date] ByFormatter:formatter];
 
        NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-       NSString *fitPeople = [defs objectForKey:@"ClockFitPeople"];
+        //        检测本机语言
+        NSArray* languages = [defs objectForKey:@"AppleLanguages"];
+        NSString* preferredLang = [languages objectAtIndex:0];
+        NSString *fitPeople = [defs objectForKey:@"ClockFitPeople"];
         
         alert *Alert = [alert new];
         if ([fitPeople isEqualToString:@"关闭"] ||fitPeople == nil){
@@ -115,9 +124,16 @@ static NSString *cellID = @"cellID";
                     Alert1.clockExtend = clockExtend;
                     Alert1.clockType = clockType;
                     Alert = Alert1;
-                    if ([Alert.clockMode containsString:[(NSString *)([dateMode componentsSeparatedByString:@"周"][1]) componentsSeparatedByString:@")"][0]]) {
-                        [self.firstArray addObject:Alert];
+                    if ([preferredLang containsString:@"en"]) {
+                        //            if ([Alert.clockMode containsString:@"二"]) {
+                        //                 [self.firstArray addObject:Alert];
+                        //            }
+                    }else{
+                        if ([Alert.clockMode containsString:[(NSString *)([dateMode componentsSeparatedByString:@"周"][1]) componentsSeparatedByString:@")"][0]]) {
+                            [self.firstArray addObject:Alert];
+                        }
                     }
+ 
                 }
                 break;
                 
@@ -128,9 +144,7 @@ static NSString *cellID = @"cellID";
         }
 
         
-//        检测本机语言
-        NSArray* languages = [defs objectForKey:@"AppleLanguages"];
-        NSString* preferredLang = [languages objectAtIndex:0];
+
   
         
         if ([preferredLang containsString:@"en"]) {
@@ -144,9 +158,9 @@ static NSString *cellID = @"cellID";
         }
 
     }
-    [self.tableView reloadData];
+   
     self.clockArray = [self.firstArray copy];
-
+    [self.tableView reloadData];
     
     
 //    [[UIApplication sharedApplication]cancelAllLocalNotifications];
@@ -194,10 +208,9 @@ static NSString *cellID = @"cellID";
     setClockVC = [SetClockViewController sharedSetClockViewController];
     
       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveOutAdvertisment) name:@"buyAction" object:nil];
-    //    设置谷歌广告
-    shared = [GADMasterViewController singleton];
-    [shared resetAdView:self];
 
+    //注册通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makeBugger:) name:@"makeItBigger" object:nil];
 }
 
 #pragma mark 去除广告，改约束
@@ -353,12 +366,13 @@ static NSString *cellID = @"cellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    self.indexPaths = [NSArray arrayWithObject:indexPath];
+
    alertCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
         cell = [[alertCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-
+ 
     alert *Alert = [alert new];
     Alert=self.clockArray[indexPath.row];
     cell.timeLabel.text =Alert.clockTime;
@@ -393,8 +407,38 @@ static NSString *cellID = @"cellID";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     return 110;
 }
+
+- (void)makeBugger:(NSNotification *)text{
+   NSString *newFramStr = text.userInfo[@"newFrame"];
+    CGRect newFrame = CGRectFromString(newFramStr);
+    
+}
+//自适应cell高度
++ (CGSize)labelheight:(UILabel *)detlabel{
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    
+    paragraphStyle.lineSpacing = 5;// 字体的行间距
+    
+    NSDictionary *attributes = @{
+                                 
+                                 NSFontAttributeName:[UIFont systemFontOfSize:15],
+                                 
+                                 NSParagraphStyleAttributeName:paragraphStyle
+                                 
+                                 };
+    
+    CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width - 168, 1000);
+    
+    CGSize contentactually = [detlabel.text boundingRectWithSize:size options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:attributes context:nil].size;
+    
+    return contentactually;
+    
+}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -409,7 +453,7 @@ static NSString *cellID = @"cellID";
     if ([fitPeople isEqualToString:@"关闭"] ||fitPeople == nil){
         setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];
     }else{
-        if (indexPath.row<self.clockArray.count-8) {
+        if (!setClockVC.Alert.clockType) {
            setClockVC.clockID = [setClockVC.Alert.clockID intValue];
         }else{
             setClockVC.clockID = [[NSString stringWithFormat:@"%ld",indexPath.row] intValue];

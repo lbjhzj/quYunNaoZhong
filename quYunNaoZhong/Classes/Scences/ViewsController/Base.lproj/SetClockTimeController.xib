@@ -40,7 +40,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zf3-CF-UiF">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ms7-e5-r09">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ms7-e5-r09">
                             <rect key="frame" x="16" y="35" width="30" height="31"/>
                             <state key="normal" backgroundImage="返回"/>
                             <connections>

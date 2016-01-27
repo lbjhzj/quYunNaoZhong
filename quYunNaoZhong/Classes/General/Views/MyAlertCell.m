@@ -38,7 +38,7 @@
                 }
             }
         }
-        index = self.clockID - smallerCount;
+        index = self.clockID - smallerCount - biggerCount;
         NSArray *ttmpArray = [[HYLocalNotication shareHYLocalNotication] findClockOfDefaultPlist:(NSString *)[userDefault objectForKey:@"ClockFitPeople"]];
         NSMutableDictionary *ttmpDictionary = ttmpArray[index];
         [Alert setValuesForKeysWithDictionary:ttmpDictionary];

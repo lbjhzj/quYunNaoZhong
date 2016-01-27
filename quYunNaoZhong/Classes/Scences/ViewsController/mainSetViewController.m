@@ -8,7 +8,7 @@
 
 #import "mainSetViewController.h"
 
-@interface mainSetViewController ()<UITableViewDataSource,UITableViewDelegate,passingSelectedModeDelegate,MFMailComposeViewControllerDelegate>
+@interface mainSetViewController ()<UITableViewDataSource,UITableViewDelegate,passingSelectedModeDelegate,MFMailComposeViewControllerDelegate,SKProductsRequestDelegate>
 {
     GADMasterViewController *shared;
 }
@@ -34,12 +34,14 @@ static NSString *cellID = @"cellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    shared = [GADMasterViewController singleton];
-    [shared resetAdView:self];
+
     
     self.fitPeopleLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 0, self.view.frame.size.width-200, 44)];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
     
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    
+    _fitPeopleLabel.text = [userDefault objectForKey:@"ClockFitPeople"];
     [[SKPaymentQueue defaultQueue]addTransactionObserver:self];
     self.productID = @"com.quYunNaoZhong.deleteAd";
     
@@ -54,6 +56,8 @@ static NSString *cellID = @"cellID";
 
 
 - (void)viewWillAppear:(BOOL)animated{
+    shared = [GADMasterViewController singleton];
+    [shared resetAdView:self];
     [super viewWillAppear:animated];
 
 }
@@ -72,7 +76,7 @@ static NSString *cellID = @"cellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"推荐闹钟设置";
+            cell.textLabel.text = NSLocalizedString(@"推荐闹钟设置", nil);
             [cell.contentView addSubview:self.fitPeopleLabel];
             break;
         case 1:
@@ -81,16 +85,16 @@ static NSString *cellID = @"cellID";
             break;
             
         case 2:
-            cell.textLabel.text = @"购买应用";
+            cell.textLabel.text = NSLocalizedString(@"购买应用", nil);
             break;
         case 3:
-            cell.textLabel.text = @"告诉朋友";
+            cell.textLabel.text = NSLocalizedString(@"告诉朋友", nil);
             break;
         case 4:
-            cell.textLabel.text = @"意见反馈";
+            cell.textLabel.text = NSLocalizedString(@"意见反馈", nil);
             break;
         case 5:
-            cell.textLabel.text = @"关于我们";
+            cell.textLabel.text = NSLocalizedString(@"关于我们", nil);
             break;
         default:
             break;
@@ -164,23 +168,32 @@ static NSString *cellID = @"cellID";
 }
 //恢复购买
 - (void)restorTransaction{
-    
+    NSArray *product = [[NSArray alloc] initWithObjects:self.productID, nil];
     [[SKPaymentQueue defaultQueue]restoreCompletedTransactions];
-
+   SKReceiptRefreshRequest* request = [[SKReceiptRefreshRequest alloc] init];
+    request.delegate = self;
+    [request start];
+    
 }
+
+
+
 //监听购买结果
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transaction{
     //添加 字典，将label的值通过key值设置传递
     NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:@"buy",@"textOne", nil];
     //创建通知
     NSNotification *notification =[NSNotification notificationWithName:@"buyAction" object:nil userInfo:dict];
-    //通过通知中心发送通知
+  
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+
     for(SKPaymentTransaction *tran in transaction){
         
         switch (tran.transactionState) {
             case SKPaymentTransactionStatePurchased:
                 NSLog(@"交易完成");
                 [[NSNotificationCenter defaultCenter] postNotification:notification];
+                [storage setBool:YES forKey:@"enable_rocket_car"];
                 
                 break;
             case SKPaymentTransactionStatePurchasing:
@@ -191,6 +204,7 @@ static NSString *cellID = @"cellID";
             case SKPaymentTransactionStateRestored:
                 NSLog(@"已经购买过商品");
                 [[NSNotificationCenter defaultCenter] postNotification:notification];
+                [storage setBool:YES forKey:@"enable_rocket_car"];
                 [[SKPaymentQueue defaultQueue] finishTransaction: tran];
                 break;
             case SKPaymentTransactionStateFailed:
@@ -209,7 +223,17 @@ static NSString *cellID = @"cellID";
 //交易结束
 - (void)completeTransaction:(SKPaymentTransaction *)transaction{
     NSLog(@"交易结束");
-    
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+    NSData *newReceipt = transaction.transactionReceipt;
+    NSArray *savedReceipts = [storage arrayForKey:@"receipts"];
+    if (!savedReceipts) {
+        // Storing the first receipt
+        [storage setObject:@[newReceipt] forKey:@"receipts"];
+    } else {
+        // Adding another receipt
+        NSArray *updatedReceipts = [savedReceipts arrayByAddingObject:newReceipt];
+        [storage setObject:updatedReceipts forKey:@"receipts"];
+    }
     NSLog(@"transcation====%@",transaction);
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }

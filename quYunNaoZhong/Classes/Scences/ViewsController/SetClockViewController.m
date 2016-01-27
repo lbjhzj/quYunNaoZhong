@@ -76,7 +76,56 @@ static NSString *cellID_2 = @"sliderID";
     _forceSwitchBtn.tag = 2000;
     
 
-    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];
+    if (self.Alert.clockType) {
+        int biggerCount=0;
+        int smallerCount = 0;
+        int index = 0;
+        int noClockModeAlertCount=0;
+        for (int x=0; x<50; x++) {
+            if ([userDefault objectForKey:[NSString stringWithFormat:@"%d",x]]) {
+                if (x>self.clockID) {
+                    biggerCount++;
+                }else{
+                    smallerCount++;
+                }
+            }
+        }
+        for (NSInteger y=0; y<50; y++) {
+            alert *testAlert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:y inSection:0]];
+            if (!testAlert.clockTime) {
+                continue;
+            }
+            
+            NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+            //        检测本机语言
+            NSArray* languages = [defs objectForKey:@"AppleLanguages"];
+            NSString* preferredLang = [languages objectAtIndex:0];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy/MM/dd (ccc)"];
+            NSString *dateMode=[NSString stringFromDate:[NSDate date] ByFormatter:formatter];
+            if ([preferredLang containsString:@"en"]) {
+                //            if ([Alert.clockMode containsString:@"二"]) {
+                //                 [self.firstArray addObject:Alert];
+                //            }
+            }else{
+                if (![testAlert.clockMode containsString:[(NSString *)([dateMode componentsSeparatedByString:@"周"][1]) componentsSeparatedByString:@")"][0]]) {
+                noClockModeAlertCount++;
+            }  
+        }
+
+        }
+
+        index = self.clockID + noClockModeAlertCount - smallerCount - biggerCount;
+
+        NSArray *ttmpArray = [[HYLocalNotication shareHYLocalNotication]findClockOfDefaultPlist:fitPeople];
+        NSDictionary *ttmpDictionary = ttmpArray[index];
+        [self.Alert setValuesForKeysWithDictionary:ttmpDictionary];
+    }else{
+       NSDictionary *dict = [userDefault objectForKey:[NSString stringWithFormat:@"%d",self.clockID]];
+        [self.Alert setValuesForKeysWithDictionary:dict];
+    }
     if (self.Alert.clockState) {
         _clockSwitchBtn.image = [UIImage imageNamed:@"开关（开）"];
     }else{
@@ -167,7 +216,12 @@ static NSString *cellID_2 = @"sliderID";
 
 #pragma mark 删除闹钟信息
 - (IBAction)deleteclockData:(UIButton *)sender {
-    [[HYLocalNotication shareHYLocalNotication] removeClockDataWithClockID:self.clockID];
+    if (self.Alert.clockType) {
+        [[HYLocalNotication shareHYLocalNotication]removeDefaultClockDataInDocument:self.Alert];
+    }else{
+        [[HYLocalNotication shareHYLocalNotication] removeClockDataWithClockID:self.clockID];
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -301,7 +355,7 @@ static NSString *cellID_2 = @"sliderID";
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             
-            cell.textLabel.text = @"闹钟开关";
+            cell.textLabel.text = NSLocalizedString(@"闹钟开关", nil) ;
 //            闹钟开关按键
             if (cell.contentView.subviews.count<3){
                 [cell.contentView addSubview:_clockSwitchBtn];
@@ -311,7 +365,7 @@ static NSString *cellID_2 = @"sliderID";
             
         }else if (indexPath.row == 1){
             
-            cell.textLabel.text = @"强制叫醒";
+            cell.textLabel.text = NSLocalizedString(@"强制叫醒", nil);
 //            强制叫醒开关按键
             if (cell.contentView.subviews.count<3){
                 [cell.contentView addSubview:_forceSwitchBtn];
@@ -329,7 +383,7 @@ static NSString *cellID_2 = @"sliderID";
     }else{
         if (indexPath.row == 0) {
             
-            cell.textLabel.text = @"名称";
+            cell.textLabel.text = NSLocalizedString(@"名称", nil);
 //            self.clockNameLabel = [[UITextField alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
             _clockNameLabel.borderStyle = UITextBorderStyleNone;
@@ -346,7 +400,7 @@ static NSString *cellID_2 = @"sliderID";
 //            if (cell.contentView.subviews.count == 3) {
 //                [cell.contentView.subviews[1] removeFromSuperview];
 //            }
-            cell.textLabel.text = @"时间";
+            cell.textLabel.text = NSLocalizedString(@"时间", nil);
 //            self.clockTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
             if (cell.contentView.subviews.count<3){
@@ -358,7 +412,7 @@ static NSString *cellID_2 = @"sliderID";
             
         }else if (indexPath.row == 2){
             
-            cell.textLabel.text = @"周期";
+            cell.textLabel.text = NSLocalizedString(@"铃声", nil);
 //            self.clockModeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
             if (cell.contentView.subviews.count<3){
@@ -369,7 +423,7 @@ static NSString *cellID_2 = @"sliderID";
             
         }else if (indexPath.row == 3){
             
-            cell.textLabel.text = @"铃声";
+            cell.textLabel.text = NSLocalizedString(@"铃声", nil);
 //            self.clockMusicLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
             
@@ -380,7 +434,7 @@ static NSString *cellID_2 = @"sliderID";
             
         }else if (indexPath.row == 4){
             
-            cell.textLabel.text = @"小睡";
+            cell.textLabel.text = NSLocalizedString(@"小睡", nil);
 //            self.clockExtendLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
             if (cell.contentView.subviews.count<3){

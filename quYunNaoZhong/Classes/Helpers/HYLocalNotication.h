@@ -33,4 +33,8 @@
 - (void)writeDataToDefaultPlist:(alert *)Alert;
 
 - (void)removeClockDataWithClockID:(int)clockID;
+
+- (void)removeDefaultClockDataInDocument:(alert *)Alert;
+
+- (void)removeAllDefaultClockData;
 @end

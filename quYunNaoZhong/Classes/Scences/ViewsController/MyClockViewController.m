@@ -62,7 +62,6 @@ static NSString *cellID = @"cell2";
 #pragma mark 谷歌广告协议
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
     if (shared.view.tag == 1999) {
-        [shared removeFromParentViewController];
         shared = [GADMasterViewController singleton];
         [shared resetAdView:self];
     }

@@ -22,6 +22,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];
+    self.selectedMode = fitPeople;
+    [super viewWillAppear:animated];
+}
 - (IBAction)backToVCAction:(UIButton *)sender {
     
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -36,16 +43,21 @@
     }
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setObject:self.selectedMode forKey:@"ClockFitPeople"];
-    if ([self.selectedMode isEqualToString:@"关闭"] &&[[userDefault objectForKey:@"ClockCount"] intValue]>=8) {
+    NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];
+    if ([self.selectedMode isEqualToString:@"关闭"]) {
+        if (![fitPeople isEqualToString:self.selectedMode] && fitPeople) {
     [userDefault setObject:[NSString stringWithFormat:@"%d",[[userDefault objectForKey:@"ClockCount"] intValue]-8]forKey:@"ClockCount"];
+            [[HYLocalNotication shareHYLocalNotication]removeAllDefaultClockData];
+        }
+
     }else{
-        if ([[userDefault objectForKey:@"ClockCount"] intValue]<8) {
-        [userDefault setObject:[NSString stringWithFormat:@"%d",[[userDefault objectForKey:@"ClockCount"] intValue]+8]forKey:@"ClockCount"]; 
+        if (self.selectedMode != fitPeople && [fitPeople isEqualToString:@"关闭"]) {
+        [userDefault setObject:[NSString stringWithFormat:@"%d",[[userDefault objectForKey:@"ClockCount"] intValue]+8]forKey:@"ClockCount"];
+              [[HYLocalNotication shareHYLocalNotication]writeDataToDefaultPlist:nil];
         }
 
     }
-
+    [userDefault setObject:self.selectedMode forKey:@"ClockFitPeople"];
     [self.navigationController popViewControllerAnimated:YES];
 
 }

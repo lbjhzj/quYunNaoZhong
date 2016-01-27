@@ -11,11 +11,15 @@
 		7D026F0C1C5745E900A76C4C /* SetClockExtendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D026F0E1C5745E900A76C4C /* SetClockExtendViewController.xib */; };
 		7D026F131C57462600A76C4C /* ForceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D026F151C57462600A76C4C /* ForceViewController.xib */; };
 		7D026F1B1C576A2000A76C4C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D026F1A1C576A2000A76C4C /* StoreKit.framework */; };
+		7D13AD581C58C24700C551C0 /* FitPeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D13AD5A1C58C24700C551C0 /* FitPeopleViewController.xib */; };
+		7D13AD5F1C58C2D500C551C0 /* SetClockMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D13AD611C58C2D500C551C0 /* SetClockMusicViewController.xib */; };
+		7D13AD651C58C2FC00C551C0 /* SetClockModeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D13AD671C58C2FC00C551C0 /* SetClockModeController.xib */; };
+		7D13AD6C1C58C31800C551C0 /* SetClockTimeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D13AD6E1C58C31800C551C0 /* SetClockTimeController.xib */; };
 		7D1B5ABA1C44E94A0053E6B8 /* SetClockModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1B5AB81C44E94A0053E6B8 /* SetClockModeController.m */; };
-		7D1B5ABB1C44E94A0053E6B8 /* SetClockModeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1B5AB91C44E94A0053E6B8 /* SetClockModeController.xib */; };
 		7D1C16F11C3F45D200193447 /* MyClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1C16F01C3F45D200193447 /* MyClockViewController.m */; };
 		7D1C16F51C3F5ECE00193447 /* MyAlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1C16F31C3F5ECE00193447 /* MyAlertCell.m */; };
 		7D1C16F61C3F5ECE00193447 /* MyAlertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1C16F41C3F5ECE00193447 /* MyAlertCell.xib */; };
+		7D1E295F1C58C9B200369DFF /* mainSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E29611C58C9B200369DFF /* mainSetViewController.xib */; };
 		7D1FC4311C4C984600044051 /* ringCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FC42F1C4C984600044051 /* ringCell.m */; };
 		7D1FC4321C4C984600044051 /* ringCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FC4301C4C984600044051 /* ringCell.xib */; };
 		7D1FC4361C4C992200044051 /* sectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1FC4341C4C992200044051 /* sectionCell.m */; };
@@ -55,7 +59,6 @@
 		7D4D48B41C41F23700C18F6D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D48B11C41F23700C18F6D /* README.txt */; };
 		7D4D48B51C41F23700C18F6D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D48B21C41F23700C18F6D /* README.txt */; };
 		7D5554441C4343BE001D67A8 /* SetClockTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5554421C4343BE001D67A8 /* SetClockTimeController.m */; };
-		7D5554451C4343BE001D67A8 /* SetClockTimeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D5554431C4343BE001D67A8 /* SetClockTimeController.xib */; };
 		7D69DC361C4DFEC9007BB1F8 /* GADMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D69DC351C4DFEC9007BB1F8 /* GADMasterViewController.m */; };
 		7D730B191C3CD94800C095C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B181C3CD94800C095C5 /* main.m */; };
 		7D730B221C3CD94800C095C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D730B201C3CD94800C095C5 /* Main.storyboard */; };
@@ -69,10 +72,8 @@
 		7DAC940F1C3F99D800F787DA /* SetClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAC940E1C3F99D800F787DA /* SetClockViewController.m */; };
 		7DCD71F81C4793600072DDC5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCD71F71C4793600072DDC5 /* AVFoundation.framework */; };
 		7DCD71FF1C4795390072DDC5 /* SetClockMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCD71FD1C4795390072DDC5 /* SetClockMusicViewController.m */; };
-		7DCD72001C4795390072DDC5 /* SetClockMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCD71FE1C4795390072DDC5 /* SetClockMusicViewController.xib */; };
 		7DE9A2F21C52010D004AD040 /* defaultClock.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9A2F11C52010D004AD040 /* defaultClock.plist */; };
 		7DE9A2FF1C520866004AD040 /* FitPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE9A2FD1C520866004AD040 /* FitPeopleViewController.m */; };
-		7DE9A3001C520866004AD040 /* FitPeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9A2FE1C520866004AD040 /* FitPeopleViewController.xib */; };
 		7DE9C4CE1C5702B2003C13A5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9C4D01C5702B2003C13A5 /* InfoPlist.strings */; };
 		7DE9C4D41C5703C0003C13A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9C4D61C5703C0003C13A5 /* Localizable.strings */; };
 		7DEDA3DC1C3E4E8900D7C4DE /* alertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */; };
@@ -80,7 +81,6 @@
 		7DEDA3E31C3E6C6100D7C4DE /* alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3E21C3E6C6100D7C4DE /* alert.m */; };
 		7DF1B3A51C4887A90090BD64 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF1B3A41C4887A90090BD64 /* AudioToolbox.framework */; };
 		7DF1B40C1C48C0A00090BD64 /* mainSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF1B40A1C48C0A00090BD64 /* mainSetViewController.m */; };
-		7DF1B40D1C48C0A00090BD64 /* mainSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF1B40B1C48C0A00090BD64 /* mainSetViewController.xib */; };
 		7DF6948C1C4DCBC2002175CD /* ForceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6948A1C4DCBC2002175CD /* ForceViewController.m */; };
 		7DF694901C4DCCB9002175CD /* recordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF6948F1C4DCCB9002175CD /* recordView.xib */; };
 /* End PBXBuildFile section */
@@ -96,14 +96,28 @@
 		7D026F171C57463200A76C4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ForceViewController.strings; sourceTree = "<group>"; };
 		7D026F191C57463300A76C4C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ForceViewController.strings"; sourceTree = "<group>"; };
 		7D026F1A1C576A2000A76C4C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		7D13AD591C58C24700C551C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FitPeopleViewController.xib; sourceTree = "<group>"; };
+		7D13AD5C1C58C24B00C551C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FitPeopleViewController.strings; sourceTree = "<group>"; };
+		7D13AD5E1C58C24D00C551C0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FitPeopleViewController.strings"; sourceTree = "<group>"; };
+		7D13AD601C58C2D500C551C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SetClockMusicViewController.xib; sourceTree = "<group>"; };
+		7D13AD621C58C2D700C551C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SetClockMusicViewController.xib; sourceTree = "<group>"; };
+		7D13AD641C58C2D900C551C0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SetClockMusicViewController.strings"; sourceTree = "<group>"; };
+		7D13AD661C58C2FC00C551C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SetClockModeController.xib; sourceTree = "<group>"; };
+		7D13AD691C58C2FD00C551C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SetClockModeController.strings; sourceTree = "<group>"; };
+		7D13AD6B1C58C2FE00C551C0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SetClockModeController.strings"; sourceTree = "<group>"; };
+		7D13AD6D1C58C31800C551C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SetClockTimeController.xib; sourceTree = "<group>"; };
+		7D13AD701C58C31A00C551C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SetClockTimeController.strings; sourceTree = "<group>"; };
+		7D13AD721C58C31B00C551C0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SetClockTimeController.strings"; sourceTree = "<group>"; };
 		7D1B5AB71C44E94A0053E6B8 /* SetClockModeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetClockModeController.h; sourceTree = "<group>"; };
 		7D1B5AB81C44E94A0053E6B8 /* SetClockModeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockModeController.m; sourceTree = "<group>"; };
-		7D1B5AB91C44E94A0053E6B8 /* SetClockModeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetClockModeController.xib; sourceTree = "<group>"; };
 		7D1C16EF1C3F45D200193447 /* MyClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClockViewController.h; sourceTree = "<group>"; };
 		7D1C16F01C3F45D200193447 /* MyClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClockViewController.m; sourceTree = "<group>"; };
 		7D1C16F21C3F5ECE00193447 /* MyAlertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertCell.h; sourceTree = "<group>"; };
 		7D1C16F31C3F5ECE00193447 /* MyAlertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertCell.m; sourceTree = "<group>"; };
 		7D1C16F41C3F5ECE00193447 /* MyAlertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAlertCell.xib; sourceTree = "<group>"; };
+		7D1E29621C58C9B300369DFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/mainSetViewController.xib; sourceTree = "<group>"; };
+		7D1E29641C58C9B800369DFF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/mainSetViewController.strings"; sourceTree = "<group>"; };
+		7D1E29661C58C9DA00369DFF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/mainSetViewController.strings; sourceTree = "<group>"; };
 		7D1FC42E1C4C984600044051 /* ringCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ringCell.h; sourceTree = "<group>"; };
 		7D1FC42F1C4C984600044051 /* ringCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ringCell.m; sourceTree = "<group>"; };
 		7D1FC4301C4C984600044051 /* ringCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ringCell.xib; sourceTree = "<group>"; };
@@ -153,7 +167,6 @@
 		7D4D48B21C41F23700C18F6D /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		7D5554411C4343BE001D67A8 /* SetClockTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetClockTimeController.h; sourceTree = "<group>"; };
 		7D5554421C4343BE001D67A8 /* SetClockTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockTimeController.m; sourceTree = "<group>"; };
-		7D5554431C4343BE001D67A8 /* SetClockTimeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetClockTimeController.xib; sourceTree = "<group>"; };
 		7D69DC341C4DFEC9007BB1F8 /* GADMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMasterViewController.h; sourceTree = "<group>"; };
 		7D69DC351C4DFEC9007BB1F8 /* GADMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADMasterViewController.m; sourceTree = "<group>"; };
 		7D730B141C3CD94800C095C5 /* 健康生活闹钟.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "健康生活闹钟.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,11 +191,9 @@
 		7DCD71F71C4793600072DDC5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7DCD71FC1C4795390072DDC5 /* SetClockMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetClockMusicViewController.h; sourceTree = "<group>"; };
 		7DCD71FD1C4795390072DDC5 /* SetClockMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockMusicViewController.m; sourceTree = "<group>"; };
-		7DCD71FE1C4795390072DDC5 /* SetClockMusicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetClockMusicViewController.xib; sourceTree = "<group>"; };
 		7DE9A2F11C52010D004AD040 /* defaultClock.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultClock.plist; sourceTree = "<group>"; };
 		7DE9A2FC1C520866004AD040 /* FitPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitPeopleViewController.h; sourceTree = "<group>"; };
 		7DE9A2FD1C520866004AD040 /* FitPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitPeopleViewController.m; sourceTree = "<group>"; };
-		7DE9A2FE1C520866004AD040 /* FitPeopleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FitPeopleViewController.xib; sourceTree = "<group>"; };
 		7DE9C4C61C570281003C13A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7DE9C4C71C570281003C13A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7DE9C4C91C570286003C13A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -200,7 +211,6 @@
 		7DF1B3A41C4887A90090BD64 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		7DF1B4091C48C0A00090BD64 /* mainSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainSetViewController.h; sourceTree = "<group>"; };
 		7DF1B40A1C48C0A00090BD64 /* mainSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainSetViewController.m; sourceTree = "<group>"; };
-		7DF1B40B1C48C0A00090BD64 /* mainSetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mainSetViewController.xib; sourceTree = "<group>"; };
 		7DF694891C4DCBC2002175CD /* ForceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForceViewController.h; sourceTree = "<group>"; };
 		7DF6948A1C4DCBC2002175CD /* ForceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForceViewController.m; sourceTree = "<group>"; };
 		7DF6948F1C4DCCB9002175CD /* recordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = recordView.xib; sourceTree = "<group>"; };
@@ -226,7 +236,7 @@
 			children = (
 				7D1B5AB71C44E94A0053E6B8 /* SetClockModeController.h */,
 				7D1B5AB81C44E94A0053E6B8 /* SetClockModeController.m */,
-				7D1B5AB91C44E94A0053E6B8 /* SetClockModeController.xib */,
+				7D13AD671C58C2FC00C551C0 /* SetClockModeController.xib */,
 			);
 			name = SetClockMode;
 			sourceTree = "<group>";
@@ -270,7 +280,7 @@
 			children = (
 				7D5554411C4343BE001D67A8 /* SetClockTimeController.h */,
 				7D5554421C4343BE001D67A8 /* SetClockTimeController.m */,
-				7D5554431C4343BE001D67A8 /* SetClockTimeController.xib */,
+				7D13AD6E1C58C31800C551C0 /* SetClockTimeController.xib */,
 			);
 			name = SetClockTime;
 			sourceTree = "<group>";
@@ -439,7 +449,7 @@
 				7D730B401C3CDA3D00C095C5 /* MainViewController.m */,
 				7DF1B4091C48C0A00090BD64 /* mainSetViewController.h */,
 				7DF1B40A1C48C0A00090BD64 /* mainSetViewController.m */,
-				7DF1B40B1C48C0A00090BD64 /* mainSetViewController.xib */,
+				7D1E29611C58C9B200369DFF /* mainSetViewController.xib */,
 				7D1C16EF1C3F45D200193447 /* MyClockViewController.h */,
 				7D1C16F01C3F45D200193447 /* MyClockViewController.m */,
 				7DAC940D1C3F99D800F787DA /* SetClockViewController.h */,
@@ -453,7 +463,7 @@
 			children = (
 				7DCD71FC1C4795390072DDC5 /* SetClockMusicViewController.h */,
 				7DCD71FD1C4795390072DDC5 /* SetClockMusicViewController.m */,
-				7DCD71FE1C4795390072DDC5 /* SetClockMusicViewController.xib */,
+				7D13AD611C58C2D500C551C0 /* SetClockMusicViewController.xib */,
 			);
 			name = SetClockMusic;
 			sourceTree = "<group>";
@@ -463,7 +473,7 @@
 			children = (
 				7DE9A2FC1C520866004AD040 /* FitPeopleViewController.h */,
 				7DE9A2FD1C520866004AD040 /* FitPeopleViewController.m */,
-				7DE9A2FE1C520866004AD040 /* FitPeopleViewController.xib */,
+				7D13AD5A1C58C24700C551C0 /* FitPeopleViewController.xib */,
 			);
 			name = ClockFitPeople;
 			sourceTree = "<group>";
@@ -601,7 +611,7 @@
 				7DEDA3DD1C3E4E8900D7C4DE /* alertCell.xib in Resources */,
 				7D1FC4481C4C9BAC00044051 /* 海边小屋.mp3 in Resources */,
 				7D1FC4471C4C9BAC00044051 /* 滴答滴答.mp3 in Resources */,
-				7DE9A3001C520866004AD040 /* FitPeopleViewController.xib in Resources */,
+				7D13AD581C58C24700C551C0 /* FitPeopleViewController.xib in Resources */,
 				7D1FC48A1C4CB13E00044051 /* 宝贝起床了(女声).mp3 in Resources */,
 				7D1FC4891C4CB13E00044051 /* 宝贝起床了(男声).mp3 in Resources */,
 				7D730B221C3CD94800C095C5 /* Main.storyboard in Resources */,
@@ -612,7 +622,7 @@
 				7D1FC44C1C4C9BAC00044051 /* 空谷回响.mp3 in Resources */,
 				7DE9C4CE1C5702B2003C13A5 /* InfoPlist.strings in Resources */,
 				7D1FC4451C4C9BAC00044051 /* 八音盒.mp3 in Resources */,
-				7D1B5ABB1C44E94A0053E6B8 /* SetClockModeController.xib in Resources */,
+				7D13AD651C58C2FC00C551C0 /* SetClockModeController.xib in Resources */,
 				7D4D48B41C41F23700C18F6D /* README.txt in Resources */,
 				7D4D48B51C41F23700C18F6D /* README.txt in Resources */,
 				7D1FC4961C4CB13E00044051 /* 小乖乖起床了(男声).mp3 in Resources */,
@@ -624,15 +634,15 @@
 				7D1FC4931C4CB13E00044051 /* 同学起床了(女声).mp3 in Resources */,
 				7DE9A2F21C52010D004AD040 /* defaultClock.plist in Resources */,
 				7D1FC4321C4C984600044051 /* ringCell.xib in Resources */,
-				7D5554451C4343BE001D67A8 /* SetClockTimeController.xib in Resources */,
+				7D13AD6C1C58C31800C551C0 /* SetClockTimeController.xib in Resources */,
 				7DE9C4D41C5703C0003C13A5 /* Localizable.strings in Resources */,
-				7DF1B40D1C48C0A00090BD64 /* mainSetViewController.xib in Resources */,
+				7D1E295F1C58C9B200369DFF /* mainSetViewController.xib in Resources */,
 				7D026F0C1C5745E900A76C4C /* SetClockExtendViewController.xib in Resources */,
 				7D1FC4941C4CB13E00044051 /* 小笨熊起床了(女声).mp3 in Resources */,
 				7D1FC48D1C4CB13E00044051 /* 老板起床了(女声).mp3 in Resources */,
 				7D1FC4911C4CB13E00044051 /* 亲爱的起床了(女声).mp3 in Resources */,
 				7D1FC4951C4CB13E00044051 /* 小公主起床了(男声).mp3 in Resources */,
-				7DCD72001C4795390072DDC5 /* SetClockMusicViewController.xib in Resources */,
+				7D13AD5F1C58C2D500C551C0 /* SetClockMusicViewController.xib in Resources */,
 				7D1FC48B1C4CB13E00044051 /* 嗲妹子起床(女声).mp3 in Resources */,
 				7D1FC48C1C4CB13E00044051 /* 皇上起床了(女声).mp3 in Resources */,
 				7D1FC4501C4C9BAC00044051 /* 甜美舞曲.mp3 in Resources */,
@@ -707,6 +717,56 @@
 				7D026F191C57463300A76C4C /* zh-Hans */,
 			);
 			name = ForceViewController.xib;
+			sourceTree = "<group>";
+		};
+		7D13AD5A1C58C24700C551C0 /* FitPeopleViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D13AD591C58C24700C551C0 /* Base */,
+				7D13AD5C1C58C24B00C551C0 /* en */,
+				7D13AD5E1C58C24D00C551C0 /* zh-Hans */,
+			);
+			name = FitPeopleViewController.xib;
+			sourceTree = "<group>";
+		};
+		7D13AD611C58C2D500C551C0 /* SetClockMusicViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D13AD601C58C2D500C551C0 /* en */,
+				7D13AD621C58C2D700C551C0 /* Base */,
+				7D13AD641C58C2D900C551C0 /* zh-Hans */,
+			);
+			name = SetClockMusicViewController.xib;
+			sourceTree = "<group>";
+		};
+		7D13AD671C58C2FC00C551C0 /* SetClockModeController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D13AD661C58C2FC00C551C0 /* Base */,
+				7D13AD691C58C2FD00C551C0 /* en */,
+				7D13AD6B1C58C2FE00C551C0 /* zh-Hans */,
+			);
+			name = SetClockModeController.xib;
+			sourceTree = "<group>";
+		};
+		7D13AD6E1C58C31800C551C0 /* SetClockTimeController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D13AD6D1C58C31800C551C0 /* Base */,
+				7D13AD701C58C31A00C551C0 /* en */,
+				7D13AD721C58C31B00C551C0 /* zh-Hans */,
+			);
+			name = SetClockTimeController.xib;
+			sourceTree = "<group>";
+		};
+		7D1E29611C58C9B200369DFF /* mainSetViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D1E29621C58C9B300369DFF /* Base */,
+				7D1E29641C58C9B800369DFF /* zh-Hans */,
+				7D1E29661C58C9DA00369DFF /* en */,
+			);
+			name = mainSetViewController.xib;
 			sourceTree = "<group>";
 		};
 		7D730B201C3CD94800C095C5 /* Main.storyboard */ = {

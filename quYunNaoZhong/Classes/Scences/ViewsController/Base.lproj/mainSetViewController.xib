@@ -20,19 +20,19 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Nc-fz-9Zv">
                     <rect key="frame" x="0.0" y="343" width="600" height="257"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闹钟1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fG2-ex-2BD">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闹钟1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fG2-ex-2BD">
                             <rect key="frame" x="201" y="102" width="197" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Rights Reserved" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u64-y2-AVH">
-                            <rect key="frame" x="201" y="140" width="109.5" height="14.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Rights Reserved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u64-y2-AVH">
+                            <rect key="frame" x="245.5" y="140" width="109.5" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designed and Coded by Quyun Ltd" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J97-ji-vhV">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designed and Coded by Quyun Ltd" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J97-ji-vhV">
                             <rect key="frame" x="201" y="121" width="197.5" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,6 +40,7 @@
                         </label>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="u64-y2-AVH" firstAttribute="centerX" secondItem="0Nc-fz-9Zv" secondAttribute="centerX" id="0F2-ri-G18"/>
                         <constraint firstAttribute="bottom" secondItem="fG2-ex-2BD" secondAttribute="bottom" constant="140" id="0pK-sc-wec"/>
                         <constraint firstItem="J97-ji-vhV" firstAttribute="centerY" secondItem="0Nc-fz-9Zv" secondAttribute="centerY" id="4VU-GD-lgn"/>
                         <constraint firstItem="u64-y2-AVH" firstAttribute="leading" secondItem="J97-ji-vhV" secondAttribute="leading" id="9Ag-Db-7kB"/>
@@ -66,6 +67,7 @@
                             <exclude reference="Ois-7f-zph"/>
                             <exclude reference="Qfv-4x-Tx2"/>
                             <exclude reference="o6i-cD-TLY"/>
+                            <exclude reference="9Ag-Db-7kB"/>
                             <exclude reference="PlG-At-6Z2"/>
                             <exclude reference="tMa-gr-uys"/>
                         </mask>

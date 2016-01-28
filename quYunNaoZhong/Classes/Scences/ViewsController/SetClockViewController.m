@@ -74,8 +74,12 @@ static NSString *cellID_2 = @"sliderID";
     }
     if (![self.clickTheFirstOrAddBtnFlag isEqualToString:ClickTheFirstClockFlag]) {
         [self.deletButton setUserInteractionEnabled:NO];
+        [self.deletButton setEnabled:NO];
+        
     }else{
         [self.deletButton setUserInteractionEnabled:YES];
+        [self.deletButton setEnabled:YES];
+
     }
     
     UITableViewCell *cell1 = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];

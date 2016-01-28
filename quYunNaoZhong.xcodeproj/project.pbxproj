@@ -76,6 +76,8 @@
 		7DE9A2FF1C520866004AD040 /* FitPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE9A2FD1C520866004AD040 /* FitPeopleViewController.m */; };
 		7DE9C4CE1C5702B2003C13A5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9C4D01C5702B2003C13A5 /* InfoPlist.strings */; };
 		7DE9C4D41C5703C0003C13A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9C4D61C5703C0003C13A5 /* Localizable.strings */; };
+		7DED61B11C59AEE100EC3F7D /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DED61AF1C59AEE100EC3F7D /* AboutUsViewController.m */; };
+		7DED61B31C59B44100EC3F7D /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DED61B51C59B44100EC3F7D /* AboutUsViewController.xib */; };
 		7DEDA3DC1C3E4E8900D7C4DE /* alertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */; };
 		7DEDA3DD1C3E4E8900D7C4DE /* alertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */; };
 		7DEDA3E31C3E6C6100D7C4DE /* alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDA3E21C3E6C6100D7C4DE /* alert.m */; };
@@ -203,6 +205,11 @@
 		7DE9C4D51C5703C0003C13A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7DE9C4D71C5703C1003C13A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7DE9C4D81C570518003C13A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7DED61AE1C59AEE100EC3F7D /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		7DED61AF1C59AEE100EC3F7D /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		7DED61B61C59B44300EC3F7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutUsViewController.xib; sourceTree = "<group>"; };
+		7DED61B81C59B44400EC3F7D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AboutUsViewController.strings"; sourceTree = "<group>"; };
+		7DED61BA1C59B45F00EC3F7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AboutUsViewController.strings; sourceTree = "<group>"; };
 		7DEDA3D91C3E4E8900D7C4DE /* alertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alertCell.h; sourceTree = "<group>"; };
 		7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alertCell.m; sourceTree = "<group>"; };
 		7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = alertCell.xib; sourceTree = "<group>"; };
@@ -454,6 +461,9 @@
 				7D1C16F01C3F45D200193447 /* MyClockViewController.m */,
 				7DAC940D1C3F99D800F787DA /* SetClockViewController.h */,
 				7DAC940E1C3F99D800F787DA /* SetClockViewController.m */,
+				7DED61AE1C59AEE100EC3F7D /* AboutUsViewController.h */,
+				7DED61AF1C59AEE100EC3F7D /* AboutUsViewController.m */,
+				7DED61B51C59B44100EC3F7D /* AboutUsViewController.xib */,
 			);
 			path = ViewsController;
 			sourceTree = "<group>";
@@ -649,6 +659,7 @@
 				7D1FC4491C4C9BAC00044051 /* 黑白琴键.mp3 in Resources */,
 				7D1FC48F1C4CB13E00044051 /* 萌主起床了(男声).mp3 in Resources */,
 				7D1FC48E1C4CB13E00044051 /* 老婆起床了(男声).mp3 in Resources */,
+				7DED61B31C59B44100EC3F7D /* AboutUsViewController.xib in Resources */,
 				7D1C16F61C3F5ECE00193447 /* MyAlertCell.xib in Resources */,
 				7D1FC4921C4CB13E00044051 /* 少爷起床了(女声).mp3 in Resources */,
 				7D1FC4991C4CB13E00044051 /* 主人起床了(女声).mp3 in Resources */,
@@ -680,6 +691,7 @@
 				7DF1B40C1C48C0A00090BD64 /* mainSetViewController.m in Sources */,
 				7D69DC361C4DFEC9007BB1F8 /* GADMasterViewController.m in Sources */,
 				7D5554441C4343BE001D67A8 /* SetClockTimeController.m in Sources */,
+				7DED61B11C59AEE100EC3F7D /* AboutUsViewController.m in Sources */,
 				7DCD71FF1C4795390072DDC5 /* SetClockMusicViewController.m in Sources */,
 				7DF6948C1C4DCBC2002175CD /* ForceViewController.m in Sources */,
 				7D730B191C3CD94800C095C5 /* main.m in Sources */,
@@ -808,6 +820,16 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		7DED61B51C59B44100EC3F7D /* AboutUsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DED61B61C59B44300EC3F7D /* Base */,
+				7DED61B81C59B44400EC3F7D /* zh-Hans */,
+				7DED61BA1C59B45F00EC3F7D /* en */,
+			);
+			name = AboutUsViewController.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -828,7 +850,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -850,6 +873,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "";
+				PROVISIONING_PROFILE = "75ffc21c-36b0-4980-ad97-4a7a3d9d2914";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -872,7 +897,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -887,6 +913,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "";
+				PROVISIONING_PROFILE = "75ffc21c-36b0-4980-ad97-4a7a3d9d2914";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -897,8 +925,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: quyunkj@163.com (QUR9ZYX4JG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -908,9 +937,10 @@
 				INFOPLIST_FILE = quYunNaoZhong/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.quYunNaoZhong;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quyun.healthAlert;
 				PRODUCT_NAME = "健康生活闹钟";
-				PROVISIONING_PROFILE = "3c69bc6a-d149-49b3-b62c-1f8247257dad";
+				PROVISIONING_PROFILE = "75ffc21c-36b0-4980-ad97-4a7a3d9d2914";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -918,8 +948,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: quyunkj@163.com (QUR9ZYX4JG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -929,9 +960,10 @@
 				INFOPLIST_FILE = quYunNaoZhong/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.quYunNaoZhong;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quyun.healthAlert;
 				PRODUCT_NAME = "健康生活闹钟";
-				PROVISIONING_PROFILE = "3c69bc6a-d149-49b3-b62c-1f8247257dad";
+				PROVISIONING_PROFILE = "75ffc21c-36b0-4980-ad97-4a7a3d9d2914";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

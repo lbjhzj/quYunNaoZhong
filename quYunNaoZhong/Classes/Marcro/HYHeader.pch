@@ -54,6 +54,8 @@
 #import "HYLocalNotication.h"
 #import <MessageUI/MessageUI.h>
 
+#import "AboutUsViewController.h"
+
 #import "SetClockExtendViewController.h"
 #import "FitPeopleViewController.h"
 #define ClickTheFirstClockFlag @"jdjoijfioej"

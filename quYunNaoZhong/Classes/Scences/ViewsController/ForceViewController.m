@@ -80,27 +80,37 @@
             [self.firstBtn setTitle:[NSString stringWithFormat:@"%d",correctOperation]forState:UIControlStateNormal];
             break;
         case 1:
-            [self.secondBtn setTitle:[NSString stringWithFormat:@"%d",correctOperation]forState:UIControlStateNormal];            break;
+            [self.secondBtn setTitle:[NSString stringWithFormat:@"%d",correctOperation]forState:UIControlStateNormal];
+            break;
         case 2:
-            [self.thirdBtn setTitle:[NSString stringWithFormat:@"%d",correctOperation]forState:UIControlStateNormal];            break;
+            [self.thirdBtn setTitle:[NSString stringWithFormat:@"%d",correctOperation]forState:UIControlStateNormal];
+            break;
         case 3:
-            [self.fourthBtn setTitle:[NSString stringWithFormat:@"%d",correctOperation]forState:UIControlStateNormal];            break;
+            [self.fourthBtn setTitle:[NSString stringWithFormat:@"%d",correctOperation]forState:UIControlStateNormal];
+            break;
         case 4:
-            [self.fifthBtn setTitle:[NSString stringWithFormat:@"%d",correctOperation]forState:UIControlStateNormal];            break;
+            [self.fifthBtn setTitle:[NSString stringWithFormat:@"%d",correctOperation]forState:UIControlStateNormal];
+            break;
         case 5:
-            [self.sixthBtn setTitle:[NSString stringWithFormat:@"%d",correctOperation]forState:UIControlStateNormal];            break;
+            [self.sixthBtn setTitle:[NSString stringWithFormat:@"%d",correctOperation]forState:UIControlStateNormal];
+                                          break;
         default:
             break;
     }
     int falseSelection = correctOperation;
-    for (UIButton *btn in self.lowView.subviews) {
-        if ([btn isKindOfClass:[UIButton class]]) {
-            if (![btn.titleLabel.text isEqualToString:[NSString stringWithFormat:@"%d",correctOperation]]) {
-                [btn setTitle:[NSString stringWithFormat:@"%d",++falseSelection]forState:UIControlStateNormal];
-                
-            }
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:6];
+    [array addObject:self.firstBtn];
+    [array addObject:self.secondBtn];
+    [array addObject:self.thirdBtn];
+    [array addObject:self.fourthBtn];
+    [array addObject:self.fifthBtn];
+    [array addObject:self.sixthBtn];
+    for (int i=0;i<6;i++) {
+        if (optionOfBtns != i) {
+            [array[i] setTitle:[NSString stringWithFormat:@"%d",++falseSelection]forState:UIControlStateNormal];
         }
     }
+
 
     
 }
@@ -117,8 +127,14 @@
         [self dismissViewControllerAnimated:YES completion:^{
             if (self.delegate && [self.delegate respondsToSelector:@selector(stopMusic)]) {
                 [self.delegate stopMusic];
+                [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:[self.Alert.clockID intValue]];
+                
+
             }
         }];
+    }else{
+        [self viewWillAppear:YES];
+        
     }
 }
 - (IBAction)secondBtnAction:(UIButton *)sender {
@@ -130,6 +146,8 @@
                 [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:[self.Alert.clockID intValue]];
             }
         }];
+    }else{
+       [self viewWillAppear:YES];
     }
 }
 - (IBAction)thirdBtnAction:(UIButton *)sender {
@@ -142,6 +160,8 @@
 
             }
         }];
+    }else{
+        [self viewWillAppear:YES];
     }
 }
 - (IBAction)fourthBtnAction:(UIButton *)sender {
@@ -153,6 +173,8 @@
                 [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:[self.Alert.clockID intValue]];
             }
         }];
+    }else{
+        [self viewWillAppear:YES];
     }
 }
 - (IBAction)fifthBtnAction:(UIButton *)sender {
@@ -165,6 +187,8 @@
 
             }
         }];
+    }else{
+       [self viewWillAppear:YES];
     }
 }
 - (IBAction)sixthBtnAction:(UIButton *)sender {
@@ -177,6 +201,8 @@
 
             }
         }];
+    }else{
+       [self viewWillAppear:YES];
     }
 }
 

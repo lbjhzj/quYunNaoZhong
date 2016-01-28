@@ -10,6 +10,7 @@
 
 @interface MyAlertCell ()
 
+@property (weak, nonatomic) IBOutlet UIView *TapView;
 
 
 @end
@@ -74,8 +75,59 @@
 
 
 - (void)awakeFromNib {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapButton)];
+    [self.TapView addGestureRecognizer:tap];
 
+}
 
+- (void)tapButton{
+    UIButton *sender = self.clockStateBtn;
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    alert *Alert = [alert new];
+    if ([userDefault objectForKey:[NSString stringWithFormat:@"%d",self.clockID]]) {
+        Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:self.clockID inSection:0]];
+    }else{
+        int biggerCount=0;
+        int smallerCount = 0;
+        int index = 0;
+        for (int x=0; x<50; x++) {
+            if ([userDefault objectForKey:[NSString stringWithFormat:@"%d",x]]) {
+                if (x>self.clockID) {
+                    biggerCount++;
+                }else{
+                    NSLog(@"%@",[userDefault objectForKey:[NSString stringWithFormat:@"%d",x]]);
+                    smallerCount++;
+                }
+            }
+        }
+        index = self.clockID - smallerCount - biggerCount;
+        NSArray *ttmpArray = [[HYLocalNotication shareHYLocalNotication] findClockOfDefaultPlist:(NSString *)[userDefault objectForKey:@"ClockFitPeople"]];
+        NSMutableDictionary *ttmpDictionary = ttmpArray[index];
+        [Alert setValuesForKeysWithDictionary:ttmpDictionary];
+    }
+    
+    
+    if (Alert.clockState) {
+        [sender setImage:[UIImage imageNamed:@"开关（关）"] forState:UIControlStateNormal ];
+        [[HYLocalNotication shareHYLocalNotication] cancelLocalNotication:self.clockID];
+    }else{
+        [sender setImage:[UIImage imageNamed:@"开关（开）"] forState:UIControlStateNormal ];
+        [[HYLocalNotication shareHYLocalNotication] startLocalNoticationClockID:self.clockID];
+    }
+    Alert.clockState = ! Alert.clockState;
+    NSLog(@"选中的clockID====%@",Alert.clockID);
+    
+    if ([ (NSString *)[userDefault objectForKey:@"ClockFitPeople"] isEqualToString:@"关闭"] ||![userDefault objectForKey:@"ClockFitPeople"] ) {
+        [[HYLocalNotication shareHYLocalNotication] saveClockData:Alert];
+    }else {
+        if (!Alert.clockType) {
+            [[HYLocalNotication shareHYLocalNotication] saveClockData:Alert];
+        }else{
+            [[HYLocalNotication shareHYLocalNotication]writeDataToDefaultPlist:Alert];
+        }
+        
+        
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -44,6 +44,7 @@
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];
+    [userDefault setObject:self.selectedMode forKey:@"ClockFitPeople"];
     if ([self.selectedMode isEqualToString:@"关闭"]) {
         if (![fitPeople isEqualToString:self.selectedMode] && fitPeople) {
     [userDefault setObject:[NSString stringWithFormat:@"%d",[[userDefault objectForKey:@"ClockCount"] intValue]-8]forKey:@"ClockCount"];
@@ -51,7 +52,7 @@
         }
 
     }else{
-        if (self.selectedMode != fitPeople && [fitPeople isEqualToString:@"关闭"]) {
+        if (self.selectedMode != fitPeople && ([fitPeople isEqualToString:@"关闭"]||!fitPeople)) {
         [userDefault setObject:[NSString stringWithFormat:@"%d",[[userDefault objectForKey:@"ClockCount"] intValue]+8]forKey:@"ClockCount"];
               [[HYLocalNotication shareHYLocalNotication]writeDataToDefaultPlist:nil];
         }

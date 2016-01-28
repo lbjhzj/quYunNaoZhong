@@ -10,11 +10,14 @@
 
 @interface GADMasterViewController : UIViewController
 {
-    GADBannerView *adBanner_;
+    GADBannerView *_adBanner_;
     BOOL didCloseWebsiteView;
     BOOL isLoaded_;
     id currentDelegate_;
 }
+
+@property(nonatomic,strong)GADBannerView * adBanner_;
+
 
 +(GADMasterViewController *)singleton;
 

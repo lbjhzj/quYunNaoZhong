@@ -28,12 +28,19 @@
 
 -(id)init {
     if (self = [super init]) {
-        adBanner_ = [[GADBannerView alloc]
-                     initWithFrame:CGRectMake(0.5 * self.view.frame.size.width - 0.5 * GAD_SIZE_320x50.width,
-                                              self.view.frame.size.height - GAD_SIZE_320x50.height,
-                                              GAD_SIZE_320x50.width,
-                                              GAD_SIZE_320x50.height)];
-        // Has an ad request already been made
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        if (![userDefault objectForKey:@"enable_rocket_car"]) {
+            _adBanner_ = [[GADBannerView alloc]
+                         initWithFrame:CGRectMake(0.5 * self.view.frame.size.width - 0.5 * GAD_SIZE_320x50.width,
+                                                  self.view.frame.size.height - GAD_SIZE_320x50.height,
+                                                  GAD_SIZE_320x50.width,
+                                                  GAD_SIZE_320x50.height)];
+
+        }else{
+            _adBanner_ = nil;
+        }
+        
+                // Has an ad request already been made
         isLoaded_ = NO;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveOutAdvertisment) name:@"buyAction" object:nil];
 
@@ -43,7 +50,7 @@
 
 - (void)moveOutAdvertisment{
 
-    adBanner_.frame = CGRectMake(0, 0, 0, 0);
+    _adBanner_.frame = CGRectMake(0, 0, 0, 0);
 }
 -(void)resetAdView:(UIViewController *)rootViewController {
     // Always keep track of currentDelegate for notification forwarding
@@ -51,19 +58,19 @@
     
     // Ad already requested, simply add it into the view
     if (isLoaded_) {
-        [rootViewController.view addSubview:adBanner_];
+        [rootViewController.view addSubview:_adBanner_];
     } else {
         
-        adBanner_.delegate = self;
-        adBanner_.rootViewController = rootViewController;
-        adBanner_.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+        _adBanner_.delegate = self;
+        _adBanner_.rootViewController = rootViewController;
+        _adBanner_.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
 
         GADRequest *request = [GADRequest request];
         request.testDevices = @[
                                 @"5ff659b7225c70aee936a20c4c6236ad"  // Eric's iPod Touch
                                 ];
-        [adBanner_ loadRequest:request];
-        [rootViewController.view addSubview:adBanner_];
+        [_adBanner_ loadRequest:request];
+        [rootViewController.view addSubview:_adBanner_];
         isLoaded_ = YES;
     }
 }

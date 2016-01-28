@@ -264,7 +264,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
                     }
                     
                     [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
-                    NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
+                    NSLog(@"Post new localNotification:%@", [[newNotification fireDate]dateByAddingTimeInterval:3600*8]);
                 }
             }
             else{
@@ -272,12 +272,12 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
                     if (![clockExtend containsString:@"未设置"]&&clockExtend){
                         newNotification.fireDate = [newFireDate dateByAddingTimeInterval:[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]*i*60];
                         [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
-                        NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
+                        NSLog(@"Post new localNotification:%@", [[newNotification fireDate]dateByAddingTimeInterval:3600*8]);
                         NSLog(@"延迟了%d分",[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]);
                     }else{
-                        newNotification.fireDate = newFireDate;
+                        newNotification.fireDate = [newFireDate dateByAddingTimeInterval:i*30];
                         [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
-                        NSLog(@"Post new localNotification:%@", [newNotification fireDate]);
+                        NSLog(@"Post new localNotification:%@", [[newNotification fireDate]dateByAddingTimeInterval:3600*8]);
                     }
 
                 }
@@ -298,7 +298,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     
     for (UILocalNotification *notication in localNotications) {
         if ([[[notication userInfo] objectForKey:@"ActivityClock"] intValue] == clockID) {
-            NSLog(@"Cancel localNotication:%@",[notication fireDate]);
+            NSLog(@"Cancel localNotication:%@",[[notication fireDate]dateByAddingTimeInterval:3600*8]);
             [[UIApplication sharedApplication] cancelLocalNotification:notication];
         }
     }
@@ -333,6 +333,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
 //    }
     return array;
 }
+
 - (void)writeDataToDefaultPlist:(alert *)Alert{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *sectionName = [userDefault objectForKey:@"ClockFitPeople"];
@@ -377,7 +378,10 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
         }
     }
 }
-    [data setValue:array forKey:sectionName];
+    if (array) {
+        [data setValue:array forKey:sectionName];
+    }
+    
 
     [data writeToFile:plistPath1 atomically:YES];
 }

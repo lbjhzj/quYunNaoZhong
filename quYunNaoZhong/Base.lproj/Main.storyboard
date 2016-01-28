@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="o1H-JH-wvu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="o1H-JH-wvu">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -107,6 +107,7 @@
                         <outlet property="hourAndMinuteLabel" destination="EN7-ER-R3R" id="pFD-Ep-EYq"/>
                         <outlet property="secondsLabel" destination="csJ-OP-Jo0" id="YzC-TI-ktP"/>
                         <outlet property="tableView" destination="jYJ-5I-IxP" id="Xft-Sq-zsW"/>
+                        <outlet property="tableViewConstrains" destination="fYW-Tt-CmF" id="iy5-NE-AYX"/>
                         <outlet property="timeView" destination="tQq-Sf-ihi" id="E3M-A5-1N1"/>
                         <segue destination="uyV-CI-BZf" kind="push" identifier="pushMyClockVC" id="Kyc-X3-Nxb"/>
                     </connections>
@@ -211,27 +212,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aSb-7y-8v3" firstAttribute="leading" secondItem="zI6-Rj-9hT" secondAttribute="leading" id="061-5B-Whd"/>
-                            <constraint firstItem="DWl-zj-i1L" firstAttribute="leading" secondItem="zI6-Rj-9hT" secondAttribute="leading" id="4xd-f2-uGq"/>
                             <constraint firstAttribute="trailing" secondItem="aSb-7y-8v3" secondAttribute="trailing" id="D99-To-zoD"/>
                             <constraint firstAttribute="trailing" secondItem="IpB-9Q-hkC" secondAttribute="trailing" id="DWw-lb-19P"/>
                             <constraint firstItem="DWl-zj-i1L" firstAttribute="centerX" secondItem="zI6-Rj-9hT" secondAttribute="centerX" id="EeY-OW-ghl"/>
                             <constraint firstItem="IpB-9Q-hkC" firstAttribute="leading" secondItem="zI6-Rj-9hT" secondAttribute="leading" id="QzL-zB-7hR"/>
                             <constraint firstItem="DWl-zj-i1L" firstAttribute="top" secondItem="IpB-9Q-hkC" secondAttribute="bottom" constant="59" id="Ro2-NF-hVY"/>
                             <constraint firstItem="gk3-oh-UaE" firstAttribute="top" secondItem="DWl-zj-i1L" secondAttribute="bottom" id="Xqk-Fh-Gdw"/>
-                            <constraint firstAttribute="trailing" secondItem="DWl-zj-i1L" secondAttribute="trailing" id="fwf-3X-J8K"/>
                             <constraint firstItem="aSb-7y-8v3" firstAttribute="top" secondItem="zI6-Rj-9hT" secondAttribute="top" id="pct-KZ-5nD"/>
                             <constraint firstItem="IpB-9Q-hkC" firstAttribute="top" secondItem="aSb-7y-8v3" secondAttribute="bottom" id="yBz-46-7WB"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="4xd-f2-uGq"/>
-                                <exclude reference="fwf-3X-J8K"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="I9W-1V-tDr"/>
                     <connections>
                         <outlet property="backToMainVCButton" destination="ed1-aY-jZY" id="68c-jw-vlE"/>
+                        <outlet property="constrainsOfTableView" destination="Ro2-NF-hVY" id="nhv-Eb-eqn"/>
                         <outlet property="tabelView" destination="IpB-9Q-hkC" id="UgQ-DB-dJ4"/>
                         <outlet property="topView" destination="aSb-7y-8v3" id="Mag-Yw-9lr"/>
                         <segue destination="AlF-eG-ikv" kind="push" identifier="pushSetClockVC" id="7y1-RJ-vRE"/>
@@ -256,17 +250,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xkp-6v-QDj">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzU-UP-D3n">
-                                        <rect key="frame" x="555" y="36" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="fzU-UP-D3n" secondAttribute="height" id="Yqm-tv-nzL"/>
-                                            <constraint firstAttribute="height" constant="30" id="nPe-pl-bsG"/>
-                                        </constraints>
-                                        <state key="normal" backgroundImage="确认"/>
-                                        <connections>
-                                            <action selector="makeSureAddOrChangeClockInformation:" destination="AlF-eG-ikv" eventType="touchUpInside" id="7md-pO-blp"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闹钟设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duU-pC-7bu">
                                         <rect key="frame" x="264" y="44" width="72" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -294,6 +277,17 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzU-UP-D3n">
+                                        <rect key="frame" x="555" y="36" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fzU-UP-D3n" secondAttribute="height" id="Yqm-tv-nzL"/>
+                                            <constraint firstAttribute="height" constant="30" id="nPe-pl-bsG"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="确认"/>
+                                        <connections>
+                                            <action selector="makeSureAddOrChangeClockInformation:" destination="AlF-eG-ikv" eventType="touchUpInside" id="7md-pO-blp"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -360,26 +354,20 @@
                             <constraint firstAttribute="trailing" secondItem="sZd-zt-55a" secondAttribute="trailing" id="4qM-bN-2Xr"/>
                             <constraint firstItem="kIT-il-Gw2" firstAttribute="top" secondItem="emb-Fo-drZ" secondAttribute="bottom" id="LFf-Bd-dkc"/>
                             <constraint firstItem="Sq5-m0-0pI" firstAttribute="leading" secondItem="fNp-ym-fC1" secondAttribute="leading" id="LFm-Ja-5KB"/>
-                            <constraint firstItem="xkp-6v-QDj" firstAttribute="leading" secondItem="fNp-ym-fC1" secondAttribute="leadingMargin" id="N2t-20-hrq"/>
                             <constraint firstAttribute="trailing" secondItem="xkp-6v-QDj" secondAttribute="trailing" id="Oai-mY-eFc"/>
                             <constraint firstItem="emb-Fo-drZ" firstAttribute="top" secondItem="sZd-zt-55a" secondAttribute="bottom" id="Rmm-st-ayI"/>
                             <constraint firstItem="xkp-6v-QDj" firstAttribute="top" secondItem="fNp-ym-fC1" secondAttribute="topMargin" id="Tam-9j-9qd"/>
                             <constraint firstItem="emb-Fo-drZ" firstAttribute="centerX" secondItem="fNp-ym-fC1" secondAttribute="centerX" id="cvW-Oo-yVt"/>
                             <constraint firstItem="xkp-6v-QDj" firstAttribute="leading" secondItem="fNp-ym-fC1" secondAttribute="leading" id="d9n-7L-Z8g"/>
                             <constraint firstAttribute="trailing" secondItem="Sq5-m0-0pI" secondAttribute="trailing" id="dS6-Pp-hG2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="xkp-6v-QDj" secondAttribute="trailing" id="jLe-4e-W0O"/>
                             <constraint firstItem="sZd-zt-55a" firstAttribute="top" secondItem="Sq5-m0-0pI" secondAttribute="bottom" id="kmM-jw-4IM"/>
                             <constraint firstItem="sZd-zt-55a" firstAttribute="leading" secondItem="fNp-ym-fC1" secondAttribute="leading" id="x4H-zX-c98"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="N2t-20-hrq"/>
-                                <exclude reference="jLe-4e-W0O"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="ug7-1s-Kj6"/>
                     <connections>
+                        <outlet property="constrainsOfAdViewHeight" destination="YHY-Sl-DJR" id="0MY-jt-oJr"/>
+                        <outlet property="deletButton" destination="Zad-SF-s1K" id="I1o-qc-bkz"/>
                         <outlet property="tableView" destination="Sq5-m0-0pI" id="tlb-PX-S03"/>
                     </connections>
                 </viewController>

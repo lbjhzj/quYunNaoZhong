@@ -23,8 +23,9 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *moreInButton;
 
-
+@property(nonatomic,assign)NSInteger index;
 @property(nonatomic,strong)alert * Alert;
 
+@property(nonatomic,assign)BOOL isOpen;
 
 @end

@@ -14,6 +14,8 @@
 {
     SetClockViewController *setClockVC;
     GADMasterViewController *shared;
+    CGFloat newHight;
+    NSInteger alertIndex;
 }
 
 
@@ -27,13 +29,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *secondsLabel;
 
-
-
-//时间视图的约束条件
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainsOfTimeView;
-
 //tableView的约束条件
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintsOfTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewConstrains;
+
+
 
 @property(nonatomic,strong)MyClockViewController * myClockVC;
 
@@ -56,12 +55,14 @@ static NSString *cellID = @"cellID";
 
 
 - (void)viewWillAppear:(BOOL)animated{
-
-    
+    alertIndex = 888;
+    newHight = 110;
     //    设置谷歌广告
     shared = [GADMasterViewController singleton];
     [shared resetAdView:self];
-    
+    if (!shared.adBanner_&&shared) {
+        self.tableViewConstrains.constant = 9;
+    }
 //    NSArray *localNotications = [[UIApplication sharedApplication] scheduledLocalNotifications];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm:ss"];
@@ -76,7 +77,9 @@ static NSString *cellID = @"cellID";
 //    初始化当天的闹钟数组
     [self initClockCount];
     [self.firstArray removeAllObjects];
+    int index = 0;
     for (int i=0; i<self.clockCount; i++) {
+        
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy/MM/dd (ccc)"];
         NSString *dateMode=[NSString stringFromDate:[NSDate date] ByFormatter:formatter];
@@ -91,15 +94,16 @@ static NSString *cellID = @"cellID";
         if ([fitPeople isEqualToString:@"关闭"] ||fitPeople == nil){
             Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         }else{
-            if (self.clockCount >8) {
-                if (i<self.clockCount - 8) {
-            Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+            if (self.clockCount > 8) {
+           
+                if ([[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:i inSection:0]].clockTime) {
+                Alert = [[HYLocalNotication shareHYLocalNotication]findClockOfAllAlertsByIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
                 }else{
-            Alert = [alert new];
-            NSArray *tmpArray = [[HYLocalNotication shareHYLocalNotication]findClockOfDefaultPlist:fitPeople];
-            [Alert setValuesForKeysWithDictionary:((NSDictionary *)tmpArray[i-(self.clockCount-8)])];
-
+                NSArray *tmpArray = [[HYLocalNotication shareHYLocalNotication]findClockOfDefaultPlist:fitPeople];
+                    
+                [Alert setValuesForKeysWithDictionary:tmpArray[index++]];
                 }
+
 
             }else{
              
@@ -232,7 +236,14 @@ static NSString *cellID = @"cellID";
     
     [self countDownAction:tempTimeArray];
     
-    self.bottomView =[[UIView alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-109, self.view.frame.size.width, 59)];
+//    去广告
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    if ((!shared.adBanner_&&shared)||[userDefault objectForKey:@"enable_rocket_car"] ) {
+    self.bottomView =[[UIView alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-59, self.view.frame.size.width, 59)];
+    }else{
+     self.bottomView =[[UIView alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-109, self.view.frame.size.width, 59)];
+    }
+
     
     //    切换到闹钟界面的按键
     UIButton *switchButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -380,6 +391,32 @@ static NSString *cellID = @"cellID";
     cell.alertNameLabel.text = Alert.clockName;
     cell.alertWeekLabel.text = Alert.clockMode;
     cell.remarkLabel.text = Alert.clockRemember;
+    cell.index = indexPath.row;
+//    if (cell.isOpen) {
+//        if (indexPath.row == alertIndex) {
+//          cell.remarkLabel.numberOfLines = 0;
+//            
+//        }else{
+//        cell.remarkLabel.numberOfLines = 1;
+//            cell.isOpen = NO;
+//        }
+//        
+//    }else{
+//        cell.remarkLabel.numberOfLines = 1;
+//    }
+    if (indexPath.row == alertIndex) {
+        if (cell.isOpen) {
+        cell.remarkLabel.numberOfLines = 0;
+         cell.isOpen = YES;    
+        }else{
+            cell.remarkLabel.numberOfLines = 1;
+            cell.isOpen = NO;
+        }
+
+    }else{
+        cell.remarkLabel.numberOfLines = 1;
+         cell.isOpen = NO;
+    }
     NSDate *date = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm:ss"];
@@ -407,7 +444,13 @@ static NSString *cellID = @"cellID";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (alertIndex!=888) {
+        if (indexPath.row == alertIndex) {
+            
+            NSLog(@"改变了%f",newHight);
+            return newHight;
+        }
+    }
     return 110;
 }
 
@@ -415,6 +458,10 @@ static NSString *cellID = @"cellID";
    NSString *newFramStr = text.userInfo[@"newFrame"];
     CGRect newFrame = CGRectFromString(newFramStr);
     
+       newHight = newFrame.size.height;
+    
+    alertIndex = [text.userInfo[@"index"] integerValue];
+    [self.tableView reloadData];
 }
 //自适应cell高度
 + (CGSize)labelheight:(UILabel *)detlabel{

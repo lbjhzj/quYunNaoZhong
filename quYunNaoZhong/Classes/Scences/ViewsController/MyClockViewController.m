@@ -19,6 +19,7 @@
 @property (strong,nonatomic)UIView *bottomView;
 
 //tableView的约束
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainsOfTableView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;
 
@@ -70,8 +71,16 @@ static NSString *cellID = @"cell2";
 //    从NSUserDefault中读取数据,填充表格
 - (void)viewWillAppear:(BOOL)animated{
     
-    shared = [GADMasterViewController singleton];
-    [shared resetAdView:self];
+    //    去广告
+    if (!shared.adBanner_ &&shared) {
+  
+        self.constrainsOfTableView.constant = 9;
+    }else{
+        shared = [GADMasterViewController singleton];
+        [shared resetAdView:self];
+    }
+
+
     
     [self initClockCount];
     [self.tabelView reloadData];
@@ -163,7 +172,15 @@ static NSString *cellID = @"cell2";
 
 #pragma mark 添加视图
 - (void)addAllViews{
-    self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-109, self.view.frame.size.width, 59)];
+
+    //    去广告
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    if ((!shared.adBanner_&&shared)||[userDefault objectForKey:@"enable_rocket_car"]) {
+        self.bottomView =[[UIView alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-59, self.view.frame.size.width, 59)];
+    }else{
+        self.bottomView =[[UIView alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-109, self.view.frame.size.width, 59)];
+    }
+
     
     UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [addButton setImage:[UIImage imageNamed:@"添加"] forState:UIControlStateNormal];

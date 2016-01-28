@@ -24,7 +24,9 @@
 
 @property(nonatomic,strong)UIImageView * shockSwitchBtn;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainsOfAdViewHeight;
 
+@property (weak, nonatomic) IBOutlet UIButton *deletButton;
 
 
 @end
@@ -61,8 +63,20 @@ static NSString *cellID_2 = @"sliderID";
 
 - (void)viewWillAppear:(BOOL)animated{
 
+    //    去广告
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    if ((!shared.adBanner_&&shared)||[userDefault objectForKey:@"enable_rocket_car"]) {
+
+        self.constrainsOfAdViewHeight.constant = 0;
+    }else{
     shared = [GADMasterViewController singleton];
-    [shared resetAdView:self];
+    [shared resetAdView:self]; 
+    }
+    if (![self.clickTheFirstOrAddBtnFlag isEqualToString:ClickTheFirstClockFlag]) {
+        [self.deletButton setUserInteractionEnabled:NO];
+    }else{
+        [self.deletButton setUserInteractionEnabled:YES];
+    }
     
     UITableViewCell *cell1 = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     UITableViewCell *cell2 = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
@@ -76,7 +90,7 @@ static NSString *cellID_2 = @"sliderID";
     _forceSwitchBtn.tag = 2000;
     
 
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+ 
     NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];
     if (self.Alert.clockType) {
         int biggerCount=0;
@@ -216,6 +230,7 @@ static NSString *cellID_2 = @"sliderID";
 
 #pragma mark 删除闹钟信息
 - (IBAction)deleteclockData:(UIButton *)sender {
+
     if (self.Alert.clockType) {
         [[HYLocalNotication shareHYLocalNotication]removeDefaultClockDataInDocument:self.Alert];
     }else{
@@ -234,6 +249,11 @@ static NSString *cellID_2 = @"sliderID";
         self.Alert.clockName = nameStr;
     
     self.Alert.clockTime = self.clockTimeLabel.text;
+    
+    if ([self.clockModeLabel.text containsString:@"未设置"]||![self.clockModeLabel.text length]) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"注意" message:@"您还未设置闹钟周期呦！\n它是多余滴..." delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil];
+        [alert show];
+    }
     self.Alert.clockMode = self.clockModeLabel.text;
     self.Alert.clockMusic = self.clockMusicLabel.text;
     self.Alert.clockSoundValue = self.clockSoundValueLabel.value;
@@ -412,7 +432,7 @@ static NSString *cellID_2 = @"sliderID";
             
         }else if (indexPath.row == 2){
             
-            cell.textLabel.text = NSLocalizedString(@"铃声", nil);
+            cell.textLabel.text = NSLocalizedString(@"周期", nil);
 //            self.clockModeLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 0, cell.contentView.frame.size.width-150, cell.contentView.frame.size.height)];
             
             if (cell.contentView.subviews.count<3){

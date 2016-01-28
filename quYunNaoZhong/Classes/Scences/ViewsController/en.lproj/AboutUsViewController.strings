@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "关于我们"; ObjectID = "M5T-Mv-VRp"; */
+"M5T-Mv-VRp.text" = "About Us";
+
+/* Class = "UILabel"; text = "Version 1.0"; ObjectID = "Ula-uK-C3I"; */
+"Ula-uK-C3I.text" = "Version 1.0";
+
+/* Class = "UILabel"; text = "        健康生活闹钟由成都趣云科技有限公司设计开发，旨在开发一款轻便易用，绿色健康的闹钟应用，给你的生活带来一抹绿色！"; ObjectID = "g9F-UP-p6o"; */
+"g9F-UP-p6o.text" = "    Health Clock is designed and coded by Quyun Ltd. in order to build a light and healthy alarm clock application,to bring a touch of green to your life!";

@@ -21,26 +21,28 @@
     mainVC = [[MainViewController alloc]init];
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(makeBigger)];
     [self.remarkLabel addGestureRecognizer:gesture];
-
+    
 }
 - (void)makeBigger{
     CGRect frame=self.frame;
-    if (!self.remarkLabel.numberOfLines) {
+    if (self.isOpen) {
         self.remarkLabel.numberOfLines = 1;
         CGSize newSize = [MainViewController labelheight:self.remarkLabel];
         
         frame.size.height = frame.size.height-newSize.height;
-        self.frame = frame;
+//        self.frame = frame;
+        self.isOpen = NO;
        
     }else{
         self.remarkLabel.numberOfLines = 0;
         CGSize newSize = [MainViewController labelheight:self.remarkLabel];
         frame.size.height = frame.size.height+newSize.height;
-        self.frame = frame;
+//        self.frame = frame;
+        self.isOpen = YES;
     }
     //添加 字典，将label的值通过key值设置传递
     NSString *newFramStr = NSStringFromCGRect(frame);
-    NSDictionary *dict =[NSDictionary dictionaryWithObjectsAndKeys:newFramStr,@"newFrame", nil];
+    NSDictionary *dict =[NSDictionary dictionaryWithObjectsAndKeys:newFramStr,@"newFrame",[NSString stringWithFormat:@"%ld",self.index],@"index", nil];
     //创建通知
     NSNotification *notification =[NSNotification notificationWithName:@"makeItBigger" object:nil userInfo:dict];
     //通过通知中心发送通知

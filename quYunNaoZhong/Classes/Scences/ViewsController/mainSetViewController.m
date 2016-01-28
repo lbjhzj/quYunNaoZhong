@@ -44,15 +44,11 @@ static NSString *cellID = @"cellID";
     _fitPeopleLabel.text = [userDefault objectForKey:@"ClockFitPeople"];
     [[SKPaymentQueue defaultQueue]addTransactionObserver:self];
     self.productID = @"com.quYunNaoZhong.deleteAd";
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveOutAdvertisment) name:@"buyAction" object:nil];
+
 
 }
 
-#pragma mark 去除广告，改约束
-- (void)moveOutAdvertisment{
-    
-}
+
 
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -70,6 +66,7 @@ static NSString *cellID = @"cellID";
 - (IBAction)backToVCAction:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -168,11 +165,13 @@ static NSString *cellID = @"cellID";
 }
 //恢复购买
 - (void)restorTransaction{
-    NSArray *product = [[NSArray alloc] initWithObjects:self.productID, nil];
-    [[SKPaymentQueue defaultQueue]restoreCompletedTransactions];
-   SKReceiptRefreshRequest* request = [[SKReceiptRefreshRequest alloc] init];
-    request.delegate = self;
-    [request start];
+
+   
+        SKPaymentQueue *paymentQueue=[SKPaymentQueue defaultQueue];
+//        设置支付观察者（类似于代理），通过观察者来监控购买情况
+         [paymentQueue addTransactionObserver:self];
+//         恢复所有非消耗品
+        [paymentQueue restoreCompletedTransactions];
     
 }
 
@@ -194,7 +193,7 @@ static NSString *cellID = @"cellID";
                 NSLog(@"交易完成");
                 [[NSNotificationCenter defaultCenter] postNotification:notification];
                 [storage setBool:YES forKey:@"enable_rocket_car"];
-                
+                [self completeTransaction:tran];
                 break;
             case SKPaymentTransactionStatePurchasing:
                 NSLog(@"商品添加进列表");
@@ -205,11 +204,11 @@ static NSString *cellID = @"cellID";
                 NSLog(@"已经购买过商品");
                 [[NSNotificationCenter defaultCenter] postNotification:notification];
                 [storage setBool:YES forKey:@"enable_rocket_car"];
-                [[SKPaymentQueue defaultQueue] finishTransaction: tran];
+                [self completeTransaction:tran];
                 break;
             case SKPaymentTransactionStateFailed:
                 NSLog(@"交易失败");
-                
+                [[SKPaymentQueue defaultQueue] finishTransaction: tran];
                 break;
             default:
                 break;
@@ -220,11 +219,17 @@ static NSString *cellID = @"cellID";
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error{
     NSLog(@"出错了%@",error);
 }
+
+- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue{
+    NSLog(@"完成恢复操作");
+}
 //交易结束
 - (void)completeTransaction:(SKPaymentTransaction *)transaction{
     NSLog(@"交易结束");
+    
     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-    NSData *newReceipt = transaction.transactionReceipt;
+    NSURL *url =[[NSBundle mainBundle]appStoreReceiptURL];
+    NSData *newReceipt = [NSData dataWithContentsOfURL:url];
     NSArray *savedReceipts = [storage arrayForKey:@"receipts"];
     if (!savedReceipts) {
         // Storing the first receipt
@@ -234,6 +239,7 @@ static NSString *cellID = @"cellID";
         NSArray *updatedReceipts = [savedReceipts arrayByAddingObject:newReceipt];
         [storage setObject:updatedReceipts forKey:@"receipts"];
     }
+    
     NSLog(@"transcation====%@",transaction);
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
@@ -300,6 +306,11 @@ static NSString *cellID = @"cellID";
       
             [self presentViewController:mc animated:YES completion:nil];
 
+        }
+            break;
+        case 5:{
+            AboutUsViewController *aboutUsVC = [[AboutUsViewController alloc] init];
+            [self.navigationController pushViewController:aboutUsVC animated:YES];
         }
             break;
         default:

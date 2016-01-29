@@ -29,6 +29,7 @@
 //点击了第一个闹钟还是添加闹钟判断
 @property(nonatomic,weak)NSString * clickTheFirstOrAddBtnFlag;
 
+@property(nonatomic,strong)NSString * fromMainOrMyVCFlag;
 
 //传入闹钟模型接口
 @property(nonatomic,strong)alert * Alert;

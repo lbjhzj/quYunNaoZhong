@@ -60,4 +60,8 @@
 #import "FitPeopleViewController.h"
 #define ClickTheFirstClockFlag @"jdjoijfioej"
 
+#define FromMainVC @"dsadsfdssdg"
+
+#define FromMyVC @"dewfewwd"
+
 #endif /* HYHeader_pch */

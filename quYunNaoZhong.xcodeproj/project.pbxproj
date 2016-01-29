@@ -317,7 +317,7 @@
 			children = (
 				7D730B2E1C3CD9DB00C095C5 /* Classes */,
 				7D730B201C3CD94800C095C5 /* Main.storyboard */,
-				7DF1B3A61C4888590090BD64 /* 健康闹钟铃声 */,
+				7DF1B3A61C4888590090BD64 /* RingTone */,
 				7D730B231C3CD94800C095C5 /* Assets.xcassets */,
 				7D730B251C3CD94800C095C5 /* LaunchScreen.storyboard */,
 				7D730B281C3CD94800C095C5 /* Info.plist */,
@@ -488,16 +488,17 @@
 			name = ClockFitPeople;
 			sourceTree = "<group>";
 		};
-		7DF1B3A61C4888590090BD64 /* 健康闹钟铃声 */ = {
+		7DF1B3A61C4888590090BD64 /* RingTone */ = {
 			isa = PBXGroup;
 			children = (
-				7DF1B3B11C4888590090BD64 /* 萌萌铃声 */,
-				7DF1B3C41C4888590090BD64 /* 音乐铃声 */,
+				7DF1B3B11C4888590090BD64 /* MengTone */,
+				7DF1B3C41C4888590090BD64 /* MusicTone */,
 			);
+			name = RingTone;
 			path = "健康闹钟铃声";
 			sourceTree = "<group>";
 		};
-		7DF1B3B11C4888590090BD64 /* 萌萌铃声 */ = {
+		7DF1B3B11C4888590090BD64 /* MengTone */ = {
 			isa = PBXGroup;
 			children = (
 				7D1FC4761C4CB13E00044051 /* 帮主起床了(女声).mp3 */,
@@ -519,10 +520,11 @@
 				7D1FC4861C4CB13E00044051 /* 主人起床了(男声).mp3 */,
 				7D1FC4871C4CB13E00044051 /* 主人起床了(女声).mp3 */,
 			);
+			name = MengTone;
 			path = "萌萌铃声";
 			sourceTree = "<group>";
 		};
-		7DF1B3C41C4888590090BD64 /* 音乐铃声 */ = {
+		7DF1B3C41C4888590090BD64 /* MusicTone */ = {
 			isa = PBXGroup;
 			children = (
 				7D1FC4381C4C9BAC00044051 /* 八音盒.mp3 */,
@@ -539,6 +541,7 @@
 				7D1FC4431C4C9BAC00044051 /* 甜美舞曲.mp3 */,
 				7D1FC4441C4C9BAC00044051 /* 自然晨曦.mp3 */,
 			);
+			name = MusicTone;
 			path = "音乐铃声";
 			sourceTree = "<group>";
 		};

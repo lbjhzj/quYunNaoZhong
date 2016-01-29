@@ -37,4 +37,7 @@
 - (void)removeDefaultClockDataInDocument:(alert *)Alert;
 
 - (void)removeAllDefaultClockData;
+
+- (BOOL)ifTheClockDateIsCurrentDateInEnglishLanguage:(NSString *)ClockDate;
+
 @end

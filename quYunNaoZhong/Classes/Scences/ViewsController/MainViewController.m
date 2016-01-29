@@ -129,10 +129,11 @@ static NSString *cellID = @"cellID";
                     Alert1.clockType = clockType;
                     Alert = Alert1;
                     if ([preferredLang containsString:@"en"]) {
-                        //            if ([Alert.clockMode containsString:@"二"]) {
-                        //                 [self.firstArray addObject:Alert];
-                        //            }
-                    }else{
+                        if ([[HYLocalNotication shareHYLocalNotication]ifTheClockDateIsCurrentDateInEnglishLanguage:Alert.clockMode]) {
+                            [self.firstArray addObject:Alert];
+                        }
+                    }
+                    else{
                         if ([Alert.clockMode containsString:[(NSString *)([dateMode componentsSeparatedByString:@"周"][1]) componentsSeparatedByString:@")"][0]]) {
                             [self.firstArray addObject:Alert];
                         }
@@ -152,9 +153,9 @@ static NSString *cellID = @"cellID";
   
         
         if ([preferredLang containsString:@"en"]) {
-//            if ([Alert.clockMode containsString:@"二"]) {
-//                 [self.firstArray addObject:Alert];
-//            }
+            if ([[HYLocalNotication shareHYLocalNotication]ifTheClockDateIsCurrentDateInEnglishLanguage:Alert.clockMode]) {
+                 [self.firstArray addObject:Alert];
+            }
         }else{
             if ([Alert.clockMode containsString:[(NSString *)([dateMode componentsSeparatedByString:@"周"][1]) componentsSeparatedByString:@")"][0]]) {
                 [self.firstArray addObject:Alert];
@@ -432,9 +433,22 @@ static NSString *cellID = @"cellID";
             hour = 0;
         }
         if (minute<0) {
-            minute = 0;
+            if (hour) {
+                
+            hour = hour-1;
+                
+            minute = 60 + minute;
+                
+            cell.countLabel.text = [NSString stringWithFormat:@"还有%d时%d分",hour,minute];
+            }
+            else{
+        cell.countLabel.text = NSLocalizedString(@"时间已过", nil);
+            }
+        }else{
+            cell.countLabel.text = [NSString stringWithFormat:@"还有%d时%d分",hour,minute];
         }
-        cell.countLabel.text = [NSString stringWithFormat:@"还有%d时%d分",hour,minute];
+        
+       
     }
     return cell;
 }
@@ -493,7 +507,7 @@ static NSString *cellID = @"cellID";
     setClockVC.Alert = self.clockArray[indexPath.row];
     setClockVC.clickTheFirstOrAddBtnFlag = ClickTheFirstClockFlag;
     setClockVC.passingFlag = NO;
-    
+    setClockVC.fromMainOrMyVCFlag = FromMainVC;
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     //    NSLog(@"%@",[userDefault objectForKey:@"ClockCount"]);
     NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];

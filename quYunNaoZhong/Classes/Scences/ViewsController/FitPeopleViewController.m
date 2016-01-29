@@ -44,16 +44,31 @@
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];
-    [userDefault setObject:self.selectedMode forKey:@"ClockFitPeople"];
+    
+    //获取本地沙盒路径
+    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //获取完整路径
+    NSString *documentsPath = [path objectAtIndex:0];
+    NSString *plistPath1 = [documentsPath stringByAppendingPathComponent:@"defaltClock.plist"];
+    NSString *sectionName = [userDefault objectForKey:@"ClockFitPeople"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath1];
+    NSMutableArray *array = [data objectForKey:sectionName];
+
+    NSInteger lastDefaultClock = array.count;
     if ([self.selectedMode isEqualToString:@"关闭"]) {
         if (![fitPeople isEqualToString:self.selectedMode] && fitPeople) {
-    [userDefault setObject:[NSString stringWithFormat:@"%d",[[userDefault objectForKey:@"ClockCount"] intValue]-8]forKey:@"ClockCount"];
+
+    [userDefault setObject:[NSString stringWithFormat:@"%ld",[[userDefault objectForKey:@"ClockCount"] integerValue]-lastDefaultClock]forKey:@"ClockCount"];
             [[HYLocalNotication shareHYLocalNotication]removeAllDefaultClockData];
         }
 
     }else{
-        if (self.selectedMode != fitPeople && ([fitPeople isEqualToString:@"关闭"]||!fitPeople)) {
-        [userDefault setObject:[NSString stringWithFormat:@"%d",[[userDefault objectForKey:@"ClockCount"] intValue]+8]forKey:@"ClockCount"];
+        if (self.selectedMode != fitPeople) {
+            
+            [userDefault setObject:[NSString stringWithFormat:@"%ld",[[userDefault objectForKey:@"ClockCount"] integerValue]-lastDefaultClock]forKey:@"ClockCount"];
+            
+            [userDefault setObject:[NSString stringWithFormat:@"%d",[[userDefault objectForKey:@"ClockCount"] intValue]+8]forKey:@"ClockCount"];
+            [[HYLocalNotication shareHYLocalNotication]removeAllDefaultClockData];
               [[HYLocalNotication shareHYLocalNotication]writeDataToDefaultPlist:nil];
         }
 

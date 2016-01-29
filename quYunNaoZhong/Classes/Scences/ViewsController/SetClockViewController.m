@@ -12,6 +12,7 @@
 @interface SetClockViewController ()<GADBannerViewDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,PassingTheClockTimeDelegate,PassingTheClockModeDelegate,PassingTheClockMusicDelegate,passingSelectedClockExtendToHere>
 {
     GADMasterViewController *shared;
+    int SetNoClockModeAlertCount;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -73,18 +74,18 @@ static NSString *cellID_2 = @"sliderID";
     [shared resetAdView:self]; 
     }
     if (![self.clickTheFirstOrAddBtnFlag isEqualToString:ClickTheFirstClockFlag]) {
-        [self.deletButton setUserInteractionEnabled:NO];
+//        [self.deletButton setUserInteractionEnabled:NO];
         [self.deletButton setEnabled:NO];
         
     }else{
-        [self.deletButton setUserInteractionEnabled:YES];
+//        [self.deletButton setUserInteractionEnabled:YES];
         [self.deletButton setEnabled:YES];
 
     }
     
     UITableViewCell *cell1 = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     UITableViewCell *cell2 = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    UITableViewCell *cell3 = [self tableView:self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+
 
     //    判断开关状态
     self.clockSwitchBtn = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-30, cell1.frame.size.height * 0.5 - 8, 16, 16)];
@@ -101,6 +102,7 @@ static NSString *cellID_2 = @"sliderID";
         int smallerCount = 0;
         int index = 0;
         int noClockModeAlertCount=0;
+        int clockTodayCount = 0;
         for (int x=0; x<50; x++) {
             if ([userDefault objectForKey:[NSString stringWithFormat:@"%d",x]]) {
                 if (x>self.clockID) {
@@ -124,18 +126,26 @@ static NSString *cellID_2 = @"sliderID";
             [formatter setDateFormat:@"yyyy/MM/dd (ccc)"];
             NSString *dateMode=[NSString stringFromDate:[NSDate date] ByFormatter:formatter];
             if ([preferredLang containsString:@"en"]) {
-                //            if ([Alert.clockMode containsString:@"二"]) {
-                //                 [self.firstArray addObject:Alert];
-                //            }
+                            if (![[HYLocalNotication shareHYLocalNotication]ifTheClockDateIsCurrentDateInEnglishLanguage:testAlert.clockMode]) {
+                                noClockModeAlertCount++;
+                            }
             }else{
                 if (![testAlert.clockMode containsString:[(NSString *)([dateMode componentsSeparatedByString:@"周"][1]) componentsSeparatedByString:@")"][0]]) {
                 noClockModeAlertCount++;
-            }  
+                }else{
+                    clockTodayCount++;
+                }
+        }
+    }
+        
+        SetNoClockModeAlertCount = noClockModeAlertCount;
+        if ([self.fromMainOrMyVCFlag isEqualToString:FromMainVC]) {
+            index = self.clockID  - smallerCount +noClockModeAlertCount;
+        }else{
+            index = self.clockID  - smallerCount;
         }
 
-        }
-
-        index = self.clockID + noClockModeAlertCount - smallerCount - biggerCount;
+        
 
         NSArray *ttmpArray = [[HYLocalNotication shareHYLocalNotication]findClockOfDefaultPlist:fitPeople];
         NSDictionary *ttmpDictionary = ttmpArray[index];
@@ -295,10 +305,24 @@ static NSString *cellID_2 = @"sliderID";
     }
     
     if (self.Alert.clockState) {
+        if ([self.fromMainOrMyVCFlag isEqualToString:FromMainVC]){
+            
+            if (self.Alert.clockType) {
+            [[HYLocalNotication shareHYLocalNotication]startLocalNoticationClockID:self.clockID+SetNoClockModeAlertCount];
+            }else {
+            [[HYLocalNotication shareHYLocalNotication]startLocalNoticationClockID:self.clockID];
+            }
+
+        }else{
+            [[HYLocalNotication shareHYLocalNotication]startLocalNoticationClockID:self.clockID];
+        }
         
-        [[HYLocalNotication shareHYLocalNotication]startLocalNoticationClockID:self.clockID];
     }else{
-        [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:self.clockID];
+        if ([self.fromMainOrMyVCFlag isEqualToString:FromMainVC]){
+            [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:self.clockID+SetNoClockModeAlertCount];
+        }else{
+           [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:self.clockID];
+        }
     }
  
     [self.navigationController popViewControllerAnimated:YES];

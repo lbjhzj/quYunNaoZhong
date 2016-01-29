@@ -261,16 +261,16 @@ static NSString *cellID = @"cellID";
             break;
             
         case 2:{
-            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"购买应用" message:@"购买后，可以去除广告" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"购买应用", nil) message:NSLocalizedString(@"购买后，可以去除广告", nil) preferredStyle:UIAlertControllerStyleAlert];
             
-            UIAlertAction *buyAction = [UIAlertAction actionWithTitle:@"确认购买" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction *buyAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"确认购买", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 if ([SKPaymentQueue canMakePayments]) {
                     [self requestProductData:self.productID];
                 }else{
                     NSLog(@"不允许内购");
                 }
             }];
-            UIAlertAction *restoreAction = [UIAlertAction actionWithTitle:@"恢复购买" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction *restoreAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"恢复购买", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 if ([SKPaymentQueue canMakePayments]) {
                     [self restorTransaction];
                 }else{

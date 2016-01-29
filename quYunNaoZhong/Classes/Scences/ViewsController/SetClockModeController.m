@@ -60,25 +60,25 @@ static NSString *cellID = @"cellID";
     
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"星期日";
+            cell.textLabel.text = NSLocalizedString(@"星期日", nil);
             break;
         case 1:
-            cell.textLabel.text = @"星期一";
+            cell.textLabel.text = NSLocalizedString(@"星期一", nil);
             break;
         case 2:
-            cell.textLabel.text = @"星期二";
+            cell.textLabel.text = NSLocalizedString(@"星期二", nil);
             break;
         case 3:
-            cell.textLabel.text = @"星期三";
+            cell.textLabel.text = NSLocalizedString(@"星期三", nil);
             break;
         case 4:
-            cell.textLabel.text = @"星期四";
+            cell.textLabel.text = NSLocalizedString(@"星期四", nil);
             break;
         case 5:
-            cell.textLabel.text = @"星期五";
+            cell.textLabel.text = NSLocalizedString(@"星期五", nil);
             break;
         case 6:
-            cell.textLabel.text = @"星期六";
+            cell.textLabel.text = NSLocalizedString(@"星期六", nil);
             break;
         default:
             break;

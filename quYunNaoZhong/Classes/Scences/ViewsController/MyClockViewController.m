@@ -204,6 +204,7 @@ static NSString *cellID = @"cell2";
 - (void)addAlertAtion:(UIButton *)sender{
     self.setClockVC.Alert = nil;
     self.setClockVC.clickTheFirstOrAddBtnFlag = nil;
+    self.setClockVC.clockID = 0;
     [self.navigationController pushViewController:self.setClockVC animated:YES];
         
     
@@ -259,10 +260,12 @@ static NSString *cellID = @"cell2";
     
     self.setClockVC.clickTheFirstOrAddBtnFlag = ClickTheFirstClockFlag;
     self.setClockVC.passingFlag = NO;
+    self.setClockVC.fromMainOrMyVCFlag = FromMyVC;
     alert * Alert = [alert new];
    
     Alert = self.alertArray[indexPath.row];
     self.setClockVC.Alert = Alert;
+    
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     //    NSLog(@"%@",[userDefault objectForKey:@"ClockCount"]);
     NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];

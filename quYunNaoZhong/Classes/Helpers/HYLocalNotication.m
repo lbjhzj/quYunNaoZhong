@@ -63,6 +63,51 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     }
 }
 
+- (BOOL)ifTheClockDateIsCurrentDateInEnglishLanguage:(NSString *)ClockDate{
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy/MM/dd (ccc)"];
+    NSString *dateMode=[NSString stringFromDate:[NSDate date] ByFormatter:formatter];
+    NSString *enClockMode = [(NSString *)[dateMode componentsSeparatedByString:@"("][1] componentsSeparatedByString:@")"][0];
+    if ([enClockMode containsString:@"Sun"]) {
+        if ([ClockDate containsString:@"日"]) {
+            return YES;
+        }
+    }else if ([enClockMode containsString:@"Mon"]){
+        if ([ClockDate containsString:@"一"]) {
+            return YES;
+        }
+        
+    }else if ([enClockMode containsString:@"Tue"]){
+        if ([ClockDate containsString:@"二"]) {
+            return YES;
+        }
+        
+    }else if ([enClockMode containsString:@"Wed"]){
+        if ([ClockDate containsString:@"三"]) {
+            return YES;
+        }
+        
+    }else if ([enClockMode containsString:@"Thu"]){
+        if ([ClockDate containsString:@"四"]) {
+            return YES;
+        }
+        
+    }else if ([enClockMode containsString:@"Fri"]){
+        if ([ClockDate containsString:@"五"]) {
+            return YES;
+        }
+        
+    }else if ([enClockMode containsString:@"Sat"]){
+        if ([ClockDate containsString:@"六"]) {
+            return YES;
+        }
+        
+    }
+    
+    return NO;
+}
+
 - (void)saveClockData:(alert *)Alert{
     
     NSMutableDictionary *clockDictionary = [NSMutableDictionary dictionaryWithCapacity:12];
@@ -124,6 +169,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     NSString *clockRemember = [clockDictionary objectForKey:@"ClockRemember"];
     NSString *clockExtend = [clockDictionary objectForKey:@"ClockExtend"];
     NSString *clockType = [clockDictionary objectForKey:@"ClockType"];
+    NSString *clockName = [clockDictionary objectForKey:@"ClockName"];
     int ClockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
     
     if (!clockDictionary) {
@@ -139,7 +185,6 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
                     if (x>clockID) {
                         biggerCount++;
                     }else{
-                        NSLog(@"%@",[userDefault objectForKey:[NSString stringWithFormat:@"%d",x]]);
                         smallerCount++;
                     }
                 }
@@ -155,7 +200,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
         clockForceSwitch = [ttmpDictionary objectForKey:@"ClockForce"];
         clockRemember = [ttmpDictionary objectForKey:@"ClockRemember"];
         clockExtend = [ttmpDictionary objectForKey:@"ClockExtend"];
-        
+        clockName = [ttmpDictionary objectForKey:@"ClockName"];
         clockType = [ttmpDictionary objectForKey:@"ClockType"];
     }
 
@@ -237,7 +282,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
         if (newNotification) {
 //            newNotification.fireDate = newFireDate;
 #warning 测试
-            newNotification.alertBody = @"测试闹钟";
+            newNotification.alertBody = clockName;
             
             if ([clockMusic containsString:@"未设置"] || clockMusic.length == 0 ||!clockMusic) {
                 newNotification.soundName = UILocalNotificationDefaultSoundName;
@@ -255,29 +300,56 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
             newNotification.userInfo = userInfo;
             
             if ([clockForceSwitch isEqualToString:@"YES"]) {
-                for (int i=0; i<3; i++) {
+                for (int i=0; i<5; i++) {
+                    
+//                    是否开启了小睡功能
                     if (![clockExtend containsString:@"未设置"]&&clockExtend){
                        newNotification.fireDate = [newFireDate dateByAddingTimeInterval:[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]*i*60];
-                        NSLog(@"延迟了%d分",[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]);
+                        NSLog(@"小睡了%d分",[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]);
                     }else{
                        newNotification.fireDate = [newFireDate dateByAddingTimeInterval:30*i];
                     }
                     
+//                    判断是否是强制叫醒后的第二次打开，为用户关闭后几次强制闹钟
+                    if ([[NSDate date] compare:newNotification.fireDate]==-1) {
+                        newNotification.fireDate = [newFireDate dateByAddingTimeInterval:3600*24*7+i*30];
+                        NSLog(@"您刚刚从强制叫醒闹钟醒来，现在为您开启下一周的闹钟");
+                    }
+                   
+                    if (![clockMode containsString:@"未设置"] && clockMode) {
+                        
                     [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
-                    NSLog(@"Post new localNotification:%@", [[newNotification fireDate]dateByAddingTimeInterval:3600*8]);
+                        
+                     NSLog(@"已开启强制叫醒");
+                        
+                    NSLog(@"Post new localNotification:%@", [[newNotification fireDate]dateByAddingTimeInterval:3600*8]);  
+                    }
+
                 }
             }
             else{
                 for (int i=0; i<3; i++) {
                     if (![clockExtend containsString:@"未设置"]&&clockExtend){
+   
+                        
                         newNotification.fireDate = [newFireDate dateByAddingTimeInterval:[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]*i*60];
+  
+                        if (![clockMode containsString:@"未设置"] && clockMode){
+                            
                         [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
                         NSLog(@"Post new localNotification:%@", [[newNotification fireDate]dateByAddingTimeInterval:3600*8]);
-                        NSLog(@"延迟了%d分",[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]);
+                        NSLog(@"小睡了%d分",[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]);
+                        }
+
                     }else{
                         newNotification.fireDate = [newFireDate dateByAddingTimeInterval:i*30];
+                        if (![clockMode containsString:@"未设置"] && clockMode){
+                            
                         [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
                         NSLog(@"Post new localNotification:%@", [[newNotification fireDate]dateByAddingTimeInterval:3600*8]);
+                            
+                        }
+                        
                     }
 
                 }
@@ -321,6 +393,8 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
         
     }
     NSArray *array = [data objectForKey:sectionName];
+    
+    
     return array;
     
 //    NSMutableArray *clockArray = [NSMutableArray arrayWithCapacity:8];
@@ -331,7 +405,7 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
 //
 //        [clockArray addObject:Alert];
 //    }
-    return array;
+
 }
 
 - (void)writeDataToDefaultPlist:(alert *)Alert{
@@ -358,11 +432,14 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     if (Alert) {
             for (int x=0;x<8;x++) {
         NSDictionary *dictionary =array[x];
-        if ([Alert.clockTime isEqualToString:[dictionary objectForKey:@"ClockTime"]]) {
+        if ([Alert.clockRemember isEqualToString:[dictionary objectForKey:@"ClockRemember"]]) {
             [dictionary setValue:Alert.clockMusic forKey:@"ClockMusic"];
             [dictionary setValue:Alert.clockMode forKey:@"ClockMode"];
             [dictionary setValue:Alert.clockName forKey:@"ClockName"];
             [dictionary setValue:Alert.clockExtend forKey:@"ClockExtend"];
+            [dictionary setValue:Alert.clockTime forKey:@"ClockTime"];
+#pragma mark 检查默认闹钟的id号
+            [dictionary setValue:Alert.clockID forKey:@"ClockID"];
             if (Alert.clockState) {
                 [dictionary setValue:[NSString stringWithFormat:@"YES"] forKey:@"ClockState"];
             }else{
@@ -481,6 +558,8 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
             [userDefault setObject:[NSString stringWithFormat:@"%ld",clockCount] forKey:@"ClockCount"];
         }
         
+        
+        
     }
     //获取本地沙盒路径
     NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -493,13 +572,16 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     if (Alert) {
         for (NSInteger x=0;x<8;x++) {
             NSDictionary *dictionary =array[x];
-            if ([Alert.clockTime isEqualToString:[dictionary objectForKey:@"ClockTime"]]) {
+            if ([Alert.clockRemember isEqualToString:[dictionary objectForKey:@"ClockRemember"]]) {
 
                 [array removeObjectAtIndex:x];
                 break;
             }
         }
+        
     }
+    
+    [self cancelLocalNotication:[Alert.clockID intValue]];
     [data setValue:array forKey:sectionName];
     
     [data writeToFile:plistPath1 atomically:YES];
@@ -514,6 +596,22 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
     NSString *documentsPath = [path objectAtIndex:0];
     NSString *plistPath1 = [documentsPath stringByAppendingPathComponent:@"defaltClock.plist"];
 
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *sectionName = [userDefault objectForKey:@"ClockFitPeople"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath1];
+    NSMutableArray *array = [data objectForKey:sectionName];
+    if (array && array.count) {
+        for (NSDictionary *dictionary in array) {
+            alert *Alert = [[alert alloc]init];
+            [Alert setValuesForKeysWithDictionary:dictionary];
+            if(Alert.clockState){
+                [self cancelLocalNotication:[Alert.clockID intValue]];
+            }
+        }
+    }
+
+    
+    
     NSFileManager *manager = [[NSFileManager alloc] init];
     [manager removeItemAtPath:plistPath1 error:nil];
 }

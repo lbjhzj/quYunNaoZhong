@@ -41,13 +41,17 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
 
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [self.tableView reloadData];
+    
+    [super viewWillAppear:animated];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return 5;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellID = @"cellID";
@@ -66,10 +70,17 @@
         case 3:
             cell.textLabel.text = @"30分钟";
             break;
+            case 4:
+            cell.textLabel.text = @"关闭";
         default:
             break;
     }
-    cell.accessoryType = UITableViewCellAccessoryNone;
+    if ([cell.textLabel.text isEqualToString:self.clockExtend]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }else{
+        cell.accessoryType = UITableViewCellAccessoryNone;
+
+    }
 
     return cell;
 }

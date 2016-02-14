@@ -300,59 +300,105 @@ void audioPlayFinish(SystemSoundID soundID,NSInteger* num){
             newNotification.userInfo = userInfo;
             
             if ([clockForceSwitch isEqualToString:@"YES"]) {
-                for (int i=0; i<5; i++) {
+                
                     
 //                    是否开启了小睡功能
-                    if (![clockExtend containsString:@"未设置"]&&clockExtend){
-                       newNotification.fireDate = [newFireDate dateByAddingTimeInterval:[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]*i*60];
-                        NSLog(@"小睡了%d分",[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]);
-                    }else{
-                       newNotification.fireDate = [newFireDate dateByAddingTimeInterval:30*i];
-                    }
+//                    if ((![clockExtend containsString:@"未设置"]&&clockExtend)||[clockExtend containsString:@"关闭"]){
+//                       newNotification.fireDate = [newFireDate dateByAddingTimeInterval:[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]*i*60];
+//                        NSLog(@"小睡了%d分",[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]);
+//                    }else{
+//                       newNotification.fireDate = [newFireDate dateByAddingTimeInterval:30*i];
+//                    }
                     
 //                    判断是否是强制叫醒后的第二次打开，为用户关闭后几次强制闹钟
-                    if ([[NSDate date] compare:newNotification.fireDate]==-1) {
-                        newNotification.fireDate = [newFireDate dateByAddingTimeInterval:3600*24*7+i*30];
-                        NSLog(@"您刚刚从强制叫醒闹钟醒来，现在为您开启下一周的闹钟");
-                    }
-                   
+//                    if () {
+//                        newNotification.fireDate = [newFireDate dateByAddingTimeInterval:3600*24*7+i*30];
+//                        NSLog(@"您刚刚从强制叫醒闹钟醒来，现在为您开启下一周的闹钟");
+//                    }
+                newNotification.fireDate = newFireDate;
                     if (![clockMode containsString:@"未设置"] && clockMode) {
-                        
+                        newNotification.repeatInterval = NSMinuteCalendarUnit;
+                        if (self.clockRepeatCount) {
+                           
+                            NSLog(@"强制取消后出现,下个日期是%@",newFireDate);
+                            newNotification.fireDate = [newFireDate dateByAddingTimeInterval:3600*24*7];
+                        }
+                        if ([newFireDate compare:[NSDate date]]==-1) {
+                            newNotification.fireDate = [newFireDate dateByAddingTimeInterval:3600*24*7];
+                        }
                     [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
-                        
+                        for (UILocalNotification *localNotication in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
+                            NSLog(@"%@",localNotication);
+                        }
+                    NSLog(@"Post new localNotification:%@", [[newNotification fireDate]dateByAddingTimeInterval:3600*8]);
+                        self.clockRepeatCount = 0;
                      NSLog(@"已开启强制叫醒");
-                        
-                    NSLog(@"Post new localNotification:%@", [[newNotification fireDate]dateByAddingTimeInterval:3600*8]);  
+
                     }
 
-                }
+                
             }
             else{
-                for (int i=0; i<3; i++) {
-                    if (![clockExtend containsString:@"未设置"]&&clockExtend){
+//                开启小睡
+                    if ((![clockExtend containsString:@"未设置"]&&clockExtend)||[clockExtend containsString:@"关闭"]){
    
-                        
-                        newNotification.fireDate = [newFireDate dateByAddingTimeInterval:[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]*i*60];
-  
+                        if (self.clockRepeatCount) {
+                            newNotification.repeatInterval = self.clockRepeatCount;
+                            NSLog(@"小睡闹钟取消后出现,下个日期是%@",newFireDate);
+                            newFireDate = [newFireDate dateByAddingTimeInterval:3600*24*7];
+                        }
+                        self.clockRepeatCount = 0;
                         if (![clockMode containsString:@"未设置"] && clockMode){
+                            if ([newFireDate compare:[NSDate date]]==-1) {
+                                newFireDate = [newFireDate dateByAddingTimeInterval:3600*24*7];
+                            }
+                        for (int ee=0; ee<2; ee++) {
+                        newNotification.fireDate = [newFireDate dateByAddingTimeInterval:[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]*ee*60];
+                            if (ee == 1) {
+                                newNotification.repeatInterval = NSMinuteCalendarUnit;
+                            }else{
+                                newNotification.repeatInterval = NSWeekCalendarUnit;
+                            }
                             
                         [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
+                        for (UILocalNotification *localNotication in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
+                                NSLog(@"%@",localNotication);
+                            }
                         NSLog(@"Post new localNotification:%@", [[newNotification fireDate]dateByAddingTimeInterval:3600*8]);
+                        
+                            
+                        }
+                    }
+                        
+      
                         NSLog(@"小睡了%d分",[[clockExtend componentsSeparatedByString:@"分钟"][0] intValue]);
+                    }
+//                没有开启小睡
+                    else{
+                        if (![clockMode containsString:@"未设置"] && clockMode) {
+                            newNotification.repeatInterval = NSMinuteCalendarUnit;
+                            if (self.clockRepeatCount) {
+                                NSLog(@"普通闹钟取消后出现,下个日期是%@",newFireDate);
+                                newNotification.fireDate = [newFireDate dateByAddingTimeInterval:3600*24*7];
+                            }
+                            if ([newFireDate compare:[NSDate date]]==-1) {
+                                newNotification.fireDate = [newFireDate dateByAddingTimeInterval:3600*24*7];
+                            }else{
+                                newNotification.fireDate = newFireDate;
+                            }
+                            [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
+                            for (UILocalNotification *localNotication in [[UIApplication sharedApplication] scheduledLocalNotifications]) {
+                                NSLog(@"%@",localNotication);
+                            }
+                            NSLog(@"Post new localNotification:%@", [[newNotification fireDate]dateByAddingTimeInterval:3600*8]);
+                            self.clockRepeatCount = 0;
+                            NSLog(@"普通闹钟");
                         }
 
-                    }else{
-                        newNotification.fireDate = [newFireDate dateByAddingTimeInterval:i*30];
-                        if (![clockMode containsString:@"未设置"] && clockMode){
-                            
-                        [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
-                        NSLog(@"Post new localNotification:%@", [[newNotification fireDate]dateByAddingTimeInterval:3600*8]);
-                            
-                        }
                         
                     }
 
-                }
+                
 
             }
 

@@ -142,17 +142,47 @@ static NSString *cellID_2 = @"sliderID";
         if ([self.fromMainOrMyVCFlag isEqualToString:FromMainVC]) {
             index = self.clockID  - smallerCount +noClockModeAlertCount;
         }else{
-            index = self.clockID  - smallerCount;
+            index = self.clockID  - smallerCount-clockTodayCount-noClockModeAlertCount;
+        }
+        NSArray *ttmpArray = [[HYLocalNotication shareHYLocalNotication]findClockOfDefaultPlist:fitPeople];
+        NSDictionary *ttmpDictionary = ttmpArray[index];
+        struct utsname systemInfo;
+        NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+        if ([deviceString isEqualToString:@"iphone 4,1"]) {
+            [self.Alert setValuesForKeysWithDictionary:ttmpDictionary];
+        }else {
+            self.Alert.clockTime = [ttmpDictionary objectForKey:@"ClockTime"];
+            self.Alert.clockMode = [ttmpDictionary objectForKey:@"ClockMode"];
+            self.Alert.clockMusic = [ttmpDictionary objectForKey:@"ClockMusic"];
+            self.Alert.clockForce = [[ttmpDictionary objectForKey:@"ClockForce"] boolValue];
+            self.Alert.clockRemember = [ttmpDictionary objectForKey:@"ClockRemember"];
+            self.Alert.clockExtend = [ttmpDictionary objectForKey:@"ClockExtend"];
+            self.Alert.clockType = [ttmpDictionary objectForKey:@"ClockType"];
+            self.Alert.clockName = [ttmpDictionary objectForKey:@"ClockName"];
+ 
+        }
+        
+        
+        
+    }else{
+       NSDictionary *dict = [userDefault objectForKey:[NSString stringWithFormat:@"%d",self.clockID]];
+        struct utsname systemInfo;
+        NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+        if ([deviceString isEqualToString:@"iphone 4,1"]) {
+            [self.Alert setValuesForKeysWithDictionary:dict];
+        }else {
+            self.Alert.clockTime = [dict objectForKey:@"ClockTime"];
+            self.Alert.clockMode = [dict objectForKey:@"ClockMode"];
+            self.Alert.clockMusic = [dict objectForKey:@"ClockMusic"];
+            self.Alert.clockForce = [[dict objectForKey:@"ClockForce"] boolValue];
+            self.Alert.clockRemember = [dict objectForKey:@"ClockRemember"];
+            self.Alert.clockExtend = [dict objectForKey:@"ClockExtend"];
+            self.Alert.clockType = [dict objectForKey:@"ClockType"];
+            self.Alert.clockName = [dict objectForKey:@"ClockName"];
+            
         }
 
         
-
-        NSArray *ttmpArray = [[HYLocalNotication shareHYLocalNotication]findClockOfDefaultPlist:fitPeople];
-        NSDictionary *ttmpDictionary = ttmpArray[index];
-        [self.Alert setValuesForKeysWithDictionary:ttmpDictionary];
-    }else{
-       NSDictionary *dict = [userDefault objectForKey:[NSString stringWithFormat:@"%d",self.clockID]];
-        [self.Alert setValuesForKeysWithDictionary:dict];
     }
     if (self.Alert.clockState) {
         _clockSwitchBtn.image = [UIImage imageNamed:@"开关（开）"];
@@ -271,7 +301,12 @@ static NSString *cellID_2 = @"sliderID";
     self.Alert.clockMode = self.clockModeLabel.text;
     self.Alert.clockMusic = self.clockMusicLabel.text;
     self.Alert.clockSoundValue = self.clockSoundValueLabel.value;
-    self.Alert.clockExtend = self.clockExtendLabel.text;
+    if (self.Alert.clockForce) {
+        self.Alert.clockExtend = @"关闭";
+    }else{
+        self.Alert.clockExtend = self.clockExtendLabel.text;
+    }
+    
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         self.clockCount = [[userDefault objectForKey:@"ClockCount"] intValue];
         if (!self.clockID) {
@@ -288,9 +323,8 @@ static NSString *cellID_2 = @"sliderID";
         }
     
   
-    //    NSLog(@"clockID======%d",_clockID);
 
-    //    NSLog(@"%@",[userDefault objectForKey:@"ClockCount"]);
+    
     NSString *fitPeople = [userDefault objectForKey:@"ClockFitPeople"];
     if ([fitPeople isEqualToString:@"关闭"] ||fitPeople == nil){
      [[HYLocalNotication shareHYLocalNotication] saveClockData:self.Alert];
@@ -545,20 +579,28 @@ static NSString *cellID_2 = @"sliderID";
                     }
                 }
                 
-                if (self.Alert.clockForce) {
-                    
-                    self.forceSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
-                    
+                if ([self.clockExtendLabel.text containsString:@"分钟"]) {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"注意" message:@"当开启小睡功能的时候是不允许" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alertView show];
                 }else{
-                    
-                    [self.forceSwitchBtn setImage:[UIImage imageNamed:@"开关（开）"]] ;
-                    
+                    if (self.Alert.clockForce) {
+                        
+                        self.forceSwitchBtn.image = [UIImage imageNamed:@"开关（关）"];
+                        //                    UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:[]
+                        
+                    }else{
+                        
+                        [self.forceSwitchBtn setImage:[UIImage imageNamed:@"开关（开）"]] ;
+                        
+                    }
+                    self.Alert.clockForce = !self.Alert.clockForce;
+
                 }
+
                 
                 [cell.contentView addSubview:_forceSwitchBtn];
                 
-                self.Alert.clockForce = !self.Alert.clockForce;
-                break;
+                                break;
             default:
                 break;
         }
@@ -571,18 +613,27 @@ static NSString *cellID_2 = @"sliderID";
                 
                 break;
             case 1:
+                setClockTimeController.timeText = self.clockTimeLabel.text;
                 [self.navigationController pushViewController:setClockTimeController animated:YES];
                 break;
             case 2:
                 [self.navigationController pushViewController:setClockModeController animated:YES];
                 break;
             case 3:
+                setClockMusicController.clockMusic = self.clockMusicLabel.text;
                 [self presentViewController:setClockMusicController animated:YES completion:^{
                     
                 }];
                 break;
             case 4:
-                [self.navigationController pushViewController:setClockExtendViewController animated:YES];
+                if (self.Alert.clockForce) {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"注意" message:@"强制叫醒的时候不需要设置小睡" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
+                    [alertView show];
+                }else{
+                    setClockExtendViewController.clockExtend = self.clockExtendLabel.text;
+                    [self.navigationController pushViewController:setClockExtendViewController animated:YES];
+                }
+                
                 break;
                 
             default:

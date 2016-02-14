@@ -63,7 +63,7 @@
         
         _adBanner_.delegate = self;
         _adBanner_.rootViewController = rootViewController;
-        _adBanner_.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+        _adBanner_.adUnitID = @"ca-app-pub-1911337797419838/8097921306";
 
         GADRequest *request = [GADRequest request];
         request.testDevices = @[

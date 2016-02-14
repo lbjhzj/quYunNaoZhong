@@ -17,6 +17,8 @@
 
 @interface SetClockTimeController : UIViewController
 
+@property(nonatomic,strong)NSString * timeText;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;

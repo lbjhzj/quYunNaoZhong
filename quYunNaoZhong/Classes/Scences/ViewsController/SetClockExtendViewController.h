@@ -18,5 +18,7 @@
 
 @property(nonatomic,assign)id <passingSelectedClockExtendToHere> delegate;
 
+@property(nonatomic,strong)NSString * clockExtend;
+
 
 @end

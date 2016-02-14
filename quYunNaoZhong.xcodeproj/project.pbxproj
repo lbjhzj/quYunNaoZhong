@@ -60,10 +60,10 @@
 		7D4D48B51C41F23700C18F6D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D4D48B21C41F23700C18F6D /* README.txt */; };
 		7D5554441C4343BE001D67A8 /* SetClockTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5554421C4343BE001D67A8 /* SetClockTimeController.m */; };
 		7D69DC361C4DFEC9007BB1F8 /* GADMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D69DC351C4DFEC9007BB1F8 /* GADMasterViewController.m */; };
+		7D7281121C5BA546001DD9E6 /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D7281111C5BA546001DD9E6 /* Default-568h.png */; };
 		7D730B191C3CD94800C095C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B181C3CD94800C095C5 /* main.m */; };
 		7D730B221C3CD94800C095C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D730B201C3CD94800C095C5 /* Main.storyboard */; };
 		7D730B241C3CD94800C095C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D730B231C3CD94800C095C5 /* Assets.xcassets */; };
-		7D730B271C3CD94800C095C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D730B251C3CD94800C095C5 /* LaunchScreen.storyboard */; };
 		7D730B3D1C3CD9DB00C095C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B311C3CD9DB00C095C5 /* AppDelegate.m */; };
 		7D730B411C3CDA3D00C095C5 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B401C3CDA3D00C095C5 /* MainViewController.m */; };
 		7D730B441C3CDA8F00C095C5 /* HYLocalNotication.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D730B431C3CDA8F00C095C5 /* HYLocalNotication.m */; };
@@ -89,26 +89,19 @@
 
 /* Begin PBXFileReference section */
 		7D026F041C5745B500A76C4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/sectionCell.xib; sourceTree = "<group>"; };
-		7D026F0A1C5745CE00A76C4C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/sectionCell.xib; sourceTree = "<group>"; };
 		7D026F0B1C5745CE00A76C4C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/sectionCell.xib"; sourceTree = "<group>"; };
 		7D026F0D1C5745E900A76C4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SetClockExtendViewController.xib; sourceTree = "<group>"; };
-		7D026F101C5745ED00A76C4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SetClockExtendViewController.strings; sourceTree = "<group>"; };
 		7D026F121C5745EF00A76C4C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SetClockExtendViewController.strings"; sourceTree = "<group>"; };
 		7D026F141C57462600A76C4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ForceViewController.xib; sourceTree = "<group>"; };
-		7D026F171C57463200A76C4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ForceViewController.strings; sourceTree = "<group>"; };
 		7D026F191C57463300A76C4C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ForceViewController.strings"; sourceTree = "<group>"; };
 		7D026F1A1C576A2000A76C4C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7D13AD591C58C24700C551C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FitPeopleViewController.xib; sourceTree = "<group>"; };
-		7D13AD5C1C58C24B00C551C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FitPeopleViewController.strings; sourceTree = "<group>"; };
 		7D13AD5E1C58C24D00C551C0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FitPeopleViewController.strings"; sourceTree = "<group>"; };
-		7D13AD601C58C2D500C551C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SetClockMusicViewController.xib; sourceTree = "<group>"; };
 		7D13AD621C58C2D700C551C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SetClockMusicViewController.xib; sourceTree = "<group>"; };
 		7D13AD641C58C2D900C551C0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SetClockMusicViewController.strings"; sourceTree = "<group>"; };
 		7D13AD661C58C2FC00C551C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SetClockModeController.xib; sourceTree = "<group>"; };
-		7D13AD691C58C2FD00C551C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SetClockModeController.strings; sourceTree = "<group>"; };
 		7D13AD6B1C58C2FE00C551C0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SetClockModeController.strings"; sourceTree = "<group>"; };
 		7D13AD6D1C58C31800C551C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SetClockTimeController.xib; sourceTree = "<group>"; };
-		7D13AD701C58C31A00C551C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SetClockTimeController.strings; sourceTree = "<group>"; };
 		7D13AD721C58C31B00C551C0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SetClockTimeController.strings"; sourceTree = "<group>"; };
 		7D1B5AB71C44E94A0053E6B8 /* SetClockModeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetClockModeController.h; sourceTree = "<group>"; };
 		7D1B5AB81C44E94A0053E6B8 /* SetClockModeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockModeController.m; sourceTree = "<group>"; };
@@ -119,7 +112,6 @@
 		7D1C16F41C3F5ECE00193447 /* MyAlertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAlertCell.xib; sourceTree = "<group>"; };
 		7D1E29621C58C9B300369DFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/mainSetViewController.xib; sourceTree = "<group>"; };
 		7D1E29641C58C9B800369DFF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/mainSetViewController.strings"; sourceTree = "<group>"; };
-		7D1E29661C58C9DA00369DFF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/mainSetViewController.strings; sourceTree = "<group>"; };
 		7D1FC42E1C4C984600044051 /* ringCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ringCell.h; sourceTree = "<group>"; };
 		7D1FC42F1C4C984600044051 /* ringCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ringCell.m; sourceTree = "<group>"; };
 		7D1FC4301C4C984600044051 /* ringCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ringCell.xib; sourceTree = "<group>"; };
@@ -171,11 +163,23 @@
 		7D5554421C4343BE001D67A8 /* SetClockTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetClockTimeController.m; sourceTree = "<group>"; };
 		7D69DC341C4DFEC9007BB1F8 /* GADMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMasterViewController.h; sourceTree = "<group>"; };
 		7D69DC351C4DFEC9007BB1F8 /* GADMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADMasterViewController.m; sourceTree = "<group>"; };
+		7D6BBDB31C5B9DB7000B34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/sectionCell.strings; sourceTree = "<group>"; };
+		7D6BBDB41C5B9DB7000B34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SetClockExtendViewController.strings; sourceTree = "<group>"; };
+		7D6BBDB51C5B9DB7000B34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FitPeopleViewController.strings; sourceTree = "<group>"; };
+		7D6BBDB61C5B9DB7000B34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ForceViewController.strings; sourceTree = "<group>"; };
+		7D6BBDB71C5B9DB7000B34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SetClockMusicViewController.strings; sourceTree = "<group>"; };
+		7D6BBDB81C5B9DB7000B34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SetClockModeController.strings; sourceTree = "<group>"; };
+		7D6BBDB91C5B9DB7000B34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SetClockTimeController.strings; sourceTree = "<group>"; };
+		7D6BBDBA1C5B9DB7000B34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/mainSetViewController.strings; sourceTree = "<group>"; };
+		7D6BBDBB1C5B9DB7000B34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AboutUsViewController.strings; sourceTree = "<group>"; };
+		7D6BBDBC1C5B9DB7000B34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		7D6BBDBD1C5B9DB7000B34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7D6BBDBE1C5B9DB7000B34A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7D7281111C5BA546001DD9E6 /* Default-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h.png"; path = "Assets.xcassets/LaunchImage.launchimage/Default-568h.png"; sourceTree = "<group>"; };
 		7D730B141C3CD94800C095C5 /* 健康生活闹钟.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "健康生活闹钟.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D730B181C3CD94800C095C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7D730B211C3CD94800C095C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7D730B231C3CD94800C095C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7D730B261C3CD94800C095C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D730B281C3CD94800C095C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D730B301C3CD9DB00C095C5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7D730B311C3CD9DB00C095C5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -196,20 +200,14 @@
 		7DE9A2F11C52010D004AD040 /* defaultClock.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultClock.plist; sourceTree = "<group>"; };
 		7DE9A2FC1C520866004AD040 /* FitPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitPeopleViewController.h; sourceTree = "<group>"; };
 		7DE9A2FD1C520866004AD040 /* FitPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitPeopleViewController.m; sourceTree = "<group>"; };
-		7DE9C4C61C570281003C13A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		7DE9C4C71C570281003C13A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7DE9C4C91C570286003C13A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		7DE9C4CA1C570286003C13A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		7DE9C4CF1C5702B2003C13A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7DE9C4D11C5702B4003C13A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		7DE9C4D51C5703C0003C13A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7DE9C4D71C5703C1003C13A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7DE9C4D81C570518003C13A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7DED61AE1C59AEE100EC3F7D /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		7DED61AF1C59AEE100EC3F7D /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		7DED61B61C59B44300EC3F7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutUsViewController.xib; sourceTree = "<group>"; };
 		7DED61B81C59B44400EC3F7D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AboutUsViewController.strings"; sourceTree = "<group>"; };
-		7DED61BA1C59B45F00EC3F7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AboutUsViewController.strings; sourceTree = "<group>"; };
 		7DEDA3D91C3E4E8900D7C4DE /* alertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alertCell.h; sourceTree = "<group>"; };
 		7DEDA3DA1C3E4E8900D7C4DE /* alertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alertCell.m; sourceTree = "<group>"; };
 		7DEDA3DB1C3E4E8900D7C4DE /* alertCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = alertCell.xib; sourceTree = "<group>"; };
@@ -319,7 +317,7 @@
 				7D730B201C3CD94800C095C5 /* Main.storyboard */,
 				7DF1B3A61C4888590090BD64 /* RingTone */,
 				7D730B231C3CD94800C095C5 /* Assets.xcassets */,
-				7D730B251C3CD94800C095C5 /* LaunchScreen.storyboard */,
+				7D7281111C5BA546001DD9E6 /* Default-568h.png */,
 				7D730B281C3CD94800C095C5 /* Info.plist */,
 				7DE9A2F11C52010D004AD040 /* defaultClock.plist */,
 				7D730B171C3CD94800C095C5 /* Supporting Files */,
@@ -596,8 +594,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
-				en,
 				"zh-Hans",
+				en,
 			);
 			mainGroup = 7D730B0B1C3CD94800C095C5;
 			productRefGroup = 7D730B151C3CD94800C095C5 /* Products */;
@@ -619,10 +617,10 @@
 				7D1FC44A1C4C9BAC00044051 /* 吉他扫弦.mp3 in Resources */,
 				7D1FC44D1C4C9BAC00044051 /* 马林巴琴.mp3 in Resources */,
 				7D1FC44B1C4C9BAC00044051 /* 经典滴滴声.mp3 in Resources */,
-				7D730B271C3CD94800C095C5 /* LaunchScreen.storyboard in Resources */,
 				7D730B241C3CD94800C095C5 /* Assets.xcassets in Resources */,
 				7DEDA3DD1C3E4E8900D7C4DE /* alertCell.xib in Resources */,
 				7D1FC4481C4C9BAC00044051 /* 海边小屋.mp3 in Resources */,
+				7D7281121C5BA546001DD9E6 /* Default-568h.png in Resources */,
 				7D1FC4471C4C9BAC00044051 /* 滴答滴答.mp3 in Resources */,
 				7D13AD581C58C24700C551C0 /* FitPeopleViewController.xib in Resources */,
 				7D1FC48A1C4CB13E00044051 /* 宝贝起床了(女声).mp3 in Resources */,
@@ -708,8 +706,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D026F041C5745B500A76C4C /* Base */,
-				7D026F0A1C5745CE00A76C4C /* en */,
 				7D026F0B1C5745CE00A76C4C /* zh-Hans */,
+				7D6BBDB31C5B9DB7000B34A1 /* en */,
 			);
 			name = sectionCell.xib;
 			sourceTree = "<group>";
@@ -718,8 +716,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D026F0D1C5745E900A76C4C /* Base */,
-				7D026F101C5745ED00A76C4C /* en */,
 				7D026F121C5745EF00A76C4C /* zh-Hans */,
+				7D6BBDB41C5B9DB7000B34A1 /* en */,
 			);
 			name = SetClockExtendViewController.xib;
 			sourceTree = "<group>";
@@ -728,8 +726,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D026F141C57462600A76C4C /* Base */,
-				7D026F171C57463200A76C4C /* en */,
 				7D026F191C57463300A76C4C /* zh-Hans */,
+				7D6BBDB61C5B9DB7000B34A1 /* en */,
 			);
 			name = ForceViewController.xib;
 			sourceTree = "<group>";
@@ -738,8 +736,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D13AD591C58C24700C551C0 /* Base */,
-				7D13AD5C1C58C24B00C551C0 /* en */,
 				7D13AD5E1C58C24D00C551C0 /* zh-Hans */,
+				7D6BBDB51C5B9DB7000B34A1 /* en */,
 			);
 			name = FitPeopleViewController.xib;
 			sourceTree = "<group>";
@@ -747,9 +745,9 @@
 		7D13AD611C58C2D500C551C0 /* SetClockMusicViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7D13AD601C58C2D500C551C0 /* en */,
 				7D13AD621C58C2D700C551C0 /* Base */,
 				7D13AD641C58C2D900C551C0 /* zh-Hans */,
+				7D6BBDB71C5B9DB7000B34A1 /* en */,
 			);
 			name = SetClockMusicViewController.xib;
 			sourceTree = "<group>";
@@ -758,8 +756,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D13AD661C58C2FC00C551C0 /* Base */,
-				7D13AD691C58C2FD00C551C0 /* en */,
 				7D13AD6B1C58C2FE00C551C0 /* zh-Hans */,
+				7D6BBDB81C5B9DB7000B34A1 /* en */,
 			);
 			name = SetClockModeController.xib;
 			sourceTree = "<group>";
@@ -768,8 +766,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D13AD6D1C58C31800C551C0 /* Base */,
-				7D13AD701C58C31A00C551C0 /* en */,
 				7D13AD721C58C31B00C551C0 /* zh-Hans */,
+				7D6BBDB91C5B9DB7000B34A1 /* en */,
 			);
 			name = SetClockTimeController.xib;
 			sourceTree = "<group>";
@@ -779,7 +777,7 @@
 			children = (
 				7D1E29621C58C9B300369DFF /* Base */,
 				7D1E29641C58C9B800369DFF /* zh-Hans */,
-				7D1E29661C58C9DA00369DFF /* en */,
+				7D6BBDBA1C5B9DB7000B34A1 /* en */,
 			);
 			name = mainSetViewController.xib;
 			sourceTree = "<group>";
@@ -788,28 +786,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D730B211C3CD94800C095C5 /* Base */,
-				7DE9C4C61C570281003C13A5 /* en */,
 				7DE9C4C91C570286003C13A5 /* zh-Hans */,
+				7D6BBDBC1C5B9DB7000B34A1 /* en */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7D730B251C3CD94800C095C5 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7D730B261C3CD94800C095C5 /* Base */,
-				7DE9C4C71C570281003C13A5 /* en */,
-				7DE9C4CA1C570286003C13A5 /* zh-Hans */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		7DE9C4D01C5702B2003C13A5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7DE9C4CF1C5702B2003C13A5 /* en */,
 				7DE9C4D11C5702B4003C13A5 /* zh-Hans */,
 				7DE9C4D81C570518003C13A5 /* Base */,
+				7D6BBDBD1C5B9DB7000B34A1 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -817,8 +805,8 @@
 		7DE9C4D61C5703C0003C13A5 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7DE9C4D51C5703C0003C13A5 /* en */,
 				7DE9C4D71C5703C1003C13A5 /* zh-Hans */,
+				7D6BBDBE1C5B9DB7000B34A1 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -828,7 +816,7 @@
 			children = (
 				7DED61B61C59B44300EC3F7D /* Base */,
 				7DED61B81C59B44400EC3F7D /* zh-Hans */,
-				7DED61BA1C59B45F00EC3F7D /* en */,
+				7D6BBDBB1C5B9DB7000B34A1 /* en */,
 			);
 			name = AboutUsViewController.xib;
 			sourceTree = "<group>";
@@ -853,8 +841,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chengdu Qu Yun Technology Co., Ltd. (29L6YHC2TR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -877,7 +865,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "";
-				PROVISIONING_PROFILE = "75ffc21c-36b0-4980-ad97-4a7a3d9d2914";
+				PROVISIONING_PROFILE = "ef8950e4-5ad9-4cc4-966a-f0b4180fa8fd";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -900,8 +888,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chengdu Qu Yun Technology Co., Ltd. (29L6YHC2TR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -917,7 +905,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "";
-				PROVISIONING_PROFILE = "75ffc21c-36b0-4980-ad97-4a7a3d9d2914";
+				PROVISIONING_PROFILE = "ef8950e4-5ad9-4cc4-966a-f0b4180fa8fd";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -929,8 +917,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chengdu Qu Yun Technology Co., Ltd. (29L6YHC2TR)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -942,7 +930,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quyun.healthAlert;
 				PRODUCT_NAME = "健康生活闹钟";
-				PROVISIONING_PROFILE = "75ffc21c-36b0-4980-ad97-4a7a3d9d2914";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -952,8 +940,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Junrong Gong (3BUZAQ2568)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chengdu Qu Yun Technology Co., Ltd. (29L6YHC2TR)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -965,7 +953,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quyun.healthAlert;
 				PRODUCT_NAME = "健康生活闹钟";
-				PROVISIONING_PROFILE = "75ffc21c-36b0-4980-ad97-4a7a3d9d2914";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

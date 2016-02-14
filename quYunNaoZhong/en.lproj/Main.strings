@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "我的闹钟"; ObjectID = "0KH-yh-Svo"; */
-"0KH-yh-Svo.text" = "My Clock";
+"0KH-yh-Svo.text" = "我的闹钟";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "7n6-kU-UlD"; */
 "7n6-kU-UlD.text" = "Label";
@@ -12,7 +12,7 @@
 "csJ-OP-Jo0.text" = "Label";
 
 /* Class = "UILabel"; text = "闹钟设置"; ObjectID = "duU-pC-7bu"; */
-"duU-pC-7bu.text" = "Clock Setting";
+"duU-pC-7bu.text" = "闹钟设置";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "h6a-7F-F3v"; */
 "h6a-7F-F3v.text" = "Label";

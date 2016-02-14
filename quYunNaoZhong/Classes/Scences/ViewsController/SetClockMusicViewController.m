@@ -66,6 +66,8 @@
     [super viewWillAppear:animated];
     shared = [GADMasterViewController singleton];
     [shared resetAdView:self];
+    
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad {
@@ -285,6 +287,11 @@
                 cell.textLabel.text = self.musicList[indexPath.row - 1];
             }
             
+            if ([cell.textLabel.text isEqualToString:self.clockMusic]) {
+                cell.selected = YES;
+            }else{
+                cell.selected = NO;
+            }
             return cell;
         }
         

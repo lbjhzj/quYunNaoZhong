@@ -26,6 +26,7 @@
 }
 @property(nonatomic,assign)id <PassingTheClockMusicDelegate> delegate;
 
+@property(nonatomic,strong)NSString * clockMusic;
 
 
 @end

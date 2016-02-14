@@ -294,8 +294,8 @@ static NSString *cellID = @"cellID";
             MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
             mc.mailComposeDelegate = self;
             [mc setSubject:@"意见反馈"];
-            [mc setCcRecipients:[NSArray arrayWithObject:@"bryanthao@sina.com"]];
-            [mc setBccRecipients:[NSArray arrayWithObject:@"brynthao@sina.com"]];
+            [mc setCcRecipients:[NSArray arrayWithObject:@"quyunkj@163.com"]];
+            [mc setBccRecipients:[NSArray arrayWithObject:@"quyunkj@163.com"]];
             [mc setMessageBody:@"请在此写出您的建议" isHTML:NO];
             NSString *path = [[NSBundle mainBundle] pathForResource:@"blood_orange"
                                                              ofType:@"png"];

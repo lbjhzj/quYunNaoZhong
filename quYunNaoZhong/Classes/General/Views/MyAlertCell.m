@@ -44,7 +44,6 @@
         NSMutableDictionary *ttmpDictionary = ttmpArray[index];
         [Alert setValuesForKeysWithDictionary:ttmpDictionary];
     }
-  
     
     if (Alert.clockState) {
         [sender setImage:[UIImage imageNamed:@"开关（关）"] forState:UIControlStateNormal ];

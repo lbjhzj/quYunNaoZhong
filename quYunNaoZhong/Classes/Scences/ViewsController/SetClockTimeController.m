@@ -37,11 +37,20 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    self.timeLabel.text = self.timeText;
+    
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.datePicker.datePickerMode = UIDatePickerModeTime;
     self.timeLabel.font = [UIFont fontWithName:@"DB LCD Temp" size:30.0f];
+    
+    
+    self.datePicker.datePickerMode = UIDatePickerModeTime;
+
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm:ss"];

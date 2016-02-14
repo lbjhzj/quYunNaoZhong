@@ -101,7 +101,23 @@ static NSString *cellID = @"cellID";
                 }else{
                 NSArray *tmpArray = [[HYLocalNotication shareHYLocalNotication]findClockOfDefaultPlist:fitPeople];
                     
-                [Alert setValuesForKeysWithDictionary:tmpArray[index++]];
+                    NSDictionary *ttmpDictionary =tmpArray[index++];
+                    struct utsname systemInfo;
+                    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+                    if ([deviceString isEqualToString:@"iphone 4,1"]) {
+                        [Alert setValuesForKeysWithDictionary:ttmpDictionary];
+                    }else {
+                        Alert.clockTime = [ttmpDictionary objectForKey:@"ClockTime"];
+                        Alert.clockMode = [ttmpDictionary objectForKey:@"ClockMode"];
+                        Alert.clockMusic = [ttmpDictionary objectForKey:@"ClockMusic"];
+                        Alert.clockForce = [[ttmpDictionary objectForKey:@"ClockForce"] boolValue];
+                        Alert.clockRemember = [ttmpDictionary objectForKey:@"ClockRemember"];
+                        Alert.clockExtend = [ttmpDictionary objectForKey:@"ClockExtend"];
+                        Alert.clockType = [ttmpDictionary objectForKey:@"ClockType"];
+                        Alert.clockName = [ttmpDictionary objectForKey:@"ClockName"];
+                        
+                    }
+
                 }
 
 

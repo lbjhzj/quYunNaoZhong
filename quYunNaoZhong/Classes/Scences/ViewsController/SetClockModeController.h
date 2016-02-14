@@ -18,6 +18,7 @@
 
 @property(nonatomic,assign)id <PassingTheClockModeDelegate> delegate;
 
+@property(nonatomic,strong)NSArray * modeArray;
 
 
 @end

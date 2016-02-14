@@ -1,6 +1,6 @@
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "5Oz-Vv-95S"; */
-"5Oz-Vv-95S.text" = "";
+/* Class = "UILabel"; text = "      健康闹钟作息时间表数据采集来源于各致力人类健康学的医学专家及团体，根据各年龄阶段的生理特征，科学系统化建议；用户可根据个人习惯进行微调整；良好的作息习惯是保证健康的有力前提。"; ObjectID = "IIz-Dg-puM"; */
+"IIz-Dg-puM.text" = "      健康闹钟作息时间表数据采集来源于各致力人类健康学的医学专家及团体，根据各年龄阶段的生理特征，科学系统化建议；用户可根据个人习惯进行微调整；良好的作息习惯是保证健康的有力前提。";
 
 /* Class = "UILabel"; text = "推荐闹钟设置"; ObjectID = "ImE-o7-4ql"; */
-"ImE-o7-4ql.text" = "Recommend Clock Settings";
+"ImE-o7-4ql.text" = "推荐闹钟设置";

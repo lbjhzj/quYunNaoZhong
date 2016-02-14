@@ -129,7 +129,8 @@
                 [self.delegate stopMusic];
                 [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:[self.Alert.clockID intValue]];
                 
-
+                [HYLocalNotication shareHYLocalNotication].clockRepeatCount = NSWeekdayCalendarUnit;
+                [[HYLocalNotication shareHYLocalNotication]startLocalNoticationClockID:[self.Alert.clockID intValue]];
             }
         }];
     }else{
@@ -144,6 +145,8 @@
                 [self.delegate stopMusic];
                 
                 [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:[self.Alert.clockID intValue]];
+                [HYLocalNotication shareHYLocalNotication].clockRepeatCount = NSWeekdayCalendarUnit;
+                [[HYLocalNotication shareHYLocalNotication]startLocalNoticationClockID:[self.Alert.clockID intValue]];
             }
         }];
     }else{
@@ -157,7 +160,8 @@
                 [self.delegate stopMusic];
                 
                 [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:[self.Alert.clockID intValue]];
-
+                [HYLocalNotication shareHYLocalNotication].clockRepeatCount = NSWeekdayCalendarUnit;
+                [[HYLocalNotication shareHYLocalNotication]startLocalNoticationClockID:[self.Alert.clockID intValue]];
             }
         }];
     }else{
@@ -171,6 +175,8 @@
                 [self.delegate stopMusic];
                 
                 [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:[self.Alert.clockID intValue]];
+                [HYLocalNotication shareHYLocalNotication].clockRepeatCount = NSWeekdayCalendarUnit;
+                [[HYLocalNotication shareHYLocalNotication]startLocalNoticationClockID:[self.Alert.clockID intValue]];
             }
         }];
     }else{
@@ -184,7 +190,8 @@
                 [self.delegate stopMusic];
                 
                 [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:[self.Alert.clockID intValue]];
-
+                [HYLocalNotication shareHYLocalNotication].clockRepeatCount = NSWeekdayCalendarUnit;
+                [[HYLocalNotication shareHYLocalNotication]startLocalNoticationClockID:[self.Alert.clockID intValue]];
             }
         }];
     }else{
@@ -198,7 +205,8 @@
                 [self.delegate stopMusic];
                 
                 [[HYLocalNotication shareHYLocalNotication]cancelLocalNotication:[self.Alert.clockID intValue]];
-
+                [HYLocalNotication shareHYLocalNotication].clockRepeatCount = NSWeekdayCalendarUnit;
+                [[HYLocalNotication shareHYLocalNotication]startLocalNoticationClockID:[self.Alert.clockID intValue]];
             }
         }];
     }else{

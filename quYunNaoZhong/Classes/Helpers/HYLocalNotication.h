@@ -10,6 +10,9 @@
 
 @interface HYLocalNotication : NSObject <AVAudioPlayerDelegate>
 
+
+@property(nonatomic,assign)NSCalendarUnit clockRepeatCount;
+
 + (instancetype)shareHYLocalNotication;
 
 - (void)startLocalNoticationClockID:(int)clockID;

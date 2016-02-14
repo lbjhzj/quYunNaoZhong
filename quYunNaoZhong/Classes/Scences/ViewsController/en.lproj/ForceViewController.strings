@@ -6,7 +6,7 @@
 "Gtn-X5-mWM.text" = "-";
 
 /* Class = "UILabel"; text = "想要清醒，来到算术题!"; ObjectID = "Rdv-Fd-ti8"; */
-"Rdv-Fd-ti8.text" = "Want to Awake? Some Maths Problem!";
+"Rdv-Fd-ti8.text" = "想要清醒，来到算术题!";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Rhe-ON-0rk"; */
 "Rhe-ON-0rk.normalTitle" = "Button";
@@ -30,4 +30,4 @@
 "rfC-YA-4qj.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "正确答案是？"; ObjectID = "ru1-8F-OTb"; */
-"ru1-8F-OTb.text" = "Right Answer is？";
+"ru1-8F-OTb.text" = "正确答案是？";
